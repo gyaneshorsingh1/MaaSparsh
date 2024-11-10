@@ -1,0 +1,67 @@
+.payment{
+    display: grid;
+    place-items: center;
+    background-color: rgb(255, 255, 255);
+    height: 65vh;
+    margin: 2vmax;
+}
+.PaymentCartItems{
+    margin: auto;
+    width: 45%;
+    height: 100%;
+}
+
+.PaymentCartItems img{
+    width: 3vmax;
+}
+
+.PaymentItemsContainer{
+    margin-top: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+}
+.PaymentItemsContainer a{
+    color: #575757;
+    margin: 0 2vmax;
+    width: 60%;
+    text-decoration: none;
+}
+
+.PaymentOrderSummary{
+
+    margin: 4vh auto;
+    
+    width: 45%;
+    height: 100%;
+}
+
+.PaymentOrderSummary>div>div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.PaymentOrderSummary .TotalPaymentSummary{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PaymentOrderSummary > button {
+    background-color: tomato;
+    color: white;
+    width: 100%;
+    padding: 1vmax;
+    border: none;
+    margin: auto;
+    cursor: pointer;
+    transition: 0.5s;
+    font: 400 1vmax "Roboto";
+    margin-bottom: 10px;
+  }
+  
+  .PaymentOrderSummary > button:hover {
+    background-color: rgb(192, 71, 50);
+  }

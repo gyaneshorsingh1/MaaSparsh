@@ -1,0 +1,14 @@
+.MuiStepConnector-line {
+    display: none !important; /* Hides the connector lines */
+  }
+  
+  .MuiStepConnector-root {
+    height: 1px; /* Ensures the connector height is 1px */
+    background-color: rgba(0, 0, 0, 0.349); /* Default background color */
+  }
+  
+  .MuiStepConnector-active,
+  .MuiStepConnector-completed {
+    background-color: tomato !important; /* Sets the color for active and completed connectors */
+  }
+  

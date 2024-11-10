@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* FireBox */
+
+input[type="number"]{
+    -moz-appearance: textfield;
+}
+
+.greenColor{
+    color: green;
+}
+.redColor{
+    color: red;
+}
+
