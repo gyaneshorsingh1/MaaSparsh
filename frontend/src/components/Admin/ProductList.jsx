@@ -89,11 +89,11 @@ const ProductList = () => {
                 const productId = params.row.id; // Access product ID from row data
                 return (
                     <>
-                        <Link to={`/admin/product/${productId}`}>
+                        {/* <Link to={`/admin/product/${productId}`}>
                             <Button variant="outlined" color="primary">
                                 <EditIcon />
                             </Button>
-                        </Link>
+                        </Link> */}
 
                         <Button
                             variant="outlined"

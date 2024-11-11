@@ -34,6 +34,7 @@ ChartJS.register(
 const Dashboard = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
+  const { order } = useSelector((state) => state.order);
   let outOfStock = 0;
 
   products &&
@@ -96,7 +97,7 @@ const Dashboard = () => {
           </Link>
           <Link to="/admin/orders">
             <p>Orders</p>
-            <p>4</p>
+            <p>{order && order.length}</p>
           </Link>
           <Link to="/admin/users">
             <p>Users</p>

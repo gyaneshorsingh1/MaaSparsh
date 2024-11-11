@@ -10,11 +10,6 @@ header {
   color: #4A4A4A; /* Soft dark gray for text */
   padding: 0 20px;
   background-color: rgb(255, 247, 227);
-
-  font-family: "SUSE", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
 }
 
 .top-bar {

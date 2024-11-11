@@ -85,6 +85,7 @@ const UpdateProduct = () => {
     isUpdated,
     navigate, // Ensure navigate is added to dependency array
   ]);
+  
 
   const updateProductSubmitHandler = (e) => {
     e.preventDefault();

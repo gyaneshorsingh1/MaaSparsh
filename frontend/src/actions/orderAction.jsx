@@ -79,7 +79,7 @@ import {
   export const updateOrder = (id, order) => async (dispatch) => {
     try {
       dispatch({ type: UPDATE_ORDER_REQUEST });
-  
+      
       const config = {
         headers: {
           "Content-Type": "application/json",

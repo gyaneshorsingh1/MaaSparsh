@@ -104,8 +104,6 @@ exports.getProductDetails = catchAsyncErrors( async (req,res,next)=>{
 
 
 //update product//(admin)
-
-
 exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
   let product = await Product.findById(req.params.id);
 
@@ -113,7 +111,6 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHander("Product not found", 404));
   }
 
-  // Images Start Here
   let images = [];
 
   if (typeof req.body.images === "string") {
@@ -122,17 +119,13 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
     images = req.body.images;
   }
 
-  if (images !== undefined) {
-    // Deleting Images From Cloudinary
-    for (let i = 0; i < product.images.length; i++) {
-      await cloudinary.v2.uploader.destroy(product.images[i].public_id);
-    }
+  if (images.length > 0) {
 
     const imagesLinks = [];
 
     for (let i = 0; i < images.length; i++) {
       const result = await cloudinary.v2.uploader.upload(images[i], {
-        folder: "products",
+        folder: "products", // Cloudinary folder for product images
       });
 
       imagesLinks.push({
@@ -144,8 +137,16 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
     req.body.images = imagesLinks;
   }
 
+    // Now, we need to merge old and new images
+    if (images.length === 0 && req.body.images) {
+      req.body.images = product.images; // Preserve the old images if no new images are provided
+    } else if (images.length > 0) {
+      // If there are new images, merge them with the old images
+      req.body.images = [...product.images, ...req.body.images]; // Append the new images
+    }
+
   product = await Product.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
+    new: true,         // Return the updated product
     runValidators: true,
     useFindAndModify: false,
   });
@@ -155,6 +156,7 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
     product,
   });
 });
+
 
 //delete product// (admin)
 exports.deleteProduct = catchAsyncErrors(async (req,res,next)=>{

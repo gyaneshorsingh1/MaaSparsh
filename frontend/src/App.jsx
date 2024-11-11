@@ -51,6 +51,9 @@ import { useEffect } from "react";
 import UserOptions from "./components/layout/Header/UserOptions.jsx";
 import ProductList from "./components/Admin/ProductList.jsx";
 import UpdateProduct from "./components/Admin/UpdateProduct.jsx"
+import OrderList from "./components/Admin/OrderList.jsx";
+import ProcessOrder from "./components/Admin/ProcessOrder.jsx";
+
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
@@ -58,13 +61,14 @@ function App() {
     store.dispatch(loadUser());
   }, []);
 
+
   return (
     <Router>
       <Header />
       {isAuthenticated && <UserOptions user={user} />}
       <ScrollToTop />
       <Routes>
-        <Route exact path="/" element={<Products />} />
+        <Route path="/" element={<Products />} />
         <Route exact path="/product/:id" element={<ProductDetails />} />
         <Route exact path="/products" element={<Products />} />
         <Route path="/products/:keyword" element={<Products />} />
@@ -186,6 +190,24 @@ function App() {
           element={
             <ProtectedRoute>
               <UpdateProduct />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/orders"
+          element={
+            <ProtectedRoute>
+              <OrderList />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/order/:id"
+          element={
+            <ProtectedRoute>
+              <ProcessOrder />
             </ProtectedRoute>
           }
         />

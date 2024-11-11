@@ -85,7 +85,7 @@ const Payment = () => {
               itemsPrice: subtotal,
               shippingPrice: shippingCharges,
               totalPrice: amount,
-              orderStatus: "Processing",
+              orderStatus: "Proccessing",
               paidAt: new Date(),
             };
       

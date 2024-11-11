@@ -7,6 +7,7 @@ import { Typography } from "@material-ui/core";
 import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import GoBackButton from "../GoBackButton";
 const Cart = ({ history }) => {
     const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ const Cart = ({ history }) => {
         </div>
       ) : (
         <Fragment>
+         
           <div className="cartPage">
             <div className="cartHeader">
               <p>Product</p>
