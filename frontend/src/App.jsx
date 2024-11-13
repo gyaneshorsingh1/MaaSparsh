@@ -74,7 +74,7 @@ function App() {
         <Route path="/products/:keyword" element={<Products />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/search" element={<Search />} />
-        <Route exact path="/payment/successful" element={<OrderSuccess />} />
+        <Route exact path="/payment/successful/:id" element={<OrderSuccess />} />
 
         <Route exact path="/cart" element={<Cart />} />
 
@@ -142,14 +142,7 @@ function App() {
           }
         />
 
-        <Route
-          path="/order/placed"
-          element={
-            <ProtectedRoute>
-              <OrderSuccess />
-            </ProtectedRoute>
-          }
-        />
+
 
         <Route
           path="/orders"

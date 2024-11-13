@@ -8,7 +8,7 @@ import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import GoBackButton from "../GoBackButton";
-const Cart = ({ history }) => {
+const Cart = () => {
     const navigate = useNavigate();
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);

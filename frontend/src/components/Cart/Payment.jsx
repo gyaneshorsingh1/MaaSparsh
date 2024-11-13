@@ -9,19 +9,15 @@ import { Typography } from "@material-ui/core";
 import { useAlert } from "react-alert";
 import axios from "axios";
 import { clearErrors, createOrder } from "../../actions/orderAction";
-
 const Payment = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
   const dispatch = useDispatch();
   const alert = useAlert();
   const navigate = useNavigate();
 
-
-
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const { error } = useSelector((state) => state.newOrder);
-
 
   // Fallback values for missing orderInfo properties
   const amount = orderInfo.totalPrice;
@@ -30,13 +26,11 @@ const Payment = () => {
   const userId = user._id;
   console.log(shippingCharges);
 
-  
-
   const checkoutHandler = async () => {
     try {
       // Fetch Razorpay key
       const keyResponse = await axios.get("/api/v1/getkey");
-      
+
       const key = keyResponse.data.key;
       console.log(key);
       // Process payment and get order details
@@ -52,19 +46,23 @@ const Payment = () => {
         },
         { headers: { "Content-Type": "application/json" } }
       );
-  
-      const { orderId, amount, payStatus } = data;
-  
+
+      const { orderId, amount } = data;
+
       // Razorpay options
       const options = {
-        key,
+        key: key,
         amount,
         currency: "INR",
         name: "Masparsh",
         description: "Payment Transaction",
         order_id: orderId,
         handler: async function (response) {
-          if (response.razorpay_order_id && response.razorpay_payment_id && response.razorpay_signature) {
+          if (
+            response.razorpay_order_id &&
+            response.razorpay_payment_id &&
+            response.razorpay_signature
+          ) {
             const order = {
               orderId: response.razorpay_order_id,
               paymentId: response.razorpay_payment_id,
@@ -80,7 +78,7 @@ const Payment = () => {
               user: userId,
               paymentInfo: {
                 id: response.razorpay_payment_id,
-                status: payStatus,
+                status: "Paid",
               },
               itemsPrice: subtotal,
               shippingPrice: shippingCharges,
@@ -88,17 +86,30 @@ const Payment = () => {
               orderStatus: "Proccessing",
               paidAt: new Date(),
             };
-      
-  
-            // Send order data to backend to create a new order
-            await dispatch(createOrder(order));
-  
-            // Navigate to payment success page and show success message
-            navigate("/payment/successful");
-            alert.success("Payment successful and verified!");
+            const orderId = response.razorpay_order_id;
+
+              // Send order data to backend to create a new order
+              const paymentVerify = await axios.post("/api/v1/payment/verification", {
+                orderId: response.razorpay_order_id,
+                paymentId: response.razorpay_payment_id,
+                signature: response.razorpay_signature,
+                shippingInfo,
+                orderItems: cartItems,
+                userId,
+                itemsPrice: subtotal,
+                shippingPrice: shippingCharges,
+                totalPrice: amount,
+              });
+              
+              await dispatch(createOrder(order));
+              // Navigate to payment success page and show success message
+              
+              navigate(`/payment/successful/${orderId}`);
+              alert.success("Payment successful and verified!");
+            
           }
         },
-  
+
         prefill: {
           name: user.name,
           email: user.email,
@@ -108,18 +119,19 @@ const Payment = () => {
           color: "tomato",
         },
       };
-  
+
       const rzp1 = new window.Razorpay(options);
-      rzp1.on('payment.failed', function (response) {
+      rzp1.on("payment.failed", function (response) {
         alert.error(`Payment Failed: ${response.error.description}`);
       });
       rzp1.open();
     } catch (error) {
       console.error("Error in checkoutHandler:", error.message || error);
-      alert.error(`Payment processing failed. ${error.response?.data?.message}`);
+      alert.error(
+        `Payment processing failed. ${error.response?.data?.message}`
+      );
     }
   };
-  
 
   useEffect(() => {
     if (error) {
@@ -141,7 +153,9 @@ const Payment = () => {
                 cartItems.map((item) => (
                   <div key={item.product}>
                     <img src={item.image} alt="Product" />
-                    <Link to={`/product/${item.product}`}>{item.name}</Link>{" "}
+                    <Link to={`/product/${item.product}`}>
+                      {item.name}
+                    </Link>{" "}
                     <span>
                       {item.quantity} X ₹{item.price} ={" "}
                       <b>₹{item.price * item.quantity}</b>
@@ -180,4 +194,3 @@ const Payment = () => {
 };
 
 export default Payment;
-

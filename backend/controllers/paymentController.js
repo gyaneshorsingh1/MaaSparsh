@@ -2,11 +2,11 @@ const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
 const Payment = require("../models/paymentModel");
+const Order = require("../models/orderModel");
 const instance = new Razorpay({
   key_id: process.env.RAZORPAY_API_KEY,
   key_secret: process.env.RAZORPAY_API_SECRET,
 });
-
 // Payment Processing - Create Order
 exports.processPayment = catchAsyncErrors(async (req, res, next) => {
   const { amount, cartItems, shippingInfo, userId, subtotal, shippingCharges, } = req.body;
@@ -37,61 +37,42 @@ exports.processPayment = catchAsyncErrors(async (req, res, next) => {
 
 
 // Payment Verification and Save to Database
-exports.paymentVerification = async (req, res, next) => {
-  // Log the incoming request to check the data
-  console.log("Received Payment Data:", req.body);
 
-  const { paymentId, orderId, signature, shippingInfo, orderItems, userId, itemsPrice, shippingPrice, totalPrice } = req.body;
+exports.paymentVerification = async (req, res, next) => { 
 
-  try {
-    // Verify the payment signature using Razorpay's utility method
-    const isValid = razorpay.utility.verifyPaymentSignature({
-      order_id: orderId,
-      payment_id: paymentId,
-      signature: signature,
+  // Destructure incoming data from the request body
+  const { orderId, paymentId, signature } = req.body;
+
+   // Verify the payment signature using Razorpay's utility method
+  const body = orderId + "|" + paymentId;
+
+    // Use the correct Razorpay secret key from environment variables
+  const expectedSignature = crypto
+      .createHmac("sha256", process.env.RAZORPAY_API_SECRET)  // Use the correct key variable here
+      .update(body.toString())
+      .digest("hex");
+
+  const isAuthentic = expectedSignature === signature;
+
+  if (isAuthentic) {
+      await Payment.create({
+        razorpay_order_id: orderId,
+        razorpay_payment_id: paymentId,
+        razorpay_signature: signature,
     });
 
-    if (!isValid) {
-      return res.status(400).json({
-        success: false,
-        message: 'Payment signature verification failed!',
-      });
-    }
-
-    // Fetch payment details from Razorpay API using the payment_id
-    const paymentDetails = await razorpay.payments.fetch(paymentId);
-
-    // Log the payment details to check the payment status
-    console.log("Payment Details from Razorpay:", paymentDetails);
-
-    // Get payment status (captured, failed, pending)
-    const paymentStatus = paymentDetails.status; // This can be 'captured', 'failed', or 'pending'
-
-    // Create the order based on the payment status
-    const paymentInfo = {
-      id: paymentId,
-      status: paymentStatus,  // Set the payment status here
-    };
-
-    if (paymentStatus === 'captured') {
-      // Payment was successful, now create the order in the database
-      const newOrder = await Order.create(req.body);
-
+      // Respond with success message
       return res.status(200).json({
         success: true,
-        message: 'Payment verified and order created successfully',
-        order: newOrder,
+        message: "Payment verified successfully.",
       });
     } else {
+      // Signature mismatch, return failure message
       return res.status(400).json({
         success: false,
-        message: 'Payment failed or is pending',
+        message: "Payment verification failed, Please try again",
       });
     }
-  } catch (error) {
-    // Handle any errors that occur during the verification or order creation process
-    console.error("Error verifying payment:", error);
-    return next(error);
-  }
 };
+
   

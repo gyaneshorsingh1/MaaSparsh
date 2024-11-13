@@ -3,7 +3,7 @@ const { processPayment, paymentVerification } = require("../controllers/paymentC
 const { isAuthenticatedUser } = require("../middleware/auth")
 const router = express.Router();
 
-router.route("/payment/process").post(processPayment, isAuthenticatedUser);
-router.route("/payment/verification").post(paymentVerification, isAuthenticatedUser);
+router.route("/payment/process").post(isAuthenticatedUser, processPayment);
+router.route("/payment/verification").post(isAuthenticatedUser, paymentVerification);
 
 module.exports = router;

@@ -20,15 +20,9 @@ app.use(fileUpload());
 
 const key = process.env.RAZORPAY_API_KEY;
 
-app.use("/api/v1/getkey", (req,res)=>{
-  key
-  res.json({
-    status: "success",
-    data:{
-      key
-    }
-  })
-});
+app.get("/api/v1/getkey", (req, res) =>
+  res.status(200).json({ key: process.env.RAZORPAY_API_KEY })
+);
 
 // Route Imports
 const product = require("./routes/productRoute");
