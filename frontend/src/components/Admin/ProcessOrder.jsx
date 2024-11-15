@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import MetaData from "../layout/MetaData";
-import { Link, useNavigate, useParams } from "react-router-dom"; // Use useParams here
+import { Link, useNavigate, useParams } from "react-router-dom"; // <-- Make sure Link is imported here
 import { Typography } from "@mui/material";
 import Sidebar from "./Sidebar";
 import { getOrderDetails, clearErrors, updateOrder } from "../../actions/orderAction";
@@ -10,6 +10,7 @@ import { useAlert } from "react-alert";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import { Button } from "@mui/material";
 import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
+import { getUserDetails } from "../../actions/userAction";
 import "./processOrder.css";
 
 const ProcessOrder = () => {
@@ -21,8 +22,18 @@ const ProcessOrder = () => {
   // Get order details and loading/error state from Redux
   const { order, error, loading } = useSelector((state) => state.orderDetails);
   const { error: updateError, isUpdated } = useSelector((state) => state.order);
-  
   const [status, setStatus] = useState("");
+  const [userDetails, setUserDetails] = useState(null); // Add state to hold user details
+
+  // Fetch user details once the order is loaded
+  useEffect(() => {
+    if (order?.user) {
+      // Dispatch the action to get user details
+      dispatch(getUserDetails(order.user));
+    }
+  }, [dispatch, order?.user]); // Only dispatch if order and user ID are available
+
+  const { user } = useSelector((state) => state.userDetails); // Get user details from Redux state
 
   const updateOrderSubmitHandler = (e) => {
     e.preventDefault();
@@ -30,7 +41,7 @@ const ProcessOrder = () => {
     const myForm = new FormData();
     myForm.set("status", status);
 
-    dispatch(updateOrder(id, myForm)); // Use `id` from useParams
+    dispatch(updateOrder(id, myForm));
   };
 
   useEffect(() => {
@@ -47,17 +58,16 @@ const ProcessOrder = () => {
     if (isUpdated) {
       alert.success("Order Updated Successfully");
       dispatch({ type: UPDATE_ORDER_RESET });
-      navigate("/admin/orders"); // Redirect after success
+      navigate("/admin/orders");
     }
 
     dispatch(getOrderDetails(id)); // Fetch order details based on the ID from the URL
-  }, [dispatch, alert, error, updateError, isUpdated, id, navigate]); // Added `id` and `navigate` dependencies
+  }, [dispatch, alert, error, updateError, isUpdated, id, navigate]);
 
   if (loading) {
     return <Loader />;
   }
 
-  // Check if order data is not available yet
   if (!order) {
     return <Typography variant="h6">No order found</Typography>;
   }
@@ -65,9 +75,8 @@ const ProcessOrder = () => {
   return (
     <Fragment>
       <MetaData title="Process Order" />
-      
       <div className="dashboard">
-      <Sidebar />
+        <Sidebar />
         <div className="newProductContainer">
           <div
             className="confirmOrderPage"
@@ -81,11 +90,11 @@ const ProcessOrder = () => {
                 <div className="orderDetailsContainerBox">
                   <div>
                     <p>Name:</p>
-                    <span>{order.user && order.user.name}</span>
+                    <span>{user?.name || "Loading..."}</span> {/* Display user name once loaded */}
                   </div>
                   <div>
                     <p>Phone:</p>
-                    <span>{order.shippingInfo && order.shippingInfo.phoneNo}</span>
+                    <span>{order.shippingInfo?.phoneNo}</span>
                   </div>
                   <div>
                     <p>Address:</p>
@@ -101,15 +110,14 @@ const ProcessOrder = () => {
                   <div>
                     <p
                       className={
-                        order.paymentInfo && order.paymentInfo.status === "succeeded"
+                        order.paymentInfo && order.paymentInfo.status === "Paid"
                           ? "greenColor"
-                          : "redColor"
+                          : "yellowColor" // Updated to show yellow for COD
                       }
                     >
-                      {order.paymentInfo && order.paymentInfo.status === "succeeded" ? "PAID" : "NOT PAID"}
+                      {order.paymentInfo && order.paymentInfo.status === "Paid" ? "PAID" : "COD"}
                     </p>
                   </div>
-
                   <div>
                     <p>Amount:</p>
                     <span>{order.totalPrice && order.totalPrice}</span>
@@ -138,7 +146,7 @@ const ProcessOrder = () => {
                     order.orderItems.map((item) => (
                       <div key={item.product}>
                         <img src={item.image} alt="Product" />
-                        <Link to={`/product/${item.product}`}>{item.name}</Link>
+                        <Link to={`/product/${item.product}`}>{item.name}</Link> {/* Link is now imported */}
                         <span>
                           {item.quantity} X ₹{item.price} = <b>₹{item.price * item.quantity}</b>
                         </span>
@@ -148,7 +156,6 @@ const ProcessOrder = () => {
               </div>
             </div>
 
-            
             <div
               style={{
                 display: order.orderStatus === "Delivered" ? "none" : "block",

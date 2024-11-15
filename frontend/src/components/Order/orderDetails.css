@@ -68,6 +68,24 @@
     font: 100 1vmax "Roboto";
     color: #5e5e5e;
   }
+
+  .orderDetailsContainerBox p.greenColor {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .orderDetailsContainerBox p.yellowColor {
+    color: yellow;
+    font-weight: bold;
+  }
+  
+  .orderDetailsContainerBox p.redColor {
+    color: red;
+    font-weight: bold;
+  }
+  
+  
+  
   
   @media screen and (max-width: 600px) {
     .orderDetailsContainer > p {

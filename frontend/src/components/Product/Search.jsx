@@ -2,8 +2,7 @@ import React, { useState, Fragment } from "react";
 import MetaData from "../layout/MetaData";
 import "./Search.css";
 import { useNavigate } from "react-router-dom";
-
-
+import { FaSearch } from "react-icons/fa"; // Importing Font Awesome search icon
 
 const Search = () => {
   const [keyword, setKeyword] = useState("");
@@ -27,7 +26,9 @@ const Search = () => {
           placeholder="Search a Product ..."
           onChange={(e) => setKeyword(e.target.value)}
         />
-        <input type="submit" value="Search" />
+        <button type="submit" className="searchIcon">
+          <FaSearch size={30} />
+        </button>
       </form>
     </Fragment>
   );

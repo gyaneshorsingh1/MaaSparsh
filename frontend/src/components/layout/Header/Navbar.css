@@ -1,0 +1,110 @@
+/* Navbar styles */
+.tab-navbar {
+    background-color: rgb(184, 219, 195);
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 0 15px;
+  }
+  
+  /* Navigation Links */
+  .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: row;
+    width: 100%;
+    transform: translateX(0); /* Default state for large screens */
+    opacity: 1; /* Default state for large screens */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  
+  .nav-links.active {
+    transform: translateX(0); /* Active state */
+    opacity: 1;
+  }
+  
+  .nav-links a {
+    font-size: 18px;
+    font-family: "Roboto";
+    color: rgb(92, 184, 165);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    color: rgb(252, 158, 144);
+  }
+  
+  /* Hamburger Icon */
+  .hamburger {
+    display: none;
+    cursor: pointer;
+    color: rgb(92, 184, 165);
+    z-index: 15;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .nav-links {
+        width: 100%;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      background-color: rgba(184, 219, 195, 0.858);
+      backdrop-filter: blur(7px);
+      padding: 10px 20px;
+      gap: 1rem;
+      transform: translateX(-100%); 
+      opacity: 0;
+    }
+  
+    .hamburger {
+      display: block;
+    }
+  
+    .nav-links.active {
+      transform: translateX(0); /* Slide in from the left */
+      opacity: 1;
+      animation: slideInLeft 0.5s forwards;
+    }
+  
+    .nav-links {
+      animation: slideOutLeft 0.5s forwards;
+    }
+  }
+  
+  /* Keyframes for animations */
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOutLeft {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
+  

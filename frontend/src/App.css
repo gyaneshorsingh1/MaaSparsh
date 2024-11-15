@@ -18,10 +18,19 @@ input[type="number"]{
     -moz-appearance: textfield;
 }
 
-.greenColor{
+.greenColor {
     color: green;
-}
-.redColor{
+    font-weight: bold;
+  }
+  
+  .yellowColor {
+    color: yellow;
+    font-weight: bold;
+  }
+  
+  .redColor {
     color: red;
-}
+    font-weight: bold;
+  }
+  
 

@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Header from "./components/layout/Header/Header.jsx";
+import Navbar from "./components/layout/Header/Navbar.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./ScrollToTop.jsx";
 import Footer from "./components/layout/Footer/Footer.jsx";
@@ -53,6 +54,7 @@ import ProductList from "./components/Admin/ProductList.jsx";
 import UpdateProduct from "./components/Admin/UpdateProduct.jsx"
 import OrderList from "./components/Admin/OrderList.jsx";
 import ProcessOrder from "./components/Admin/ProcessOrder.jsx";
+import UsersList from "./components/Admin/UsersList.jsx";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -65,10 +67,11 @@ function App() {
   return (
     <Router>
       <Header />
+      <Navbar />
       {isAuthenticated && <UserOptions user={user} />}
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<Products />} />
+        <Route path="/" element={<Home />} />
         <Route exact path="/product/:id" element={<ProductDetails />} />
         <Route exact path="/products" element={<Products />} />
         <Route path="/products/:keyword" element={<Products />} />
@@ -201,6 +204,14 @@ function App() {
           element={
             <ProtectedRoute>
               <ProcessOrder />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/users"
+          element={
+            <ProtectedRoute>
+              <UsersList />
             </ProtectedRoute>
           }
         />

@@ -5,46 +5,50 @@
 
 }
 header {
-  z-index: 100;
   max-width: 100vw;
   color: #4A4A4A; /* Soft dark gray for text */
-  padding: 0 20px;
-  background-color: rgb(255, 247, 227);
+  background-color: rgb(209, 232, 216);
 }
 
 .top-bar {
   display: flex;
-  height: 15vh;
+  height: 25vh;
   width: 100%;
-  justify-content: end;
+  padding: 0 20px;
+  justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid rgb(252, 158, 144); /* Light mint border to separate */
+}
+
+.search, .logo, .icon-links{
+  width: 33%;
+}
+
+.search{
+  position: relative;
+  left: 60px;
 }
 
 .logo {
-  
-  position: absolute;
-  width: 100%;
-  
-  left: 0;
   text-align: center;
 }
-.logo img{
 
-  width: 100px;
+.logo img{
+  width: 140px;
 }
 
 .icon-links {
-  position: relative;
+
   display: flex;
   align-items: center;
-  gap: 1rem;
+  justify-content: end;
+  gap: 3rem;
+  padding-right: 40px;
 }
 
 .icon {
   cursor: pointer;
   transition: color 0.3s ease;
-  color: rgb(252, 158, 144); /* Dark gray for icons */
+  color: rgb(92, 184, 165); /* Dark gray for icons */
 }
 
 .icon:hover {
@@ -52,55 +56,13 @@ header {
 }
 
 
-nav{
-  height: 10vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-/* Navigation styles */
-nav ul {
-  list-style: none; /* Remove bullet points */
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  gap: 1.8rem;
-  transition: all 0.3s ease; 
-}
-
-nav ul li {
-  margin: 0;
-  padding: 0;
-}
-
-
-
-.nav-links a {
-  color: rgb(190, 115, 103); /* Soft dark gray for nav links */
-  text-decoration: none; /* Remove underline */
-  transition: color 0.3s ease; /* Smooth color transition */
-}
-
-.nav-links a:hover {
-  color: rgb(252, 158, 144); /* Soft blue hover effect */
-}
-
-.hamburger {
-  display: none; /* Hidden by default */
-}
-
 
 
 /* for user options */
 
 .speedDial{
   position: fixed;
-  top: 30vh;
+  top: 27.5vh;
   right: 2.5vh;
   border-radius: 50%;
   height: 45px;
@@ -137,34 +99,6 @@ nav ul li {
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    position: relative;
-  }
-
-  .nav-links.active {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 15vh;
-    left: 0;
-    padding: 20px 60px;
-    height: auto;
-    width: 100%;
-    align-items: start;
-    background-color: #d7de4a27;
-    z-index: 1;
-    backdrop-filter: blur(7px);
-    overflow: visible;
-  }
-
-  .hamburger {
-    display: block;
-    cursor: pointer;
-    position: relative;
-    color: rgb(142, 96, 39);
-    z-index: 10;
-  }
 
   .icon-links {
     gap: 0.5rem;

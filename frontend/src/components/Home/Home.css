@@ -1,66 +1,95 @@
 .homedash{
     max-width: 100vw;
     color: #4A4A4A; /* Soft dark gray for text */
-    padding: 0 20px;
     position: relative;
     font-family: sans-serif, "Poppins";
-    background-color: rgb(255, 253, 237);
-    z-index: -1;
+    background-color: rgb(255, 255, 255);
 }
 
 
 .homeHeading {
     text-align: center;
     font-size: 1.4vmax;
-    border-bottom: 1px solid rgba(21, 21, 21, 0.5);
     width: 20vmax;
     padding: 1vmax;
     margin: auto;
     color: rgb(0, 0, 0, 0.7);
   }
-  
-  .container {
+  .homeBanner{
+    width: 100%;
+    height: fit-content;
+  }
+  .homeBanner>img{
+    width: 100%;
+  }
+  .proofContainer{
+    padding: 0 20px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 15px;
+  }
+  .proofContainer .proofData{
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  .proofContainer .proofData img{
+    max-width: 110px;
+  }
+  .proofContainer .proofData p{
+    font-size: smaller;
+    text-align: center;
+  }
+  .product-container {
     display: flex;
     margin: 2vmax auto;
-    width: 80vw;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
+    height: auto;
+    background: #A2D1B11A;
+ 
   }
   
   .productCard {
-   
+    
     font-family: 'Courier New', Courier, monospace;
-    width: 250px;
-    height: 350px;
+    width: 280px;
+    height: 420px;
     display: flex;
     flex-direction: column;
     text-decoration: none;
     color: rgb(48, 48, 48);
-    margin: 2vmax;
+    margin: 0 2vmax;
+    padding: 2vmax 0;
     transition: all 0.5s;
     padding-bottom: 0.5vmax;
     border: none;
-    box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
-    border-radius: 300px 300px 0 0;
     overflow: hidden;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
     
   }
 
   
 .productCard > img {
-    width: 100%;
-    height: 70%;
+  transition: all 0.5s;
+    border-top-left-radius: 180px;
+    border-top-right-radius: 180px;
+    width: 270px;
+    height: 270px;
     object-fit: cover;
+    border: 2px solid #5CB7A5 ;
   }
   
-  .productCard > div {
-    margin: 0.5vmax;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    font-family: 'Courier New', Courier, monospace;
-  }
   
   .productCardSpan {
     margin: 0.5vmax;
@@ -68,30 +97,32 @@
   }
   
   .productCard > p {
-  
+    font-weight: 600;
     font-size: 1.2vmax;
     margin: 1vmax 0.5vmax;
     margin-bottom: 0;
+    letter-spacing: 1.6px;
   }
   
   .productCard > span {
     margin: 0.5vmax;
-    color: tomato;
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
     font-size: 1vmax;
+    letter-spacing: 1.6px;
     
   }
   
-  .productCard:hover {
-    box-shadow: 0 5px 5px rgba(15, 15, 15, 0.26);
+  .productCard:hover > img {
+    box-shadow: 0 5px 5px rgba(115, 189, 136, 0.26);
     transform: translateY(-5px);
   }
 
 .cart-btn{
-  background-color: rgb(252, 158, 144);
+  background: #E86F44E5;
   color: white;
   letter-spacing: 2px;
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 600;
   border-radius: 20px;
   border: none;
   width: 100%;
@@ -99,6 +130,7 @@
   cursor: pointer;
   
 }
+
 
   
   @media screen and (max-width: 600px) {

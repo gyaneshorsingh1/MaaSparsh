@@ -12,7 +12,7 @@ const About = () => {
   }, []);
   return (
     <>
-      <div className="container">
+      <div className="about-container">
         <div className="welcome">
             <img  className="main-section-img" src={aboutBanner}/>
             <div className="welcome-text">

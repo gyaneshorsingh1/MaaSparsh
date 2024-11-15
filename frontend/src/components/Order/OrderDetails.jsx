@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./orderDetails.css";
 import { useSelector, useDispatch } from "react-redux";
 import MetaData from "../layout/MetaData";
@@ -8,14 +8,19 @@ import { getOrderDetails, clearErrors } from "../../actions/orderAction";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
 import { useParams } from "react-router-dom";  // Import the useParams hook
+import { getUserDetails } from "../../actions/userAction";  // Action to fetch user details
 
 const OrderDetails = () => {
   // Use the useParams hook to get the order id from the URL
   const { id } = useParams();
 
   const { order, error, loading } = useSelector((state) => state.orderDetails);
+  const { user } = useSelector((state) => state.userDetails); // Access user details from Redux state
   const dispatch = useDispatch();
   const alert = useAlert();
+
+  // Local state to track if the user details have been loaded
+  const [userLoaded, setUserLoaded] = useState(false);
 
   useEffect(() => {
     if (error) {
@@ -23,13 +28,35 @@ const OrderDetails = () => {
       dispatch(clearErrors());
     }
 
-    // Dispatch the action to get order details using the id from the URL
+    // Fetch order details using the order id from URL
     dispatch(getOrderDetails(id));
-  }, [dispatch, alert, error, id]);  // use `id` from `useParams`
+  }, [dispatch, alert, error, id]);
+
+  // Fetch user details if user is not available in the order
+  useEffect(() => {
+    if (order?.user && !userLoaded) {
+      // If order has a user id but user details are not loaded yet
+      dispatch(getUserDetails(order.user));
+      setUserLoaded(true);
+    }
+  }, [dispatch, order?.user, userLoaded]);
 
   if (loading) return <Loader />;
 
-  const { shippingInfo, paymentInfo, orderStatus, orderItems, totalPrice, user } = order || {};
+  const { shippingInfo, paymentInfo, orderStatus, orderItems, totalPrice } = order || {};
+
+  // Determine payment status classes
+  const getPaymentStatusClass = (status) => {
+    console.log('Payment Status:', status); // Debugging log to check status value
+
+    if (status === "Paid") {
+      return "greenColor";  // Green color for Paid
+    }
+    if (status === "COD") {
+      return "yellowColor";  // Yellow color for COD
+    }
+    return "redColor";  // Red color for anything else (e.g., Not Paid)
+  };
 
   return (
     <>
@@ -37,11 +64,12 @@ const OrderDetails = () => {
       <div className="orderDetailsPage">
         <div className="orderDetailsContainer">
           <Typography variant="h5">Order #{order?._id}</Typography>
+
           <Typography variant="h6">Shipping Info</Typography>
           <div className="orderDetailsContainerBox">
             <div>
               <p>Name:</p>
-              <span>{user?.name}</span>
+              <span>{user?.name || "Loading..."}</span> {/* Display the user name once loaded */}
             </div>
             <div>
               <p>Phone:</p>
@@ -56,8 +84,9 @@ const OrderDetails = () => {
           <Typography variant="h6">Payment</Typography>
           <div className="orderDetailsContainerBox">
             <div>
-              <p className={paymentInfo?.status === "succeeded" ? "greenColor" : "redColor"}>
-                {paymentInfo?.status === "succeeded" ? "PAID" : "NOT PAID"}
+              {/* Apply the dynamic class for payment status */}
+              <p className={getPaymentStatusClass(paymentInfo?.status)}>
+                {paymentInfo?.status === "Paid" ? "Paid" : paymentInfo?.status === "COD" ? "Cash On Delivery" : "Not Paid"}
               </p>
             </div>
             <div>

@@ -4,7 +4,7 @@ import "./productList.css";
 import { useSelector, useDispatch } from "react-redux";
 
 
-import { Link, useNavigate } from "react-router-dom"; // Updated for React Router v6
+import { Link, useNavigate, useParams } from "react-router-dom"; // Updated for React Router v6
 import { useAlert } from "react-alert";
 import { Button } from "@mui/material"; // Updated Material UI imports
 import MetaData from "../layout/MetaData";
@@ -17,6 +17,7 @@ import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
 
 
 const OrderList = () => {
+  
   const navigate = useNavigate();
     const dispatch = useDispatch();
     const alert = useAlert();
@@ -98,7 +99,7 @@ const OrderList = () => {
                         <Button
                             variant="outlined"
                             color="secondary"
-                            onClick={() => deleteOrderHandler(productId)}
+                            onClick={() => deleteOrderHandler(orderId)}
                         >
                             <DeleteIcon />
                         </Button>

@@ -7,7 +7,8 @@ import {
   FaPinterest,
 } from "react-icons/fa";
 import "./Footer.css"; // Import the CSS file
-
+import logo from "../../../images/logo-without-text.png"
+import Search from "../../Product/Search";
 const Footer = () => {
   return (
     <footer>
@@ -23,9 +24,11 @@ const Footer = () => {
           <h3>MEDIA</h3>
           <p>
             <b>info@maasparsh.in</b>
+            <p>+91-9999999999</p>
           </p>
+          <p className="img-p"><img src={logo} alt="masparsha logo" /></p>
           <p>Maasparash Essence of Ayurveda</p>
-
+          
           <div>
             <a
               href="https://www.facebook.com"
@@ -69,6 +72,15 @@ const Footer = () => {
           <Link to="/policies/payment-options">Payment Options</Link>
           <Link to="/policies/out-of-stock">Out of Stock Items</Link>
           <Link to="/policies/contact-us">Contact Us</Link>
+        </div>
+        <div>
+          <div>
+            <h3>YES, I WANT TO HEAR ABOUT SPECIAL<br/> OFFERS AND INSIDER PEAKS</h3>
+          </div>
+          <div className="footer-search">
+              <Search className="search-field" />
+          </div>
+
         </div>
       </div>
     </footer>

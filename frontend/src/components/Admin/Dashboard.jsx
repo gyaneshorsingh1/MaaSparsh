@@ -18,6 +18,7 @@ import {
 } from "chart.js";
 
 import { getAdminProduct } from "../../actions/productAction.jsx";
+import { getAllOrders } from "../../actions/orderAction.jsx";
 
 // Register Chart.js components (required for chart to render correctly)
 ChartJS.register(
@@ -34,7 +35,8 @@ ChartJS.register(
 const Dashboard = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
-  const { order } = useSelector((state) => state.order);
+  const { orders } = useSelector((state) => state.allOrders);
+  const { users } = useSelector((state) => state.allUsers);
   let outOfStock = 0;
 
   products &&
@@ -45,6 +47,7 @@ const Dashboard = () => {
    })
    useEffect(() => {
     dispatch(getAdminProduct());
+    dispatch(getAllOrders())
 }, [dispatch, alert]);
 
 
@@ -97,11 +100,11 @@ const Dashboard = () => {
           </Link>
           <Link to="/admin/orders">
             <p>Orders</p>
-            <p>{order && order.length}</p>
+            <p>{orders && orders.length}</p>
           </Link>
           <Link to="/admin/users">
             <p>Users</p>
-            <p>2</p>
+            <p>{users.length}</p>
           </Link>
         </div>
 

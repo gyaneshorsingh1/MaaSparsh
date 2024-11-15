@@ -1,57 +1,39 @@
 .searchBox {
-    width: auto;
-    height: 60vh;
-    max-width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(231, 231, 231);
-    top: 0;
-    left: 0;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin: 20px auto;
+  width: 100%;
+  position: relative;
+}
+
+.searchBox input[type="text"] {
+  width: 80%;
+  height: 8vh;
+  padding: 10px 40px 10px 55px; /* Add padding to accommodate the search icon */
+  font-size: 15px;
+  border: 2px solid rgb(92, 184, 166);
+  border-radius: 10px;
+  outline: none;
+  color: rgb(92, 184, 165);
+}
+
+.searchBox input[type="text"]::placeholder {
+  color: rgb(124, 135, 133);
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 10px; /* Position icon within the input field */
+  background: none;
+  border: none;
+  color: rgb(92, 184, 165);
   
-  .searchBox > input[type="text"] {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.274);
-    background-color: white;
-    border: none;
-    color: rgba(0, 0, 0, 0.637);
-    padding: 1vmax 2vmax;
-    width: 50%;
-    outline: none;
-    border-radius: 0%;
-    font: 300 1.1vmax cursive;
-    box-sizing: border-box;
-    height: 8%;
-  }
-  
-  .searchBox > input[type="submit"] {
-    height: 8%;
-    border-radius: 0%;
-    background-color: tomato;
-    border: none;
-    padding: 1vmax;
-    width: 10%;
-    font: 300 1.1vmax "Roboto";
-    cursor: pointer;
-    color: white;
-    transition: all 0.5s;
-  }
-  
-  .searchBox > input[type="submit"]:hover {
-    background-color: rgb(55, 97, 214);
-  }
-  
-  @media screen and (max-width: 600px) {
-    .searchBox > input[type="text"] {
-      width: 100%;
-      font: 300 4vw cursive;
-      height: 10%;
-    }
-  
-    .searchBox > input[type="submit"] {
-      height: 10%;
-      width: 30%;
-      font: 300 4vw "Roboto";
-    }
-  }
-  
+  cursor: pointer;
+}
+
+.searchIcon:hover {
+  color: rgb(75, 150, 135); /* Slightly darker shade for hover effect */
+}

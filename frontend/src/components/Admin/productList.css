@@ -46,6 +46,13 @@
 .MuiDataGrid-columnHeader div {
   color: rgb(255, 255, 255);
 }
+.productListTable .greenColor {
+  color: green;
+}
+
+.productListTable .redColor {
+  color: red;
+}
 
 @media screen and (max-width: 600px) {
   .productListTable div {
