@@ -20,6 +20,7 @@ const MyOrders = () => {
       toast.error(error);
       dispatch(clearErrors());
     }
+    toast("MY orders...");
     dispatch(myOrders());
   }, [dispatch, error]);
 
