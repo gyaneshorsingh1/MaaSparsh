@@ -56,6 +56,10 @@ header {
 }
 
 
+.cart-icon{
+  background-color: transparent;
+  border: none;
+}
 
 
 /* for user options */
@@ -71,12 +75,12 @@ header {
 
 .speedDialIcon{
 
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 }
 .speedDial .MuiFab-primary {
-  background-color: rgb(69, 229, 117) !important;  /* Change the background color */
+  background: transparent;
   height: 45px;
   width: 45px;
 }
@@ -99,11 +103,165 @@ header {
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
-
+  .logo{
+    width: 30%;
+  }
+  .logo img{
+    width: 70%;
+  }
   .icon-links {
     gap: 0.5rem;
   }
+  .icon{
+    width: 4vmax;
+
+  }
+  .top-bar{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  .search{
+    margin: 0;
+    padding: 0;
+    left: 0;
+    width: 40%;
+  }
+  .icon-links{
+    padding-right: 20px;
+    margin: 0;
+  }
+
   .speedDial .MuiFab-primary{
     display: none;
+  }
+}
+
+
+
+
+
+/* Keyframes for Animations */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Cart Overlay */
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
+  visibility: visible;
+}
+
+.cart-overlay.cart-opening {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.cart-overlay.cart-closing {
+  animation: fadeOut 0.3s ease-in-out;
+  animation-fill-mode: forwards; /* Ensures the fadeOut final state persists */
+}
+
+/* Cart Container */
+.cart-container {
+  width: 60%;
+  max-width: 400px;
+  background-color: #fff;
+  height: 100%;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  position: relative; 
+}
+
+.cart-container.cart-opening {
+  animation: slideIn 0.3s ease-in-out;
+}
+
+.cart-container.cart-closing {
+  animation: slideOut 0.3s ease-in-out;
+  animation-fill-mode: forwards; /* Ensures the slideOut final state persists */
+}
+
+/* Visibility Hidden After Animation Ends */
+.cart-overlay.cart-closing,
+.cart-container.cart-closing {
+  animation-fill-mode: forwards;
+  pointer-events: none; /* Prevent interactions during animation */
+}
+
+
+.cart-text{
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+  font: 400 2vmax "Roboto";
+  color: rgb(92, 184, 165);
+}
+
+/* Close Button */
+.cart-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  font-size: 35px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+  color: rgb(92, 184, 165);
+}
+
+.cart-close-btn:hover {
+  color: #dd5050;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .cart-container {
+    width: 80%;
   }
 }

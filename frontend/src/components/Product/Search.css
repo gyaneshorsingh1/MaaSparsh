@@ -18,11 +18,11 @@
   color: rgb(92, 184, 165);
 }
 
-.searchBox input[type="text"]::placeholder {
+/* .searchBox input[type="text"]::placeholder {
   color: rgb(124, 135, 133);
   font-size: 15px;
   letter-spacing: 2px;
-}
+} */
 
 .searchIcon {
   position: absolute;
@@ -36,4 +36,91 @@
 
 .searchIcon:hover {
   color: rgb(75, 150, 135); /* Slightly darker shade for hover effect */
+}
+
+.searchBox input {
+  transition: all 0.5s ease-in-out;
+}
+
+.Fasearch{
+  width: 25px;
+  height: 25px;
+}
+
+
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes wordAppear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Add animation for individual words */
+.searchBox input::placeholder {
+  color: rgb(124, 135, 133);
+  font-size: 15px;
+  letter-spacing: 2px;
+  animation: typing 3s steps(20) 1s 1 normal both, wordAppear 1s ease-out forwards;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 750px) {
+  .searchBox {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-left: 5px;
+    width: 100%;
+    position: relative;
+  }
+  
+  .searchBox input[type="text"] {
+    width: 100%;
+    height: 5.5vh;
+    padding: 2px 10px 5px 25px; /* Add padding to accommodate the search icon */
+    font-size: 16px;
+    border: 2px solid rgb(92, 184, 166);
+    border-radius: 10px;
+    outline: none;
+    color: rgb(92, 184, 165);
+  }
+  .searchBox input[type="text"]::placeholder {
+    color: rgb(124, 135, 133);
+    font-size: 10px;
+    letter-spacing: 1.4px;
+  }
+  .searchIcon {
+    position: absolute;
+    left: 5px; /* Position icon within the input field */
+    background: none;
+    border: none;
+    color: rgb(92, 184, 165);
+    
+    cursor: pointer;
+  }
+  .Fasearch{
+    width: 18px;
+    height: 18px;
+  }
+  
+  .searchIcon:hover {
+    color: rgb(75, 150, 135); /* Slightly darker shade for hover effect */
+  }
+  
+  .searchBox input {
+    transition: all 0.5s ease-in-out;
+  }
 }

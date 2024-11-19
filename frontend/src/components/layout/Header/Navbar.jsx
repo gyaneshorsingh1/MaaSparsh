@@ -64,22 +64,22 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/bath-rituals" onClick={closeNav}>
+            <Link to="/products/bath-rituals" onClick={closeNav}>
               Bath Rituals
             </Link>
           </li>
           <li>
-            <Link to="/feeding-rituals" onClick={closeNav}>
+            <Link to="/products/feeding-rituals" onClick={closeNav}>
               Feeding Rituals
             </Link>
           </li>
           <li>
-            <Link to="/organic-clothing" onClick={closeNav}>
+            <Link to="/products/organic-clothing" onClick={closeNav}>
               Organic Clothing
             </Link>
           </li>
           <li>
-            <Link to="/baby-nursery" onClick={closeNav}>
+            <Link to="/products/baby-nursery" onClick={closeNav}>
               Baby Nursery
             </Link>
           </li>

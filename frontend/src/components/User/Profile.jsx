@@ -15,11 +15,6 @@ const Profile = () => {
     }
   }, [isAuthenticated, navigate]);
 
-  // Debugging
-  console.log('User:', user);
-  console.log('Loading:', loading);
-  console.log('Authenticated:', isAuthenticated);
-
   if (loading) {
     return <Loader />;
   }
@@ -31,29 +26,40 @@ const Profile = () => {
   return (
     <Fragment>
       <MetaData title={`${user.name}'s Profile`} />
+                 
       <div className="profileContainer">
-        <div>
-          <h1>My Profile</h1>
+      <h1>My Profile</h1>
+      
+        {/* <div>
+          
           <img src={user.avatar.url} alt={user.name} />
           <Link to="/me/update">Edit Profile</Link>
-        </div>
+        </div> */}
+       <div className="accountContainer">
+
+       
         <div>
           <div>
-            <h4>Full Name</h4>
             <p>{user.name}</p>
           </div>
           <div>
-            <h4>Email</h4>
             <p>{user.email}</p>
           </div>
-          <div>
-            <h4>Joined On</h4>
+          <div className="joinedOn">
+            <h4>Joined On:-</h4>
             <p>{String(user.createdAt).substr(0, 10)}</p>
           </div>
-          <div>
-            <Link to="/orders">My Orders</Link>
-            <Link to="/password/update">Change Password</Link>
+        </div>
+        <div>
+          <div className="password-orders">
+            <Link to="/orders">My Orders :- see now</Link>
+
           </div>
+        </div>
+        <div className="logout-account">
+          <Link>Log Out</Link>
+          <Link to="/password/update">Change Password: ?</Link>
+        </div>
         </div>
       </div>
     </Fragment>

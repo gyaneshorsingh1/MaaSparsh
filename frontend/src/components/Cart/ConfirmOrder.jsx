@@ -45,15 +45,15 @@ const ConfirmOrder = () => {
           <div className="confirmshippingArea">
             <Typography>Shipping Info</Typography>
             <div className="confirmshippingAreaBox">
-              <div>
+              <div className="shippingInfoCon">
                 <p>Name:</p>
                 <span>{user.name}</span>
               </div>
-              <div>
+              <div  className="shippingInfoCon">
                 <p>Phone:</p>
                 <span>{shippingInfo.phoneNo}</span>
               </div>
-              <div>
+              <div  className="shippingInfoCon">
                 <p>Address:</p>
                 <span>{address}</span>
               </div>

@@ -1,174 +1,173 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import "./ProductDetails.css";
-import { useSelector, useDispatch } from 'react-redux';
-import { clearErrors, getProductDetails, newReview } from '../../actions/productAction';
-import MetaData from '../layout/MetaData';
-import { useParams } from 'react-router-dom';
-// import ReactStars from "react-rating-stars-component"
-import ReviewCard from './ReviewCard';
+import { useSelector, useDispatch } from "react-redux";
+import {
+  clearErrors,
+  getProductDetails,
+  newReview,
+} from "../../actions/productAction";
+import ReviewCard from "./ReviewCard";
 import Loader from "../layout/Loader/Loader";
-import { useAlert } from "react-alert"
-import { addItemsToCart } from '../../actions/cartAction';
-import { Rating } from "@mui/material";
-
+import { useAlert } from "react-alert";
+import MetaData from "../layout/MetaData";
+import { addItemsToCart } from "../../actions/cartAction";
 import {
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
   Button,
+  Rating,
 } from "@mui/material";
-
-import { NEW_REVIEW_RESET } from '../../constants/productConstants';
-
-
+import { NEW_REVIEW_RESET } from "../../constants/productConstants";
+import { useParams } from "react-router-dom";
 
 const ProductDetails = () => {
-  const { id } = useParams(); // Use useParams to get the 'id' from the route
-
+  const { id } = useParams(); // Use React Router's useParams to get product ID
   const dispatch = useDispatch();
-
-  const {product, loading, error } = useSelector(state => state.productDetails);
-  const { success, error: reviewError } = useSelector(
-    state => state.newReview);
-
-    console.log("success status",success);
   const alert = useAlert();
 
+  const { product, loading, error } = useSelector(
+    (state) => state.productDetails
+  );
 
-  // const options ={
-  //   edit: false,
-  //   color: "rgba(20,20,20,0.1)",
-  //   activeColor: "tomato",
-  //   size: window.innerWidth < 600 ? 20 : 25,
-  //   value: product.ratings,
-  //   isHalf: true,
-  // }
-  // State for quantity
+  const { success, error: reviewError } = useSelector(
+    (state) => state.newReview
+  );
+
   const [quantity, setQuantity] = useState(1);
   const [open, setOpen] = useState(false);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
 
+  const options = {
+    size: "large",
+    value: product?.ratings || 0,
+    readOnly: true,
+    precision: 0.5,
+  };
+
+  const increaseQuantity = () => {
+    if (product?.Stock <= quantity) return;
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  const decreaseQuantity = () => {
+    if (quantity <= 1) return;
+    setQuantity((prevQuantity) => prevQuantity - 1);
+  };
 
   const addToCartHandler = () => {
     dispatch(addItemsToCart(id, quantity));
-    alert.success("Item Added To Card")
+    alert.success("Item Added To Cart");
   };
 
-  const submitReviewToggle=()=>{
-    open ? setOpen(false) : setOpen(true);
-  }
+  const submitReviewToggle = () => setOpen((prevOpen) => !prevOpen);
 
-  const reviewSubmitHandler = () =>{
+  const reviewSubmitHandler = () => {
     const myForm = new FormData();
-
     myForm.set("rating", rating);
     myForm.set("comment", comment);
     myForm.set("productId", id);
-
     dispatch(newReview(myForm));
     setOpen(false);
-    console.log(comment);
-  }
-
-  
+  };
 
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
+
     if (reviewError) {
       alert.error(reviewError);
       dispatch(clearErrors());
     }
-    if(success){
+
+    if (success) {
       alert.success("Review Submitted Successfully");
-      dispatch({ type: NEW_REVIEW_RESET})
+      dispatch({ type: NEW_REVIEW_RESET });
     }
+
     dispatch(getProductDetails(id));
   }, [dispatch, id, error, alert, reviewError, success]);
 
-  // Increment function
-  const increaseQuantity = () => {
-    if (product.Stock <= quantity) return;
-    setQuantity(prevQuantity => prevQuantity + 1);
-  };
-
-  // Decrement function
-  const decreaseQuantity = () => {
-    if (1 >= quantity) return;
-    setQuantity(prevQuantity => Math.max(prevQuantity - 1, 1)); // Prevents quantity from going below 1
-  };
-
-  if (!product) {
-    return <Loader />; // Show a loader while fetching product details
-  }
   return (
     <>
-      {loading ? <Loader /> : (
+      {loading ? (
+        <Loader />
+      ) : (
         <>
-          <MetaData title={`${product.name} -- ECOMMERCE`} />
-          <div className='ProductDetails'>
+          <MetaData title={`${product?.name || "Product"} -- ECOMMERCE`} />
+          <div className="ProductDetails">
             <div>
               <Carousel>
-                {product.images &&
-                  product.images.map((item, i) => (
-                    <img
-                      className="CarouselImage"
-                      key={i}
-                      src={item.url}
-                      alt={`${i} Slide`}
-
-                    />
-                  ))}
+                {product?.images?.map((item, i) => (
+                  <img
+                    className="CarouselImage"
+                    key={i}
+                    src={item.url}
+                    alt={`${i} Slide`}
+                  />
+                ))}
               </Carousel>
-
             </div>
-            <div>
-              <div className='detailsBlock-1'>
-                <h2>{product.name}</h2>
-                <p>Product # {product._id}</p>
-              </div>
-              {/* <div className='detailsBlock-2'>
-               <ReactStars { ...options} />
-          </div> */}
-              <div className='detailsBlock-3'>
-                <h1>{`₹${product.price}`}</h1>
 
-                <div className='detailsBlock-3-1'>
-                  <div className='detailsBlock-3-1-1'>
-                    <button onClick={decreaseQuantity}>-</button>
-                    <input type='number' value={quantity} readOnly />
-                    <button onClick={increaseQuantity}>+</button>
-                  </div>
-                  <button disabled={product.Stock < 1 ? true : false} onClick={addToCartHandler}>Add to Cart</button>
+            <div className="p-details-desc">
+              <div className="detailsBlock-1">
+                <h2>{product?.name}</h2>
+                <p>Product # {product?._id}</p>
+              </div>
+              {/* <div className="detailsBlock-2">
+                <Rating {...options} />
+                <span className="detailsBlock-2-span">
+                  ({product?.numOfReviews || 0} Reviews)
+                </span>
+              </div> */}
+              <div className="detailsBlock-3">
+                <h1>{`₹${product?.price}`}</h1>
+                <div className="detailsBlock-4">
+                  Description : <p>{product?.description}</p>
                 </div>
+                <div className="detailsBlock-3-1 ">
+                  <div className="detailsBlock-3-1-1 quantity-container">
+                    <button className="decrement" onClick={decreaseQuantity}>
+                      -
+                    </button>
+                    <input type="number" readOnly value={quantity} />
+                    <button className="increment" onClick={increaseQuantity}>
+                      +
+                    </button>
+                  </div>
+                  <button
+                    className="addcart-btn"
+                    disabled={product?.Stock < 1}
+                    onClick={addToCartHandler}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+
                 <p>
                   Status:
-                  <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
-                    {product.Stock < 1 ? "OutOfStock" : "InStock"}
-
+                  <b className={product?.Stock < 1 ? "redColor" : "greenColor"}>
+                    {product?.Stock < 1 ? "OutOfStock" : "InStock"}
                   </b>
                 </p>
               </div>
-              <div className='detailsBlock-4'>
-                Description : <p>{product.description}</p>
-              </div>
-
-              <button onClick={submitReviewToggle} className='submitReview'>Submit Review</button>
             </div>
-
           </div>
+          <div className="review-btn-div">
+            <button onClick={submitReviewToggle} className="submitReview">
+              Write Review
+            </button>
+          </div>
+          <br />
 
-          <h3 className='reviewsHeading'>REVIEWS</h3>
-          <Dialog
-            aria-labelledby="simple-dialog-title"
-            open={open}
-            onClose={submitReviewToggle}
-          >
+          <h3 className="reviewsHeading">REVIEWS</h3>
+
+          <Dialog open={open} onClose={submitReviewToggle}>
             <DialogTitle>Submit Review</DialogTitle>
             <DialogContent className="submitDialog">
               <Rating
@@ -176,7 +175,6 @@ const ProductDetails = () => {
                 value={rating}
                 size="large"
               />
-
               <textarea
                 className="submitDialogTextArea"
                 cols="30"
@@ -194,19 +192,20 @@ const ProductDetails = () => {
               </Button>
             </DialogActions>
           </Dialog>
-          {product.reviews && product.reviews[0] ? (
-            <div className='reviews'>
-              {product.reviews &&
-                product.reviews.map((review) => <ReviewCard key={review._id} review={review} />)
-              }
+
+          {product?.reviews?.length > 0 ? (
+            <div className="reviews">
+              {product.reviews.map((review) => (
+                <ReviewCard key={review._id} review={review} />
+              ))}
             </div>
           ) : (
-            <p className='noReviews'>No Reviews Yet</p>
+            <p className="noReviews">No Reviews Yet</p>
           )}
         </>
       )}
     </>
-  )
-}
+  );
+};
 
-export default ProductDetails
+export default ProductDetails;

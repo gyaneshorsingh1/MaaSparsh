@@ -151,12 +151,12 @@ const Payment = () => {
             <div className="PaymentItemsContainer">
               {cartItems &&
                 cartItems.map((item) => (
-                  <div key={item.product}>
+                  <div key={item.product} className="cart-detailss">
                     <img src={item.image} alt="Product" />
                     <Link to={`/product/${item.product}`}>
                       {item.name}
                     </Link>{" "}
-                    <span>
+                    <span className="subTotal-payment">
                       {item.quantity} X ₹{item.price} ={" "}
                       <b>₹{item.price * item.quantity}</b>
                     </span>

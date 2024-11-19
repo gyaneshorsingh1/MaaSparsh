@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import Header from "./components/layout/Header/Header.jsx";
 import Navbar from "./components/layout/Header/Navbar.jsx";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import ScrollToTop from "./ScrollToTop.jsx";
 import Footer from "./components/layout/Footer/Footer.jsx";
 import Home from "./components/Home/Home.jsx";
@@ -51,18 +51,23 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import UserOptions from "./components/layout/Header/UserOptions.jsx";
 import ProductList from "./components/Admin/ProductList.jsx";
-import UpdateProduct from "./components/Admin/UpdateProduct.jsx"
+import UpdateProduct from "./components/Admin/UpdateProduct.jsx";
 import OrderList from "./components/Admin/OrderList.jsx";
 import ProcessOrder from "./components/Admin/ProcessOrder.jsx";
 import UsersList from "./components/Admin/UsersList.jsx";
-
+import BathRituals from "./components/Product/BathRituals.jsx";
+import FeedingRituals from "./components/Product/FeedingRituals.jsx";
+import OrganicClothing from "./components/Product/OrganicClothing.jsx";
+import BabyNursing from "./components/Product/BabyNursing.jsx";
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
-
+  
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
-
+  // const { location, pathname } = useLocation();
+  // const isDashboard = location.pathname === "/admin/dashboard";
+  window.addEventListener("contextmenu",(e) => e.preventDefault());
 
   return (
     <Router>
@@ -77,10 +82,20 @@ function App() {
         <Route path="/products/:keyword" element={<Products />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/search" element={<Search />} />
-        <Route exact path="/payment/successful/:id" element={<OrderSuccess />} />
+        <Route
+          exact
+          path="/payment/successful/:id"
+          element={<OrderSuccess />}
+        />
+
 
         <Route exact path="/cart" element={<Cart />} />
 
+        {/* Product Category routes */}
+        <Route exact path="/products/bath-rituals" element={<BathRituals />} />
+        <Route exact path="/products/feeding-rituals" element={<FeedingRituals />} />
+        <Route exact path="/products/organic-clothing" element={<OrganicClothing />} />
+        <Route exact path="/products/baby-nursery" element={<BabyNursing />} />
         {/* ProtectedRoute usage */}
 
         <Route
@@ -144,8 +159,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-
-
 
         <Route
           path="/orders"
@@ -216,9 +229,6 @@ function App() {
           }
         />
 
-
-
-
         <Route exact path="/password/forgot" element={<ForgotPassword />} />
         <Route exact path="/password/reset/:token" element={<RestPassword />} />
 
@@ -265,6 +275,7 @@ function App() {
         <Route exact path="/policies/contact-us" element={<ContactUs />} />
       </Routes>
 
+      {/* {!isDashboard && <Footer />} */}
       <Footer />
     </Router>
   );

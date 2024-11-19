@@ -29,6 +29,7 @@ const Products = () => {
     const alert = useAlert();
 
     const { products, loading, error, productsCount, resultPerPage } = useSelector((state) => state.products);
+    console.log(products)
     //Price filters
     const [price, setPrice] = useState([0,25000]);
     const priceHandler = (event, newPrice)=>{
@@ -83,25 +84,6 @@ const Products = () => {
                             />
                         </Typography> */}
 
-                        
-                            <ul className='categoryBox'>
-                                {
-                                    categories.map((category)=>(
-                                        <li 
-                                        className='category-link'
-                                        key={category}
-                                        onClick={()=>{setCategory(category);
-                                            if (category === "Products") {
-                                                resetFilters();  // Reset all filters when "Products" category is selected
-                                            }
-                                        }}
-                                        >
-                                            {category}
-                                            
-                                        </li>
-                                    ))
-                                }
-                            </ul>
 
                             {/* <fieldset>
                                 <Typography component="legend">Ratings Above</Typography>

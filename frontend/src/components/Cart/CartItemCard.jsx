@@ -1,6 +1,8 @@
 import React from "react";
 import "./CartItemCard.css";
 import { Link } from "react-router-dom";
+import DeleteIcon from "@mui/icons-material/Delete";
+
 
 const CartItemCard = ({ item, deleteCartItems }) => {
   return (
@@ -9,7 +11,7 @@ const CartItemCard = ({ item, deleteCartItems }) => {
       <div>
         <Link to={`/product/${item.product}`}>{item.name}</Link>
         <span>{`Price: ₹${item.price}`}</span>
-        <p onClick={() => deleteCartItems(item.product)}>Remove</p>
+        <p onClick={() => deleteCartItems(item.product)}><DeleteIcon style={{ color: "red", cursor: "pointer", fontSize: "3.5vmax" }} /></p>
       </div>
     </div>
   );

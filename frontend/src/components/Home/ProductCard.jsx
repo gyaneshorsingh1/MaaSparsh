@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
       <img src={imageUrl} alt={product.name} />
       <p>{product.name}</p>
       <span>{`₹${product.price}`}</span>
-      <button className="cart-btn">Add to cart</button>
+      <button className="cart-btn">Add to Cart</button>
     </Link>
   );
 };

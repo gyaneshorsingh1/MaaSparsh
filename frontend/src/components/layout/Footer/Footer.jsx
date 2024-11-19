@@ -21,7 +21,7 @@ const Footer = () => {
           <Link to="/terms">Terms of Service</Link>
         </div>
         <div className="social-media">
-          <h3>MEDIA</h3>
+          <h3>Media</h3>
           <p>
             <b>info@maasparsh.in</b>
             <p>+91-9999999999</p>
@@ -73,7 +73,7 @@ const Footer = () => {
           <Link to="/policies/out-of-stock">Out of Stock Items</Link>
           <Link to="/policies/contact-us">Contact Us</Link>
         </div>
-        <div>
+        <div className="search-footer">
           <div>
             <h3>YES, I WANT TO HEAR ABOUT SPECIAL<br/> OFFERS AND INSIDER PEAKS</h3>
           </div>

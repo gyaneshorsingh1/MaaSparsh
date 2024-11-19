@@ -48,8 +48,14 @@ const Dashboard = () => {
    useEffect(() => {
     dispatch(getAdminProduct());
     dispatch(getAllOrders())
-}, [dispatch, alert]);
+}, [dispatch, alert, users]);
 
+
+  let totalAmount = 0;
+  orders && 
+   orders.forEach((item)=>{
+    totalAmount += item.totalPrice;
+   })
 
   // Line chart data
   const lineState = {
@@ -57,7 +63,7 @@ const Dashboard = () => {
     datasets: [
       {
         label: "TOTAL AMOUNT",
-        data: [0, 4000],
+        data: [0, totalAmount],
         borderColor: "tomato",
         backgroundColor: "rgba(255, 99, 132, 0.2)",
         pointBackgroundColor: "tomato",
@@ -89,7 +95,7 @@ const Dashboard = () => {
         <div className="dashboardSummary">
           <div>
             <p>
-              Total Amount <br /> Rs.: 2000
+              Total Amount <br /> Rs.: {totalAmount}
             </p>
           </div>
         </div>

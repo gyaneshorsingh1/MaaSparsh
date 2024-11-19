@@ -57,6 +57,36 @@ export const getProduct = (keyword="", currentPage=1, price=[0,25000], category,
 }
 
 
+
+export const getProductCategory = (category) => async (dispatch) => {
+    try {
+        // Dispatch the product request action
+        dispatch({ type: ALL_PRODUCT_REQUEST });
+
+        let link = `/api/v1/products`;
+
+        if (category) {
+          link = `/api/v1/products?category=${category}`;
+        }
+        // Make an API call to fetch products
+        const { data } = await axios.get(link);
+
+        // Dispatch the success action with the fetched data
+        dispatch({
+            type: ALL_PRODUCT_SUCCESS,
+            payload: data,
+        });
+
+    } catch (error) {
+        // Handle errors safely
+        dispatch({
+            type: ALL_PRODUCT_FAIL,
+            payload: error.response && error.response.data && error.response.data.message
+                ? error.response.data.message
+                : error.message || 'Something went wrong', // Default fallback error message
+        });
+    }
+}
 //get Admin Products (All Products):
 
 export const getAdminProduct  = () => async (dispatch) => {

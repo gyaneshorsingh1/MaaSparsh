@@ -62,8 +62,25 @@ const OrderDetails = () => {
     <>
       <MetaData title="Order Details" />
       <div className="orderDetailsPage">
+        
+      <div className="orderDetailsCartItems">
+      <Typography variant="h1">Order #{order?._id}</Typography>
+          <Typography variant="h6">Order Items:</Typography>
+          <div className="orderDetailsCartItemsContainer">
+            {orderItems?.map((item) => (
+              <div key={item.product}>
+                <img src={item.image} alt="Product" />
+                <Link className="productlink" to={`/product/${item.product}`}>{item.name}</Link>{" "}
+                <span>
+                  {item.quantity} X ₹{item.price} ={" "}
+                  <b>₹{item.price * item.quantity}</b>
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
         <div className="orderDetailsContainer">
-          <Typography variant="h5">Order #{order?._id}</Typography>
+         
 
           <Typography variant="h6">Shipping Info</Typography>
           <div className="orderDetailsContainerBox">
@@ -105,21 +122,7 @@ const OrderDetails = () => {
           </div>
         </div>
 
-        <div className="orderDetailsCartItems">
-          <Typography variant="h6">Order Items:</Typography>
-          <div className="orderDetailsCartItemsContainer">
-            {orderItems?.map((item) => (
-              <div key={item.product}>
-                <img src={item.image} alt="Product" />
-                <Link to={`/product/${item.product}`}>{item.name}</Link>{" "}
-                <span>
-                  {item.quantity} X ₹{item.price} ={" "}
-                  <b>₹{item.price * item.quantity}</b>
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
+       
       </div>
     </>
   );
