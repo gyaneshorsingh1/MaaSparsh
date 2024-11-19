@@ -65,8 +65,8 @@ function App() {
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
-  // const { location, pathname } = useLocation();
-  // const isDashboard = location.pathname === "/admin/dashboard";
+  const { location, pathname } = useLocation();
+  const isDashboard = location.pathname === "/admin/dashboard";
   window.addEventListener("contextmenu",(e) => e.preventDefault());
 
   return (
