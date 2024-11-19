@@ -1,7 +1,8 @@
 import React from "react";
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import "./OrderSuccess.css";
-import { Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
+
 import { Link, useParams } from "react-router-dom";
 
 const OrderSuccess = () => {

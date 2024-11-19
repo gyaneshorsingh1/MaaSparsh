@@ -5,7 +5,7 @@ import { clearErrors, myOrders } from "../../actions/orderAction";
 import Loader from "../layout/Loader/Loader";
 import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
-import { Typography } from "@material-ui/core";
+import { Typography } from "@mui/material"; // Updated import for Typography (Material UI v5)
 import MetaData from "../layout/MetaData";
 import Navbar from "../layout/Header/Navbar";
 

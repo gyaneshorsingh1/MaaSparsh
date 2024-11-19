@@ -3,16 +3,17 @@ import "./Shipping.css";
 import { useSelector, useDispatch } from 'react-redux';
 import { saveShippingInfo } from '../../actions/cartAction.jsx';
 import MetaData from '../layout/MetaData.jsx';
-import PinDropIcon from "@material-ui/icons/PinDrop";
-import HomeIcon from "@material-ui/icons/Home";
-import LocationCityIcon from "@material-ui/icons/LocationCity";
-import PublicIcon from "@material-ui/icons/Public";
-import PhoneIcon from "@material-ui/icons/Phone";
-import TransferWithinAStationIcon from "@material-ui/icons/TransferWithinAStation";
+import PinDropIcon from "@mui/icons-material/PinDrop"; // Updated import for PinDropIcon
+import HomeIcon from "@mui/icons-material/Home"; // Updated import for HomeIcon
+import LocationCityIcon from "@mui/icons-material/LocationCity"; // Updated import for LocationCityIcon
+import PublicIcon from "@mui/icons-material/Public"; // Updated import for PublicIcon
+import PhoneIcon from "@mui/icons-material/Phone"; // Updated import for PhoneIcon
+import TransferWithinAStationIcon from "@mui/icons-material/TransferWithinAStation"; // Updated import for TransferWithinAStationIcon
 import { Country, State } from "country-state-city";
 import { useAlert } from "react-alert";
 import CheckoutSteps from "./CheckoutSteps.jsx";
 import { useNavigate } from 'react-router-dom';
+
 
 const Shipping = () => {
 

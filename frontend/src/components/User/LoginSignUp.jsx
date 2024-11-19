@@ -2,9 +2,10 @@ import React, { useRef, useState, useEffect } from 'react';
 import "./LoginSignUp.css";
 import Loader from '../layout/Loader/Loader';
 import { Link, useLocation } from 'react-router-dom';
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import LockOpenIcon from "@material-ui/icons/LockOpen";
-import FaceIcon from "@material-ui/icons/Face"
+import MailOutlineIcon from "@mui/icons-material/MailOutline"; // Updated import for MailOutlineIcon
+import LockOpenIcon from "@mui/icons-material/LockOpen"; // Updated import for LockOpenIcon
+import FaceIcon from "@mui/icons-material/Face"; // Updated import for FaceIcon
+
 import { useNavigate } from "react-router-dom"; 
 
 import { useDispatch, useSelector } from "react-redux";

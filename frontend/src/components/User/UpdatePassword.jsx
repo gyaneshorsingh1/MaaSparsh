@@ -6,10 +6,12 @@ import { clearErrors, updatePassword } from "../../actions/userAction";
 import { useAlert } from "react-alert";
 import { UPDATE_PASSWORD_RESET } from "../../constants/userConstants";
 import MetaData from "../layout/MetaData";
-import LockOpenIcon from "@material-ui/icons/LockOpen";
-import LockIcon from "@material-ui/icons/Lock";
-import VpnKeyIcon from "@material-ui/icons/VpnKey";
+import LockOpenIcon from "@mui/icons-material/LockOpen"; // Updated import for LockOpenIcon
+import LockIcon from "@mui/icons-material/Lock"; // Updated import for LockIcon
+import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import { useNavigate } from "react-router-dom";
+
+
 const UpdatePassword = ({ history }) => {
   const dispatch = useDispatch();
   const alert = useAlert();

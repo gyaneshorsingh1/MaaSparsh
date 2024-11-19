@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, resetPassword } from "../../actions/userAction";
 import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
-import LockOpenIcon from "@material-ui/icons/LockOpen";
-import LockIcon from "@material-ui/icons/Lock";
+import LockOpenIcon from "@mui/icons-material/LockOpen"; // Updated import for LockOpenIcon
+import LockIcon from "@mui/icons-material/Lock"; // Updated import for LockIcon
+
 import { useNavigate, useParams } from "react-router-dom";
 
 const ResetPassword = () => {

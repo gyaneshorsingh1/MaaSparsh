@@ -6,8 +6,8 @@ import { useParams } from 'react-router-dom';
 import Loader from '../layout/Loader/Loader';
 import ProductCard from '../Home/ProductCard';
 import Pagination from "react-js-pagination";
-import { Slider } from '@material-ui/core';
-import { Typography } from '@material-ui/core';
+import { Slider } from "@mui/material"; // Updated import for Slider (Material UI v5)
+import { Typography } from "@mui/material";
 import { useAlert } from "react-alert"
 import MetaData from '../layout/MetaData';
 

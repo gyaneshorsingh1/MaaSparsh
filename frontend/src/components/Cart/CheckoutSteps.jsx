@@ -1,6 +1,6 @@
 import React from 'react';
 import "./CheckoutSteps.css";
-import {Typography, Stepper, StepLabel, Step} from "@material-ui/core";
+import { Typography, Stepper, StepLabel, Step } from "@mui/material"; 
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck';
