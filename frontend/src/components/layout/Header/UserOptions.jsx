@@ -6,7 +6,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp"; // Updated import for ExitToAppIcon
 import ListAltIcon from "@mui/icons-material/ListAlt"; // Updated import for ListAltIcon
 import { useNavigate } from "react-router-dom";
-import { useAlert } from 'react-alert';
+import { toast } from "react-toastify";
 import { useDispatch } from 'react-redux';
 import { logout } from '../../../actions/userAction';
 import { FaShoppingCart } from 'react-icons/fa';
@@ -20,8 +20,6 @@ const UserOptions = ({ user }) => {
   const { cartItems } = useSelector((state) => state.cart);
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-
-  const alert = useAlert();
   const dispatch = useDispatch();
 
   if(!user){
@@ -51,7 +49,7 @@ const UserOptions = ({ user }) => {
   function logoutUser() {
     setOpen(false); // Close SpeedDial
     dispatch(logout());
-    alert.success("Logout Successfully");
+    toast.success("Logout Successfully");
     navigate("/login");
   }
 

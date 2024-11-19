@@ -59,15 +59,19 @@ import BathRituals from "./components/Product/BathRituals.jsx";
 import FeedingRituals from "./components/Product/FeedingRituals.jsx";
 import OrganicClothing from "./components/Product/OrganicClothing.jsx";
 import BabyNursing from "./components/Product/BabyNursing.jsx";
+
+import { ToastContainer } from "react-toastify";  // Import ToastContainer
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
-  const { location, pathname } = useLocation();
-  const isDashboard = location.pathname === "/admin/dashboard";
-  window.addEventListener("contextmenu",(e) => e.preventDefault());
+  // const { location, pathname } = useLocation();
+  // const isDashboard = location.pathname === "/admin/dashboard";
+  // window.addEventListener("contextmenu",(e) => e.preventDefault());
 
   return (
     <Router>
@@ -274,6 +278,19 @@ function App() {
         <Route exact path="/policies/out-of-stock" element={<OutOfStock />} />
         <Route exact path="/policies/contact-us" element={<ContactUs />} />
       </Routes>
+
+      {/* ToastContainer placed here to handle toasts globally */}
+      <ToastContainer
+        position="bottom-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
 
       {/* {!isDashboard && <Footer />} */}
       <Footer />

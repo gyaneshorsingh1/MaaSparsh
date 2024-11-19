@@ -8,7 +8,7 @@ import ProductCard from '../Home/ProductCard';
 import Pagination from "react-js-pagination";
 import { Slider } from "@mui/material";
 import { Typography } from "@mui/material"; 
-import { useAlert } from "react-alert"
+import { toast } from "react-toastify";
 import MetaData from '../layout/MetaData';
 
 
@@ -19,12 +19,8 @@ import MetaData from '../layout/MetaData';
 const OrganicClothing = () => {
     const dispatch = useDispatch();
 
-    const alert = useAlert();
-
     const { products, loading, error } = useSelector((state) => state.products);
     const { keyword } = useParams();
-    //Price filters
-    console.log(products);
 
     const category = "Organic Clothing";
 
@@ -35,11 +31,11 @@ const OrganicClothing = () => {
     useEffect(() => {
         const category = "Organic Clothing";
         if(error){
-            alert.error(error);
+            toast.error(error);
             dispatch(clearErrors())
         }
         dispatch(getProductCategory(category));
-    }, [dispatch, error, alert, category]);
+    }, [dispatch, error, category]);
 
     return (
         <>

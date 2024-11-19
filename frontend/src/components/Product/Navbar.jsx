@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert"
 import { clearErrors, getProduct } from '../../actions/productAction';
+import { toast } from "react-toastify";
 const categories = [
   "Products",
   "Bath Rituals",
@@ -13,7 +13,6 @@ const categories = [
 const Navbar = () => {
     
   const dispatch = useDispatch();
-  const alert = useAlert();
   const { products, loading, error } = useSelector((state) => state.products);
   const [category, setCategory] = useState("");
 
@@ -24,11 +23,11 @@ const Navbar = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     dispatch(getProduct(category));
-  }, [dispatch,category, error, alert]);
+  }, [dispatch,category, error]);
   const dynamicTitle = category ? `${category}` : "Products";
   return (
     <div>

@@ -6,14 +6,13 @@ import MetaData from "../layout/MetaData";
 import "./Payment.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Typography } from "@mui/material"; // Updated import for Typography (Material UI v5)
-import { useAlert } from "react-alert";
+import { toast } from "react-toastify";
 import axios from "axios";
 
 import { clearErrors, createOrder } from "../../actions/orderAction";
 const Payment = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
   const dispatch = useDispatch();
-  const alert = useAlert();
   const navigate = useNavigate();
 
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
@@ -123,12 +122,12 @@ const Payment = () => {
 
       const rzp1 = new window.Razorpay(options);
       rzp1.on("payment.failed", function (response) {
-        alert.error(`Payment Failed: ${response.error.description}`);
+        toast.error(`Payment Failed: ${response.error.description}`);
       });
       rzp1.open();
     } catch (error) {
       console.error("Error in checkoutHandler:", error.message || error);
-      alert.error(
+      toast.error(
         `Payment processing failed. ${error.response?.data?.message}`
       );
     }
@@ -136,10 +135,10 @@ const Payment = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
-  }, [dispatch, error, alert]);
+  }, [dispatch, error]);
 
   return (
     <Fragment>

@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { clearErrors, login, register } from '../../actions/userAction';
-import { useAlert } from 'react-alert';
+import { toast } from "react-toastify";
 
 
 const LoginSignUp = () => {
@@ -20,7 +20,6 @@ const LoginSignUp = () => {
 
 
     const dispatch = useDispatch();
-    const alert = useAlert();
 
     const { error, loading, isAuthenticated } = useSelector((state)=>state.user);
  
@@ -47,7 +46,7 @@ const LoginSignUp = () => {
     const loginSubmit=(e)=>{
         e.preventDefault();
         dispatch(login(loginEmail, loginPassword))
-        alert.success("Login Successful!");
+        toast.success("Login Successful!");
     }
 
     const registerSubmit = (e) =>{
@@ -83,14 +82,14 @@ const LoginSignUp = () => {
 
     useEffect(() => {
       if(error){
-        alert.error(error);
+        toast.error(error);
         dispatch(clearErrors());
       }
       if(isAuthenticated){
         navigate(redirect)
       }
     
-    }, [dispatch, error, alert, isAuthenticated, navigate, redirect])
+    }, [dispatch, error, isAuthenticated, navigate, redirect])
     
 
     const switchTabs=(e, tab)=>{

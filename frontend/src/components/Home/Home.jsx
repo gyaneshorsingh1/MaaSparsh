@@ -5,7 +5,7 @@ import MetaData from "../layout/MetaData";
 import { clearErrors, getProduct } from "../../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader/Loader";
-import { useAlert } from "react-alert";
+import { toast } from "react-toastify";
 import homeBanner from "../../images/homeBanner.png";
 import proof1 from "../../images/proof1.png";
 import proof2 from "../../images/proof2.png";
@@ -13,17 +13,16 @@ import proof3 from "../../images/proof3.png";
 import proof4 from "../../images/proof4.png";
 import proof5 from "../../images/proof5.png";
 const Home = () => {
-  const alert = useAlert();
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.products);
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     dispatch(getProduct());
-  }, [dispatch, error, alert]);
+  }, [dispatch, error]);
 
   return (
     <>

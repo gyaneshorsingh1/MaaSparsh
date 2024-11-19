@@ -9,7 +9,7 @@ import {
 } from "../../actions/productAction";
 
 import { Link, useNavigate } from "react-router-dom"; // Updated for React Router v6
-import { useAlert } from "react-alert";
+import { toast } from "react-toastify";
 import { Button } from "@mui/material"; // Updated Material UI imports
 import MetaData from "../layout/MetaData";
 import EditIcon from "@mui/icons-material/Edit"; // Updated import for Material UI v5
@@ -21,7 +21,6 @@ import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
 const ProductList = () => {
   const navigate = useNavigate();
     const dispatch = useDispatch();
-    const alert = useAlert();
     const { error, products } = useSelector((state) => state.products);
     const { isDeleted,  error: deleteError,} = useSelector((state)=> state.product);
     
@@ -35,22 +34,22 @@ const ProductList = () => {
 
     useEffect(() => {
         if (error) {
-            alert.error(error);
+            toast.error(error);
             dispatch(clearErrors());
         }
         if (deleteError) {
-          alert.error(deleteError);
+          toast.error(deleteError);
           dispatch(clearErrors());
       }
 
       if(isDeleted){
-        alert.success("Product Deleted Successfully");
+        toast.success("Product Deleted Successfully");
         navigate("/admin/dashboard")
         dispatch({ type: DELETE_PRODUCT_RESET });
       }
 
         dispatch(getAdminProduct());
-    }, [dispatch, alert, error,
+    }, [dispatch, error,
        deleteError, isDeleted
       ]);
 

@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 
 import { Link, useNavigate, useParams } from "react-router-dom"; // Updated for React Router v6
-import { useAlert } from "react-alert";
+import { toast } from "react-toastify";
 import { Button } from "@mui/material"; // Updated Material UI imports
 import MetaData from "../layout/MetaData";
 import EditIcon from "@mui/icons-material/Edit"; // Updated import for Material UI v5
@@ -20,7 +20,6 @@ const OrderList = () => {
   
   const navigate = useNavigate();
     const dispatch = useDispatch();
-    const alert = useAlert();
     const { error, orders } = useSelector((state) => state.allOrders);
     const { isDeleted,  error: deleteError,} = useSelector((state)=> state.order);
 
@@ -33,23 +32,23 @@ const OrderList = () => {
 
     useEffect(() => {
         if (error) {
-            alert.error(error);
+            toast.error(error);
             dispatch(clearErrors());
         }
 
 
       if(isDeleted){
-        alert.success("Order Deleted Successfully");
+        toast.success("Order Deleted Successfully");
         navigate("/admin/dashboard");
         dispatch({ type: DELETE_ORDER_RESET });
       }
       if (deleteError) {
-        alert.error(deleteError);
+        toast.error(deleteError);
         dispatch(clearErrors());
     }
 
         dispatch(getAllOrders());
-    }, [dispatch, alert, error,
+    }, [dispatch, error,
        deleteError, isDeleted
       ]);
 

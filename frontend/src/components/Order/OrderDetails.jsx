@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";  // Update to MUI v5
 import { getOrderDetails, clearErrors } from "../../actions/orderAction";
 import Loader from "../layout/Loader/Loader";
-import { useAlert } from "react-alert";
+import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";  // Import the useParams hook
 import { getUserDetails } from "../../actions/userAction";  // Action to fetch user details
 
@@ -17,20 +17,19 @@ const OrderDetails = () => {
   const { order, error, loading } = useSelector((state) => state.orderDetails);
   const { user } = useSelector((state) => state.userDetails); // Access user details from Redux state
   const dispatch = useDispatch();
-  const alert = useAlert();
 
   // Local state to track if the user details have been loaded
   const [userLoaded, setUserLoaded] = useState(false);
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     // Fetch order details using the order id from URL
     dispatch(getOrderDetails(id));
-  }, [dispatch, alert, error, id]);
+  }, [dispatch, error, id]);
 
   // Fetch user details if user is not available in the order
   useEffect(() => {

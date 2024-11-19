@@ -8,7 +8,7 @@ import ProductCard from '../Home/ProductCard';
 import Pagination from "react-js-pagination";
 import { Slider } from "@mui/material"; // Updated import for Slider (Material UI v5)
 import { Typography } from "@mui/material"; // Updated import for Typography (Material UI v5)
-import { useAlert } from "react-alert"
+import { toast } from "react-toastify";
 import MetaData from '../layout/MetaData';
 
 
@@ -19,7 +19,6 @@ import MetaData from '../layout/MetaData';
 const BabyNursing = () => {
     const dispatch = useDispatch();
 
-    const alert = useAlert();
 
     const { products, loading, error } = useSelector((state) => state.products);
     const { keyword } = useParams();
@@ -35,11 +34,11 @@ const BabyNursing = () => {
     useEffect(() => {
         const category = "Baby Nursing";
         if(error){
-            alert.error(error);
+            toast.error(error);
             dispatch(clearErrors())
         }
         dispatch(getProductCategory(category));
-    }, [dispatch, error, alert, category]);
+    }, [dispatch, error, category]);
 
     return (
         <>

@@ -5,7 +5,7 @@ import {
   updateProduct,
   getProductDetails,
 } from "../../actions/productAction";
-import { useAlert } from "react-alert";
+import { toast } from "react-toastify";
 import { Button } from "@mui/material"; // Updated import path for MUI v5+
 import MetaData from "../layout/MetaData";
 
@@ -23,7 +23,6 @@ import { useNavigate, useParams } from "react-router-dom";
 const UpdateProduct = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const alert = useAlert();
 
   const { error, product } = useSelector((state) => state.productDetails);
   const { loading, error: updateError, isUpdated } = useSelector((state) => state.product);
@@ -61,23 +60,22 @@ const UpdateProduct = () => {
     }
 
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (updateError) {
-      alert.error(updateError);
+      toast.error(updateError);
       dispatch(clearErrors());
     }
 
     if (isUpdated) {
-      alert.success("Product Updated Successfully");
+      toast.success("Product Updated Successfully");
       navigate("/admin/products"); // Navigate after successful update
       dispatch({ type: UPDATE_PRODUCT_RESET });
     }
   }, [
     dispatch,
-    alert,
     error,
     productId,
     product,

@@ -8,7 +8,7 @@ import ProductCard from '../Home/ProductCard';
 import Pagination from "react-js-pagination";
 import { Slider } from "@mui/material"; // Updated import for Slider (Material UI v5)
 import { Typography } from "@mui/material";
-import { useAlert } from "react-alert"
+import { toast } from "react-toastify";
 import MetaData from '../layout/MetaData';
 
 
@@ -19,12 +19,8 @@ import MetaData from '../layout/MetaData';
 const BathRituals = () => {
     const dispatch = useDispatch();
 
-    const alert = useAlert();
-
     const { products, loading, error } = useSelector((state) => state.products);
     const { keyword } = useParams();
-    //Price filters
-    console.log(products);
 
     const category = "Bath Rituals";
 
@@ -35,11 +31,11 @@ const BathRituals = () => {
     useEffect(() => {
         const category = "Bath Rituals";
         if(error){
-            alert.error(error);
+            toast.error(error);
             dispatch(clearErrors())
         }
         dispatch(getProductCategory(category));
-    }, [dispatch, error, alert, category]);
+    }, [dispatch, error, category]);
 
     return (
         <>
