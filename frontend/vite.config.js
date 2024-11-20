@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': 'http://localhost:4000', // Adjust the proxy target if necessary
+      '/api': 'https://maasparsh.onrender.com', // Adjust the proxy target if necessary
     },
   },
 })

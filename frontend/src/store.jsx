@@ -1,13 +1,11 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import thunk from 'redux-thunk';
-import { composeWithDevTools} from "redux-devtools-extension";
-import { newProductReducer, newReviewReducer, productDetailsReducer,productsReducer, productReducer } from "./reducers/productReducer";
-import { allUsersReducer, forgotPasswordReducer, profileReducer, userDetailsReducer, userReducer } from "./reducers/userReducer";
-import { cartReducer } from "./reducers/cartReducer";
-import { allOrdersReducer, myOrdersReducer, newOrderReducer, orderDetailsReducer, orderReducer } from "./reducers/orderReducer";
+import { configureStore } from '@reduxjs/toolkit';
+import { thunk } from 'redux-thunk';
+import { newProductReducer, newReviewReducer, productDetailsReducer, productsReducer, productReducer } from './reducers/productReducer';
+import { allUsersReducer, forgotPasswordReducer, profileReducer, userDetailsReducer, userReducer } from './reducers/userReducer';
+import { cartReducer } from './reducers/cartReducer';
+import { allOrdersReducer, myOrdersReducer, newOrderReducer, orderDetailsReducer, orderReducer } from './reducers/orderReducer';
 
-
-const reducer = combineReducers ({
+const reducer = {
     products: productsReducer,
     productDetails: productDetailsReducer,
     newProduct: newProductReducer,
@@ -24,27 +22,26 @@ const reducer = combineReducers ({
     order: orderReducer,
     allUsers: allUsersReducer,
     userDetails: userDetailsReducer,
-    
-})
-
-let initialState = {
-    cart:{
-        cartItems: localStorage.getItem("cartItems")
-         ? JSON.parse(localStorage.getItem("cartItems"))
-         : [],
-         shippingInfo: localStorage.getItem("shippingInfo")
-         ? JSON.parse(localStorage.getItem('shippingInfo'))
-         : {},
-    },
-
 };
 
-const middleware = [thunk];
+// Initial state setup
+let initialState = {
+    cart: {
+        cartItems: localStorage.getItem('cartItems')
+            ? JSON.parse(localStorage.getItem('cartItems'))
+            : [],
+        shippingInfo: localStorage.getItem('shippingInfo')
+            ? JSON.parse(localStorage.getItem('shippingInfo'))
+            : {},
+    },
+};
 
-const store = createStore(
-    reducer,
-    initialState,
-    composeWithDevTools(applyMiddleware(...middleware))
-)
+// Configure store with thunk middleware and devtools enabled
+const store = configureStore({
+    reducer, // Reducers
+    preloadedState: initialState,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk), // Adding redux-thunk to the middleware
+    devTools: true, // Automatically enable Redux DevTools in development
+});
 
 export default store;
