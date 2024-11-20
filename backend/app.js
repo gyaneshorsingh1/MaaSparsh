@@ -12,6 +12,13 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({ path: "backend/config/config.env" });
 }
 
+const cors = require('cors');
+
+const allowedOrigin = "https://masparsh.netlify.app/";
+
+app.use(cors({
+  origin: allowedOrigin,
+}));
 
 app.use(express.json());
 app.use(cookieParser());

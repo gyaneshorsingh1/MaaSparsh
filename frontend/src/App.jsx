@@ -60,7 +60,7 @@ import FeedingRituals from "./components/Product/FeedingRituals.jsx";
 import OrganicClothing from "./components/Product/OrganicClothing.jsx";
 import BabyNursing from "./components/Product/BabyNursing.jsx";
 
-import { ToastContainer } from "react-toastify";  // Import ToastContainer
+import { ToastContainer } from "react-toastify"; 
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {

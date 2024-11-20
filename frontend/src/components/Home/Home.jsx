@@ -6,7 +6,7 @@ import { clearErrors, getProduct } from "../../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader/Loader";
 import { toast } from "react-toastify";
-import homeBanner from "../../images/homeBanner.png";
+import homeBanner from "../../images/homebanner.png";
 import proof1 from "../../images/proof1.png";
 import proof2 from "../../images/proof2.png";
 import proof3 from "../../images/proof3.png";
