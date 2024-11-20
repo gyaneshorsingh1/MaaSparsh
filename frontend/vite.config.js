@@ -17,9 +17,4 @@ export default defineConfig({
     }
   },
   plugins: [react()],
-  server: {
-    proxy: {
-      '/api': 'https://maasparsh.onrender.com', // Adjust the proxy target if necessary
-    }
-  }
 })

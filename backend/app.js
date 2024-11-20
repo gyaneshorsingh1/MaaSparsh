@@ -14,11 +14,18 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 
 const cors = require('cors');
 
-const allowedOrigin = "https://masparsh.netlify.app/";
+const allowedOrigins = ['https://yourfrontend.netlify.app'];  // Replace with your frontend URL
 
 app.use(cors({
-  origin: allowedOrigin,
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 }));
+
 
 app.use(express.json());
 app.use(cookieParser());
