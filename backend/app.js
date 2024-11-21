@@ -50,11 +50,11 @@ app.use("/api/v1", order);
 app.use("/api/v1", payment);
 
 // Serve static files from the frontend build directory
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
+app.use(express.static(path.join(__dirname, "./dist")));
 
 // Handle all other routes by serving the frontend's index.html
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../frontend/dist/index.html"));
+  res.sendFile(path.resolve(__dirname, "./dist/index.html"));
 });
 
 
