@@ -64,6 +64,8 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
+  console.log(import.meta.env.VITE_BACKEND_API_URL);
+
   const { isAuthenticated, user } = useSelector((state) => state.user);
   
   useEffect(() => {
