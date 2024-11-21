@@ -14,7 +14,7 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 
 const cors = require('cors');
 
-const allowedOrigins = ['https://yourfrontend.netlify.app','http://localhost:5173'];  // Replace with your frontend URL
+const allowedOrigins = ['https://masparsh.netlify.app','http://localhost:5173'];  // Replace with your frontend URL
 
 app.use(cors({
   origin: (origin, callback) => {
