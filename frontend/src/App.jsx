@@ -23,7 +23,6 @@ import OrderDetails from "./components/Order/OrderDetails.jsx";
 
 import LoginSignUp from "./components/User/LoginSignUp.jsx";
 import Profile from "./components/User/Profile.jsx";
-import UpdateProfile from "./components/User/UpdateProfile.jsx";
 import UpdatePassword from "./components/User/UpdatePassword.jsx";
 import ForgotPassword from "./components/User/ForgotPassword.jsx";
 import RestPassword from "./components/User/RestPassword.jsx";
@@ -121,14 +120,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/me/update"
-          element={
-            <ProtectedRoute>
-              <UpdateProfile />
-            </ProtectedRoute>
-          }
-        />
+        
         <Route
           path="/password/update"
           element={

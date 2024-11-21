@@ -4,6 +4,7 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const path = require("path");
+const cors = require('cors');
 
 const errorMiddleware = require("./middleware/error");
 
@@ -12,7 +13,6 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({ path: "backend/config/config.env" });
 }
 
-const cors = require('cors');
 
 const allowedOrigins = ['https://masparsh.netlify.app','http://localhost:5173'];  // Replace with your frontend URL
 
@@ -32,11 +32,6 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
 
-const key = process.env.RAZORPAY_API_KEY;
-
-app.get("/api/v1/getkey", (req, res) =>
-  res.status(200).json({ key: process.env.RAZORPAY_API_KEY })
-);
 
 // Route Imports
 const product = require("./routes/productRoute");

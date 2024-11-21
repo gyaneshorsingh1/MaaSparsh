@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 
 import { clearErrors, createOrder } from "../../actions/orderAction";
+import axiosAPI from "../../actions/axiosInstance";
 const Payment = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
   const dispatch = useDispatch();
@@ -28,13 +29,10 @@ const Payment = () => {
 
   const checkoutHandler = async () => {
     try {
-      // Fetch Razorpay key
-      const keyResponse = await axios.get("/api/v1/getkey");
-
-      const key = keyResponse.data.key;
+      const key = import.meta.env.RAZORPAY_KEY;
       console.log(key);
       // Process payment and get order details
-      const { data } = await axios.post(
+      const { data } = await axiosAPI.post(
         "/api/v1/payment/process",
         {
           amount: orderInfo.totalPrice,
@@ -89,7 +87,7 @@ const Payment = () => {
             const orderId = response.razorpay_order_id;
 
               // Send order data to backend to create a new order
-              const paymentVerify = await axios.post("/api/v1/payment/verification", {
+              const paymentVerify = await axiosAPI.post("/api/v1/payment/verification", {
                 orderId: response.razorpay_order_id,
                 paymentId: response.razorpay_payment_id,
                 signature: response.razorpay_signature,
