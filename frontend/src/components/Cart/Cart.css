@@ -21,7 +21,7 @@
     border: none;
     padding: 1vmax 3vmax;
     cursor: pointer;
-    font: 400 1vmax "Roboto";
+    font: 400 1vmax "League Spartan", sans-serif;
     text-decoration: none;
   }
   
@@ -30,7 +30,7 @@
   }
   
   /* .cartHeader {
-    background-color: #E86F44E5;
+    background-color: #C95741E5;
     box-sizing: border-box;
     margin: auto;
     color: white;
@@ -47,6 +47,7 @@
   } */
 
   .cartContainer {
+    font-family: "League Spartan", sans-serif;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -56,7 +57,7 @@
   }
 
   .cartInput {
-    border: 2px solid #E86F44E5;
+    border: 2px solid #C95741E5;
     overflow: hidden;
     border-radius: 6px;
     width: auto;
@@ -89,7 +90,7 @@
     
     text-align: center;
     outline: none;
-    font: 300 1.2vmax "Roboto";
+    font: 500 1.3vmax "League Spartan", sans-serif;
     color: rgba(0, 0, 0, 0.74);
   }
 
@@ -97,7 +98,7 @@
 
   .cartSubtotal {
     padding: 0 0.5vmax;
-    font: 300 1.5vmax cursive;
+    font: 500 1.5vmax "League Spartan", sans-serif;
     color: rgba(0, 0, 0, 0.753);
     position: absolute;
     right: 5%;
@@ -110,15 +111,21 @@
     margin: 1vmax 1vmax;
     box-sizing: border-box;
     padding: 1vmax 0;
-    font: 300 1vmax "Roboto";
     display: flex;
     justify-content: space-between;
   }
 
+  .cartGrossProfitBox p{
+    font-size: 1.7vmax;
+    padding-right: 10px;
+    font-weight: 600;
+  }
+
   .tax-info-cart{
     padding: 0 1vmax 1.2vmax;
-    font-size: x-small;
+    font-size: small;
     text-align: center;
+    font-family: "League Spartan", sans-serif;
   }
   
   .checkOutBtn {
@@ -141,7 +148,7 @@
   
   @media screen and (max-width: 600px) {
     .cartInput {
-      border: 2px solid #E86F44E5;
+      border: 2px solid #C95741E5;
       overflow: hidden;
       border-radius: 6px;
       width: auto;

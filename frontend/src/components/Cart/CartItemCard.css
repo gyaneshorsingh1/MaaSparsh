@@ -4,13 +4,14 @@
     height: 8vmax;
     align-items: flex-start;
     box-sizing: border-box;
+    font-family: "League Spartan", sans-serif;
   }
   .CartItemCard > img {
-    width: 5vmax;
+    width: 7vmax;
     height: 7vmax;
     border-radius: 9px;
     border: 1px solid #e8704463;
-    object-fit: contain;
+    object-fit: cover;
     
   }
   
@@ -21,23 +22,18 @@
   }
   
   .CartItemCard > div > a {
-    font: 300 0.9vmax cursive;
+    font: 600 1.2vmax "League Spartan", sans-serif;
     color: rgba(24, 24, 24, 0.815);
     text-decoration: none;
   }
   
   .CartItemCard > div > span {
     margin-top: 0.8vmax;
-    font: 300 0.9vmax "Roboto";
+    font: 600 1.1vmax "League Spartan", sans-serif;
     color: rgba(24, 24, 24, 0.815);
   }
-  
-  .CartItemCard > div > p {
-    color: tomato;
-    font: 100 2vmax "Roboto";
-    cursor: pointer;
-    margin: 1.2vmax 0;
-  }
+
+
   
  @media screen and (max-width: 600px) {
   .CartItemCard {
@@ -71,13 +67,13 @@
   
   .CartItemCard > div > span {
     margin-top: 0.8vmax;
-    font: 600 1.2vmax "Roboto";
+    font: 600 1.2vmax "League Spartan", sans-serif;
     color: rgba(24, 24, 24, 0.815);
   }
   
   .CartItemCard > div > p {
     color: tomato;
-    font: 100 4vmax "Roboto";
+    font: 100 4vmax "League Spartan", sans-serif;
     cursor: pointer;
     margin:  0;
   }

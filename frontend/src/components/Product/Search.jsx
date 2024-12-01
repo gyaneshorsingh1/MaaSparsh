@@ -3,7 +3,7 @@ import MetaData from "../layout/MetaData";
 import "./Search.css";
 import { useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa"; // Importing Font Awesome search icon
-
+import searchicon from "../../images/searchicon.png";
 const Search = () => {
   const [keyword, setKeyword] = useState("");
   const [currentPlaceholder, setCurrentPlaceholder] = useState("");
@@ -55,7 +55,7 @@ const Search = () => {
           onChange={(e) => setKeyword(e.target.value)}
         />
         <button type="submit" className="searchIcon">
-          <FaSearch className="Fasearch"/>
+          <img src={searchicon} alt="searchicon" className="Fasearch" />
         </button>
       </form>
     </Fragment>

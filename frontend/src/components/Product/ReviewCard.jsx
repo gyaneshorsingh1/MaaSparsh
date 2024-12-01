@@ -9,12 +9,11 @@ const ReviewCard = ({ review }) => {
         precision: 0.5,
       }
 
-  return (
+    return (
     <div className="reviewCard">
       <div className="reviewCard-img-name">
         <img src={profilePng} alt="User" />
         <p>{review.name}</p>
-
       </div>
         
         <Rating {...options} />

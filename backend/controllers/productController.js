@@ -10,6 +10,7 @@ const cloudinary = require("cloudinary");
 exports.createProduct = catchAsyncErrors(async (req, res, next) => {
   let images = [];
 
+  // Handle images if sent as a single string or an array
   if (typeof req.body.images === "string") {
     images.push(req.body.images);
   } else {
@@ -18,11 +19,12 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
 
   const imagesLinks = [];
 
+  // Upload images to Cloudinary
   for (let i = 0; i < images.length; i++) {
     const result = await cloudinary.v2.uploader.upload(images[i], {
       folder: "products",
       quality: "auto",
-      max_file_size: 20 * 1024 * 1024,
+      max_file_size: 20 * 1024 * 1024, // Max size 20MB
     });
 
     imagesLinks.push({
@@ -31,9 +33,20 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
     });
   }
 
+  // Assign images to the request body
   req.body.images = imagesLinks;
   req.body.user = req.user.id;
 
+  // Parse `productDetails` and `aboutProducts` if they are sent as JSON strings
+  if (typeof req.body.productDetails === "string") {
+    req.body.productDetails = JSON.parse(req.body.productDetails);
+  }
+
+  if (typeof req.body.aboutProducts === "string") {
+    req.body.aboutProducts = JSON.parse(req.body.aboutProducts);
+  }
+
+  // Create the product
   const product = await Product.create(req.body);
 
   res.status(201).json({
@@ -41,6 +54,7 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
     product,
   });
 });
+
 
 // GET ALL PRODUCTS
 exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {

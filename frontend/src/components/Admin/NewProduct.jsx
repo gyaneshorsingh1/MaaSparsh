@@ -14,11 +14,9 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney"; // Updated import
 import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
 import { useNavigate } from "react-router-dom";
 
-
 const NewProduct = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
 
   const { loading, error, success } = useSelector((state) => state.newProduct);
 
@@ -29,6 +27,10 @@ const NewProduct = () => {
   const [Stock, setStock] = useState(0);
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
+
+  // New state for aboutProducts and productDetails
+  const [aboutProducts, setAboutProducts] = useState([{ title: "", description: "" }]);
+  const [productDetails, setProductDetails] = useState([{ title: "", description: "" }]);
 
   const categories = [
     "Bath Rituals",
@@ -62,6 +64,10 @@ const NewProduct = () => {
     myForm.set("category", category);
     myForm.set("Stock", Stock);
 
+    // Set aboutProducts and productDetails as arrays of objects
+    myForm.append("aboutProducts", JSON.stringify(aboutProducts)); // Use append instead of set
+    myForm.append("productDetails", JSON.stringify(productDetails)); // Use append instead of set
+
     images.forEach((image) => {
       myForm.append("images", image);
     });
@@ -71,6 +77,7 @@ const NewProduct = () => {
   const createProductImagesChange = (e) => {
     const files = Array.from(e.target.files);
 
+    
     setImages([]);
     setImagesPreview([]);
 
@@ -88,11 +95,43 @@ const NewProduct = () => {
     });
   };
 
+
+  // Handle adding/removing fields for aboutProducts
+  const handleAboutProductChange = (index, e) => {
+    const newAboutProducts = [...aboutProducts];
+    newAboutProducts[index][e.target.name] = e.target.value;
+    setAboutProducts(newAboutProducts);
+  };
+
+  const addAboutProductField = () => {
+    setAboutProducts([...aboutProducts, { title: "", description: "" }]);
+  };
+
+  const removeAboutProductField = (index) => {
+    const newAboutProducts = aboutProducts.filter((_, i) => i !== index);
+    setAboutProducts(newAboutProducts);
+  };
+
+  // Handle adding/removing fields for productDetails
+  const handleProductDetailChange = (index, e) => {
+    const newProductDetails = [...productDetails];
+    newProductDetails[index][e.target.name] = e.target.value;
+    setProductDetails(newProductDetails);
+  };
+
+  const addProductDetailField = () => {
+    setProductDetails([...productDetails, { title: "", description: "" }]);
+  };
+
+  const removeProductDetailField = (index) => {
+    const newProductDetails = productDetails.filter((_, i) => i !== index);
+    setProductDetails(newProductDetails);
+  };
+
   return (
     <Fragment>
       <MetaData title="Create Product" />
       <div className="dashboard">
-
         <div className="newProductContainer">
           <form
             className="createProductForm"
@@ -123,7 +162,6 @@ const NewProduct = () => {
 
             <div>
               <DescriptionIcon />
-
               <textarea
                 placeholder="Product Description"
                 value={description}
@@ -154,6 +192,85 @@ const NewProduct = () => {
                 onChange={(e) => setStock(e.target.value)}
               />
             </div>
+
+
+                       {/* About Products Fields */}
+                       <div className="product-details-container">
+              <h4>About Products</h4>
+              {aboutProducts.map((field, index) => (
+                <div key={index} className="product-detail-field">
+                  <input
+                    type="text"
+                    name="title"
+                    placeholder="Title"
+                    value={field.title}
+                    onChange={(e) => handleAboutProductChange(index, e)}
+                    required
+                    className="input-field"
+                  />
+                  <textarea
+                    name="description"
+                    placeholder="Description"
+                    value={field.description}
+                    onChange={(e) => handleAboutProductChange(index, e)}
+                    required
+                    className="textarea-field"
+                  ></textarea>
+                  {index !== 0 && (
+                    <button
+                      className="remove-btn"
+                      type="button"
+                      onClick={() => removeAboutProductField(index)}
+                    >
+                      Remove About Product
+                    </button>
+                  )}
+                </div>
+              ))}
+              <button type="button" onClick={addAboutProductField} className="add-btn">
+                Add About Product
+              </button>
+            </div>
+
+
+            {/* Product Details Fields */}
+            <div className="product-details-container">
+              <h4>Product Details:</h4>
+              {productDetails.map((field, index) => (
+                <div key={index} className="product-detail-field">
+                  <input
+                    type="text"
+                    name="title"
+                    placeholder="Title"
+                    value={field.title}
+                    onChange={(e) => handleProductDetailChange(index, e)}
+                    required
+                    className="input-field"
+                  />
+                  <textarea
+                    name="description"
+                    placeholder="Description"
+                    value={field.description}
+                    onChange={(e) => handleProductDetailChange(index, e)}
+                    required
+                    className="textarea-field"
+                  ></textarea>
+                  {index !== 0 && (
+                    <button
+                      className="remove-btn"
+                      type="button"
+                      onClick={() => removeProductDetailField(index)}
+                    >
+                      Remove Detail
+                    </button>
+                  )}
+                </div>
+              ))}
+              <button type="button" onClick={addProductDetailField} className="add-btn">
+                Add Product Detail
+              </button>
+            </div>
+ 
 
             <div id="createProductFormFile">
               <input

@@ -19,7 +19,7 @@ import {
 
 import { getAdminProduct } from "../../actions/productAction.jsx";
 import { getAllOrders } from "../../actions/orderAction.jsx";
-
+import { getAllUsers } from "../../actions/userAction.jsx";
 // Register Chart.js components (required for chart to render correctly)
 ChartJS.register(
   CategoryScale,
@@ -47,7 +47,8 @@ const Dashboard = () => {
    })
    useEffect(() => {
     dispatch(getAdminProduct());
-    dispatch(getAllOrders())
+    dispatch(getAllOrders());
+    // dispatch(getAllUsers());
 }, [dispatch, users]);
 
 

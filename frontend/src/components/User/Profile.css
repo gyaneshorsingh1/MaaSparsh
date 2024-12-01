@@ -1,71 +1,163 @@
-.profileContainer {
-    height: 50vh;
-    max-width: 100%;
-    width: 100vw;
-    overflow: hidden;
-
-    /* position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 99; */
-    background-color: white;
-  }
-  .profileContainer h1{
-    padding: 0;
-    margin: 2vmax;
-  }
-  .profileContainer .accountContainer {
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 70%;
-    padding: 2vh;
-    font-family: 'Courier New', Courier, monospace;
-  }
-.accountContainer p{
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: 600;
+/* General Reset */
+h1,h2, p {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
 }
-  .joinedOn{
-    display: flex;
-    align-items: center;
-    font-family: 'Courier New', Courier, monospace;
-  }
-  .joinedOn h4{
-     font-size: 1.7vmax;
-  }
-  
 
-  .password-orders{
-    font-weight: 600;
-    display: flex;
-    flex-direction: column;
-    
+.quick sand-blacks{
+  text-align: center;
+  font-size: 35px;
+  margin-top: 0;
+  padding: 5vh;
+  color: #C95741E5;
+}
+.profileContainer{
+  margin-top: 0;
+  width: 100%;
+  height: auto;
+  background-color: rgba(184, 219, 195, 0.227);
+  position: relative;
+}
+
+.profileContainer h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #C95741E5;
+}
+
+.accountContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: top;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  width: 70vw;
+  min-height: 30vh;
+  margin: auto;
+}
+
+
+.holder-name {
+  font-size: 30px;
+  color: #C95741E5;
+}
+
+.joinedon, .holder-email{
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.5rem;
+  padding-top: 2px;
+  color: #272523dc;
+}
+
+.logout-account {
+  text-align: center;
+  margin-top: 0px;
+  
+  
+}
+
+.logout-account a {
+  font-family: "League Spartan", sans-serif;
+  display: inline-block;
+  background-color: transparent;
+  color: #C95741E5;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.logout-account a:hover {
+  color: #e87044;
+}
+
+
+
+.profile-leaf{
+  position: absolute;
+  top: 1.5vh;
+  width: 12vw;
+  left: 10vh;
+  rotate: 120deg;
+}
+.profile-leaf-2{
+  position: absolute;
+  top: 1.5vh;
+  right: 9vh;
+  width: 12vw;
+  rotate: -120deg;
+  transform: scaleX(-1);
+  transition: transform 0.5s ease;
+}
+
+@media screen and (max-width: 970px) {
+  .accountContainer{
+    position: relative;
+    padding: 0;
+    width: 80vw;
   }
-  .password-orders a{
-    text-decoration: none;
-    color: black;
-    font-family: 'Courier New', Courier, monospace;
+}
+@media (max-width: 782px) {
+  .accountContainer{
+    position: relative;
+    padding: 0;
+    width: 80vw;
+    flex-direction: column;
+    justify-content: start;
+    gap: 0;
+  }
+
+  .quick sand-black{
+    font-size: 30px;
   }
   .logout-account{
-    display: flex;
-    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0;
+    margin: 0;
   }
-  .logout-account a{
-    font-weight: 600;
-    text-decoration: none;
+  .logout-account a {
+    position: relative;
+    bottom: 20px;
+    left: 0;
+    font-size: 0.8rem;
+    width: 70px;
+    padding: 0;
+    margin: 0;
+    color: #e87044;
+    background: transparent;
+  }
+  .logout-account a>span{
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .logout-account {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 500px) {
+  .quick sand-black{
+    font-size: 25px;
   }
 
-  
-
-@media screen and (max-width: 768px) {
-  .profileContainer .accountContainer{
-    flex-direction: column;
-    row-gap: 30px;
+  .accountContainer {
+    padding: 8px;
+    position: relative;
+    justify-content: start;
+    width: 95%;
   }
-  .joinedOn h4{
-    font-size: 2.5vmax;
-    font-weight: 600;
- }
+
+  .accountContainer p {
+    font-size: 1rem;
+  }
+
+
 }

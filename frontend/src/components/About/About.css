@@ -1,205 +1,240 @@
 .about-container{
-    padding: 0;
     margin: 0;
-    box-sizing: border-box;
-    max-width: 100vw;
+    padding: 0;
+    width: 100%;
     height: auto;
     overflow-x: hidden;
-    background-color: rgb(255, 253, 237);
 }
 
-.welcome{
-    width: 100%;
-    height: 75vh;
+.about-container h2{
+    font-size: 40px;
+    color: #EB7E57E5;
+    margin: 0;
     padding: 0;
-    position: relative;
-    z-index: 3;
-    font-family: "Playwrite GB S", cursive;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: italic;
+    text-align: center;
+    font-family: "quick sand", serif;
+    font-weight: 900;
+    font-style: normal;
+}
+.about-container p{
+    font-family: "League Spartan", sans-serif;
+    font-size: 24px;
     
 }
-
-.main-section-img{
-    position: absolute;
-    height: 75vh;
+.about-banner{
+    position: relative;
+    height: 80vh;
     width: 100%;
-
+    display: flex;
+    flex-direction: column;
+    row-gap: 4vh;
+    align-items: center;
+    justify-content: center;
+}
+.about-banner-img{
+    position: absolute;
     top: 0;
     left: 0;
-    z-index: -1;
-}
-
-.welcome-text{
-    margin-left: 15vh;
-    display: flex;
-    justify-content: center;
+    width: 100%;
     height: 100%;
+    object-fit: cover;
+}
+
+.about-logo{
+    width: 25vmax;
+}
+
+
+.about-2{
     width: 100%;
-    gap: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    color: white;
+    height: 178px;
+    background: #D0E7D7;
+    padding: 0 10vh;
+    position: relative;
+    z-index: 2;
+
 }
-.welcome-text h2{
-    font-size: 5vh;
+.about-2 p, .about-2 h3{
+    text-align: center;
+    font-weight: 500;
 }
 
-.welcome-text p{
-    font-size: 16px;
-}
-
-.about-btn{
-
-    padding: 10px 20px;
-    width: 200px;
-    text-transform: uppercase;
-    border-radius: 30px;
-    border: none;
-    margin-top: 7px;
-    font-size: 12px;
+.about-container h3{
     letter-spacing: 2px;
-    color: white;
-    background-color: rgb(252, 158, 144);
-    
-    font-family: "Playwrite GB S", cursive;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: italic;
+    font-weight: bold;
 }
 
-.about{ 
-    width: 100%;
-    height: 45vh;
-    background: rgb(255, 224, 166);
+.about-3{
+    position: relative;
+    top: -10vh;
+}
+
+.about-4{
+    position: relative;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10vh;
+}
+
+.about-4 img{
+    margin: auto;
+    height: 417px;
+}
+
+.about-4 .about-4-p{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-   
-}
-.about p{
-    color: rgb(163, 87, 54);
-    
-    font-family: "Playwrite GB S", cursive;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: italic;
-    margin: 20px;
+    width: 90%;
     text-align: center;
-}
-h2{
-    font-weight: 800;
+    row-gap: 5vh;
 }
 
 
-.our-story{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-width: 100%;   
-    
-    padding: 35px 0 70px 0;
-    font-family: "Playwrite GB S", cursive;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: italic;
-    
-    margin: 20px;
-    text-align: center;
-}
-.our-story h2{
-    margin: 65px 0 35px 0;
-    font-size: 2.7vw;
+
+.about-sub-title{
+    margin: 10vh 0;
 }
 
-.story-des{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.story-des p{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-.story-des p li{
-    letter-spacing: 1.2px;
-}
-.our-story p{
-    width: 80%;
-    text-align: center;
-}
 
-.li-story{
-    list-style: none;
-}
 
-.our-mission{
-    background: rgb(255, 224, 166);
-    font-family: "Playwrite GB S", cursive;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: italic;
-    
-    padding: 5vw 7vw;
-    display: flex;
-    height: 50vh;
-    
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    color: rgb(163, 87, 54);
-    gap: 20px;
+.our-mission-values{
+    background-color: #AFCFB033;
     width: 100%;
-    
-
-}
-
-
-.our-mission p li{
-    margin-bottom: 5px;
-    
-
-}
-
-.our-promises{
-    height: 50vh;
-    width: 100%;
-    padding: 10vh;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    
 }
-.our-promises p{
-    width: 70%;
+
+.our-mission-values-sec {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    grid-template-rows: auto auto; /* Two rows */
+    gap: 0px; /* Remove any gap between grid items */
+  }
+  
+  .grid-item {
+    width: 100%; /* Ensure content occupies full width of grid item */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+  }
+  
+  .item1 {
+    height: 100%; /* Set height for Item 1 */
+    grid-column: 1; /* Item 1 in the first column */
+    grid-row: 1; /* Item 1 in the first row */
+  }
+  
+  .item2 {
+    height: 40px; /* Set height for Item 2 */
+    grid-column: 2; /* Item 2 in the second column */
+    grid-row: 1; /* Item 2 in the first row */
+  }
+  
+  .item3 {
+    height: 100%;
+    grid-column: 1; /* Item 3 in the first column */
+    grid-row: 2; /* Item 3 in the second row */
+  }
+  
+  .item4 {
+    grid-column: 2; /* Item 4 in the second column */
+    grid-row: 2; /* Item 4 in the second row */
+  }
+  
+  
+
+
+  .about-6{
+    width: 100%;
+  }
+  .about-6 img{
+    width: 100%;
+    height: 246px;
+  }
+
+
+  .about-7{
+    width: 100%;
+    background: #AFCFB033;
+    text-align: center;
+    margin: 10vh 0;
+  }
+  .about-7 p, .about-7 h2{
+    margin: auto;
+    width: 90%;
+  }
+
+
+  .proof-icons{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 5vh;
+    height: auto;
     margin-top: 5vh;
-}
-
-
-.ul-about {
-    list-style-type: none; /* Remove default bullets */
-    padding-left: 20px;
   }
-  .li-about::before {
-    list-style: none;
-    content: "🔹"; /* Use an emoji or icon */
-    font-size: 16px; /* Adjust size as needed */
-    color: #ff7f50; /* Customize color */
-    margin-right: 10px; /* Space between icon and text */
+  .proof-icons img{
+    margin: auto;
+    width: 5vw;
   }
 
-  .braker-for-div{
-    background-color: #2e2822a1;
-    clip-path: polygon(90% 0, 100% 0, 100% 100%, 10% 100%);
-    height: 10vh;
+  .proof-titles{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0 5vh;
+    color: #EB7E57E5;
   }
-  .braker-for-div1{
-    clip-path: polygon(0 0, 90% 0, 10% 100%, 0% 100%);
-    height: 10vh;
-    background-color: #3e99e4a1;
+  .proof-titles h4{
+    text-align: center;
+    font-family: "League Spartan", sans-serif;
+    font-size: medium;
+  }
+
+
+  .mix-banner{
+    width: 100%;
+    height: auto;
+    margin-top: 10vh;
+
+  }
+  .mix-banner img{
+    width: 100%;
+    height: 331px;
+  }
+
+
+  .greenies-banner{
+    width: 100%;
+    margin-top: 5vh;
+  }
+  .greenies-banner img{
+    width: 90%;
+    margin: auto;
+  }
+
+
+  .about-footer-banner{
+    width: 100%;
+    margin: 5vh 0;
+  }
+
+  .about-footer-banner img{
+    width: 100%;
+    transform: scaleX(-1) scaleY(-1);
+
+    opacity: 0.8;
   }

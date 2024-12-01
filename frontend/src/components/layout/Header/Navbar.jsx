@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import "./Navbar.css";
-
+import shopall from "../../../images/baby shampoo.jpg";
 // Wrapping FaBars with forwardRef to properly use ref
 const FaBarsWithRef = forwardRef((props, ref) => <FaBars {...props} ref={ref} />);
 
@@ -53,14 +53,14 @@ const Navbar = () => {
         <ul
           className={`nav-links ${isNavOpen ? "active fixed" : ""}`}
         >
-          <li>
+          {/* <li>
             <Link to="/" onClick={closeNav}>
               Home
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/products" onClick={closeNav}>
-              Products
+              All
             </Link>
           </li>
           <li>
@@ -69,26 +69,58 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/products/feeding-rituals" onClick={closeNav}>
-              Feeding Rituals
+            <Link to="/gifting" onClick={closeNav}>
+              Gifting
             </Link>
           </li>
           <li>
-            <Link to="/products/organic-clothing" onClick={closeNav}>
-              Organic Clothing
+            <Link to="/our-exclusives" onClick={closeNav}>
+              Our Exclusives
             </Link>
           </li>
           <li>
-            <Link to="/products/baby-nursery" onClick={closeNav}>
-              Baby Nursery
+            <Link to="/travel-kit" onClick={closeNav}>
+              Travel Kit
             </Link>
           </li>
           <li>
-            <Link to="/about" onClick={closeNav}>
-              About
+            <Link to="/body-care" onClick={closeNav}>
+              Body Care
+            </Link>
+          </li>
+          <li>
+            <Link to="/hair-care" onClick={closeNav}>
+              Hair Care
             </Link>
           </li>
         </ul>
+      </nav>
+      <nav className="mobile-navbar">
+        <div className="mobile-img-nav">
+            <img src={shopall} alt="shopall" />
+            <p>ShopAll</p>
+        </div>
+        <div className="mobile-img-nav">
+            <img src={shopall} alt="shopall" />
+            <p>ShopAll</p>
+        </div>
+        <div className="mobile-img-nav">
+            <img src={shopall} alt="shopall" />
+            <p>ShopAll</p>
+        </div>
+        <div className="mobile-img-nav">
+            <img src={shopall} alt="shopall" />
+            <p>ShopAll</p>
+        </div>
+        <div className="mobile-img-nav">
+            <img src={shopall} alt="shopall" />
+            <p>ShopAll</p>
+        </div>
+        <div className="mobile-img-nav">
+            <img src={shopall} alt="shopall" />
+            <p>ShopAll</p>
+        </div>
+        
       </nav>
 
       {/* Overlay for dimming/blurring the background */}

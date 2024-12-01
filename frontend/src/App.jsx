@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Header from "./components/layout/Header/Header.jsx";
 import Navbar from "./components/layout/Header/Navbar.jsx";
@@ -59,26 +59,34 @@ import FeedingRituals from "./components/Product/FeedingRituals.jsx";
 import OrganicClothing from "./components/Product/OrganicClothing.jsx";
 import BabyNursing from "./components/Product/BabyNursing.jsx";
 
+import Gifting from "./components/Product/Gifting.jsx";
+
+
+
 import { ToastContainer } from "react-toastify"; 
 import 'react-toastify/dist/ReactToastify.css';
+import ComingSoon from "./components/Product/ComingSoon.jsx";
 
 function App() {
-  console.log(import.meta.env.VITE_BACKEND_API_URL);
 
   const { isAuthenticated, user } = useSelector((state) => state.user);
-  
+
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
+
+
+  
   // const { location, pathname } = useLocation();
   // const isDashboard = location.pathname === "/admin/dashboard";
   // window.addEventListener("contextmenu",(e) => e.preventDefault());
+  // {isAuthenticated && <UserOptions user={user} />}
 
   return (
     <Router>
       <Header />
+      
       <Navbar />
-      {isAuthenticated && <UserOptions user={user} />}
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -98,10 +106,16 @@ function App() {
 
         {/* Product Category routes */}
         <Route exact path="/products/bath-rituals" element={<BathRituals />} />
-        <Route exact path="/products/feeding-rituals" element={<FeedingRituals />} />
+        {/* <Route exact path="/products/feeding-rituals" element={<FeedingRituals />} />
         <Route exact path="/products/organic-clothing" element={<OrganicClothing />} />
-        <Route exact path="/products/baby-nursery" element={<BabyNursing />} />
+        <Route exact path="/products/baby-nursery" element={<BabyNursing />} /> */}
         {/* ProtectedRoute usage */}
+
+        <Route exact path="/gifting" element={<ComingSoon />} />
+        <Route exact path="/our-exclusives" element={<ComingSoon />} />
+        <Route exact path="/travel-kit" element={<ComingSoon />} />
+        <Route exact path="/body-care" element={<ComingSoon />} />
+        <Route exact path="/hair-care" element={<ComingSoon />} />
 
         <Route
           path="/product/new"
@@ -140,17 +154,17 @@ function App() {
           }
         />
 
-        <Route
+        {/* <Route
           path="/order/confirm"
           element={
             <ProtectedRoute>
               <ConfirmOrder />
             </ProtectedRoute>
           }
-        />
+        /> */}
 
         <Route
-          path="/payment/success"
+          path="shipping/confirm"
           element={
             <ProtectedRoute>
               <Payment />
@@ -276,7 +290,7 @@ function App() {
       {/* ToastContainer placed here to handle toasts globally */}
       <ToastContainer
         position="bottom-center"
-        autoClose={2000}
+        autoClose={1500}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

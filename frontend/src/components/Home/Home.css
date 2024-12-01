@@ -2,8 +2,8 @@
     max-width: 100vw;
     color: #4A4A4A; /* Soft dark gray for text */
     position: relative;
-    font-family: sans-serif, "Poppins";
-    background-color: rgb(255, 255, 255);
+    background-color: #f6f6f6;
+    overflow-x: hidden;
 }
 
 
@@ -22,63 +22,89 @@
   .homeBanner>img{
     width: 100%;
   }
-  .proofContainer{
+  .proofContainer {
     padding: 0 20px;
     max-height: 350px;
-    display: flex;
-    justify-content: center;
-    align-self: center;
-    flex-direction: row;
-    width: 100%;
-    gap: 10px;
+    display: grid;
+    justify-items: center; /* Centers grid items horizontally */
+    align-items: center;   /* Centers grid items vertically */
+    gap: 10px; /* Space between the grid items */
     margin-top: 5vh;
+    width: 100%;
+  }
+
+
+  .cart-btn-price{
+    display: flex;
+
   }
   .proofContainer .proofData{
-    width: 250px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 100%; 
+    height: 100%; 
+    display: grid; 
+    grid-template-columns: repeat(5, 1fr); /* Creates 5 equal-width columns for images */
+    justify-items: center; /* Centers each image horizontally */
+    align-items: center; /* Centers each image vertically */
+    gap: 10px; /* Space between the images */
     cursor: pointer;
   }
-  .proofContainer .proofData img{
-    max-width: 110px;
-    height: 110px;
+  .proof-img{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
   }
   .proofContainer .proofData p{
-    font-size: smaller;
+    font-size: x-small;
     text-align: center;
   }
-  .product-container {
-    display: flex;
-    margin: 2vmax auto;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-    height: auto;
-    background: #A2D1B11A;
- 
+  .proofContainer .proofData h4{
+    font-weight: bold;
+    text-align: center;
+    font-size: medium;
   }
   
+  .product-containers{
+    position: relative;
+    margin-top: 8vh;
+  }
+  .product-container-titles{
+    position: relative;
+     text-align: start;  
+     color: #C95741E5;
+     font-size: 40px;
+     margin-left: 5vh;
+  }
+  .product-container-title-des{
+    margin-left: 5vh;
+    color: #C95741E5;
+    font-size: medium;
+  }
+
+
+
+  .product-container {
+    padding: 5vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+    gap: 10px;
+    row-gap: 40px;
+  }
   .productCard {
-    
-    font-family: 'Courier New', Courier, monospace;
     width: 280px;
-    height: 420px;
+    height: 430px;
     display: flex;
     flex-direction: column;
     text-decoration: none;
+    justify-content: space-between;
     color: rgb(48, 48, 48);
-    margin: 0 2vmax;
-    padding: 2vmax 0;
     transition: all 0.5s;
-    padding-bottom: 0.5vmax;
     border: none;
-    overflow: hidden;
     text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    
+    font: 16px/1.4 'Open Sans', arial, sans-serif;
   }
 
   
@@ -86,10 +112,10 @@
   transition: all 0.5s;
     border-top-left-radius: 180px;
     border-top-right-radius: 180px;
-    width: 270px;
-    height: 270px;
+    width: 280px;
+    height: 300px;
     object-fit: cover;
-    border: 2px solid #5CB7A5 ;
+    border: 2px solid #C95741 ;
   }
   
   
@@ -100,41 +126,54 @@
   
   .productCard > p {
     font-weight: 600;
-    font-size: 1.2vmax;
+    font-size: 1.4vmax;
     margin: 1vmax 0.5vmax;
     margin-bottom: 0;
     letter-spacing: 1.6px;
-  }
-  
-  .productCard > span {
-    margin: 0.5vmax;
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-    font-size: 1vmax;
-    letter-spacing: 1.6px;
-    
+    font-family: "League Spartan", sans-serif;
   }
   
   .productCard:hover > img {
     box-shadow: 0 5px 5px rgba(115, 189, 136, 0.26);
-    transform: translateY(-5px);
+    transform: scale(1.03);
   }
 
 .cart-btn{
-  background: #E86F44E5;
+  background-color: #C95741;  
   color: white;
   letter-spacing: 2px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   border-radius: 20px;
   border: none;
   width: 100%;
   height: 45px;
   cursor: pointer;
+  font-family: "League Spartan", sans-serif;
+}
+.cart-btn-price{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 15px;
   
+}
+.cart-btn-price>span{
+  font-size: larger;
+  letter-spacing: 2.5px;
+  font-family: "League Spartan", sans-serif;
+  font-weight: 600;
 }
 
 
+.feature-img{
+  width: 280px;
+  height: 320px;
+}
   
+
+
   @media screen and (max-width: 768px) {
 
     .proofContainer .proofData p{
@@ -145,7 +184,13 @@
       width: 6vmax;
       height: 6vmax;
   }
+  .proofContainer .proofData h4{
+    font-size: 2vmax;
+  }
 
+  .proofContainer{
+    gap: 0;
+  }
   .product-container {
     display: flex;
     margin: 3vmax auto;
@@ -155,15 +200,27 @@
     height: auto;
     gap: 0;
     padding: 0 10px;
+    row-gap: 10px;
  
   }
   .productCard {
-    width: 140px;
-    height: 240px;    
-  }
+    font: 16px/1.4 'Open Sans', arial, sans-serif;
+    width: 120px;
+    height: 240px;
+    justify-content: space-between;
+    padding: 0 0 10px 0;
+    margin: 0 0 0 0;
 
+  }
+  .productCard .cart-btn-price{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 60px;
+  }
   .productCard > p {
-      font-size: 1.5vmax;
+    letter-spacing: 2px;
+    font: bold 12px 'League of septa', arial, sans-serif;
   }
   
   .productCard > div {
@@ -171,13 +228,14 @@
       display: block;
   }
   
-    .productCard > span {
+  .productCard .cart-btn-price span {
+      letter-spacing: 3px;
       font-size: 1.8vmax;
     }
   
     .productCard > div > span {
       margin: 0 0.5vmax;
-      font: 300 1vmax "Roboto";
+      font: bold 1vmax "Roboto";
     }
 
     
@@ -185,8 +243,8 @@
   
     
   .productCard > img {
-      width: 140px;
-      height: 150px;
+      width: 120px;
+      height: 120px;
       object-fit: cover;
     }
     
@@ -201,19 +259,92 @@
       transform: translateY(-5px);
     }
     .productCard .cart-btn{
-      background: #E86F44E5;
       color: white;
       letter-spacing: 2px;
-      font-size: 12px;
-      font-weight: 600;
-      border-radius: 16px;
+      border-radius: 6px;
       border: none;
       width: 100%;
-      min-height: 32px;
-      max-height: 32px;
+      min-height: 30px;
+      max-height: 30px;
       cursor: pointer;
+      font: 10px/1.4 'Open Sans', arial, sans-serif;
       
     }
+    .feature-img{
+      flex: 0 1 calc(50% - 100px);
+      width: 100px;
+      height: 180px;
+      margin: 5px;
+    }
+
+  }
+
+  @media screen and (max-width: 500px) {
+    .product-container-titles{ 
+       color: #C95741E5;
+       font-size: 40px;
+       margin-left: 15px;
+       margin-top: 20vh;
+    }
+    .product-container-title-des{
+      margin: 0 15px;
+    }
+     .feature-img{
+      width: 100%;
+      height: 100%;
+     }  
+     .product-container{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 0 10px  10px;
+      margin: 0;
+      row-gap: 10px;
+      position: relative;
+     }  
+
+     .productCard{
+      width: 100%;
+      height: 60%;
+     }
+     .productCard img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+     }
+     .productCard p{
+      font-size: x-small;
+      margin: 15px 0;
+
+     }
   }
   
-  
+  .product-container-titles .leaf1{
+    width: 12vw;
+    position: absolute;
+    right: 0;
+    top: -10vh;
+    transform: rotate(-60deg) rotateX(180deg);
+  }
+  .product-container-titles .leaf2{
+    width: 12vw;
+    position: absolute;
+    right: 0;
+    top: -10vh;
+    transform: rotate(80deg) rotateX(0deg);
+  }
+  .product-container-titles .leaf3{
+    width: 10vw;
+    position: absolute;
+    left: -7vh;
+    top: -13vh;
+    transform: rotate(-90deg) rotateX(180deg);
+  }
+
+  .product-container-titles .leaf4{
+    width: 10vw;
+    position: absolute;
+    left: 16vw;
+    top: -10vh;
+    transform: rotate(70deg) rotateX(180deg);
+  }

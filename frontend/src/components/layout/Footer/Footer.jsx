@@ -48,7 +48,7 @@ const Footer = () => {
           <Link to="/terms">FAQs</Link>
           <Link to="/terms">MaSparsh Club FAQs</Link>
         </div>
-        <div className="footer-policies">
+        <div className="footer-policies  footer-links">
           <h3>Customer Services</h3>
           <Link to="/policies/shipping-policy">Shipping policy</Link>
           <Link to="/policies/return-refund-policy">Return Policy</Link>

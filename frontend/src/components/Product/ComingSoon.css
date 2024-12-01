@@ -1,0 +1,75 @@
+.coming-soon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffbe98, #c95741);
+    overflow: hidden;
+    color: #fff;
+  }
+  
+  .coming-soon-content {
+    text-align: center;
+    position: relative;
+    padding: 20px;
+    border: 3px solid #7a301b;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1.5s ease-in-out;
+  }
+  
+  .animated-title {
+    font-size: 3rem;
+    color: #ffbe98;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+  }
+  
+  .animated-description {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 30px;
+  }
+  
+  .animated-circle {
+    width: 100px;
+    height: 100px;
+    background-color: #7a301b;
+    border: 5px solid #c95741;
+    border-radius: 50%;
+    margin: 0 auto;
+    animation: spin 3s linear infinite;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  

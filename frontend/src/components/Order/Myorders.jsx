@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Typography } from "@mui/material"; // Updated import for Typography (Material UI v5)
 import MetaData from "../layout/MetaData";
-import Navbar from "../layout/Header/Navbar";
 
 const MyOrders = () => {
   const dispatch = useDispatch();
@@ -20,49 +19,85 @@ const MyOrders = () => {
       toast.error(error);
       dispatch(clearErrors());
     }
-    toast("MY orders...");
     dispatch(myOrders());
   }, [dispatch, error]);
 
   return (
     <Fragment>
-      <MetaData title={`${user?.name || "User"} - Orders`} />
+      <MetaData title={`${user?.name || "User"} - Account/Orders`} />
 
       {loading ? (
         <Loader />
       ) : (
         <div className="myOrdersPage">
-         
-          <Typography id="myOrdersHeading">{user?.name}'s Orders</Typography>
-          <div className="tableContainer">
-            <table className="ordersTable">
-              <thead>
-                <tr>
-                  <th>Order ID</th>
-                  <th>Status</th>
-                  <th>Items Qty</th>
-                  <th>Amount</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {orders?.map((order) => (
-                  <tr key={order._id}>
-                    <td>{order._id}</td>
-                    <td className={order.orderStatus === "Delivered" ? "greenColor" : "redColor"}>
-                      {order.orderStatus}
-                    </td>
-                    <td>{order.orderItems.length}</td>
-                    <td>Rs. {order.totalPrice.toFixed(2)}</td>
-                    <td>
-                      <Link to={`/order/${order._id}`} className="actionLink">
-                        View
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <Typography id="myOrdersHeading">order History</Typography>
+          <div className="ordersContainer">
+            {/* Header Row */}
+            <div className="orderHeader">
+              <div className="orderHeaderItem">Products</div>
+              <div className="orderHeaderItem">Date of Order</div>
+              <div className="orderHeaderItem">Status</div>
+              <div className="orderHeaderItem">Amount</div>
+              <div className="orderHeaderItem">Actions</div>
+            </div>
+
+
+            {orders?.map((order) => (
+              <div key={order._id} className="orderFullRow">
+                <div className="orderRow">
+                  <div className="orderImgContainer">
+                    {order.orderItems.map((item) => (
+                      <div key={item._id} className="orderItem">
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="orderItemImage"
+                        />
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="orderDetail">
+                    {String(order.createdAt).split("T")[0]}
+                  </div>
+                  <div
+                    className={`orderDetail ${
+                      order.orderStatus === "Delivered"
+                        ? "greenColor"
+                        : "redColor"
+                    }`}
+                  >
+                    {order.orderStatus}
+                  </div>
+                  <div className="orderDetail">
+                    Rs. {order.totalPrice.toFixed(2)}
+                  </div>
+                  <div className="orderDetail">
+                    <Link to={`/order/${order._id}`} className="actionLink">
+                      View
+                    </Link>
+                  </div>
+                </div>
+                {/* <div className="orderItemsContainer">
+                  {order.orderItems.map((item) => (
+                    <div key={item._id} className="orderItem">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="orderItemImage"
+                      />
+                      <div className="orderItemDetails">
+                        <p className="orderItemName">{item.name}</p>
+                        <p className="orderItemPrice">Rs. {item.price}</p>
+                        <p className="orderItemQuantity">
+                          Quantity: {item.quantity}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div> */}
+              </div>
+            ))}
           </div>
         </div>
       )}

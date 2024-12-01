@@ -1,91 +1,140 @@
-import React, { useRef, useEffect } from 'react';
+import React from "react";
 import "./About.css";
-import aboutBanner from "../../images/banner1.jpg"
+
+import aboutBanner from "./aboutImages/about-banner.png";
+import aboutfooterbanner from "./aboutImages/about-footer-banner.png";
+import babyimage from "./aboutImages/baby-img.png";
+import hearthand from "./aboutImages/heart-hand.png";
+import babyfoot from "./aboutImages/baby-foot.png";
+
+import downaboutbanner from "./aboutImages/down-about-banner.png";
+
+import proof1 from "../../images/proof1.png";
+import proof2 from "../../images/proof2.png";
+import proof3 from "../../images/proof3.png";
+import proof4 from "../../images/proof4.png";
+import proof5 from "../../images/proof5.png";
+import proof6 from "./aboutImages/hand-leaf.png";
+import proof7 from "./aboutImages/peple-leaf.png";
+import mixbanner from "./aboutImages/about-mix-banner.png";
+import greenies from "./aboutImages/about-bannerlast.png";
+
 const About = () => {
-
-  const videoRef = useRef(null); // Create a ref to the video element
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.9; // Set initial playback speed to 0.5x (slow)
-    }
-  }, []);
   return (
     <>
       <div className="about-container">
-        <div className="welcome">
-            <img  className="main-section-img" src={aboutBanner}/>
-            <div className="welcome-text">
-              <h2>About Us</h2>
-                <p>Welcome to Maasparash Essence of Ayurveda! We’re delighted to have you here.</p>
-                <p>Don't miss out! Experience the power of Ayurveda with Maasparash Essence today!</p>
-                <button className="about-btn">Purchase Now</button>
-            </div>
+        <div className="about-banner">
+          <img
+            src={aboutBanner}
+            className="about-banner-img"
+            alt="about banner"
+          />
+          <h2>About Us</h2>
+          <p>
+            Cocooning your baby in the luxury of nature through holistically
+            crafted formulations
+          </p>
+          <img src="/logo.png" alt=" maasparsh logo" className="about-logo" />
         </div>
 
-
-        <div className="about">
-        
-             <p><b>
-             At MaaSparsh, we bring nature’s finest to your child, using only ingredients that are as pure <br/> and nurturing as a mother’s love.</b>
-             </p>
-             <p>Rooted in the heritage of Ayurveda, our products are designed to protect, soothe, and nourish, <br/> providing a natural start to a healthy life.</p>
-          
+        <div className="about-2">
+          <h3>
+            MaaSparsh crafts Ayurvedic baby care, blending purity with nature's
+            essence.
+          </h3>
+          <p>
+            MaaSparsh embodies the essence of nature by crafting Ayurvedic baby
+            care products made from 100% natural and authentic ingredients,
+            ensuring the purest touch for your baby's delicate skin.
+          </p>
+        </div>
+        <div className="about-3">
+          <img src={aboutfooterbanner} alt="about footer banner" />
         </div>
 
-        <div className="our-story">
-        <h2>Our Story</h2>
-            <div className="story-des">
-            
+        <div className="about-4">
+          <h2>Our Story</h2>
+          <img src={babyimage} alt="baby image" />
+          <div className="about-4-p">
             <p>
-                <li className="li-story">At <b>Maasparash Essence of Ayurveda</b>, we believe that the purest care begins at birth. Our story is rooted in the timeless wisdom of Ayurveda, India’s ancient system of holistic healing, combined with the latest scientific advancements to provide babies with the gentle care they deserve.</li>
-                <li className="li-story"><b>How can we bring the ancient knowledge of Ayurveda into the modern world to nurture the most delicate beings—babies?</b> In our search for the answer, we recognized that nature holds the secrets to nurturing life in the purest form. With this realization, *Maasparash* was born—a brand that fuses centuries-old Ayurvedic knowledge with today’s modern safety standards to deliver a line of baby care products that parents can trust, crafted with love and precision.
-                </li>
-                <li className="li-story">Our name, <b>Maasparash</b>, means "the touch of a mother" because we understand that nothing is as pure, gentle, and nurturing as a mother’s love. Just like a mother’s tender touch, we are committed to ensuring that every ingredient that goes into our products is thoughtfully selected, ethically sourced, and tailored to nourish your baby’s skin and hair with the utmost care.</li>
+              At MaaSparsh, we embrace the timeless wisdom of Ayurveda to bring
+              you the purest essence of nature. Rooted in the principles of
+              balance and holistic well-being, our Ayurvedic baby massage oil is
+              a harmonious blend of traditional ingredients, carefully crafted
+              to nurture your little one with the goodness of nature.
             </p>
+            <p>
+              Guided by centuries-old Ayurvedic practices, MaaSparsh ensures
+              that every product we create is a tribute to nature’s healing
+              power. We believe in preserving the authenticity of ancient
+              remedies while adapting them to meet modern needs.
+            </p>
+          </div>
+        </div>
+        <div className="about-sub-title">
+          <h2>
+            your baby's gentle touch deserves the care of nature's finest.
+          </h2>
+        </div>
+
+        {/* <div className='our-mission-values'>
+                <h2>Our Mission & Our Values</h2>
+                <div className='our-mission-values-sec'>
+                    <img src={hearthand} alt="heart-hand" className='grid-item item1'/>
+                    <p className='grid-item item2'>At MaaSparsh, we promise purity in every drop, delivering Ayurvedic care rooted in the wisdom of age-old traditions. Our products are thoughtfully crafted using nature’s finest ingredients, ensuring a perfect balance for your baby’s wellness. From nurturing delicate skin to strengthening hair and supporting overall growth, we prioritize your baby’s holistic care. Each formulation is a testament to our commitment to quality and authenticity, offering gentle yet effective solutions. With MaaSparsh, embrace the goodness of Ayurveda for your little one’s healthy and happy journey.</p>
+                    
+                    <p className='girs-item item3'>MaaSparsh brings holistic wellness by embracing nature’s purest essence, lovingly crafted to nourish your baby. Rooted in Ayurvedic traditions, we source the finest ingredients directly from nature’s bounty to provide stability and care. Every product is designed to nurture your little one with the gentle touch of authenticity. From the hills to your home, MaaSparsh delivers the essence of nature for your baby’s wellness and happiness."</p>
+                    <img src={babyfoot} alt="baby foot" className='grid-item item4' />
+                </div>
+            </div> */}
+
+        <div className="about-6">
+          <img src={downaboutbanner} alt="" />
+        </div>
+
+        <div className="about-7">
+          <h2>Formulations</h2>
+          <p>
+            MaaSparsh draws from Mother Nature's treasure trove to craft
+            wholesome wellness solutions for your baby. With eco-conscious
+            practices like cold pressing, steam distillation, sedimentation, and
+            natural filtration, we ensure every product retains its purity and
+            potency. From soil to shelf, our formulations deliver nature’s
+            luxurious essence in its most unadulterated form. We take pride in
+            nurturing your baby with care that’s as gentle and authentic as
+            nature itself
+          </p>
+
+          <div className="proofs">
+            <div className="proof-icons">
+              <img src={proof1} alt="proof1" />
+              <img src={proof3} alt="proof3" />
+              <img src={proof6} alt="proof6" />
+              <img src={proof7} alt="proof7" />
+              <img src={proof4} alt="proof4" />
+              <img src={proof2} alt="proof2" />
+              <img src={proof5} alt="proof5" />
             </div>
-
+            <div className="proof-titles">
+              <h4>Tested</h4>
+              <h4>Chemical Free</h4>
+              <h4>Organic</h4>
+              <h4>Derma Safe</h4>
+              <h4>No Hard</h4>
+              <h4>Pure Aurvedic</h4>
+              <h4>Make in India</h4>
+            </div>
+          </div>
+          <div className="mix-banner">
+            <img src={mixbanner} alt="mix banner" />
+          </div>
+          <div className="greenies-banner">
+            <img src={greenies} alt="greenies banner" />
+          </div>
         </div>
-
-        <div className="braker-for-div1"></div>
-        <div className="our-mission">
-          <h2>Our Mission</h2>
-          <p>
-          <ul className="ul-about">
-            <li className="li-about">
-              Our mission is to create a nurturing environment for babies
-              through thoughtfully designed products that prioritize safety,
-              comfort, and style.
-            </li>
-            <li className="li-about">
-              We aim to empower parents with the knowledge and products they
-              need to care for their little ones.
-            </li>
-            </ul>
-          </p>
+        <div className="about-footer-banner">
+          <img src={aboutfooterbanner} alt=" about footer banner" />
         </div>
-
-
-        <div className="braker-for-div"></div>
-
-        <div className="our-promises">
-          <h2>Maasparash Essence of Ayurveda promises you:</h2>
-          <p>
-            <ul className="ul-about">
-            <li className="li-about"><b>Pure, Ayurvedic Formulations</b>: Made with natural, toxin-free
-            ingredients.</li> <br/>
-            <li className="li-about"><b>Gentle on Baby’s Skin</b>: Suitable for even the most
-            sensitive skin types.</li><br/>
-            <li className="li-about"><b>Sustainably Sourced</b>: Ethical and safe for
-            both your baby and the environment. Trust Maasparash to provide a
-            soothing and holistic care experience for your baby. With our
-            commitment to quality and nature, we ensure that every drop of our
-            product reflects the essence of Ayurveda, caring for your baby just
-            the way nature intended.</li>
-            </ul>
-          </p>
-        </div>
-
       </div>
     </>
   );

@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { Link } from "react-router-dom";
-import { FaUser, FaShoppingCart, FaTimes } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { FaTimes } from "react-icons/fa";
 import Cart from "../../Cart/Cart";
 import "./Header.css";
 import Logo from "../../../images/logo.png";
 import Search from "../../Product/Search";
-
+import carticon from "../../../images/carticon.png";
+import wishlist from "../../../images/wishlist.png";
+import cartcount from "../../../images/cartcount.png";
+import Profile from "../../../images/Profile.png";
 const Header = () => {
+  const { cartItems } = useSelector((state) => state.cart);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCartClosing, setIsCartClosing] = useState(false);
 
@@ -36,6 +41,9 @@ const Header = () => {
           <div className="search">
             <Search />
           </div>
+          {/* <div className="search-icon-header">
+             <img src={searchicon} className="icon" alt="searchicon" />
+          </div> */}
 
           {/* Logo */}
           <div className="logo">
@@ -46,16 +54,22 @@ const Header = () => {
 
           {/* Icons */}
           <div className="icon-links">
-            <Link to="/login" aria-label="User Profile">
-              <FaUser className="icon" size={40} />
+          <Link to="/" aria-label="wishlist">
+              <img className="icon" src={wishlist} alt="wishlist" />
+            </Link>
+            <Link to="/login" aria-label="Profile">
+              <img className="icon" src={Profile} alt="profile" />
             </Link>
             <button
               className="cart-icon"
               aria-label="Shopping Cart"
               onClick={toggleCart}
             >
-              <FaShoppingCart className="icon" size={40} />
+              <img className="icon" src={carticon} alt="carticon" />
             </button>
+            <span className="cart-count-sec">
+               <img className="count-icon" src={cartcount} alt="countcount" /> <span className="cart-product-count">{cartItems.length}</span>
+            </span>
           </div>
         </div>
       </header>
@@ -77,7 +91,7 @@ const Header = () => {
           >
             <span className="cart-text">Cart</span>
             <button className="cart-close-btn" onClick={handleCloseCart}>
-              <FaTimes size={24} />
+              <FaTimes className="fa-close"/>
             </button>
 
             <Cart handleCloseCart={handleCloseCart} />

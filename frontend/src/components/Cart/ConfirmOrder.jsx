@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import CheckoutSteps from "./CheckoutSteps";
 import { useSelector } from "react-redux";
 import MetaData from "../layout/MetaData";
 import "./ConfirmOrder.css";
@@ -21,9 +20,7 @@ const ConfirmOrder = () => {
   const shippingCharges = subtotal > 1000 ? 50 : 80;
 
   const totalPrice = subtotal + shippingCharges;
-
-  const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state}, ${shippingInfo.pinCode}, ${shippingInfo.country}`;
-
+  
   const proceedToPayment = () => {
     const data = {
       subtotal,
@@ -39,10 +36,9 @@ const ConfirmOrder = () => {
   return (
     <Fragment>
       <MetaData title="Confirm Order" />
-      <CheckoutSteps activeStep={1} />
       <div className="confirmOrderPage">
         <div>
-          <div className="confirmshippingArea">
+          {/* <div className="confirmshippingArea">
             <Typography>Shipping Info</Typography>
             <div className="confirmshippingAreaBox">
               <div className="shippingInfoCon">
@@ -58,20 +54,23 @@ const ConfirmOrder = () => {
                 <span>{address}</span>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="confirmCartItems">
-            <Typography>Your Cart Items:</Typography>
             <div className="confirmCartItemsContainer">
               {cartItems &&
                 cartItems.map((item) => (
                   <div key={item.product}>
-                    <img src={item.image} alt="Product" />
-                    <Link to={`/product/${item.product}`}>
-                      {item.name}
-                    </Link>{" "}
                     <span>
-                      {item.quantity} X ₹{item.price} ={" "}
-                      <b>₹{item.price * item.quantity}</b>
+                    <img src={item.image} alt="Product" /><span className="quantity-value">{item.quantity}</span>
+                    <Link to={`/product/${item.product}`}>
+                      {item.name} <br />
+                      <span>100ml</span>
+                    </Link>{" "}
+
+                    </span>
+                    <span>
+                      {/* {item.quantity} X ₹{item.price} ={" "} */}
+                      ₹{item.price * item.quantity}
                     </span>
                   </div>
                 ))}
@@ -81,10 +80,9 @@ const ConfirmOrder = () => {
         {/*  */}
         <div>
           <div className="orderSummary">
-            <Typography>Order Summery</Typography>
             <div>
               <div>
-                <p>Subtotal:</p>
+                <p>Sub-Total:</p>
                 <span>₹{subtotal}</span>
               </div>
               <div>
@@ -95,10 +93,11 @@ const ConfirmOrder = () => {
             </div>
 
             <div className="orderSummaryTotal">
-              <p>
-                <b>Total:</b>
-              </p>
+              <p className="total-price">
+                Total:
               <span>₹{totalPrice}</span>
+              </p>
+              <p className="taxes-included-info">(MRP Inclusive of all Taxes)</p>
             </div>
 
             <button onClick={proceedToPayment}>Proceed To Payment</button>

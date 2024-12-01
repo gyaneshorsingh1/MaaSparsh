@@ -1,8 +1,42 @@
+html, body {
+  min-width: 320px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.League-Spartan{
+  font-family: "League Spartan", sans-serif;
+}
+@media (max-width: 318px) {
+  html, body {
+    width: 318px;
+    overflow-x: hidden;
+  }
+}
+
+
 *{
+  box-sizing: inherit;
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
+    font: 14px/1.4 "League Spartan", sans-serif;
 }
+
+.quick sand-regular {
+  font-family: "quick sand", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.quick sand-black {
+  font-family: "quick sand", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
 
 
 /* Chrome, Safari, Edge, Opera */

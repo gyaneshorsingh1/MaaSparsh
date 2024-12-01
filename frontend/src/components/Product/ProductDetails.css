@@ -2,40 +2,101 @@
   background-color: rgb(255, 255, 255);
   width: 100vw;
   max-width: 100%;
-  padding: 6vmax;
+  padding: 4vmax;
   box-sizing: border-box;
   display: flex;
+  margin: auto;
+  justify-content: center;
 }
 
 .ProductDetails > div {
-  width: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 2vmax;
+  align-items: center;
   box-sizing: border-box;
   border: 1px solid white;
+
 }
 
 .ProductDetails > div:last-child {
   align-items: flex-start;
 }
 
+.carousel{
+  height: 80vh;
+  width: 80vh;
+  display: flex;
+  justify-content: center;
+  align-self: end;
+  margin-bottom: 3vh;
+}
 .CarouselImage {
-  width: 20vmax;
-  border-radius: 8px;
+  width: 80vh;
+  height: 80vh;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: auto;
 }
 
+.thumbnail-container {
+  width: 80vh;
+  display: flex;
+  justify-content: center;
+  align-self: end;
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Space between thumbnails */
+}
+.thumbnail {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  transition: transform 0.3s, border-color 0.3s;
+}
 
+.thumbnail:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
 
+.thumbnail.active {
+  border-color: #007bff; /* Highlight the active thumbnail */
+}
+
+.p-details-desc{
+  padding: 0 15vh;
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+
+.detailsBlock-1{
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  row-gap: 25px;
+
+}
 .detailsBlock-1 > h2 {
   color: rgb(54, 54, 54);
-  font: 600 1.6vmax "Roboto";
+  font: 600 40px "quick sand", sans-serif;
+  margin: 0;
+  letter-spacing: 2px;
 }
 
 .detailsBlock-1 > p {
   color: rgba(54, 54, 54, 0.158);
-  font: 200 0.6vmax cursive;
+  font: 200 0.6vmax "League Spartan", sans-serif;
+}
+.MuiRating-icon {
+  font-size: large;
+  color: E5;
 }
 
 .detailsBlock-2 {
@@ -44,7 +105,6 @@
   align-items: center;
   border-top: 1px solid rgba(0, 0, 0, 0.205);
   border-bottom: 1px solid rgba(0, 0, 0, 0.205);
-  width: 70%;
   padding: 1vmax 0;
 }
 
@@ -54,18 +114,19 @@
 }
 
 .detailsBlock-3 {
-  width: 70%;
+
 }
 
 .detailsBlock-3 > h1 {
   text-align: left;
   color: rgba(17, 17, 17, 0.795);
-  font: 400 1.8vmax "Franklin Gothic Medium";
+  font: 400 1.8vmax "League Spartan", sans-serif;
   margin: 1vmax 0;
 }
 .detailsBlock-3-1 {
   display: flex;
-  align-items: center;
+  align-items: start;
+  flex-direction: column;
 }
 
 
@@ -79,12 +140,14 @@
   align-items: center;
   justify-content: center;
   width: fit-content;
-  border: 1px solid #E86F44E5;
-  border-radius: 5px;
+  border: 1px solid E5;
+  border-radius: 4px;
   overflow: hidden;
+  margin-top: 5vh;
 }
 
 .quantity-container input {
+  font-family: "League Spartan", sans-serif;
   width: auto; /* Adjust size as needed */
   text-align: center;
   border: none;
@@ -92,47 +155,57 @@
 }
 
 .quantity-container button {
+  font-family: "League Spartan", sans-serif;
   position: absolute;
   top: 0;
   bottom: 0;
   width: 30px; /* Adjust width as needed */
-  border: none;
-  background: #e87044c0;
+  border: 1px solid E5;
+  background: E5;
   cursor: pointer;
   color: aliceblue;
+  
 }
 
 .quantity-container .decrement {
   left: 0;
-  border-right: 1px solid #E86F44E5; /* Add divider */
+/* Add divider */
 }
 
 .quantity-container .increment {
   right: 0;
-  border-left: 1px solid #E86F44E5; /* Add divider */
+/* Add divider */
 }
 
 .quantity-container input,
-.quantity-container button, .addcart-btn {
-  height: 40px; /* Keep buttons and input aligned */
+.quantity-container button{
+  font-family: "League Spartan", sans-serif;
+  height: 40px; 
+
+  
 }
 
 .addcart-btn{
-  margin-left: 5vh;
-  border: 1px solid #E86F44E5;
+  height: 50px;
+  text-transform: uppercase;
+  font-family: "League Spartan", sans-serif;
+  border: 1px solid E5;
   background: #e87044;
-  border-radius: 12px;
+  border-radius: 4px;
   color: white;
-  padding: 0 0.9vmax;
   cursor: pointer;
+  width: 100%;
+  margin-top: 5vh;
+  letter-spacing: 3px;
+  font-size: 20px;
 
 }
 .addcart-btn:hover{
-  background: #9e3c18cd;
+  background: #de5d2ecd;
 }
 
 .quantity-container button:hover {
-  background: #E86F44E5; /* Optional hover effect */
+  background: E5; /* Optional hover effect */
 }
 
 
@@ -142,21 +215,27 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.205);
   padding: 1vmax 0;
   color: rgba(0, 0, 0, 0.651);
-  font: 400 1vmax "Roboto";
+  font: 400 1vmax "League Spartan", sans-serif;
   margin: 1vmax 0;
   text-align: start;
 }
-
+.detailsBlock-3>h1>p{
+  font: 600 16px "League Spartan", sans-serif;
+  letter-spacing: 1.8px;
+}
 .detailsBlock-4 {
   color: rgba(0, 0, 0, 0.897);
-  font: 500 1.2vmax sans-serif;
+  font: 500 1.2vmax "League Spartan", sans-serif;
   text-align: start;
 }
 
 .detailsBlock-4 > p {
-  color: rgba(0, 0, 0, 0.534);
-  font: 300 0.8vmax sans-serif;
+  color: rgb(0, 0, 0);
+  font: 400 18px "League Spartan", sans-serif;
   text-align: start;
+  letter-spacing:1.2px;
+  word-spacing: 4px;
+  margin-top: 5vh;
 }
 
 
@@ -244,6 +323,47 @@
   text-align: center;
   color: rgba(0, 0, 0, 0.548);
 }
+
+.about-product-details{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: wrap;
+  height: auto;
+  padding: 0 22vh;
+  margin: 0 0 10vh 0;
+}
+.about-product{
+  width: 55%;
+  height: auto;
+  padding: 2vmax;
+}
+.product-in-details{
+  width: 45%;
+  height: auto;
+  padding: 2vmax;
+}
+.about-product-details ul{
+  list-style-position: outside;
+}
+
+.about-product-details li{
+  line-height: 30px;
+  letter-spacing: 1px;
+  word-spacing: 3px;
+  font-size: 1.3vmax;
+  
+}
+
+.about-product-details h3{
+  font-weight: 600;
+  font-size: 30px;
+}
+
+
+
+
 
 @media screen and (max-width: 600px) {
 
@@ -377,5 +497,144 @@
   }
   .reviewCardComment {
     font: 300 3vw cursive;
+  }
+}
+
+
+
+.MuiButtonBase-root.MuiIconButton-root {
+  opacity: 1 !important; /* Force visibility */
+  visibility: visible !important; 
+}
+
+.carousel .MuiIconButton-root {
+  z-index: 10;
+}
+
+.MuiIconButton-root:first-of-type {
+  left: -2%; /* 5% from the left edge */
+  opacity: 0%;
+}
+
+.MuiIconButton-root:last-of-type {
+  right: 5%; /* 5% from the right edge */
+}
+
+
+
+
+
+
+
+/* Container for the FAQ section */
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  height: auto;
+  box-sizing: border-box;
+}
+
+/* Heading for the FAQ section */
+.faq-container h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* FAQ list */
+.faq-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Each FAQ item */
+.faq-item {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 15px;
+  transition: background-color 0.3s;
+}
+
+/* FAQ item hover effect */
+.faq-item:hover {
+  background-color: #e0f7fa;
+}
+
+/* FAQ question styling */
+.faq-item strong {
+  font-size: 1.1rem;
+  color: #00796b;
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.faq-question{
+  display: flex;
+  justify-content: space-between;
+}
+
+.faq-answer{
+  transition: opacity 0.3s ease, height 0.3s ease; 
+}
+
+/* FAQ answer styling */
+.faq-item p {
+  font-size: 1rem;
+  color: #555;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .faq-container {
+    padding: 15px;
+  }
+
+  .faq-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .faq-item {
+    padding: 12px;
+  }
+
+  .faq-item strong {
+    font-size: 1rem;
+  }
+
+  .faq-item p {
+    font-size: 0.95rem;
+  }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+  .faq-container {
+    padding: 10px;
+  }
+
+  .faq-container h2 {
+    font-size: 1.2rem;
+  }
+
+  .faq-item {
+    padding: 10px;
+  }
+
+  .faq-item strong {
+    font-size: 0.9rem;
+  }
+
+  .faq-item p {
+    font-size: 0.85rem;
   }
 }
