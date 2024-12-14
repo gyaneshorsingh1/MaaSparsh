@@ -1,11 +1,20 @@
 import React from "react";
 import "./About.css";
 
-import aboutBanner from "./aboutImages/about-banner.png";
+import aboutBanner from "./aboutImages/aboutBanner.jpg";
 import aboutfooterbanner from "./aboutImages/about-footer-banner.png";
 import babyimage from "./aboutImages/baby-img.png";
 import hearthand from "./aboutImages/heart-hand.png";
 import babyfoot from "./aboutImages/baby-foot.png";
+import beericon from "./aboutImages/beer-icon.png";
+import caricon from "./aboutImages/car-icon.png";
+import ballicon from "./aboutImages/ball-icon.png";
+import lolipop from "./aboutImages/lolipop-icon.png";
+import babyhorse from "./aboutImages/baby-horse-icon.png";
+import babyear from "./aboutImages/babear-top.png";
+import magicstick from "./aboutImages/magic-stick-icon.png";
+
+
 
 import downaboutbanner from "./aboutImages/down-about-banner.png";
 
@@ -14,10 +23,9 @@ import proof2 from "../../images/proof2.png";
 import proof3 from "../../images/proof3.png";
 import proof4 from "../../images/proof4.png";
 import proof5 from "../../images/proof5.png";
-import proof6 from "./aboutImages/hand-leaf.png";
-import proof7 from "./aboutImages/peple-leaf.png";
-import mixbanner from "./aboutImages/about-mix-banner.png";
-import greenies from "./aboutImages/about-bannerlast.png";
+
+import formulationBanner from "./aboutImages/formulations-banner.png"
+
 
 const About = () => {
   return (
@@ -29,12 +37,6 @@ const About = () => {
             className="about-banner-img"
             alt="about banner"
           />
-          <h2>About Us</h2>
-          <p>
-            Cocooning your baby in the luxury of nature through holistically
-            crafted formulations
-          </p>
-          <img src="/logo.png" alt=" maasparsh logo" className="about-logo" />
         </div>
 
         <div className="about-2">
@@ -48,13 +50,19 @@ const About = () => {
             ensuring the purest touch for your baby's delicate skin.
           </p>
         </div>
-        <div className="about-3">
-          <img src={aboutfooterbanner} alt="about footer banner" />
-        </div>
+        
 
         <div className="about-4">
           <h2>Our Story</h2>
           <img src={babyimage} alt="baby image" />
+          <img src={beericon} alt="" className="about-icon1" />
+          <img src={caricon} alt="" className="about-icon2" />
+          <img src={ballicon} alt="" className="about-icon3" />
+          <img src={lolipop} alt="" className="about-icon4" />
+          <img src={babyhorse} alt="" className="about-icon6" />
+          <img src={babyear} alt="" className="about-icon7" />
+          <img src={magicstick} alt="" className="about-icon8" />
+
           <div className="about-4-p">
             <p>
               At MaaSparsh, we embrace the timeless wisdom of Ayurveda to bring
@@ -77,16 +85,22 @@ const About = () => {
           </h2>
         </div>
 
-        {/* <div className='our-mission-values'>
+
+        <div className='our-mission-values'>
                 <h2>Our Mission & Our Values</h2>
                 <div className='our-mission-values-sec'>
-                    <img src={hearthand} alt="heart-hand" className='grid-item item1'/>
-                    <p className='grid-item item2'>At MaaSparsh, we promise purity in every drop, delivering Ayurvedic care rooted in the wisdom of age-old traditions. Our products are thoughtfully crafted using nature’s finest ingredients, ensuring a perfect balance for your baby’s wellness. From nurturing delicate skin to strengthening hair and supporting overall growth, we prioritize your baby’s holistic care. Each formulation is a testament to our commitment to quality and authenticity, offering gentle yet effective solutions. With MaaSparsh, embrace the goodness of Ayurveda for your little one’s healthy and happy journey.</p>
-                    
-                    <p className='girs-item item3'>MaaSparsh brings holistic wellness by embracing nature’s purest essence, lovingly crafted to nourish your baby. Rooted in Ayurvedic traditions, we source the finest ingredients directly from nature’s bounty to provide stability and care. Every product is designed to nurture your little one with the gentle touch of authenticity. From the hills to your home, MaaSparsh delivers the essence of nature for your baby’s wellness and happiness."</p>
-                    <img src={babyfoot} alt="baby foot" className='grid-item item4' />
+                  <div>
+                    <img src={hearthand} alt="heart-hand" className='heart-hand'/>
+                    <p>MaaSparsh ,brings holistic wellness by embracing nature’s purest essence, lovingly crafted to nourish your baby. Rooted in Ayurvedic traditions, we source the finest ingredients directly from nature’s bounty to provide stability and care. Every product is designed to nurture your little one with the gentle touch of authenticity. From the hills to your home, MaaSparsh delivers the essence of nature for your baby’s wellness and happiness.</p>
+                  </div>
+                  <div>
+                    <p>At MaaSparsh, we promise purity in every drop, delivering Ayurvedic care rooted in the wisdom of age-old traditions. Our products are thoughtfully crafted using nature’s finest ingredients, ensuring a perfect balance for your baby’s wellness. From nurturing delicate skin to strengthening hair and supporting overall growth, we prioritize your baby’s holistic care. Each formulation is a testament to our commitment to quality and authenticity, offering gentle yet effective solutions. With MaaSparsh, embrace the goodness of Ayurveda for your little one’s healthy and happy journey.</p>
+                    <img src={babyfoot} alt="baby foot" className='baby-foot' />
+
+                  </div>
+                
                 </div>
-            </div> */}
+            </div>
 
         <div className="about-6">
           <img src={downaboutbanner} alt="" />
@@ -108,32 +122,15 @@ const About = () => {
           <div className="proofs">
             <div className="proof-icons">
               <img src={proof1} alt="proof1" />
-              <img src={proof3} alt="proof3" />
-              <img src={proof6} alt="proof6" />
-              <img src={proof7} alt="proof7" />
-              <img src={proof4} alt="proof4" />
               <img src={proof2} alt="proof2" />
+              <img src={proof3} alt="proof3" />
+              <img src={proof4} alt="proof4" />
               <img src={proof5} alt="proof5" />
             </div>
-            <div className="proof-titles">
-              <h4>Tested</h4>
-              <h4>Chemical Free</h4>
-              <h4>Organic</h4>
-              <h4>Derma Safe</h4>
-              <h4>No Hard</h4>
-              <h4>Pure Aurvedic</h4>
-              <h4>Make in India</h4>
-            </div>
           </div>
-          <div className="mix-banner">
-            <img src={mixbanner} alt="mix banner" />
+          <div>
+            <img className="formulation-banner" src={formulationBanner} alt="" />
           </div>
-          <div className="greenies-banner">
-            <img src={greenies} alt="greenies banner" />
-          </div>
-        </div>
-        <div className="about-footer-banner">
-          <img src={aboutfooterbanner} alt=" about footer banner" />
         </div>
       </div>
     </>

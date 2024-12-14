@@ -7,22 +7,27 @@ const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 
 
 
-
 //create new order 
 
 exports.newOrder = catchAsyncErrors(async (req,res,next)=>{
 
     const order = await Order.create(req.body);
 
-
     res.status(201).json({
         success:true,
         order,
     })
-
-
 })
 
+
+//new order with COD
+exports.newCodOrder = catchAsyncErrors(async (req, res, next)=>{
+    const order = await Order.create(req.body);
+    res.status(201).json({
+       success:true,
+       order,
+    });
+});
 
 //get single orders // 
 
@@ -31,7 +36,6 @@ exports.getSingleOrder = catchAsyncErrors( async(req,res,next)=>{
 
     if(!order){
         return next(new ErrorHandler("Order not found with this Id",404));
-
     }
 
     res.status(200).json({

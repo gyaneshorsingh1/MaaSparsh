@@ -33,10 +33,10 @@ const Sidebar = () => {
           <PeopleIcon /> Users
         </p>
       </Link>
-      <Link to="/admin/reviews">
+      <Link to="/admin/product/new">
         <p>
           <RateReviewIcon />
-          Reviews
+          New Product
         </p>
       </Link>
     </div>

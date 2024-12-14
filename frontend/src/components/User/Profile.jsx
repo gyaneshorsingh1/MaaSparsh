@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Profile.css";
 import MyOrders from "../Order/Myorders";
 import { FaArrowAltCircleRight } from "react-icons/fa";
-import leaf from "../../images/leaf.png"
+import leaf from "../../images/leaf-2.png"
 const Profile = () => {
   const { user, loading, isAuthenticated } = useSelector((state) => state.user);
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ const Profile = () => {
       <div className="profileContainer">
         <img className="profile-leaf" src={leaf} alt="" />
         <img className="profile-leaf-2" src={leaf} alt="" />
-        <h2 className="quick sand-blacks">Account</h2>
+        <h1>Account</h1>
         <div className="accountContainer">
           <div>
             <p className="holder-name quick sand-regular">Holder: {user.name}</p>

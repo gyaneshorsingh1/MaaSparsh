@@ -147,14 +147,13 @@ header {
     object-fit: contain;
     cursor: pointer;
     transition: color 0.3s ease;
-    color: rgb(92, 184, 165);
   }
   .cart-count-sec .count-icon{
-    width: 18x;
+    width: 18px;
     height: 18px;
     position: absolute;
     left: -1.4px;
-    top: -8.5px;
+    top: -10px;
   
   }
   .cart-count-sec .cart-product-count{
@@ -181,6 +180,9 @@ header {
     height: 30px;
     object-fit: contain;
 
+  }
+  .wishlist{
+    display: none;
   }
   .top-bar{
     width: 100%;
@@ -213,10 +215,9 @@ header {
     object-fit: contain;
     cursor: pointer;
     transition: color 0.3s ease;
-    color: rgb(92, 184, 165);
   }
   .cart-count-sec .count-icon{
-    width: 152x;
+    width: 12px;
     height: 12px;
     position: absolute;
     left: 0;
@@ -255,8 +256,6 @@ header {
     display: flex;
     position: absolute;
     left: 14px;
-
-    color: rgb(92, 184, 165);
   }
   .search{
     position: absolute;
@@ -339,7 +338,7 @@ header {
 .cart-container {
   width: 60%;
   max-width: 550px;
-  background-color: #fff;
+  background-color: #f6f6f6;
   height: 100%;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -367,13 +366,13 @@ header {
 .cart-text{
   position: absolute;
   top: 15px;
-  left: 10px;
+  left: 20px;
   background: none;
   border: none;
   cursor: pointer;
   z-index: 101;
   font: 600 2.5vmax "League Spartan", sans-serif;
-  color: rgb(92, 184, 165);
+  color: #c95941;
 }
 
 /* Close Button */
@@ -386,10 +385,10 @@ header {
   border: none;
   cursor: pointer;
   z-index: 101;
-  color: rgb(92, 184, 165);
 }
 .fa-close{
-  font-size: 40px;
+  font-size: 30px;
+  color: #7A301B;
 }
 .cart-close-btn:hover {
   color: #dd5050;

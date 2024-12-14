@@ -68,7 +68,7 @@
   .hamburger {
     display: none;
     cursor: pointer;
-    color: rgb(92, 184, 165);
+    color: #7A301B;
     z-index: 15;
   }
   
@@ -84,7 +84,7 @@
       left: 0;
       flex-direction: column;
       align-items: flex-start;
-      background-color: rgba(184, 219, 195, 0.858);
+      background-color: #ffbe98da;
       backdrop-filter: blur(7px);
       padding: 10px 20px;
       gap: 1rem;
@@ -150,7 +150,7 @@
       top: -8vh;
       width: 90%;
       height: 94vh;
-      background-color: rgba(219, 225, 221, 0.915);
+      background-color: #ffbe98da;
       backdrop-filter: blur(1px)
     }
     .mobile-navbar{
@@ -164,7 +164,7 @@
       flex-direction: row;
       padding-left: 10px;
       gap: 15px;
-      background-color: rgb(209, 232, 216);
+      background-color: #ffbe98da;
       overflow-x: scroll;
     }
     .mobile-navbar>div{

@@ -3,7 +3,6 @@ import "./CheckoutSteps.css";
 import { Typography, Stepper, StepLabel, Step } from "@mui/material"; 
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck';
 
 const CheckoutSteps = ({activeStep}) => {
 
@@ -11,10 +10,6 @@ const CheckoutSteps = ({activeStep}) => {
         {
             label: <Typography>Shipping Details</Typography>,
             icon: <LocalShippingIcon />,
-        },
-        {
-            label: <Typography>Confirm Order</Typography>,
-            icon: <LibraryAddCheckIcon />,
         },
         {
             label: <Typography>Payment</Typography>,
@@ -27,13 +22,13 @@ const CheckoutSteps = ({activeStep}) => {
     }
 
   return (
-    <Stepper alternativeLabel activeStep={activeStep} style={stepStyles}>
+    <Stepper alternativeLabel activeStep={activeStep} style={stepStyles} className='checkout-status'>
       {steps.map((item, index) => (
         <Step key={index} active={activeStep === index} completed={activeStep >= index}>
           <StepLabel
             StepIconProps={{
               style: {
-                color: activeStep >= index ? "tomato" : "rgba(0, 0, 0, 0.649)",
+                color: activeStep >= index ? "#7A301B" : "rgba(0, 0, 0, 0.649)",
               }
             }}
           >

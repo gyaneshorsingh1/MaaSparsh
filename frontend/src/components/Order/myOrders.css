@@ -7,10 +7,9 @@
 #myOrdersHeading {
   color: #C95741e5;
   margin-bottom: 10px;
-  font-family: "quick sand", serif;
+  font-family: "quick sand", sans-serif;
   font-weight: 900;
   font-size: 2.9vmax;
-  font-style: normal;
   text-align: center;
 }
 
@@ -34,6 +33,8 @@
 .orderHeaderItem {
   text-align: left;
   color: #333; /* Dark text color for readability */
+  font-size: 24px;
+  font-weight: 600;
 }
 
 .orderRow {

@@ -40,6 +40,53 @@
   margin: auto;
 }
 
+.carousel-container {
+  position: relative;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #7A301A; /* Background color */
+  color: #fff; /* Icon color */
+  border: none; /* Remove border */
+  border-radius: 50%; /* Make button circular */
+  width: 30px; /* Button width */
+  height: 30px; /* Button height */
+  font-size: 18px; /* Icon font size */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer; /* Add a pointer cursor */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+  z-index: 2; /* Ensure buttons are above the carousel */
+}
+
+
+
+.carousel-button-prev {
+  left: 10px; /* Position the Prev button to the left */
+}
+
+.carousel-button-next {
+  right: 10px; /* Position the Next button to the right */
+}
+
+.button1{
+  background: #00000000;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0;
+  font-size: 25px;
+  color: #f6f6f6c5;
+}
+.button1:hover{
+  background:#00000000;
+}
+
 .thumbnail-container {
   width: 80vh;
   display: flex;
@@ -113,9 +160,7 @@
   color: rgba(0, 0, 0, 0.699);
 }
 
-.detailsBlock-3 {
 
-}
 
 .detailsBlock-3 > h1 {
   text-align: left;
@@ -140,8 +185,8 @@
   align-items: center;
   justify-content: center;
   width: fit-content;
-  border: 1px solid E5;
-  border-radius: 4px;
+  border: 2px solid #C95741;
+  border-radius: 6px;
   overflow: hidden;
   margin-top: 5vh;
 }
@@ -160,20 +205,29 @@
   top: 0;
   bottom: 0;
   width: 30px; /* Adjust width as needed */
-  border: 1px solid E5;
-  background: E5;
   cursor: pointer;
   color: aliceblue;
   
 }
 
 .quantity-container .decrement {
+  font-size: 30px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0;
   left: 0;
+  background: #e87044b3;
 /* Add divider */
 }
 
 .quantity-container .increment {
   right: 0;
+  font-size: 30px;
+  padding: 0;
+  background: #e87044;
+  border-radius: 0;
 /* Add divider */
 }
 
@@ -189,9 +243,8 @@
   height: 50px;
   text-transform: uppercase;
   font-family: "League Spartan", sans-serif;
-  border: 1px solid E5;
-  background: #e87044;
-  border-radius: 4px;
+  border: 1px solid #e87044;
+  background: #C95741;
   color: white;
   cursor: pointer;
   width: 100%;
@@ -205,7 +258,7 @@
 }
 
 .quantity-container button:hover {
-  background: E5; /* Optional hover effect */
+  background: #de5d2ecd; /* Optional hover effect */
 }
 
 
@@ -239,27 +292,23 @@
 }
 
 
-.review-btn-div{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
+
 
 .submitReview {
   border: none;
-  background-color: tomato;
-  font: 500 0.7vmax "Roboto";
+  background-color: #7A301A;
   border-radius: 20px;
   padding: 0.6vmax 2vmax;
-  width: 20%;
+  width: 200px;
+  margin-left: 10vh;
   color: white;
   cursor: pointer;
   transition: all 0.2s;
   outline: none;
 }
 .submitReview:hover {
-  background-color: rgb(223, 87, 62);
-  transform: scale(1.01);
+  background-color: #7a301af1;
+  letter-spacing: 2px;
 }
 
 .submitDialog {
@@ -271,27 +320,26 @@
   margin: 1vmax 0;
   outline: none;
   padding: 1rem;
-  font: 300 1rem "Roboto";
+  font: 300 1rem;
 }
 
-.reviewsHeading {
+.reviewsHeading{
   color: #000000be;
-  font: 500 1.4vmax "Roboto";
-  text-align: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.226);
-  padding: 1vmax;
+  font: 600 1.4vmax "quick sand", sans-serif;
+  text-align: start;
   width: 20vmax;
-  margin: auto;
-  margin-bottom: 4vmax;
+  margin-top: 5vh;
+  margin-left: 10vh;
+  margin-bottom: 1vmax;
 }
 .reviews {
   display: flex;
   overflow: auto;
+  margin-bottom: 10vh;
 }
 
 .reviewCard {
   flex: none;
-
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.226);
   border: 0.5px solid rgba(56, 56, 56, 0.056);
   width: 90vmax;
@@ -303,23 +351,36 @@
 }
 .reviewCard-img-name{
   display: flex;
-  align-items: center;
+  height: fit-content;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
 }
 .reviewCard .reviewCard-img-name img {
-  width: 4vmax;
+  display: none;
+  margin: auto;
+  width: 35px;
+  height: 100%;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
 }
 .reviewCard .reviewCard-img-name p {
   color: rgba(0, 0, 0, 0.734);
-  font: 600 0.9vmax "Roboto";
+  font: 600 1.5vmax "quick sand", sans-serif;
 }
 .reviewCardComment {
   color: rgba(0, 0, 0, 0.849);
-  font: 300 1vmax cursive;
+  font: 300 1.2vmax "League Spartan", sans-serif;
   padding-left: 5px;
 }
 
+.star-rating{
+  font-size: 30px;
+}
+
 .noReviews {
-  font: 400 1.3vmax "Gill Sans";
+  font: 400 1.3vmax "League Spartan", sans-serif;
   text-align: center;
   color: rgba(0, 0, 0, 0.548);
 }
@@ -362,7 +423,44 @@
 }
 
 
+.tested-icons{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+}
+.tested-icons> img{
 
+  width: 64px;
+}
+
+/* ingredients style */
+
+.ingredients{
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  width: 100%;
+  gap: 5vw;
+}
+.ingredients div{
+  background: #7a301b35;
+  height: 180px;
+  width: 180px;
+  border-radius: 15%;
+}
+.ingredients> div> img{
+  height: 180px;
+  width: 180px;
+
+  background: #7a301b35;
+  border-radius: 15%;
+  object-fit: cover;
+
+}
 
 
 @media screen and (max-width: 600px) {
@@ -496,7 +594,7 @@
     font: 600 3vw "Roboto";
   }
   .reviewCardComment {
-    font: 300 3vw cursive;
+    font: 300 3vw;
   }
 }
 
@@ -534,6 +632,20 @@
   padding: 20px;
   height: auto;
   box-sizing: border-box;
+  position: relative;
+}
+.faq-container .leaf, .faq-container .leaf2{
+  position: absolute;
+  width: 5vw;
+  top: 0;
+}
+.faq-container .leaf{
+  transform: rotate(-120deg) rotateX(180deg);
+  left: 1vw;
+}
+.faq-container .leaf2{
+  right: 2vw;
+  rotate: -50deg;
 }
 
 /* Heading for the FAQ section */
@@ -554,7 +666,7 @@
 
 /* Each FAQ item */
 .faq-item {
-  background-color: #fff;
+  background-color: #c958412c;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
@@ -564,13 +676,13 @@
 
 /* FAQ item hover effect */
 .faq-item:hover {
-  background-color: #e0f7fa;
+  background-color: #c9584141;
 }
 
 /* FAQ question styling */
 .faq-item strong {
   font-size: 1.1rem;
-  color: #00796b;
+  color: #C95741;
   display: block;
   margin-bottom: 10px;
   font-weight: bold;
@@ -591,6 +703,14 @@
   color: #555;
   margin: 0;
   line-height: 1.5;
+}
+
+.product-suggestions{
+  font: 600 40px "quick sand", sans-serif;
+  color: #7A301B;
+  padding-left: 10vh;
+  background: #ffbe981d;
+  padding-top: 7vh;
 }
 
 /* Responsive styling */
@@ -637,4 +757,25 @@
   .faq-item p {
     font-size: 0.85rem;
   }
+}
+
+
+
+
+.ProductDetails{
+  position: relative;
+}
+.ProductDetails .leaf3{
+   position: absolute;
+   left: 2vw;
+   width: 5.5vw;
+   top: 32vh;
+   transform: rotateX(180deg) rotate(120deg);
+}
+.ProductDetails .leaf4{
+  position: absolute;
+  right: 2vw;
+  width: 5.5vw;
+  top: 32vh;
+  transform: rotate(-50deg);
 }

@@ -1,10 +1,3 @@
-/* General Reset */
-h1,h2, p {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  box-sizing: border-box;
-}
 
 .quick sand-blacks{
   text-align: center;
@@ -23,10 +16,12 @@ h1,h2, p {
 
 .profileContainer h1 {
   text-align: center;
-  margin-bottom: 20px;
-  font-size: 2rem;
+  padding: 50px 0;
+  font-size: 40px;
   color: #C95741E5;
+  font-family: "quick sand", sans-serif;
 }
+
 
 .accountContainer {
   display: flex;
@@ -81,16 +76,18 @@ h1,h2, p {
 .profile-leaf{
   position: absolute;
   top: 1.5vh;
-  width: 12vw;
+  width: 8vw;
+  height: 10vw;
   left: 10vh;
-  rotate: 120deg;
+  rotate: 10deg;
 }
 .profile-leaf-2{
   position: absolute;
   top: 1.5vh;
   right: 9vh;
-  width: 12vw;
-  rotate: -120deg;
+  width: 8vw;
+  height: 10vw;
+  rotate: -10deg;
   transform: scaleX(-1);
   transition: transform 0.5s ease;
 }

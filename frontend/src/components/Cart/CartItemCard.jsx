@@ -11,7 +11,7 @@ const CartItemCard = ({ item, deleteCartItems }) => {
       <div>
         <Link to={`/product/${item.product}`}>{item.name}</Link>
         <span>{`Price: ₹${item.price}`}</span>
-        <p onClick={() => deleteCartItems(item.product)}><DeleteIcon style={{ color: "red", cursor: "pointer", fontSize: "3.5vmax" }} /></p>
+        <p onClick={() => deleteCartItems(item.product)}><DeleteIcon style={{ color: "#7A301B", cursor: "pointer", fontSize: "2.2vmax" }} /></p>
       </div>
     </div>
   );

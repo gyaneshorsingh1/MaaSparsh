@@ -1,0 +1,72 @@
+#route-path{
+    display: flex;
+    height: 4vh;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    padding-left: 3vh;
+    font-size: 18px;
+    font-family: "League Spartan", sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: capitalize;
+    color: #C95741E5;
+}
+
+ .route-path{
+    display: flex;
+    height: 4vh;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 18px;
+    font-family: "League Spartan", sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: capitalize;
+    color: #C95741E5;
+}
+
+
+
+.product-details-path{
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    padding-left: 30px;
+    font-size: 18px;
+    font-family: "League Spartan", sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: capitalize;
+    color: #C95741E5;
+}
+
+
+.product-details-path  .route-path{
+    display: flex;
+    height: 4vh;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 18px;
+    font-family: "League Spartan", sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: capitalize;
+    color: #C95741E5;
+}
+
+.route-path-span{
+    text-transform: capitalize;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    font-size: 18px;
+    font-family: "League Spartan", sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    color: #C95741E5;
+}

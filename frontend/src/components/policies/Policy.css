@@ -6,7 +6,6 @@
 }
 
 .policies{
-    font-family: "SUSE", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
@@ -16,33 +15,29 @@
     
 
 }
+h1,h2 {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 24px;
+    font-family: "quick sand", sans-serif;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: #7A301A;
+  }
+  
 p{
-    font-family: "SUSE", sans-serif;
+    font-family: "League Spartan", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    
-    margin: 1vh 0;
+    letter-spacing: 1px;
 }
 
-h2{
-    color: rgb(190, 115, 103);
-    
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
-    font-size: 18px;
-    margin: 5vh 0 1vh 0;
-}
-h1{
-    color: rgb(155, 52, 36);
-    
-    font-optical-sizing: auto;
-    font-weight: 400;
-    width: 100%;
-    margin: 8vh 0;
-    text-align: center;
-}
+
+
+
+
 
 
 .policy-area ul li{

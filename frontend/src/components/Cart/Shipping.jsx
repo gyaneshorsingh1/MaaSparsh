@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Shipping.css";
-import "./ConfirmOrder.css"
+import "./ConfirmOrder.css";
 import { useSelector, useDispatch } from "react-redux";
 import { saveShippingInfo } from "../../actions/cartAction.jsx";
 import MetaData from "../layout/MetaData.jsx";
@@ -13,6 +13,8 @@ import TransferWithinAStationIcon from "@mui/icons-material/TransferWithinAStati
 import { Country, State } from "country-state-city";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
+import CheckoutSteps from "./CheckoutSteps.jsx";
+import BroughtTogether from "./BroughtTogether.jsx";
 
 const Shipping = () => {
   const dispatch = useDispatch();
@@ -33,7 +35,7 @@ const Shipping = () => {
     (acc, item) => acc + item.quantity * item.price,
     0
   );
-  const shippingCharges = subtotal > 1000 ? 50 : 80;
+  const shippingCharges = 0;
   const totalPrice = subtotal + shippingCharges;
 
   // Handle form submission
@@ -64,11 +66,12 @@ const Shipping = () => {
   return (
     <>
       <MetaData title="Shipping Details" />
+      <CheckoutSteps activeStep={0} />
       <div className="shippingContainer">
         <div className="shippingBox">
           <h2 className="shipping-title">Account</h2>
           <div className="contact-details">
-            {/* <p>{user.name}</p> */}
+            <p>{user.name}</p>
             <p>{user.email}</p>
           </div>
 
@@ -91,16 +94,26 @@ const Shipping = () => {
                   ))}
               </select>
             </div>
-            <div>
-              <HomeIcon />
-              <input
-                type="text"
-                placeholder="Address"
-                required
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-              />
-            </div>
+
+            {country && (
+              <div>
+                <TransferWithinAStationIcon />
+                <select
+                  required
+                  value={state}
+                  onChange={(e) => setState(e.target.value)}
+                >
+                  <option value="">State</option>
+                  {State &&
+                    State.getStatesOfCountry(country).map((item) => (
+                      <option key={item.isoCode} value={item.isoCode}>
+                        {item.name}
+                      </option>
+                    ))}
+                </select>
+              </div>
+            )}
+
             <div>
               <LocationCityIcon />
               <input
@@ -109,6 +122,16 @@ const Shipping = () => {
                 required
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
+              />
+            </div>
+            <div>
+              <HomeIcon />
+              <input
+                type="text"
+                placeholder="Full Address, Home number"
+                required
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
               />
             </div>
             <div>
@@ -133,24 +156,7 @@ const Shipping = () => {
               />
             </div>
 
-            {country && (
-              <div>
-                <TransferWithinAStationIcon />
-                <select
-                  required
-                  value={state}
-                  onChange={(e) => setState(e.target.value)}
-                >
-                  <option value="">State</option>
-                  {State &&
-                    State.getStatesOfCountry(country).map((item) => (
-                      <option key={item.isoCode} value={item.isoCode}>
-                        {item.name}
-                      </option>
-                    ))}
-                </select>
-              </div>
-            )}
+            
 
             <input
               type="submit"
@@ -170,29 +176,35 @@ const Shipping = () => {
                   <span>
                     <img src={item.image} alt={item.name} />
                     <Link to={`/product/${item.product}`}>
-                      {item.name} <br />
-                      <span>100ml</span>
+                      {item.name} <span className="item-quantity">( {item.quantity} ) </span> <br />
+                      <span>200ml</span>
                     </Link>
                   </span>
-                  <span>₹{item.price * item.quantity}</span>
+                  <span className="sub-total-sec">₹{item.price * item.quantity}</span>
                 </div>
               ))}
           </div>
           <div className="orderSummary">
-            <div>
+            <div className="sub-total-order">
               <p>Sub-Total:</p>
               <span>₹{subtotal}</span>
             </div>
-            <div>
+            <div className="sub-total-order">
               <p>Shipping Charges:</p>
-              <span>₹{shippingCharges}</span>
+              <span>₹0(Free Delivery)</span>
             </div>
             <div className="orderSummaryTotal">
               <p className="total-price">
                 Total: <span>₹{totalPrice}</span>
               </p>
-              <p className="taxes-included-info">(MRP Inclusive of all Taxes)</p>
+              <p className="taxes-included-info">
+                (MRP Inclusive of all Taxes)
+              </p>
             </div>
+          </div>
+          <div className="brought-together">
+            <h2>Frequently Brought together</h2>
+            <BroughtTogether />
           </div>
         </div>
       </div>

@@ -66,6 +66,8 @@ import Gifting from "./components/Product/Gifting.jsx";
 import { ToastContainer } from "react-toastify"; 
 import 'react-toastify/dist/ReactToastify.css';
 import ComingSoon from "./components/Product/ComingSoon.jsx";
+import WhatsAppButton from "./components/layout/WhatsAppButton.jsx";
+import DisplayRoutePath from "./DisplayRoutePath.jsx";
 
 function App() {
 
@@ -85,8 +87,9 @@ function App() {
   return (
     <Router>
       <Header />
-      
       <Navbar />
+      <WhatsAppButton />
+      <DisplayRoutePath />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />

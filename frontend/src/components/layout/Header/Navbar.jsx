@@ -78,11 +78,7 @@ const Navbar = () => {
               Our Exclusives
             </Link>
           </li>
-          <li>
-            <Link to="/travel-kit" onClick={closeNav}>
-              Travel Kit
-            </Link>
-          </li>
+          
           <li>
             <Link to="/body-care" onClick={closeNav}>
               Body Care
@@ -91,6 +87,11 @@ const Navbar = () => {
           <li>
             <Link to="/hair-care" onClick={closeNav}>
               Hair Care
+            </Link>
+          </li>
+          <li>
+            <Link to="/about" onClick={closeNav}>
+              About Us
             </Link>
           </li>
         </ul>

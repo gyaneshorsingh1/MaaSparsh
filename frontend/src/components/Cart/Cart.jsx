@@ -82,7 +82,7 @@ const Cart = ({ handleCloseCart }) => {
                     +
                   </button>
                 </div>
-                <p className="cartSubtotal">:{`₹${
+                <p className="cartSubtotal">:{`₹ ${
                   item.price * item.quantity
                 }`}</p>
               </div>
@@ -91,11 +91,14 @@ const Cart = ({ handleCloseCart }) => {
             <div className="cartGrossProfit">
               <div></div>
               <div className="cartGrossProfitBox">
-                <p>Gross Total</p>
-                <p>{`₹${cartItems.reduce(
+                <p>Sub Total</p>
+                <p className="total-price-text">{`₹${cartItems.reduce(
                   (acc, item) => acc + item.quantity * item.price,
                   0
-                )}`}</p>
+                )}`}
+                <br />
+                <span>( MRP Inclusive of all Taxes )</span>
+                </p>
               </div>
               <div className="tax-info-cart">Tax included. <span style={{color:"#e87044e6"}}>Shipping</span> calculated at checkout. Orders will be processed in INR.</div>
               <div className="checkOutBtn">

@@ -54,7 +54,7 @@
 }
 
 .PaymentOrderSummary > button {
-  background-color: tomato;
+  background-color: #c95841e8;
   color: white;
   width: 100%;
   padding: 1vmax;
@@ -62,7 +62,7 @@
   margin: auto;
   cursor: pointer;
   transition: 0.5s;
-  font: 400 1vmax "Roboto";
+  font: 400 1vmax "quick sand", sans-serif;
   margin-bottom: 10px;
   border-radius: 6px;
 }

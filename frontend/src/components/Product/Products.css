@@ -1,19 +1,28 @@
 .productsHeading {
     margin: 2vmax auto;
     width: 50vh;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.171);
-    padding: 2vmax;
-    color: rgba(0, 0, 0, 0.678);
-    font: 500 1.5vmax "Roboto";
+    border-bottom: 4px solid #7A301A;
+    padding: 1vmax;
+    color: #7A301A;
+    font: 600 3vmax "quick sand", sans-serif;
     text-align: center;
+    font-family: "quick sand", sans-serif;
   }
-  
+  .ProductBanner >img{
+    width: 100%;
+    height: auto;
+  }
+  .product-list{
+    
+    height: auto;
+  }
   .products {
+    background: #ffbe9836;
     display: flex;
     flex-wrap: wrap;
-    padding: 0 5vmax;
+    padding:  5vmax;
     justify-content: center;
-    min-height: 40vh;
+    min-height: 60vh;
     gap: 40px;
     margin-bottom: 10vh;
   }

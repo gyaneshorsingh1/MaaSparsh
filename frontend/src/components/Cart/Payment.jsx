@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import CheckoutSteps from "./CheckoutSteps";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../../actions/cartAction";
@@ -7,9 +7,8 @@ import "./Payment.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Typography } from "@mui/material"; // Updated import for Typography (Material UI v5)
 import { toast } from "react-toastify";
-import axios from "axios";
 
-import { clearErrors, createOrder } from "../../actions/orderAction";
+import { clearErrors, createCodOrder, createOrder } from "../../actions/orderAction";
 import axiosAPI from "../../actions/axiosInstance";
 const Payment = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
@@ -25,12 +24,52 @@ const Payment = () => {
   const shippingCharges = orderInfo.shippingCharges;
   const subtotal = orderInfo.subtotal;
   const userId = user._id;
-  console.log(shippingCharges);
+
+  const [loading, setLoading] = useState(false);
+
+  const generatedOrderId = `COD${Date.now()}`;
+
+  const cashOnDeliveryHandler = async () =>{
+      const CodOrder = {
+        shippingInfo,
+        orderItems: cartItems.map((item) => ({
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+          image: item.image,
+          product: item.product,
+        })),
+        orderId: generatedOrderId,
+        user: userId,
+        paymentInfo: {
+          id: "COD",
+          status: "Pending",
+        },
+        itemsPrice: subtotal,
+        shippingPrice: shippingCharges,
+        totalPrice: amount,
+        orderStatus: "Processing",
+        paidAt: new Date(), // No payment date since it's COD
+      };
+    
+      
+        const createdOrder = await dispatch(createCodOrder(CodOrder));
+
+        setLoading(true); // Show loader
+      
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+        navigate(`/payment/successful/${generatedOrderId}`);
+        
+      console.log("COD order is Created Sucessfully")
+      
+    
+  }
+
 
   const checkoutHandler = async () => {
     try {
       const key = import.meta.env.RAZORPAY_KEY;
-      console.log(key);
       // Process payment and get order details
       const { data } = await axiosAPI.post(
         "/api/v1/payment/process",
@@ -141,7 +180,7 @@ const Payment = () => {
   return (
     <Fragment>
       <MetaData title="Pay Now" />
-      <CheckoutSteps activeStep={2} />
+      <CheckoutSteps activeStep={1} />
       <div className="PaymentPage">
         <div>
           <div className="PaymentCartItems">
@@ -183,7 +222,7 @@ const Payment = () => {
               <span>₹{amount}</span>
             </div>
             <button onClick={checkoutHandler}>Pay Now</button>
-            {/* <button onClick={cashOnDeliveryHandler}>Cash on delivery</button> */}
+            <button onClick={cashOnDeliveryHandler}>Cash on delivery</button>
           </div>
         </div>
       </div>

@@ -6,8 +6,10 @@
     flex-wrap: wrap;
     justify-content: center;
     background-color: #FFFFFF;
+    border-top: 2px solid #7A301B;
+    
   }
-  
+
   .shippingBox {
     width: 40%;
     min-height: 90vh;
@@ -15,20 +17,34 @@
   }
   .shipping-title{
     padding: 0 2vmax;
+    margin-top: 2vh;
+    color: #7A301B;
+    font-family: "quick sand", sans-serif;
+    font-weight: 600;
   }
 
   .contact-details{
-  padding: 0 2vmax;
+    padding: 0 2vmax;
+    margin-bottom: 5vh;
+    font-weight: 400;
+  }
+  .item-quantity{
+    padding-left: 10px;
+    font-size: 24px;
   }
   
+  .sub-total-sec{
+    font-weight: 600;
+  }
+
   .shippingHeading {
-    color: rgba(0, 0, 0, 0.664);
-    font: 400 1.3vmax;
+    color: #7A301B;
+    font: 600 1.3vmax "quick sand", sans-serif;
     margin-top: 0;
     padding: 0 2vmax;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.205);
   }
   
+
   .shippingForm {
     display: flex;
     flex-direction: column;
@@ -53,7 +69,7 @@
     width: 100%;
     box-sizing: border-box;
     border: 1px solid rgba(0, 0, 0, 0.267);
-    background-color: #A2D1B180;
+    background-color: #ffbe9836;
     border-radius: 4px;
     font: 300 0.9vmax cursive;
     outline: none;
@@ -68,15 +84,16 @@
   
   .shippingBtn {
     border: none;
-    background-color: tomato;
+    background-color: #c95841e8;
     color: white;
-    font: 300 1vmax "Roboto";
+    font: 300 1vmax "quick sand", sans-serif;
     width: 100%;
     padding: 1vmax;
     cursor: pointer;
     transition: all 0.5s;
     outline: none;
     margin: 2vmax;
+    border-radius: 6px;
   }
   
   .shippingBtn:hover {
@@ -85,9 +102,20 @@
 
   .products-and-amount{
     width: 35%;
+    border-left: 2px solid #7A301B;
+    padding: 2vh 2vw;
   }
 
 
+  .brought-together{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: block;
+  }
+  .brought-together h2{
+    margin-top: 2vh;
+  }
 
 
 

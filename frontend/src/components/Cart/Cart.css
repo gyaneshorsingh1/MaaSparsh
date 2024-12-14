@@ -10,7 +10,7 @@
 }
   .emptyCart > svg {
     font-size: 5vmax;
-    color: tomato;
+    color: #7A301B;
   }
   .emptyCart > p {
     font-size: 2vmax;
@@ -51,28 +51,27 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    margin: 0.5vmax 0;
+    margin: 0.5vmax;
     padding-bottom: 1vmax;
-    border-top: 0.5px solid rgb(92, 184, 165);
+    border-top: 0.5px solid #7A301B;
   }
 
   .cartInput {
-    border: 2px solid #C95741E5;
+    border: 2px solid #C95741;
     overflow: hidden;
-    border-radius: 6px;
+    border-radius: 3px;
     width: auto;
     display: flex;
     align-items: center;
     height: auto;
     position: absolute;
-    left: 36%;
-    bottom: 15.5%;
-
+    left: 26%;
+    bottom: 12%;
   }
     
-  .cartInput > button {
-    border: none;
-    background-color: #e87044e6;
+  .cartInput  button {
+    border-radius: 0;
+    background-color: #C95741;
     cursor: pointer;
     color: white;
     width: 30px;
@@ -81,13 +80,12 @@
     font-size: 1.5vmax;
   }
   .cartInput > button:hover {
-    background-color: #e87044e4;
+    background-color: #7A301B;
   }
    
   .cartInput > input {
     width: 3vmax;
     border: none;
-    
     text-align: center;
     outline: none;
     font: 500 1.3vmax "League Spartan", sans-serif;
@@ -107,8 +105,8 @@
 
   
   .cartGrossProfitBox {
-    border-top: 3px solid rgb(92, 184, 165);
-    margin: 1vmax 1vmax;
+    border-top: 3px solid #7A301B;
+    margin: 1vmax 0.5vmax;
     box-sizing: border-box;
     padding: 1vmax 0;
     display: flex;
@@ -119,13 +117,17 @@
     font-size: 1.7vmax;
     padding-right: 10px;
     font-weight: 600;
+    margin: 0 1vmax;
   }
 
   .tax-info-cart{
     padding: 0 1vmax 1.2vmax;
-    font-size: small;
+    font-size: medium;
+    font-weight: 400;
     text-align: center;
     font-family: "League Spartan", sans-serif;
+    width: 80%;
+    margin: auto;
   }
   
   .checkOutBtn {
@@ -135,22 +137,26 @@
   }
   .checkOutBtn > button {
     display: flex;
-    background-color: tomato;
+    background-color: #C95741;
     color: white;
     border: none;
     justify-content: center;
-    padding: 1.2vmax 4vmax;
+    padding: 1vmax 1vmax;
     width: 100%;
-    font: 300 1.8vmax "Roboto";
+    font: 600 1.8vmax "quick sand", sans-serif;
     cursor: pointer;
     border-radius: 12px;
+  }
+
+  .total-price-text{
+    text-align: end;
   }
   
   @media screen and (max-width: 600px) {
     .cartInput {
-      border: 2px solid #C95741E5;
+      border: 2px solid #7A301B;
       overflow: hidden;
-      border-radius: 6px;
+      border-radius: 3px;
       width: auto;
       display: flex;
       align-items: center;
@@ -163,7 +169,6 @@
       
     .cartInput > button {
       border: none;
-      background-color: #e87044e6;
       cursor: pointer;
       color: white;
       width: 30px;
@@ -172,15 +177,12 @@
       font-size: 1.5vmax;
     }
     .cartGrossProfitBox {
-      border-top: 3px solid rgb(92, 184, 165);
+      border-top: 3px solid #7A301B;
       margin: 1vmax 1vmax;
       box-sizing: border-box;
       padding: 1vmax 0;
       font: 800 2vmax "Roboto";
       display: flex;
       justify-content: space-between;
-    }
-    .checkOutBtn button{
-
     }
   }

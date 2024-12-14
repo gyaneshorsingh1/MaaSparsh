@@ -8,11 +8,18 @@
 }
 
 .loading>div{
-    width: 10vmax;
-    border-bottom: 5px solid rgb(59, 49, 49);
-    height: 10vmax;
+    width: 25vh;
+    border-bottom: 10px solid #7A301A;
+    
+    height: 25vh;
     border-radius: 50%;
     animation: loadingAnimate 2s linear infinite;
+    position: absolute;
+}
+
+.loading .logo{
+    height: 20vh;
+    width: 20vh;
 }
 
 @keyframes loadingAnimate {

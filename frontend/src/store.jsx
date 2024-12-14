@@ -3,7 +3,7 @@ import { thunk } from 'redux-thunk';
 import { newProductReducer, newReviewReducer, productDetailsReducer, productsReducer, productReducer } from './reducers/productReducer';
 import { allUsersReducer, forgotPasswordReducer, userDetailsReducer, userReducer } from './reducers/userReducer';
 import { cartReducer } from './reducers/cartReducer';
-import { allOrdersReducer, myOrdersReducer, newOrderReducer, orderDetailsReducer, orderReducer } from './reducers/orderReducer';
+import { allOrdersReducer, myOrdersReducer, newCodOrderReducer, newOrderReducer, orderDetailsReducer, orderReducer } from './reducers/orderReducer';
 
 const reducer = {
     products: productsReducer,
@@ -13,6 +13,7 @@ const reducer = {
     forgotPassword: forgotPasswordReducer,
     cart: cartReducer,
     newOrder: newOrderReducer,
+    newCodOrder: newCodOrderReducer,
     myOrders: myOrdersReducer,
     orderDetails: orderDetailsReducer,
     newReview: newReviewReducer,

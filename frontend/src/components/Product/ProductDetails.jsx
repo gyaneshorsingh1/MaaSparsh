@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { AiOutlineDown, AiOutlineUp } from "react-icons/ai"; // Importing React Icons for the down and up arrows
-
 import Carousel from "react-material-ui-carousel";
 import "./ProductDetails.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -23,55 +21,53 @@ import {
   Rating,
 } from "@mui/material";
 
+import arrowup from "../../images/faq-arrow.png";
+import arrowdown from "../../images/faq-arrow2.png";
+
+// import { clearErrors, getProduct } from "../../actions/productAction";
+
 import { NEW_REVIEW_RESET } from "../../constants/productConstants";
-import { useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import ProductList from "../Home/ProductList.jsx";
+
+import leaf from "../../images/leaf-2.png";
+
+import proof1 from "../../images/proof1.png";
+import proof2 from "../../images/proof2.png";
+import proof3 from "../../images/proof3.png";
+import proof4 from "../../images/proof4.png";
+import proof5 from "../../images/proof5.png";
+
+import Hibiscus from "../../images/hibiscus.png";
+import Shikakai from "../../images/shikakai.jpg";
+import Fenugreek from "../../images/fenugreekseed.jpg";
+import Coconut from "../../images/coconutoil.png";
+import Neem from "../../images/neem.jpg";
+
+import AloeVera from "../../images/aloevera.png";
+import Jasmine from "../../images/jasmine.jpg";
+import SheaButter from "../../images/sheabutter.jpg";
+import Watermelon from "../../images/watermelon.jpg";
+import RedSandalwood from "../../images/red-sandalwood.jpg";
+
+import WallnutOil from "../../images/wallnut-oil.jpg";
+import NoniOil from "../../images/noni-oil.jpg";
+import PomegranateOil from "../../images/pomigranate-oil.jpg";
+import GreenGram from "../../images/green-gram.jpg";
+import SafronExtract from "../../images/saffron-extracted.jpg";
+
+import WhatsAppButton from "../layout/WhatsAppButton";
+
+const productMapping = {
+  1: "Baby Massage Oil",
+  2: "Baby Body Wash",
+  3: "Baby Shampoo",
+};
 
 const ProductDetails = () => {
-  const faqsData = {
-    "Baby Massage Oil": [
-      {
-        question: "What makes MaaSparsh Ayurvedic baby massage oil special?",
-        answer:
-          "MaaSparsh Ayurvedic baby massage oil is crafted with love and nature’s best herbs to nourish and protect your baby’s delicate skin.",
-      },
-      {
-        question: "Is this oil safe for newborns?",
-        answer:
-          "Yes, MaaSparsh Ayurvedic baby massage oil is safe for newborns, as it is chemical-free and made with natural ingredients.",
-      },
-      // Add more questions here
-    ],
-    "Baby Shampoo": [
-      {
-        question: "What makes MaaSparsh Ayurvedic baby shampoo special?",
-        answer:
-          "MaaSparsh Ayurvedic baby shampoo is infused with natural and Ayurvedic ingredients to gently cleanse and nourish your baby's hair and scalp.",
-      },
-      {
-        question: "Is MaaSparsh Ayurvedic baby shampoo safe for newborns?",
-        answer:
-          "Yes, MaaSparsh Ayurvedic baby shampoo is formulated with safe, natural ingredients, making it suitable for newborns.",
-      },
-      // Add more questions here
-    ],
-    "Baby Body Wash": [
-      {
-        question: "What makes MaaSparsh Ayurvedic baby body wash special?",
-        answer:
-          "MaaSparsh Ayurvedic baby body wash is enriched with natural herbs and gentle cleansers to provide a safe, soothing bath experience.",
-      },
-      {
-        question:
-          "Is MaaSparsh Ayurvedic baby body wash suitable for newborns?",
-        answer:
-          "Yes, MaaSparsh Ayurvedic baby body wash is safe and gentle for newborns’ sensitive skin.",
-      },
-      // Add more questions here
-    ],
-  };
-
   const { id } = useParams(); // Use React Router's useParams to get product ID
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
@@ -97,6 +93,14 @@ const ProductDetails = () => {
     value: 4.7,
     readOnly: true,
     precision: 0.5,
+  };
+
+  const productNameRoute = product.name || "Product Not Found";
+  const handleNavigation = () => {
+    const newPath = `/product/${product.name
+      .replace(/\s+/g, "-")
+      .toLowerCase()}`; // Convert product name to a URL-friendly format
+    navigate(newPath);
   };
 
   const increaseQuantity = () => {
@@ -130,8 +134,90 @@ const ProductDetails = () => {
   const handleThumbnailClick = (index) => {
     setSelectedImageIndex(index); // Update the carousel to show the clicked thumbnail
   };
+  const handlePrevious = () => {
+    // Decrease the index, loop to the last image if at the first image
+    setSelectedImageIndex((prevIndex) =>
+      prevIndex === 0 ? product.images.length - 1 : prevIndex - 1
+    );
+  };
 
-  const faqs = faqsData[product.name] || [];
+  const handleNext = () => {
+    // Increase the index, loop to the first image if at the last image
+    setSelectedImageIndex((prevIndex) =>
+      prevIndex === product.images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const ProductsData = [
+    {
+      name: "Baby Shampoo",
+      ingredients: [
+        { name: "Hibiscus", image: Hibiscus },
+        { name: "Shikakai", image: Shikakai },
+        { name: "Fenugreek", image: Fenugreek },
+        { name: "Coconut Oil", image: Coconut },
+        { name: "Neem", image: Neem },
+      ],
+    },
+    {
+      name: "Baby Body Wash",
+      ingredients: [
+        { name: "Aloe Vera", image: AloeVera },
+        { name: "Jasmine", image: Jasmine },
+        { name: "Shea Butter", image: SheaButter },
+        { name: "Watermelon", image: Watermelon },
+        { name: "Red Sandalwood", image: RedSandalwood },
+      ],
+    },
+    {
+      name: "Baby Massage Oil",
+      ingredients: [
+        { name: "Wallnut Oil", image: WallnutOil },
+        { name: "Noni Oil", image: NoniOil },
+        { name: "Pomegranate Oil", image: PomegranateOil },
+        { name: "Green Gram", image: GreenGram },
+        { name: "Saffron Extract", image: SafronExtract },
+      ],
+    },
+  ];
+
+
+  const productIngredient = ProductsData.find((item) => item.name === product.name);
+
+
+  const faqsData = [
+    {
+      question: "What makes MaaSparsh Ayurvedic {productName} special?",
+      answer:
+        "MaaSparsh Ayurvedic {productName} is crafted with love and nature’s best herbs to nourish and protect your baby’s delicate skin. It’s designed to promote healthy growth, relaxation, and overall wellness.",
+    },
+    {
+      question: "Is this {productName} safe for newborns?",
+      answer:
+        "Absolutely! MaaSparsh {productName} is made from 100% natural ingredients, ensuring it’s safe and gentle for even the most sensitive newborn skin.",
+    },
+    {
+      question: "How does using MaaSparsh {productName} benefit my little one?",
+      answer:
+        "Regular use of MaaSparsh {productName} strengthens your baby’s muscles, improves circulation, supports digestion, and helps your baby relax, ensuring peaceful, restful sleep.",
+    },
+    {
+      question: "How often should I use MaaSparsh {productName} for my baby?",
+      answer:
+        "We recommend using MaaSparsh {productName} once or twice daily for the best results. This will keep their skin nourished and glowing.",
+    },
+    {
+      question:
+        "Is MaaSparsh Ayurvedic {productName} free from chemicals and artificial ingredients?",
+      answer:
+        "Absolutely! Our {productName} is free from harmful chemicals, parabens, and artificial fragrances, offering only the purest care for your baby’s skin.",
+    },
+  ];
+
+  const faqs = faqsData.map((faq) => ({
+    question: faq.question.replace("{productName}", product.name || ""),
+    answer: faq.answer.replace("{productName}", product.name || ""),
+  }));
 
   const [openFAQ, setOpenFAQ] = useState(null); // State to track which FAQ is open
 
@@ -169,7 +255,27 @@ const ProductDetails = () => {
       ) : (
         <>
           <MetaData title={`${product?.name || "Product"} -- ECOMMERCE`} />
+          <p className="product-details-path">
+            <span
+              className="route-path-span"
+              style={{ cursor: "pointer" }}
+              onClick={() => navigate("/")}
+            >
+              home
+            </span>{" "}
+            {">"}{" "}
+            <span
+              className="route-path-span"
+              style={{ cursor: "pointer" }}
+              onClick={() => navigate("/products")}
+            >
+              products
+            </span>{" "}
+            {">"} {productNameRoute}
+          </p>
           <div className="ProductDetails">
+            <img src={leaf} alt="" className="leaf3" />
+            <img src={leaf} alt="" className="leaf4" />
             <div>
               {/* <Carousel className="carousel">
                 {product?.images?.map((item, i) => (
@@ -185,22 +291,32 @@ const ProductDetails = () => {
               </Carousel> */}
 
               <Carousel
-                className="carousel "
+                className="carousel"
                 navButtonsAlwaysVisible={true} // Always show buttons
                 navButtonsProps={{
                   style: {
-                    backgroundColor: "#C95741B2", // Change button background color
-                    color: "#fff", // Change icon color
+                    backgroundColor: "#7A301A", // Change button background color
+                    color: "#7A301A", // Change icon color
                     borderRadius: "50%", // Make the button circular
-                    fontSize: "20px",
+                    fontSize: "30px",
                   },
                 }}
                 navButtonsWrapperProps={{
                   style: {
                     top: "calc(50% - 20px)", // Vertically center the buttons
-                    height: "40px", // Optional: Adjust button container size
+                    height: "30px", // Optional: Adjust button container size
                   },
                 }}
+                PrevIcon={
+                  <button className="button1" onClick={handlePrevious}>
+                    {"<"}
+                  </button>
+                } // Add functionality to Prev button
+                NextIcon={
+                  <button className="button1" onClick={handleNext}>
+                    {">"}
+                  </button>
+                } // Add functionality to Next button
               >
                 <img
                   className="CarouselImage"
@@ -279,6 +395,13 @@ const ProductDetails = () => {
                     {product?.Stock < 1 ? "OutOfStock" : "InStock"}
                   </b>
                 </p>
+                <div className="tested-icons">
+                  <img src={proof1} alt="" />
+                  <img src={proof2} alt="" />
+                  <img src={proof3} alt="" />
+                  <img src={proof4} alt="" />
+                  <img src={proof5} alt="" />
+                </div>
               </div>
             </div>
           </div>
@@ -315,24 +438,54 @@ const ProductDetails = () => {
             </div>
           </div>
 
-
+          {productIngredient ? (
+            <div className="ingredients">
+              {productIngredient.ingredients.map((ingredient, index) => (
+                <div key={index}>
+                  <img src={ingredient.image} alt={ingredient.name} />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>Product not found</p>
+          )}
 
           <div className="faq-container">
             <h2>FAQs</h2>
+            <img src={leaf} alt="" className="leaf" />
+            <img src={leaf} alt="" className="leaf2" />
+
             {faqs.length > 0 ? (
               <ul className="faq-list">
                 {faqs.map((faq, index) => (
-                  <li key={index} className="faq-item">
+                  <li
+                    key={index}
+                    className="faq-item"
+                    onClick={() => toggleAnswer(index)}
+                  >
                     <div
                       className="faq-question"
-                      onClick={() => toggleAnswer(index)} // Handle question click
+                      // Handle question click
                     >
                       <strong>{faq.question}</strong>
-                      <span className="faq-icon">
+                      <span className="faq-icons">
                         {openFAQ === index ? (
-                          <AiOutlineUp />
+                          <img
+                            src={arrowdown}
+                            style={{
+                              width: "17.5px",
+                              height: "12px",
+                              marginTop: "11px",
+                              marginRight: "-2px",
+                            }}
+                            alt="Arrow Down"
+                          />
                         ) : (
-                          <AiOutlineDown />
+                          <img
+                            src={arrowup}
+                            style={{ width: "10px", marginTop: "6px" }}
+                            alt="Arrow Up"
+                          />
                         )}
                       </span>
                     </div>
@@ -348,6 +501,18 @@ const ProductDetails = () => {
             )}
           </div>
 
+          {/* <div className="product-container">
+                  {products &&
+                    products.map((product) => (
+                      <ProductCard product={product} />
+                    ))}
+
+                  {products && products.length > 0 && (
+                    <ProductCard product={products[0]} />
+                  )}
+                </div> */}
+
+          <h3 className="reviewsHeading">REVIEWS</h3>
           <div className="review-btn-div">
             <button onClick={submitReviewToggle} className="submitReview">
               Write Review
@@ -355,15 +520,13 @@ const ProductDetails = () => {
           </div>
           <br />
 
-          <h3 className="reviewsHeading">REVIEWS</h3>
-
           <Dialog open={open} onClose={submitReviewToggle}>
             <DialogTitle>Submit Review</DialogTitle>
             <DialogContent className="submitDialog">
               <Rating
+                className="star-rating"
                 onChange={(e) => setRating(e.target.value)}
                 value={rating}
-                size="large"
               />
               <textarea
                 className="submitDialogTextArea"
@@ -392,6 +555,13 @@ const ProductDetails = () => {
           ) : (
             <p className="noReviews">No Reviews Yet</p>
           )}
+
+          <h2 className="product-suggestions">Products You May Like More</h2>
+          <div className="productList">
+            {" "}
+            <ProductList />
+          </div>
+          <WhatsAppButton />
         </>
       )}
     </>

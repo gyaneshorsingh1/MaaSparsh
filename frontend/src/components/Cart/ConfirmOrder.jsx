@@ -17,7 +17,7 @@ const ConfirmOrder = () => {
     0
   );
 
-  const shippingCharges = subtotal > 1000 ? 50 : 80;
+  const shippingCharges =  0;
 
   const totalPrice = subtotal + shippingCharges;
   

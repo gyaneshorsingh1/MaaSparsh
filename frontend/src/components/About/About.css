@@ -12,10 +12,12 @@
     margin: 0;
     padding: 0;
     text-align: center;
-    font-family: "quick sand", serif;
-    font-weight: 900;
+    font-weight: 600;
     font-style: normal;
+    font-family: "quick sand", sans-serif;
 }
+
+
 .about-container p{
     font-family: "League Spartan", sans-serif;
     font-size: 24px;
@@ -23,7 +25,7 @@
 }
 .about-banner{
     position: relative;
-    height: 80vh;
+    min-height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -31,18 +33,18 @@
     align-items: center;
     justify-content: center;
 }
+
 .about-banner-img{
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
+    height: auto;
 }
 
-.about-logo{
-    width: 25vmax;
-}
+
 
 
 .about-2{
@@ -51,11 +53,11 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 178px;
-    background: #D0E7D7;
-    padding: 0 10vh;
+    background-color: #ffbe985c;  
+    padding: 5vh 10vh;
     position: relative;
     z-index: 2;
+    margin-top: 10vh;
 
 }
 .about-2 p, .about-2 h3{
@@ -80,12 +82,64 @@
     flex-direction: column;
     align-items: center;
     row-gap: 10vh;
+    padding-top: 5vh;
 }
 
 .about-4 img{
     margin: auto;
     height: 417px;
 }
+
+.about-4 .about-icon1{
+  position: absolute;
+  left: 5%;
+  width: 80px;
+  height: 80px;
+  top: 10%;
+}
+.about-4 .about-icon2{
+  position: absolute;
+  left: 15%;
+  width: 80px;
+  height: 80px;
+  top: 25%;
+}
+.about-4 .about-icon3{
+  position: absolute;
+  left: 2%;
+  top: 40%;
+  width: 80px;
+  height: 80px;
+}
+.about-4 .about-icon4{
+  position: absolute;
+  left: 9%;
+  top: 55%;
+  width: 80px;
+  height: 80px;
+}
+.about-4 .about-icon6{
+  position: absolute;
+  right: 6%;
+  width: 80px;
+  height: 80px;
+  top: 15%;
+}
+.about-4 .about-icon7{
+  position: absolute;
+  top: 30%;
+  right: 15%;
+  width: 80px;
+  height: 80px;
+}
+.about-4 .about-icon8{
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  width: 80px;
+  height: 80px;
+}
+
 
 .about-4 .about-4-p{
     display: flex;
@@ -106,7 +160,8 @@
 
 
 .our-mission-values{
-    background-color: #AFCFB033;
+    background: #ffbe9831;
+    font-family: "quick sand", sans-serif;
     width: 100%;
     height: auto;
     display: flex;
@@ -114,41 +169,54 @@
     align-items: center;
     flex-direction: column;
 }
+.our-mission-values h2{
+  margin-top: 5vh;
+  font-family: "quick sand", sans-serif;
+}
 
-.our-mission-values-sec {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two equal columns */
-    grid-template-rows: auto auto; /* Two rows */
-    gap: 0px; /* Remove any gap between grid items */
-  }
+.our-mission-values-sec{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  font-family: "League Spartan", sans-serif;
+  margin: 10vh 0;
+  gap: 10vw;
+
+}
+.our-mission-values-sec > div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: fit-content;
   
-  .grid-item {
-    width: 100%; /* Ensure content occupies full width of grid item */
-    box-sizing: border-box; /* Ensure padding doesn't affect width */
-  }
-  
-  .item1 {
-    height: 100%; /* Set height for Item 1 */
-    grid-column: 1; /* Item 1 in the first column */
-    grid-row: 1; /* Item 1 in the first row */
-  }
-  
-  .item2 {
-    height: 40px; /* Set height for Item 2 */
-    grid-column: 2; /* Item 2 in the second column */
-    grid-row: 1; /* Item 2 in the first row */
-  }
-  
-  .item3 {
-    height: 100%;
-    grid-column: 1; /* Item 3 in the first column */
-    grid-row: 2; /* Item 3 in the second row */
-  }
-  
-  .item4 {
-    grid-column: 2; /* Item 4 in the second column */
-    grid-row: 2; /* Item 4 in the second row */
-  }
+}
+
+.our-mission-values-sec> div > .heart-hand{
+  height: 600px;
+  width: 500px;
+  border-top-left-radius: 300px;
+  border-top-right-radius: 300px;
+  border: 4px solid #7A301B;
+  margin-bottom: 5vh;
+}
+
+.our-mission-values-sec> div > .baby-foot{
+  height: 600px;
+  width: 500px;
+  border-bottom-left-radius: 300px;
+  border-bottom-right-radius: 300px;
+  border: 4px solid #7A301B;
+  margin-top: 5vh;
+}
+
+.our-mission-values-sec> div > p{
+  font-family: "League Spartan", sans-serif;
+  font-size: 20px;
+  width: 500px;
+}
+
   
   
 
@@ -159,29 +227,37 @@
   .about-6 img{
     width: 100%;
     height: 246px;
+    margin-top: 5vh;
   }
 
 
   .about-7{
+    padding-top: 5vh;
     width: 100%;
-    background: #AFCFB033;
+    background: #ffbe9831;;
     text-align: center;
-    margin: 10vh 0;
+    margin: 5vh 0;
   }
   .about-7 p, .about-7 h2{
     margin: auto;
     width: 90%;
+    font-family:  "League Spartan", sans-serif;
+  }
+  .about-7 h2{
+    color: #7A301B;
   }
 
+  .about-7 p{
+    color: #EB7E57E5;
+  }
 
   .proof-icons{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 0 5vh;
     height: auto;
     margin-top: 5vh;
   }
@@ -190,51 +266,132 @@
     width: 5vw;
   }
 
-  .proof-titles{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    flex-direction: row;
-    justify-content: center;
-    padding: 0 5vh;
-    color: #EB7E57E5;
-  }
-  .proof-titles h4{
-    text-align: center;
-    font-family: "League Spartan", sans-serif;
-    font-size: medium;
-  }
-
-
-  .mix-banner{
+  .formulation-banner{
     width: 100%;
-    height: auto;
     margin-top: 10vh;
-
-  }
-  .mix-banner img{
-    width: 100%;
-    height: 331px;
+    
   }
 
 
-  .greenies-banner{
-    width: 100%;
-    margin-top: 5vh;
-  }
-  .greenies-banner img{
-    width: 90%;
-    margin: auto;
+
+  .about-banner > .about-header{
+    font-family:"quick sand", sans-serif;
+    font-weight: 600;
   }
 
 
-  .about-footer-banner{
-    width: 100%;
-    margin: 5vh 0;
-  }
+  @media screen and (max-width: 400px) {
+    .about-banner{
+      height: auto;
+      padding: 5vh 0;
+    }
+    .about-banner p{
+      font-size: 15px;
+      text-align: center;
+    }
+    .about-logo{
+      width: 120px;
+    }
+    .about-2{
+      position: relative;
+      height: 40vh;
+      padding: 5px;
+    }
+    .about-2 h3{
+      font-size: small;
+      border: 0;
+      margin: 0;
+    }
+    .about-2 p{
+      font-size: small;
+    }
+    .about-3{
+      top: -13px;
+      height: auto;
+      padding: 0;
+      margin: 0;
+    }
+    .about-3 img{
+      width: 100%;
+    }
+    .about-4{
+      height: auto;
+      row-gap: 0px;
+    }
+    .about-4 h2{
+      font-size: 40px;
+    }
+    .about-4 img{
+      height: auto;
+      margin: 5vh 0;
+      width: 100%;
+      object-fit: contain;
+    }
 
-  .about-footer-banner img{
-    width: 100%;
-    transform: scaleX(-1) scaleY(-1);
+    .about-4-p p{
+      font-size: 14px;
+    }
 
-    opacity: 0.8;
+    .about-sub-title h2{
+      font-size: 20px;
+      width: 100%;
+    }
+    .about-6 img{
+      object-fit: cover;
+      height: 20vh;
+    }
+
+    .about-7{
+      padding: 0 4px;
+      height: auto;
+      margin: 5vh 0 0 0;
+    }
+    .about-7 h2{
+      font-size: 25px;
+      margin-bottom: 15px;
+      padding-top: 15px;
+      width: 100%;
+    }
+    .about-7 p{
+      padding: 0;
+      font-size: 14px;
+      width: 100%;
+      
+    }
+
+    .proof-icons{
+      padding: 0;
+      gap: 0.5px;
+    }
+    .proof-titles{
+      gap: 0.5px;
+      padding: 0;
+    }
+    .proof-titles >h4{
+      font-size: 8px;
+    }
+
+    .mix-banner{
+      height: 10vh;
+      width: 100%;
+    }
+    .mix-banner img{
+      object-fit: contain;
+      margin: 0 0 5vh 0;
+      height: auto;
+    
+    }
+
+    .greenies-banner{
+      height: auto;
+      margin: 5vh 0;
+      padding: 0;
+    }
+    .about-footer-banner{
+      margin: 0;
+      height: auto;
+      padding: 0;
+    }
+
+
   }

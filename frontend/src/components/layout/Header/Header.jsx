@@ -55,7 +55,7 @@ const Header = () => {
           {/* Icons */}
           <div className="icon-links">
           <Link to="/" aria-label="wishlist">
-              <img className="icon" src={wishlist} alt="wishlist" />
+              <img className="icon wishlist" src={wishlist} alt="wishlist" />
             </Link>
             <Link to="/login" aria-label="Profile">
               <img className="icon" src={Profile} alt="profile" />
