@@ -46,6 +46,9 @@ const orderSchema = new mongoose.Schema({
         required: true,
         
     },
+    name:{
+        type: String,
+    },
     paymentInfo:{
         id:{
             type: String,
@@ -54,8 +57,6 @@ const orderSchema = new mongoose.Schema({
         status:{
             type: String,
             required: true,
-            
-            
         }
     },
     paidAt:{
