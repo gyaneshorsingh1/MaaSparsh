@@ -1,3 +1,4 @@
+
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
@@ -9,7 +10,7 @@ const instance = new Razorpay({
 });
 // Payment Processing - Create Order
 exports.processPayment = catchAsyncErrors(async (req, res, next) => {
-  const { amount, cartItems, shippingInfo, userId, subtotal, shippingCharges, } = req.body;
+  const { amount, cartItems, shippingInfo, userId, name, subtotal, shippingCharges, } = req.body;
 
   // Create Razorpay order with detailed notes
   const order = await instance.orders.create({
@@ -20,6 +21,7 @@ exports.processPayment = catchAsyncErrors(async (req, res, next) => {
       orderItems: JSON.stringify(cartItems), // Convert objects to strings for notes
       shippingInfo: JSON.stringify(shippingInfo),
       userId,
+      name,
       itemsPrice: subtotal,
       shippingPrice: shippingCharges,
       totalPrice: amount, // Convert to INR
@@ -41,7 +43,7 @@ exports.processPayment = catchAsyncErrors(async (req, res, next) => {
 exports.paymentVerification = async (req, res, next) => { 
 
   // Destructure incoming data from the request body
-  const { orderId, paymentId, signature } = req.body;
+  const { orderId, paymentId, signature, name } = req.body;
 
    // Verify the payment signature using Razorpay's utility method
   const body = orderId + "|" + paymentId;
@@ -59,6 +61,7 @@ exports.paymentVerification = async (req, res, next) => {
         razorpay_order_id: orderId,
         razorpay_payment_id: paymentId,
         razorpay_signature: signature,
+        name,
     });
 
       // Respond with success message
@@ -99,6 +102,7 @@ exports.razorpayWebhook = async (req, res) => {
         razorpay_order_id: order_id,
         razorpay_payment_id: paymentId,
         razorpay_signature: "Webhook", // No signature in webhook
+        name,
       });
 
       await Order.findOneAndUpdate(
