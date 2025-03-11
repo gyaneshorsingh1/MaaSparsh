@@ -85,7 +85,7 @@ const OrderDetails = () => {
           <div className="orderDetailsContainerBox">
             <div>
               <p>Name:</p>
-              <span>{user?.name || "Loading..."}</span> {/* Display the user name once loaded */}
+              <span>{order?.name || "Loading..."}</span> {/* Display the user name once loaded */}
             </div>
             <div>
               <p>Phone:</p>
