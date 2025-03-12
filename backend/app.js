@@ -24,8 +24,9 @@ app.use(cors({
       callback(new Error('Not allowed by CORS'));
     }
   },
-  allowedHeaders: ["Content-Type", "x-razorpay-signature"],
   credentials: true
+  methods: "GET,POST,PUT,DELETE",
+  allowedHeaders: ["Content-Type", "Authorization", "x-razorpay-signature"]
 }));
 
 app.use(express.json({ verify: (req, res, buf) => { req.rawBody = buf; } }));
