@@ -11,7 +11,6 @@ const sendToken = (user, statusCode, res)=>{
         httpOnly: true,
         secure: true, // Only works over HTTPS
         sameSite: "None",
-        domain: "https://maasparsh.onrender.com"
     };
     res.status(statusCode).cookie('token',token,options).json({
         success: true,
