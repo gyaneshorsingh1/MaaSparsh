@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 
 exports.isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
-   const { token } = req.cookies || req.headers.authorization?.split(" ")[1] || localStorage.getItem('token') || Cookies.get('token'); // Ensure you are using cookies
+   const { token } = req.cookies || req.headers.authorization?.split(" ")[1] || Cookies.get('token'); // Ensure you are using cookies
 
     if (!token) {
         return next(new ErrorHandler("Please Login to access this resource", 401));
@@ -26,7 +26,7 @@ exports.isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
 
 exports.authorizeRoles = (...roles) => {
     return (req, res, next) => {
-        console.log("User Role:", req.user.role); // Log user role for debugging
+      //  console.log("User Role:", req.user.role); // Log user role for debugging
 
         if (!roles.includes(req.user.role)) {
             return next(new ErrorHandler(
