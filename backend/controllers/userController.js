@@ -7,7 +7,6 @@ const sendToken = require("../utils/jwtToken");
 const comparedPassword = require("../models/userModel");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
-const { url } = require("inspector");
 
 
 
