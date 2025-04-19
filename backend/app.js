@@ -9,7 +9,7 @@ const cors = require('cors');
 const errorMiddleware = require("./middleware/error");
 
 // Config
-require("dotenv").config({ path: "backend/config/config.env" });
+require("dotenv").config({ path: "backend/.env" });
 
 
 
