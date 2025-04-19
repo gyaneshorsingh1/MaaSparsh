@@ -5,12 +5,14 @@ const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const path = require("path");
 const cors = require('cors');
+const dotenv = require("dotenv");
 
 const errorMiddleware = require("./middleware/error");
 
 // Config
-require("dotenv").config({ path: "backend/.env" });
-
+if (process.env.NODE_ENV !== "PRODUCTION") {
+  dotenv.config();
+}
 
 
 const allowedOrigins = ['https://masparsh.netlify.app','http://localhost:5173'];  // Replace with your frontend URL
