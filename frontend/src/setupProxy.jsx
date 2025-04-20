@@ -4,7 +4,7 @@ module.exports = function(app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: 'https://masparsh.onrender.com/',
+      target: 'https://maasparsh.com/',
       changeOrigin: true,
     })
   );
