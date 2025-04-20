@@ -1,16 +1,15 @@
 /* General Styles */
-.confirmCartItems > p {
+.cartItemText > p {
   font: 400 1.8vmax "quick sand", sans-serif;
 }
 
-
-.confirmCartItemsContainer {
+.cartItemContainer {
   height: auto;
-
 }
 
-.confirmCartItemsContainer > div {
-  height: 95px;
+.cartItemContainer > div {
+  min-height: 95px;
+  height: auto;
   display: flex;
   font: 400 1vmax;
   align-items: center;
@@ -18,7 +17,7 @@
   margin: 2vmax 0;
 }
 
-.confirmCartItemsContainer > div > span {
+.cartItemContainer > div > span {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -28,16 +27,15 @@
   position: relative;
 }
 
-.confirmCartItemsContainer > div > span > img {
+.cartItemContainer > div > span > img {
   width: 80px;
   height: 80px;
   object-fit: cover;
   border-radius: 6px;
   border: 2px solid #7A301A;
-
 }
 
-.confirmCartItemsContainer .quantity-value {
+.cartItemContainer .quantityTag {
   position: absolute;
   top: 0;
   left: 71px;
@@ -55,13 +53,13 @@
   line-height: normal;
 }
 
-.confirmCartItemsContainer > div > span > a {
+.cartItemContainer > div > span > a {
   color: #7A301A;
   text-decoration: none;
   font-size: 1.6vmax;
 }
 
-.confirmCartItemsContainer > div > span {
+.cartItemContainer > div > span {
   color: #7A301A;
   font-size: 1.4vmax;
 }
@@ -80,14 +78,16 @@
   justify-content: space-between;
   margin: 1vmax 0;
 }
-.orderSummary .sub-total-order{
+
+.orderSummary .subtotalOrder {
   display: flex;
   justify-content: space-between;
   margin-top: 15px;
   color: #7A301A;
 }
 
-.orderSummary> div > p,.orderSummary> div > span{
+.orderSummary > div > p,
+.orderSummary > div > span {
   font-size: 16px;
 }
 
@@ -100,23 +100,22 @@
   position: relative;
 }
 
-.orderSummaryTotal p, 
+.orderSummaryTotal p,
 .orderSummaryTotal span {
   font-size: 1.6vmax;
   font-weight: 600;
   color: #7A301A;
 }
 
-.orderSummaryTotal .total-price {
+.orderSummaryTotal .totalPrice {
   display: flex;
   width: 100%;
   justify-content: space-between;
   color: #7A301A;
   font-size: 1.6vmax;
-  
 }
 
-.orderSummaryTotal .taxes-included-info {
+.orderSummaryTotal .taxesIncludedInfo {
   font-size: 14px;
 }
 
@@ -139,53 +138,59 @@
 
 /* Responsive Styles */
 @media screen and (max-width: 600px) {
-  .confirmCartItems > p {
-    font: 400 6vw ;
+  .cartItemText > p {
+    font: 400 6vw "League Spartan", sans-serif;
   }
 
-  .confirmCartItemsContainer {
-    max-height: 50vw;
+  .cartItemContainer {
+    height: auto;
   }
 
-  .confirmCartItemsContainer > div {
-    font: 400 4vw;
-    margin: 4vw 0;
+  .cartItemContainer > div {
+    font: 400 4vw "League Spartan", sans-serif;
+    margin: 0;
   }
 
-  .confirmCartItemsContainer > div > img {
+  .cartItemContainer > div > img {
     width: 10vw;
   }
 
-  .confirmCartItemsContainer > div > a {
+  .cartItemContainer > div > a {
     margin: 0;
     width: 30%;
   }
 
-  .confirmCartItemsContainer > div > span {
-    font: 100 4vw;
+  .cartItemContainer > div > span {
+    font-size: 14px;
+    font-weight: 600;
   }
 
+  .cartItemContainer > div > span > a{
+    font-size: 14px;
+  }
+  .shippingContainer{
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+  }
   .orderSummary {
-    padding: 12vw;
+    padding: 10px;
+    width: 100%;
   }
 
-  .orderSummary > p {
-    font: 400 6vw;
-    padding: 4vw;
-  }
-
-  .orderSummary > div > div {
-    font: 300 4vw;
-  }
 
   .orderSummaryTotal {
-    font: 300 4vw;
+    font: 300 4vw "League Spartan", sans-serif;
+    
     padding: 5vw 0;
   }
 
   .orderSummary > button {
     padding: 4vw;
     margin: 4vw auto;
-    font: 400 4vw;
+    font: 400 4vw "League Spartan", sans-serif;
+  }
+  div .products-and-amount{
+    width: 100%;
   }
 }

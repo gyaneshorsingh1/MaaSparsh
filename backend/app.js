@@ -15,7 +15,7 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 }
 
 
-const allowedOrigins = ['https://maasparsh.com'];  // Replace with your frontend URL
+const allowedOrigins = ['https://maasparsh.com','http://localhost:5173','http://localhost:5174'];  // Replace with your frontend URL
 
 app.use(cors({
   origin: (origin, callback) => {

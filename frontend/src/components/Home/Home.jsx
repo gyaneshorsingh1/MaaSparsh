@@ -8,7 +8,11 @@ import { clearErrors, getProduct } from "../../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader/Loader";
 import { toast } from "react-toastify";
-import homeBanner from "../../images/homebanner.png";
+import mainBanner from "../../images/main-banner.jpg";
+import mainBanner2 from "../../images/mainbanner2.jpg";
+import banner2 from "../../images/banner2.jpg";
+import banner3 from "../../images/banner3.jpg";
+import banner4 from "../../images/banner4.jpg";
 import proof1 from "../../images/proof1.png";
 import proof2 from "../../images/proof2.png";
 import proof3 from "../../images/proof3.png";
@@ -21,15 +25,15 @@ import feature3 from "../../images/feature3.png";
 import feature4 from "../../images/feature4.png";
 import leaf from "../../images/leaf-1.png";
 import leaf2 from "../../images/leaf-2.png";
-import babyimg from "../../images/baby-image.jpg"
 import WhatsAppButton from "../layout/WhatsAppButton";
+import { Navigate, useNavigate } from "react-router-dom";
 const Home = () => {
   const paragraphs = [
-    "MaaSparsh offers Ayurvedic baby care with organic ingredients, ensuring natural and safe protection.",
-    "We offer authentic Ayurvedic formulations crafted with organic ingredients, providing care and natural nourishment for your baby.",
-    "Our products are paraben and sulphate-free, offering safe and toxic-free care for baby's sensitive skin.",
-    "Maasparsh products are derma-safe, delivering gentle, skin-friendly care for your baby's delicate skin.",
-    "Maasparsh products are handcrafted in India, embracing tradition and authenticity with every touch of care.",
+    "MaaSparsh products are dermatologically safe, ensuring gentle and irritation-free care for your baby's delicate skin.",
+    "MaaSparsh products are sulphate-free, ensuring gentle cleansing without harming your baby’s delicate skin and hair.",
+    "MaaSparsh products are 100% natural, made with pure, Ayurvedic ingredients for safe and gentle baby care.",
+    "MaaSparsh products are paraben-free, providing safe and gentle care for your baby’s delicate skin.",
+    "MaaSparsh products are vegan-friendly, crafted without any animal-derived ingredients for ethical and gentle care.",
   ];
 
   const [isMobile, setIsMobile] = useState(false);
@@ -41,12 +45,25 @@ const Home = () => {
     false,
   ]);
 
+  const navigate = useNavigate();
 
-  const slides = [homeBanner, babyimg, homeBanner];
+  const slides = [mainBanner, mainBanner2, banner2, banner3, banner4];
 
   const [cur, setCur] = useState(0);
 
+  const [direction, setDirection] = useState("right"); // Added direction state to track the slide direction
+
   const len = slides.length;
+
+  const handleRadioClick = (index) => {
+    if (index > cur) {
+      setDirection("right");
+    } else {
+      setDirection("left");
+    }
+    setCur(index);
+  };
+
 
   const leftHandle = () => {
     setCur(cur - 1 < 0 ? len - 1 : cur - 1);
@@ -56,18 +73,11 @@ const Home = () => {
     setCur(cur + 1 > len - 1 ? 0 : cur + 1);
   }, [cur, len]);
 
-  useEffect(() => {
-    const interval = setTimeout(() => {
-      rightHandle();
-    }, 5000);
-    return () => clearTimeout(interval);
-  }, [rightHandle]);
 
-  const toggleParagraph = (index) => {
-    setExpandedStates((prevStates) =>
-      prevStates.map((state, idx) => (idx === index ? !state : state))
-    );
-  };
+
+  const bannerLink = () => {
+    navigate("/products")
+  }
 
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.products);
@@ -81,7 +91,7 @@ const Home = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 500); // Set mobile breakpoint
+      setIsMobile(window.innerWidth <= 900); // Set mobile breakpoint
     };
 
     // Check on mount and add listener
@@ -104,19 +114,46 @@ const Home = () => {
 
             {/* Banner section */}
             <section className="homeBanner">
-              <FaArrowLeft className="leftBtn" onClick={leftHandle} />
-              <FaArrowRight className="rightBtn" onClick={rightHandle} />
+  {slides.map((slide, index) => (
+    <div
+      key={index}
+      className="banner-index"
+      style={{
+        left: cur === index ? "0%" : cur < index ? "100%" : "-100%", // Position for the sliding effect
+      }}
+    >
+      {cur === index && (
+        <img onClick={bannerLink}
+          src={slide}
+          alt={`Slide ${index + 1}`}
+          className="slideImage"
+        />
+      )}
+    </div>
+  ))}
 
-              {slides.map((slide, index) => {
-                return (
-                  <div key={index} className="banner-index" style={{
-                    left: cur === index ? '0%' : cur < index ? '100%' : '-100%', // Position for the sliding effect
-                  }}>
-                    {cur === index && <img src={slide} alt="Slide" className="slideImage" />}
-                  </div>
-                );
-              })}
-            </section>
+  {/* Left Arrow Button */}
+  <div className="left-arrow" onClick={leftHandle}>
+    <FaArrowLeft />
+  </div>
+
+  {/* Right Arrow Button */}
+  <div className="right-arrow" onClick={rightHandle}>
+    <FaArrowRight />
+  </div>
+
+  {/* Radio Buttons */}
+  <div className="radioGroup">
+    {slides.map((_, index) => (
+      <span
+        key={index}
+        className={`radio ${cur === index ? "active" : ""}`}
+        onClick={() => handleRadioClick(index)}
+      ></span>
+    ))}
+  </div>
+</section>
+
 
             {/* Verified By proofs */}
 
@@ -149,11 +186,11 @@ const Home = () => {
                 />
               </div>
               <div className="proofData">
-                <h4>Made with organic ingredients</h4>
-                <h4>Pure Aurvedic Formulations</h4>
-                <h4>Paraben and Sulphate free</h4>
-                <h4>Derma Safe</h4>
-                <h4>Handcrafted in India</h4>
+                <h4>Dermatologically Safe</h4>
+                <h4>Sulphate-Free Care</h4>
+                <h4>100% Natural</h4>
+                <h4>Paraben-Free</h4>
+                <h4>Vegan-Friendly</h4>
               </div>
               <div className="proofData">
                 {paragraphs.map((text, index) => (
@@ -189,11 +226,14 @@ const Home = () => {
                 <div className="product-container">
                   {products &&
                     products.map((product) => (
-                      <ProductCard product={product} />
+                      <ProductCard product={product} key={product._id} />
+                      
                     ))}
+                    
 
                   {products && products.length > 0 && (
-                    <ProductCard product={products[0]} />
+                    <ProductCard product={products[0]} key={products[0]._id} />
+                    
                   )}
                 </div>
               </div>
@@ -210,11 +250,11 @@ const Home = () => {
                 <div className="product-container">
                   {products &&
                     products.map((product) => (
-                      <ProductCard product={product} />
+                      <ProductCard product={product} key={product._id} />
                     ))}
 
                   {products && products.length > 0 && (
-                    <ProductCard product={products[0]} />
+                    <ProductCard product={products[0]} key={products[0]._id}  />
                   )}
                 </div>
               </div>
@@ -229,11 +269,11 @@ const Home = () => {
                 <div className="product-container">
                   {products &&
                     products.map((product) => (
-                      <ProductCard product={product} />
+                      <ProductCard product={product} key={product._id}/>
                     ))}
 
                   {products && products.length > 0 && (
-                    <ProductCard product={products[0]} />
+                    <ProductCard product={products[0]} key={products[0]._id} />
                   )}
                 </div>
               </div>

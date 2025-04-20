@@ -1,11 +1,16 @@
 footer {
     color: #4A4A4A;
     padding: 1rem 0;
-    max-width: 100vw;
+    max-width: 100%;
     background-color: #ffbe989e;
     font: bold 14px/1.4 'Open Sans', arial, sans-serif;
     min-height: 60vh;
     position: relative;
+  }
+
+  .email-a{
+    text-decoration: none;
+    color: #4A4A4A;
   }
   
   .footer-container {
@@ -92,23 +97,31 @@ footer {
     text-align: end;
     position: absolute;
     left: 100px;
-    top: 11vh;
+    top: 20px;
+  }
+  .social-media img{
+    width: 100px;
+    
   }
   @media screen and (max-width: 1295px ) {
     .social-media .img-p{
-      left: 5vw;
+      left: 0;
+      top: 120px;
+
     }
-    .img-p img{
+    .social-media .img-p img{
       width: 80px;
+      left: 0;
+      
     }
   }
-  .social-media img{
-    width: 170px;
-    
-  }
+
   .contact-p{
     margin-bottom: 0;
     padding: 0;
+  }
+  .contact-p-address{
+    margin-top: 5px;
   }
 
   .social-icon {
@@ -214,7 +227,22 @@ footer {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 788px) {
+  .social-media .img-p{
+    position: relative;
+    text-align: start;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    top: 0;
+  }
+  .social-media .img-p img{
+    width: 70px;
+    position: relative;
+    margin: 0;
+    margin-top: 2vh;
+    padding: 0;
+  }
   .footer-container{
     flex-wrap: wrap;
     justify-content: space-around;
@@ -226,10 +254,11 @@ footer {
     margin-top: 10px;
   }
   .search-footer{
-    margin-top: 10vh;
+    margin-top: 5vh;
   }
-  .social-media{
-    width: 40%;
+
+  .contact-payment{
+    margin-top: 2vh;
   }
 }
   
@@ -237,25 +266,52 @@ footer {
   @media (max-width: 600px) {
 
 
+    .footer-container{
+      flex-direction: column;
+      max-width: 100%;
+      padding: 15px;
+      margin: 0;
+    }
+
+    .social-media{
+      position: relative;
+    }
+    .social-media .img-p{
+      position: relative;
+      text-align: start;
+      margin: 0;
+      padding: 0;
+      left: 0;
+      top: 0;
+    }
+    .social-media .img-p img{
+      
+      width: 70px;
+      position: relative;
+      margin: 0;
+      margin-top: 2vh;
+      padding: 0;
+    }
+    
+
     .footer-links{
       height: auto;
+      width: 100%;
     }
     .social-media{
       height: auto;
       margin: 0;
       padding: 0;
+      width: 100%;
     }
 
-
+    .search-footer{
+      width: 100%;
+    }
     .footer-search{
+      max-width: 100%;
       margin-top: 0;
       height: auto;
-    }
-
-    .footer-container{
-      flex-wrap: wrap;
-      flex-direction: column;
-      padding: 0 20px;
     }
 
     h3{
@@ -267,19 +323,20 @@ footer {
     .social-media{
       width: 100%;
       position: relative;
-    }
-
-    .social-media .img-p{
-      position: absolute;
-      top: 70px;
+      margin: 0;
+      padding: 4px;
     }
 
     .contact-payment{
-      margin-top: 4vh;
+      margin-top: 0;
+    }
+    .payicons{
+      margin-top: 20px;
     }
     .footer-offer{
+      width: 100%;
       font-weight: 400;
-      text-align: start;
+      text-align: center;
       margin-top: -5vh;
     }
     .footer-img{

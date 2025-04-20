@@ -29,9 +29,6 @@ const ProductList = () => {
                       <ProductCard product={product} />
                     ))}
 
-                  {products && products.length > 0 && (
-                    <ProductCard product={products[0]} />
-                  )}
                 </div>
   );
 };

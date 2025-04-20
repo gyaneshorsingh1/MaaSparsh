@@ -3,7 +3,25 @@
   margin: 0;
   box-sizing: border-box;
 }
+#wishlist{
+  position: relative;
+}
+.wishlist-count{
+  position: absolute;
+  right: -19px;
+  top: 2px;
+  font-size: 19px;
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+  color: #7a301bf4;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "quick sand", sans-serif;
 
+}
 .cart-count-sec{
   width: 20px;
   position: relative;
@@ -16,21 +34,17 @@
   color: #7A301B;
 }
 .cart-count-sec .count-icon{
-  width: 20px;
-  height: 20px;
   position: absolute;
   left: 0;
   top: -8px;
-  background: #e4960f20;
-  border-radius: 50%;
 
 }
 .cart-count-sec .cart-product-count{
   position: absolute;
-  top: -9px;
-  left: 4.5px;
-  
-  font-size: 20px;
+  top: -10px;
+  left: 2px;
+  font-size: 19px;
+  font-family: "quick sand", sans-serif;
 }
 
 
@@ -38,18 +52,22 @@
   display: none;
 }
 header {
-  max-width: 100vw;
+  max-width: 100%;
   color: #4A4A4A; /* Soft dark gray for text */
   background-color: #ffbe989e;  
+  position: relative;
+  z-index: 10;
+  margin-bottom: 0;
 }
 
 .top-bar {
   display: flex;
-  height: 25vh;
+  height: fit-content;
   width: 100%;
   padding: 0 20px;
   justify-content: space-between;
   align-items: center;
+  margin: 0;
 }
 
 .search, .logo, .icon-links{
@@ -133,11 +151,31 @@ header {
 
 
 
-
+@media screen and (max-width: 880px) {
+  .icon{
+    width: 30px;
+    height: 30px;
+  }
+  .icon-links{
+    gap: 25px;
+  }
+  .cart-count-sec{
+    right: 25px;
+  }
+  .wishlist-count{
+    display: none;
+  }
+}
 
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
+  .search{
+    width: 40%;
+  }
+  .wishlist-count{
+    display: none;
+  }
   .cart-count-sec{
     width: 20px;
     position: relative;
@@ -167,10 +205,10 @@ header {
     display: none;
   }
   .logo{
-    width: 30%;
+    width: 20%;
   }
   .logo img{
-    width: 50%;
+    width: 70%;
   }
   .icon-links {
     gap: 0.5rem;
@@ -189,12 +227,6 @@ header {
     padding: 0;
     margin: 0;
   }
-  .search{
-    margin: 0;
-    padding: 0;
-    left: 0;
-    width: 40%;
-  }
   .icon-links{
     padding-right: 20px;
     margin: 0;
@@ -203,7 +235,12 @@ header {
   .speedDial .MuiFab-primary{
     display: none;
   }
+  
 }
+
+
+
+
 
 @media screen and (max-width: 600px) {
   .cart-count-sec{
@@ -216,6 +253,7 @@ header {
     cursor: pointer;
     transition: color 0.3s ease;
   }
+  
   .cart-count-sec .count-icon{
     width: 12px;
     height: 12px;
@@ -228,7 +266,6 @@ header {
     position: absolute;
     top: 0;
     left: 3.5px;
-    
     font-size: 10px;
   }
   .icon{
@@ -238,19 +275,22 @@ header {
     object-fit: contain;
   }
   .logo{
-    width: 33%;
+    width: 30%;
   }
   .logo img{
-    width: 80%;
+    width: 40%;
   }
+
   .top-bar {
     display: flex;
-    height: 22vh;
+    height: auto;
+    min-height: 80px;
     width: 100%;
-    padding: 0 0 35px 0;
+    padding: 10px 0 35px 0;
     justify-content: end;
     align-items: center;
     position: relative;
+    margin: 0;
   }
    .search-icon-header{
     display: flex;
@@ -259,14 +299,23 @@ header {
   }
   .search{
     position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translate(-50%,+50%);
+    bottom: 10px;
     width: 90%;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .logo{
+    width: 22%;
+    margin-right: 20px;
+  }
+  
+}
+
+@media screen and (max-width: 350px) {
+  .logo{
+    width: 30%;
+    margin-right: 7px;
   }
 }
 
@@ -410,4 +459,22 @@ header {
   .fa-close{
     font-size: 30px;
   }
+}
+
+
+@media screen and (max-width: 990px) {
+  .search{
+    margin: 0;
+    padding: 0;
+    left: 15px;
+    
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .cart-container {
+    width: 98%;
+    margin: auto;
+  }
+  
 }

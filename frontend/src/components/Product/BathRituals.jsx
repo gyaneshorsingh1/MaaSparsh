@@ -43,7 +43,7 @@ const BathRituals = () => {
                 <>
                 <MetaData title="PRODUCTS --ECOMM_"/>
                    
-                    <h2 className='productsHeading'>Bath Rituals</h2>
+                    <h2 className='product-container-titles'>Bath Rituals</h2>
 
                     <div className='products'>
                         {products &&

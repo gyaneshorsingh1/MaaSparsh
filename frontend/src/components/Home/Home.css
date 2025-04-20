@@ -1,5 +1,5 @@
 .homedash{
-    max-width: 100vw;
+    max-width: 100%;
     color: #4A4A4A; /* Soft dark gray for text */
     position: relative;
     background-color: #f6f6f6;
@@ -16,34 +16,67 @@
     color: rgb(0, 0, 0, 0.7);
   }
   .homeBanner{
+    position: relative;
     width: 100%;
-    height: 100vh;
+    height: fit-content;
   }
+  .banner-index{
+    transition: transform 3s ease-in-out;
+    
+  }
+
+  .left-arrow, .right-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  .left-arrow {
+    left: 10px; /* Adjust to your preference */
+  }
+  
+  .right-arrow {
+    right: 10px; /* Adjust to your preference */
+  }
+  
   .item {
     display: flex;
-    height: 100vh;
+    height: 60vh;
     background: salmon;
     align-items: center;
     justify-content: center;
   }
   
-  .leftBtn {
+  /* .leftBtn {
     position: absolute;
     top: 40%;
     left: 20px;
-    z-index: 100;
+    font-size: 30px;
+    color: #f6f6f654;
+    border-radius: 50%;
+    border: 1px solid #f6f6f654;
+    background: #f6f6f654;
   }
   
   .rightBtn {
-    z-index: 100;
     position: absolute;
     top: 40%;
     right: 20px;
-  }
+    font-size: 30px;
+    color: #f6f6f662;
+    border: 1px solid #f6f6f654;
+    background: #f6f6f654;
+    border-radius: 50%;
+  } */
   
   .slideImage{
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    object-fit: cover;
     z-index: -1;
   }
 
@@ -51,6 +84,35 @@
     width: 100%;
   }
 
+
+  .radioGroup {
+    position: absolute;
+    bottom: 20px; /* Position the group at the bottom of the banner */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px; /* Space between the radio buttons */
+  }
+  
+  .radio {
+    width: 12px; /* Diameter of the radio button */
+    height: 12px;
+    border: 2px solid #7a301b; /* Default border color */
+    border-radius: 50%; /* Makes the button circular */
+    background-color: transparent; /* Default background */
+    cursor: pointer; /* Pointer cursor for interaction */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition for hover and active states */
+  }
+  
+  .radio.active {
+    background-color: #C95741; /* Active radio button color */
+    border-color: #7a301b; /* Match border color for the active state */
+  }
+  
+  .radio:hover {
+    border-color: #555; /* Border color on hover */
+  }
+  
 
 
   .proofContainer {
@@ -90,12 +152,14 @@
   .proofContainer .proofData h4{
     font-weight: bold;
     text-align: center;
+    align-self: start;
     font-size: medium;
   }
   
   .product-containers{
     position: relative;
-    margin-top: 8vh;
+    margin: 8vh 0;
+    
   }
   .product-container-titles{
     position: relative;
@@ -121,7 +185,8 @@
     width: 100%;
     height: auto;
     gap: 10px;
-    row-gap: 40px;
+    row-gap: 80px;
+
   }
 
   .product-containers>div{
@@ -130,7 +195,7 @@
   }
   .productCard {
     width: 280px;
-    height: 430px;
+    height: 440px;
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -219,10 +284,106 @@
   height: 320px;
   position: relative;
 }
+
+
+
+
+/* Your existing CSS remains unchanged */
+
+/* Add these styles for the hover effect */
+.productCard {
+  position: relative; /* Ensure the container is relative for absolute positioning of images */
+}
+
+.productCard > .product-image-container> img {
+  transition: all 0.5s;
+  border-top-left-radius: 180px;
+  border-top-right-radius: 180px;
+  width: 280px;
+  height: 300px;
+  object-fit: cover;
+  border: 2px solid #C95741;
+}
+
+/* Second image for hover effect */
+.productCard > .product-image-container> img.second-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0; /* Hide the second image by default */
+  transition: opacity 0.3s ease;
+}
+
+/* Hover effect */
+.productCard:hover > .product-image-container> img.first-image {
+  opacity: 0; /* Hide the first image on hover */
+}
+
+.productCard:hover > .product-image-container> img.second-image {
+  opacity: 1; /* Show the second image on hover */
+}
+
+/* Responsive adjustments for the hover effect */
+@media screen and (max-width: 768px) {
+  .productCard:hover > .product-image-container > img.first-image {
+    opacity: 1; /* Keep first image visible */
+}
+
+.productCard:hover > .product-image-container > img.second-image {
+    opacity: 0; /* Hide second image */
+}
+
+/* Ensure only the first image is shown on mobile */
+.productCard > .product-image-container > img.second-image {
+    display: none;
+}
+
+.productCard > .product-image-container > img.first-image {
+    display: block;
+}
+  .productCard > .product-image-container> img {
+    width: 120px;
+    height: 120px;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+  .productCard> .product-image-container > img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .productCard >.product-image-container> img.second-image {
+    width: 100%;
+    height: 100%;
+  }
+}
   
 
 
   @media screen and (max-width: 768px) {
+    .homeBanner{
+      height: auto;
+    }
+    .radio {
+      width: 6px; /* Diameter of the radio button */
+      height: 6px;
+      border: 1px solid #7a301b7a; /* Default border color */
+      border-radius: 50%; /* Makes the button circular */
+      background-color: transparent; /* Default background */
+      cursor: pointer; /* Pointer cursor for interaction */
+      transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition for hover and active states */
+    }
+    
+    .radio.active {
+      background-color: #c95841b8; /* Active radio button color */
+      border-color: #7a301be8; /* Match border color for the active state */
+    }
+
+    .paragraph-container{
+      display: none;
+    }
 
     .proofContainer .proofData p{
         font-size: 0.8vmax;
@@ -234,10 +395,11 @@
   }
   .proofContainer .proofData h4{
     font-size: 2vmax;
+    align-self: start;
   }
 
   .proofContainer{
-    gap: 0;
+    margin: 5px 0;
   }
   .product-container {
     display: flex;
@@ -268,12 +430,13 @@
   }
   .productCard > p {
     letter-spacing: 2px;
-    font: bold 12px 'League of septa', arial, sans-serif;
+    font: bold 12px  "League Saptan", sans-serif;
   }
   
   .productCard > div {
       margin: 0vmax;
       display: block;
+
   }
   
   .productCard .cart-btn-price span {
@@ -283,7 +446,7 @@
   
     .productCard > div > span {
       margin: 0 0.5vmax;
-      font: bold 1vmax "Roboto";
+      font: bold 1vmax "League Saptan", sans-serif;
     }
 
     
@@ -315,8 +478,7 @@
       min-height: 30px;
       max-height: 30px;
       cursor: pointer;
-      font: 10px/1.4 'Open Sans', arial, sans-serif;
-      
+      font-size: 14px;
     }
     .feature-img{
       flex: 0 1 calc(50% - 100px);
@@ -324,13 +486,20 @@
       height: 180px;
       margin: 5px;
     }
-
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 600px) {
+    .homeBanner{
+      height: auto;
+    }
+    .proofContainer{
+      padding: 10px;
+      margin-top: 50px;
+     }
     .proofContainer .proofData{
-      gap: 1px;
-      row-gap: 0px;
+      margin: 0;
+      width: 100%;
+      gap: 1.5px;
     }
     .proofContainer .proofData p{
       line-height: normal;
@@ -339,7 +508,8 @@
       padding: 0;
     }
     .proofContainer .proofData h4{
-      font-size: 1.1vmax;
+      font-size: 1.2vmax;
+      font-weight: 600;
       margin: 0;
       padding: 0;
     }
@@ -358,13 +528,14 @@
 
     .product-container-titles{ 
        color: #C95741E5;
-       font-size: 30px;
+       font-size: 24px;
        margin-left: 15px;
-       margin-top: 20vh;
+       margin-top: 5px;
        
     }
     .product-container-title-des{
-      margin: 0 15px;
+      margin: 15px 0 0 15px ;
+      font-size: 1.5rem;
     }
      .feature-img{
       width: 100%;
@@ -380,9 +551,12 @@
       position: relative;
      }  
 
+     
+
      .productCard{
       width: 100%;
       height: 60%;
+      justify-content: center;
      }
      .productCard img{
       width: 100%;
@@ -391,9 +565,17 @@
      }
      .productCard p{
       font-size: x-small;
-      margin: 15px 0;
-
+      font-family:  "League Saptan", sans-serif;
+      margin: 10px 0;
      }
+     
+     .cart-btn-price .cart-btn{
+      font-weight: 400;
+      margin-top: 0;
+      text-transform: uppercase;
+     }
+
+     
      
   }
   

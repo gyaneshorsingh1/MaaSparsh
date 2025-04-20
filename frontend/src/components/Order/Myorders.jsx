@@ -13,7 +13,7 @@ const MyOrders = () => {
 
   const { loading, error, orders } = useSelector((state) => state.myOrders);
   const { user } = useSelector((state) => state.user);
-
+  console.log(orders)
   useEffect(() => {
     if (error) {
       toast.error(error);
@@ -42,7 +42,10 @@ const MyOrders = () => {
             </div>
 
 
-            {orders?.map((order) => (
+            {orders
+            ?.slice() // To avoid mutating the original array
+            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Sort by date descending
+            .map((order) => (
               <div key={order._id} className="orderFullRow">
                 <div className="orderRow">
                   <div className="orderImgContainer">

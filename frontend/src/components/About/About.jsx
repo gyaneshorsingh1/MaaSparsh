@@ -24,7 +24,7 @@ import proof3 from "../../images/proof3.png";
 import proof4 from "../../images/proof4.png";
 import proof5 from "../../images/proof5.png";
 
-import formulationBanner from "./aboutImages/formulations-banner.png"
+import formulationBanner from "./aboutImages/formulations-banner.jpg"
 
 
 const About = () => {
@@ -96,7 +96,6 @@ const About = () => {
                   <div>
                     <p>At MaaSparsh, we promise purity in every drop, delivering Ayurvedic care rooted in the wisdom of age-old traditions. Our products are thoughtfully crafted using nature’s finest ingredients, ensuring a perfect balance for your baby’s wellness. From nurturing delicate skin to strengthening hair and supporting overall growth, we prioritize your baby’s holistic care. Each formulation is a testament to our commitment to quality and authenticity, offering gentle yet effective solutions. With MaaSparsh, embrace the goodness of Ayurveda for your little one’s healthy and happy journey.</p>
                     <img src={babyfoot} alt="baby foot" className='baby-foot' />
-
                   </div>
                 
                 </div>

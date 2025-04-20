@@ -17,13 +17,14 @@ const ContactUs = () => {
               AM to 6 PM IST
             </li>
             <li>
-              <strong>Email:</strong> [email address]
+              <strong>Phone:</strong> 9472882699
             </li>
             <li>
-              <strong>Phone:</strong> [contact number]
+              <strong>Email:</strong> care@maasparsh.com
             </li>
+          
             <li>
-              <strong>Address:</strong> [Company Address]
+              <strong>Address:</strong> AF-104B1, GOLF LINK - 1, GREATER NOIDA, Noida Sector 62, Noida, Gautam Buddha Nagar - 201309, Uttar Pradesh
             </li>
           </ul>
 

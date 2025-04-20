@@ -70,3 +70,17 @@
     cursor: pointer;
     color: #C95741E5;
 }
+
+
+@media screen and (max-width: 600px) {
+    .route-path-span, .product-details-path, .route-path{
+        font-size: 10px;
+    }
+     #route-path{
+        padding-left: 0;
+    }
+    .product-details-path{
+        padding-left: 10px;
+        margin-top: 10px;
+    }
+}

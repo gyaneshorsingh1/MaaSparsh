@@ -2,15 +2,23 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  // Check if the product has images and if the first image is available
-  const imageUrl =
+  // Check if the product has images and if the first and second images are available
+  const firstImageUrl =
     product.images && product.images.length > 0
       ? product.images[0].url
       : "https://via.placeholder.com/150"; // Fallback image URL
 
+  const secondImageUrl =
+    product.images && product.images.length > 1
+      ? product.images[1].url
+      : firstImageUrl; // Use the first image as fallback if the second image is not available
+
   return (
     <Link className="productCard" to={`/product/${product._id}`}>
-      <img src={imageUrl} alt={product.name} />
+      <div className="product-image-container">
+        <img src={firstImageUrl} alt={product.name} className="first-image" />
+        <img src={secondImageUrl} alt={product.name} className="second-image" />
+      </div>
       <p>{product.name}</p>
       <div className="cart-btn-price">
         <span>{`₹${product.price}`}</span>

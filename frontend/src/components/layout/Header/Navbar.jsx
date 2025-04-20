@@ -2,7 +2,10 @@ import React, { useState, useRef, useEffect, forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import "./Navbar.css";
-import shopall from "../../../images/baby shampoo.jpg";
+import shopall from "../../../images/mainbanner2.jpg";
+import BathRituals from "../../../images/main-banner.jpg";
+import notFound from "../../../images/notfound.jpg";
+import aboutBanner from "../../About/aboutImages/aboutBanner.jpg";
 // Wrapping FaBars with forwardRef to properly use ref
 const FaBarsWithRef = forwardRef((props, ref) => <FaBars {...props} ref={ref} />);
 
@@ -68,7 +71,7 @@ const Navbar = () => {
               Bath Rituals
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/gifting" onClick={closeNav}>
               Gifting
             </Link>
@@ -88,7 +91,7 @@ const Navbar = () => {
             <Link to="/hair-care" onClick={closeNav}>
               Hair Care
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/about" onClick={closeNav}>
               About Us
@@ -97,32 +100,50 @@ const Navbar = () => {
         </ul>
       </nav>
       <nav className="mobile-navbar">
-        <div className="mobile-img-nav">
-            <img src={shopall} alt="shopall" />
-            <p>ShopAll</p>
-        </div>
-        <div className="mobile-img-nav">
-            <img src={shopall} alt="shopall" />
-            <p>ShopAll</p>
-        </div>
-        <div className="mobile-img-nav">
-            <img src={shopall} alt="shopall" />
-            <p>ShopAll</p>
-        </div>
-        <div className="mobile-img-nav">
-            <img src={shopall} alt="shopall" />
-            <p>ShopAll</p>
-        </div>
-        <div className="mobile-img-nav">
-            <img src={shopall} alt="shopall" />
-            <p>ShopAll</p>
-        </div>
-        <div className="mobile-img-nav">
-            <img src={shopall} alt="shopall" />
-            <p>ShopAll</p>
-        </div>
-        
-      </nav>
+  <div className="mobile-img-nav">
+    <Link to="/products">
+      <img src={shopall} alt="shopall" />
+      <p>All</p>
+    </Link>
+  </div>
+  <div className="mobile-img-nav">
+    <Link to="/products/bath-rituals">
+      <img src={BathRituals} alt="bath rituals" />
+      <p>Bath Rituals</p>
+    </Link>
+  </div>
+  {/* <div className="mobile-img-nav">
+    <Link to="/gifting">
+      <img src={notFound} alt="gifting" />
+      <p>Gifting</p>
+    </Link>
+  </div>
+  <div className="mobile-img-nav">
+    <Link to="/our-exclusives">
+      <img src={notFound} alt="our exclusives" />
+      <p>Our Exclusives</p>
+    </Link>
+  </div>
+  <div className="mobile-img-nav">
+    <Link to="/body-care">
+      <img src={notFound} alt="body care" />
+      <p>Body Care</p>
+    </Link>
+  </div>
+  <div className="mobile-img-nav">
+    <Link to="/hair-care">
+      <img src={notFound} alt="hair care" />
+      <p>Hair Care</p>
+    </Link>
+  </div> */}
+  <div className="mobile-img-nav">
+    <Link to="/about">
+      <img src={aboutBanner} alt="about us" />
+      <p>About Us</p>
+    </Link>
+  </div>
+</nav>
+
 
       {/* Overlay for dimming/blurring the background */}
       <div className={`overlay ${isNavOpen ? "active" : ""}`} onClick={closeNav}></div>

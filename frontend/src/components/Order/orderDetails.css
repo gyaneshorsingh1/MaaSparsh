@@ -1,157 +1,257 @@
 .orderDetailsPage {
-    background-color: white;
-    width: 60%;
-    margin: auto;
-    margin-bottom: 15vh;
-  }
+  background-color: #f6f6f6;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 15vh;
+}
 
-  .orderDetailsCartItems > h1 {
-    font: 300 2vmax "quick sand", sans-serif;
-    border-bottom: 1px solid #7A301A;
-    color: #7A301A;
-    margin: 1.5vmax 0;
-    padding: 5px 0;
-    
+.orderDetailsCartItems > h1 {
+  font: 300 2vmax "quick sand", sans-serif;
+  border-bottom: 1px solid #7A301A;
+  color: #7A301A;
+  margin: 1.5vmax 0;
+  padding: 5px 0; 
+}
+.orderDetailsContainer > h6{
+  color:#7A301A;
+  font-family: "League Spartan", sans-serif;
+  border-bottom: 1px solid #7A301A;
+  font-size: 24px;
+}
+.orderDetailsContainer {
+  padding: 4vmax 5vmax;
+  padding-bottom: 0%;
+}
+
+
+
+.orderDetailsContainerBox,
+.orderDetailsCartItemsContainer {
+  margin: 2vmax 0;
+  
+}
+.order-item-sec{
+  font-family: "quick sand", sans-serif;
+}
+.orderDetailsContainerBox > div {
+  display: flex;
+  align-items: center;
+  margin: 1vmax 0;
+ 
+}
+.orderDetailsCartItemsContainer{
+  row-gap: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.orderDetailsContainerBox > div > p {
+  font: 400 24px "League Spartan", sans-serif;
+  color: black;
+  width: 100px;
+}
+.orderDetailsContainerBox > div > span {
+  margin: 0 1vmax;
+  font-size: 24px;
+  color: #000000;
+}
+
+.orderDetailsCartItems > h6 {
+  font: 400 1.4vmax "quick sand", sans-serif;
+  color: rgba(221, 72, 46, 0.589);
+}
+
+.orderDetailsCartItems {
+  padding: 0 5vmax;
+  border-top: 1px solid rgba(0, 0, 0, 0.164);
+}
+
+.orderDetailsCartItemsContainer > div {
+  display: flex;
+  align-items: center; 
+}
+
+.orderDetailsCartItemsContainer > div > img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: solid 1px rgba(80, 211, 131, 0.573);
+}
+
+.orderDetailsCartItemsContainer > div > a {
+  color: #111111;
+  margin: 0 2vmax;
+  font-size: 24px;
+  width: 40%;
+  text-decoration: none;
+}
+
+.orderDetailsCartItemsContainer > div > span {
+  font: 600 18px "League Spatarn", sans-serif;
+  color: #070707;
+}
+
+.orderDetailsContainerBox p.greenColor {
+  color: green;
+  font-weight: bold;
+}
+
+.orderDetailsContainerBox p.yellowColor {
+  color: yellow;
+  font-weight: bold;
+}
+
+.orderDetailsContainerBox p.redColor {
+  color: red;
+  font-weight: bold;
+}
+
+.order-items-sec{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: #0aec3722;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+@media screen and (max-width: 780px) {
+
+  .orderDetailsPage{
+    width: 90%;
   }
-  .orderDetailsContainer > h6{
-    color:#7A301A;
-    font-family: "League Spartan", sans-serif;
-    border-bottom: 1px solid #7A301A;
-    font-size: 24px;
+  .orderDetailsContainerBox>div> span{
+    color: #000000f9;
   }
-  .orderDetailsContainer {
-    padding: 4vmax 5vmax;
-    padding-bottom: 0%;
+  .orderDetailsContainerBox{
+    padding-bottom: 20px;
   }
   
+}
 
-  
-  .orderDetailsContainerBox,
-  .orderDetailsCartItemsContainer {
-    margin: 2vmax 0;
+
+@media screen and (max-width: 600px) {
+  .orderDetailsPage{
+    width: 100%;
+    padding: 0;
+    margin: 0;
   }
-  .order-item-sec{
-    font-family: "quick sand", sans-serif;
+
+  .orderDetailsCartItems{
+    padding: 0 3px;
+  }
+  .orderDetailsContainer{
+    width: 100%;
+    padding: 10px 10px 20px;
+  }
+  .orderDetailsContainer > p {
+    font: 400 6vw "League Spartan", sans-serif;
+  }
+  .orderDetailsPage h1{
+    font-size: 1.2vmax;
+    color: #7a301a10;
+  }
+  .orderDetailsContainer h6{
+    font-size: 18px;
   }
   .orderDetailsContainerBox > div {
-    display: flex;
-    align-items: center;
-    margin: 1vmax 0;
-  }
-  
-  .orderDetailsContainerBox > div > p {
-    font: 400 24px "League Spartan", sans-serif;
-    color: black;
-    width: 100px;
-  }
-  .orderDetailsContainerBox > div > span {
-    margin: 0 1vmax;
-    font-size: 24px;
-    color: #575757;
-  }
-  
-  .orderDetailsCartItems > h6 {
-    font: 400 1.4vmax "quick sand", sans-serif;
-    color: rgba(221, 72, 46, 0.589);
-  }
-  
-  .orderDetailsCartItems {
-    padding: 0 5vmax;
-    border-top: 1px solid rgba(0, 0, 0, 0.164);
-  }
-  
-  .orderDetailsCartItemsContainer > div {
-    display: flex;
-    align-items: center;
-  }
-  
-  .orderDetailsCartItemsContainer > div > img {
-    width: 90px;
-    height: 90px;
-    object-fit: cover;
-    border-radius: 6px;
-    border: solid 1px rgba(80, 211, 131, 0.573);
-  }
-  
-  .orderDetailsCartItemsContainer > div > a {
-    color: #575757;
-    margin: 0 2vmax;
-    font-size: 24px;
-    width: 40%;
-    text-decoration: none;
-  }
-  
-  .orderDetailsCartItemsContainer > div > span {
-    font: 600 18px "League Spatarn", sans-serif;
-    color: #5e5e5e;
+    margin: 0;
+    padding: 0;
+    justify-content: start;
+    align-items: start;
+    
+    
   }
 
-  .orderDetailsContainerBox p.greenColor {
-    color: green;
+  .orderDetailsContainerBox > div > p {
+    font: 400 14px "League Spartan", sans-serif;
+    width: 20%;
+  }
+  .orderDetailsContainerBox > div > span {
+    padding: 2px 0;
+    width: 75%;
+    font: 400 14px "League Spartan", sans-serif;
+  }
+
+  .orderDetailsCartItems > h6 {
+    font: 400 22px "League Spartan", sans-serif;
+  }
+
+  .orderDetailsCartItemsContainer > div {
+    font: 400 4vw "League Spartan", sans-serif;
+    margin: 0;
+  }
+
+  .orderDetailsCartItemsContainer > div > img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .orderDetailsCartItemsContainer > div > .productlink {
+    margin: 0;
+    width: 30%;
+    font-size: small;
+    text-align: start;
+  }
+
+  .orderDetailsCartItemsContainer > div > span {
+    font: 400 14px "League Spartan", sans-serif;
+  }
+
+  .orderDetailsContainerBox{
+    padding-bottom: 10px;
+    margin: 5px 0;
+  }
+}
+.order-details {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 10px 0;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+}
+
+.payment-status p,
+.order-status p {
+  font-weight: bold;
+  text-align: start;
+}
+
+.status-success {
+  color: green;
+}
+
+.status-failed {
+  color: red;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .order-details {
+    padding: 15px;
+  }
+
+  .info-item {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .info-item p {
     font-weight: bold;
   }
-  
-  .orderDetailsContainerBox p.yellowColor {
-    color: yellow;
-    font-weight: bold;
-  }
-  
-  .orderDetailsContainerBox p.redColor {
-    color: red;
-    font-weight: bold;
-  }
-  
-  .order-items-sec{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  
-  
-  @media screen and (max-width: 600px) {
-    .orderDetailsPage{
-      width: 100%;
-    }
-    .orderDetailsContainer > p {
-      font: 400 6vw "Roboto";
-    }
-    .orderDetailsPage h1{
-      font-size: 2.5vmax;
-    }
-    .orderDetailsContainer h6{
-      font-size: 2vmax;
-    }
-    .orderDetailsContainerBox > div {
-      margin: 1vw 0;
-    }
-  
-    .orderDetailsContainerBox > div > p {
-      font: 400 3vw "Roboto";
-    }
-    .orderDetailsContainerBox > div > span {
-      font: 100 3vw "Roboto";
-    }
-  
-    .orderDetailsCartItems > h6 {
-      font: 400 3vw "Roboto";
-    }
-  
-    .orderDetailsCartItemsContainer > div {
-      font: 400 4vw "Roboto";
-      margin: 4vw 0;
-    }
-  
-    .orderDetailsCartItemsContainer > div > img {
-      width: 10vw;
-    }
-  
-    .orderDetailsCartItemsContainer > div > .productlink {
-      margin: 1vw;
-      width: 30%;
-    }
-  
-    .orderDetailsCartItemsContainer > div > span {
-      font: 100 4vw "Roboto";
-    }
-  }
-  
+}

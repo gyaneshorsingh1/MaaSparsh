@@ -169,21 +169,22 @@ const Shipping = () => {
 
         <div className="products-and-amount">
           <h2>Order Summary</h2>
-          <div className="confirmCartItemsContainer">
-            {cartItems &&
-              cartItems.map((item) => (
-                <div key={item.product}>
-                  <span>
-                    <img src={item.image} alt={item.name} />
-                    <Link to={`/product/${item.product}`}>
-                      {item.name} <span className="item-quantity">( {item.quantity} ) </span> <br />
-                      <span>200ml</span>
-                    </Link>
-                  </span>
-                  <span className="sub-total-sec">₹{item.price * item.quantity}</span>
-                </div>
-              ))}
-          </div>
+          <div className="cartItemContainer">
+  {cartItems &&
+    cartItems.map((item) => (
+      <div key={item.product}>
+        <span>
+          <img src={item.image} alt={item.name} />
+          <Link to={`/product/${item.product}`}>
+            {item.name} <span className="itemQuantity">( {item.quantity} ) </span> <br />
+            <span>200ml</span>
+          </Link>
+        </span>
+        <span className="subtotalSection">₹{item.price * item.quantity}</span>
+      </div>
+    ))}
+</div>
+
           <div className="orderSummary">
             <div className="sub-total-order">
               <p>Sub-Total:</p>

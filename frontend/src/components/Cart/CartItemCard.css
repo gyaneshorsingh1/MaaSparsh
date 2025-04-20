@@ -18,6 +18,7 @@
     display: flex;
     margin: 0 1vmax;
     flex-direction: column;
+    position: relative;
   }
   
   .CartItemCard > div > a {
@@ -35,24 +36,32 @@
 
   .CartItemCard > div > p{
     position: relative;
-    left: 330px;
-    top:-50px;
+    left: 0px;
+    top: 20px;
   }
 
-  @media screen and (max-width: 775px) {
+  @media screen and (max-width: 1300px) {
+    .CartItemCard > div > p{
+      position: relative;
+      left: 0px;
+      top: 10px;
+    }
+  }
+
+  @media screen and (max-width: 780px) {
     .CartItemCard{
       height: 9vmax;
     }
     .CartItemCard > img{
-      width: 8vmax;
-      height: 8vmax;
+      width: 9vmax;
+      height: 9vmax;
     }
     .CartItemCard > div > p{
-      top: 0px;
-      left: 15px;
+      left: 0px;
+      top: 5px;
     }
     .CartItemCard > div > span, .CartItemCard > div > a{
-      font-size: 1.5vmax;
+      font-size: 14px;
     }
   }
   
@@ -66,8 +75,8 @@
     box-sizing: border-box;
   }
   .CartItemCard > img {
-    width: 8vmax;
-    height: 8vmax;
+    width: 9vmax;
+    height: 9vmax;
     border-radius: 9px;
     border: 1px solid #e8704463;
     object-fit: cover;
@@ -81,14 +90,14 @@
   }
   
   .CartItemCard > div > a {
-    font: 300 1.5vmax  "League Spartan", sans-serif;
+    font: 400 14px  "League Spartan", sans-serif;
     color: rgba(24, 24, 24, 0.815);
     text-decoration: none;
   }
   
   .CartItemCard > div > span {
     margin-top: 0.8vmax;
-    font: 600 1.2vmax "League Spartan", sans-serif;
+    font: 600 13px "League Spartan", sans-serif;
     color: rgba(24, 24, 24, 0.815);
   }
   
@@ -97,7 +106,9 @@
     font: 100 4vmax "League Spartan", sans-serif;
     cursor: pointer;
     margin:  0;
-    top: 5px;
+    top: 0px;
+    
     left: 0;
   }
+  
   } 

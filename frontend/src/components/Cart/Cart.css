@@ -26,7 +26,8 @@
   }
   
   .cartPage {
-    padding-top: 8vh;
+    padding: 8vh 0;
+    overflow: scroll;
   }
   
   /* .cartHeader {
@@ -65,7 +66,7 @@
     align-items: center;
     height: auto;
     position: absolute;
-    left: 26%;
+    left: 35%;
     bottom: 12%;
   }
     
@@ -76,19 +77,19 @@
     color: white;
     width: 30px;
     transition: all 0.5s;
-    padding: 0.1vmax;
-    font-size: 1.5vmax;
+    padding: 0;
+    font-size: 20px;
   }
   .cartInput > button:hover {
     background-color: #7A301B;
   }
    
   .cartInput > input {
-    width: 3vmax;
+    width: 4vmax;
     border: none;
     text-align: center;
     outline: none;
-    font: 500 1.3vmax "League Spartan", sans-serif;
+    font: 500 1.5vmax "League Spartan", sans-serif;
     color: rgba(0, 0, 0, 0.74);
   }
 
@@ -151,8 +152,18 @@
   .total-price-text{
     text-align: end;
   }
+
+  @media screen and (max-width: 780px) {
+    .cartSubtotal{
+      font-size: 16px;
+      color: black;
+    }
+  }
   
   @media screen and (max-width: 600px) {
+    .cartSubtotal{
+      font-size: 13px;
+    }
     .cartInput {
       border: 2px solid #7A301B;
       overflow: hidden;
@@ -162,7 +173,7 @@
       align-items: center;
       height: auto;
       position: absolute;
-      left: 36%;
+      left: 45%;
       bottom: 17%;
   
     }
@@ -171,10 +182,13 @@
       border: none;
       cursor: pointer;
       color: white;
-      width: 30px;
+      width: 22px;
       transition: all 0.5s;
-      padding: 0.75vmax;
-      font-size: 1.5vmax;
+      padding: 0;
+      font-size: 14px;
+    }
+    .cartInput > input{
+      font-size: 12px;
     }
     .cartGrossProfitBox {
       border-top: 3px solid #7A301B;

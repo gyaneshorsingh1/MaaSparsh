@@ -4,7 +4,7 @@ import { newProductReducer, newReviewReducer, productDetailsReducer, productsRed
 import { allUsersReducer, forgotPasswordReducer, userDetailsReducer, userReducer } from './reducers/userReducer';
 import { cartReducer } from './reducers/cartReducer';
 import { allOrdersReducer, myOrdersReducer, newCodOrderReducer, newOrderReducer, orderDetailsReducer, orderReducer } from './reducers/orderReducer';
-
+import { wishlistReducer } from "./reducers/wishlistReducer"
 const reducer = {
     products: productsReducer,
     productDetails: productDetailsReducer,
@@ -12,6 +12,7 @@ const reducer = {
     user: userReducer,
     forgotPassword: forgotPasswordReducer,
     cart: cartReducer,
+    wishlist: wishlistReducer,
     newOrder: newOrderReducer,
     newCodOrder: newCodOrderReducer,
     myOrders: myOrdersReducer,

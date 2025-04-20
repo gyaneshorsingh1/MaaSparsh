@@ -10,3 +10,16 @@
   .checkout-status{
     margin-bottom: 4vh;
   }
+
+  @media screen and (max-width:600px) {
+    .checkoutsteps-text{
+      font-size: 10px;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      top: -15px;
+    }
+    .checkout-status{
+      margin-bottom: -10px;
+    }
+  }

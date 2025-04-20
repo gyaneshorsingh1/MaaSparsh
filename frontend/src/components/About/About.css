@@ -25,7 +25,7 @@
 }
 .about-banner{
     position: relative;
-    min-height: 100vh;
+    min-height: auto;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -35,9 +35,6 @@
 }
 
 .about-banner-img{
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: auto;
     object-fit: cover;
@@ -93,51 +90,51 @@
 .about-4 .about-icon1{
   position: absolute;
   left: 5%;
-  width: 80px;
-  height: 80px;
+  width: 7vw;
+  height: 7vw;
   top: 10%;
 }
 .about-4 .about-icon2{
   position: absolute;
   left: 15%;
-  width: 80px;
-  height: 80px;
+  width: 6vw;
+  height: 6vw;
   top: 25%;
 }
 .about-4 .about-icon3{
   position: absolute;
   left: 2%;
   top: 40%;
-  width: 80px;
-  height: 80px;
+  width: 5vw;
+  height: 5vw;
 }
 .about-4 .about-icon4{
   position: absolute;
   left: 9%;
   top: 55%;
-  width: 80px;
-  height: 80px;
+  width: 5vw;
+  height: 5vw;
 }
 .about-4 .about-icon6{
   position: absolute;
   right: 6%;
-  width: 80px;
-  height: 80px;
+  width: 6vw;
+  height: 6vw;
   top: 15%;
 }
 .about-4 .about-icon7{
   position: absolute;
   top: 30%;
   right: 15%;
-  width: 80px;
-  height: 80px;
+  width: 6vw;
+  height: 6vw;
 }
 .about-4 .about-icon8{
   position: absolute;
   top: 50%;
   right: 5%;
-  width: 80px;
-  height: 80px;
+  width: 6vw;
+  height: 6vw;
 }
 
 
@@ -280,10 +277,10 @@
   }
 
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 600px) {
     .about-banner{
       height: auto;
-      padding: 5vh 0;
+      padding: 2vh 0;
     }
     .about-banner p{
       font-size: 15px;
@@ -294,19 +291,20 @@
     }
     .about-2{
       position: relative;
-      height: 40vh;
-      padding: 5px;
+      height: auto;
+      padding: 15px 5px;
+      margin: 2vh 0;
     }
     .about-2 h3{
       font-size: small;
       border: 0;
       margin: 0;
+      padding: 10px 0;
     }
     .about-2 p{
       font-size: small;
     }
     .about-3{
-      top: -13px;
       height: auto;
       padding: 0;
       margin: 0;
@@ -314,40 +312,91 @@
     .about-3 img{
       width: 100%;
     }
+    .about-3 h2{
+      font-size: 24px;
+    }
     .about-4{
       height: auto;
       row-gap: 0px;
+      margin: 10px 0;
+      padding: 0;
     }
     .about-4 h2{
-      font-size: 40px;
+      font-size: 28px;
     }
     .about-4 img{
       height: auto;
       margin: 5vh 0;
-      width: 100%;
+      width: 60%;
       object-fit: contain;
+    }
+    .about-4 .about-icon4, .about-4 .about-icon8{
+      display: none;
     }
 
     .about-4-p p{
       font-size: 14px;
     }
 
+    .about-sub-title{
+      margin: 25px 0;
+      padding: 0;
+    }
     .about-sub-title h2{
       font-size: 20px;
       width: 100%;
+      padding: 0 5px;
+      margin: 0;
+      height: auto;
+
     }
     .about-6 img{
       object-fit: cover;
       height: 20vh;
     }
+    .our-mission-values h2{
+      font-size: 24px;
+      padding: 0 10px;
+      width: 100%;
+    }
+    .our-mission-values{
+      padding: 5px;
+      gap: 0;
+    }
+    .our-mission-values .our-mission-values-sec{
+      gap: 10px;
+      margin: 10px 0;
+      padding: 10px 0;
+    }
+    .our-mission-values> .our-mission-values-sec> div{
+      width: 50%;
+      row-gap: 15px;
+      
+    }
+    .our-mission-values> .our-mission-values-sec>  div>img{
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
 
+    .our-mission-values> .our-mission-values-sec> div>p{
+      overflow: hidden;
+      height: 28vh;
+      width: 100%;
+      font-size: 12px;
+      padding: 0;
+      margin: 0;
+    }
+
+    
     .about-7{
       padding: 0 4px;
       height: auto;
       margin: 5vh 0 0 0;
     }
     .about-7 h2{
-      font-size: 25px;
+      font-size: 24px;
       margin-bottom: 15px;
       padding-top: 15px;
       width: 100%;
@@ -363,6 +412,10 @@
       padding: 0;
       gap: 0.5px;
     }
+    .proof-icons img{
+      width: 30px;
+      height: 30px;
+    }
     .proof-titles{
       gap: 0.5px;
       padding: 0;
@@ -371,26 +424,18 @@
       font-size: 8px;
     }
 
-    .mix-banner{
-      height: 10vh;
-      width: 100%;
-    }
-    .mix-banner img{
-      object-fit: contain;
-      margin: 0 0 5vh 0;
-      height: auto;
-    
-    }
-
     .greenies-banner{
       height: auto;
-      margin: 5vh 0;
+      margin: 0;
       padding: 0;
     }
     .about-footer-banner{
       margin: 0;
       height: auto;
       padding: 0;
+    }
+    .formulation-banner{
+      margin: 15px 0;
     }
 
 

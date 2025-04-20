@@ -16,7 +16,9 @@ const OrderDetails = () => {
 
   const { order, error, loading } = useSelector((state) => state.orderDetails);
   const { user } = useSelector((state) => state.userDetails); // Access user details from Redux state
+  
   const dispatch = useDispatch();
+
 
   // Local state to track if the user details have been loaded
   const [userLoaded, setUserLoaded] = useState(false);
@@ -44,6 +46,8 @@ const OrderDetails = () => {
 
   const { shippingInfo, paymentInfo, orderStatus, orderItems, totalPrice } = order || {};
 
+  console.log(shippingInfo);
+  console.log(order);
   // Determine payment status classes
   const getPaymentStatusClass = (status) => {
     console.log('Payment Status:', status); // Debugging log to check status value
@@ -78,48 +82,54 @@ const OrderDetails = () => {
             ))}
           </div>
         </div>
-        <div className="orderDetailsContainer">
-         
+        <div className="order-details">
+  <Typography variant="h6">Shipping Info</Typography>
+  <div className="info-box">
+    <div className="info-item">
+      <p>Name:</p>
+      <span>{order.name || "Loading..."}</span>
+    </div>
+    <div className="info-item">
+      <p>Phone:</p>
+      <span>{shippingInfo?.phoneNo}</span>
+    </div>
+    <div className="info-item">
+      <p>Address:</p>
+      <span>
+        {shippingInfo
+          ? `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state}, ${shippingInfo.pinCode}, ${shippingInfo.country}`
+          : "Loading..."}
+      </span>
+    </div>
+  </div>
 
-          <Typography variant="h6">Shipping Info</Typography>
-          <div className="orderDetailsContainerBox">
-            <div>
-              <p>Name:</p>
-              <span>{order?.name || "Loading..."}</span> {/* Display the user name once loaded */}
-            </div>
-            <div>
-              <p>Phone:</p>
-              <span>{shippingInfo?.phoneNo}</span>
-            </div>
-            <div>
-              <p>Address:</p>
-              <span>{shippingInfo ? `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state}, ${shippingInfo.pinCode}, ${shippingInfo.country}` : null}</span>
-            </div>
-          </div>
+  <Typography variant="h6">Payment</Typography>
+  <div className="info-box">
+    <div className="payment-status">
+      <p className={getPaymentStatusClass(paymentInfo?.status)}>
+        {paymentInfo?.status === "Paid"
+          ? "Paid"
+          : paymentInfo?.status === "COD"
+          ? "Cash On Delivery"
+          : "Not Paid"}
+      </p>
+    </div>
+    <div className="info-item">
+      <p>Amount:</p>
+      <span>₹{totalPrice}</span>
+    </div>
+  </div>
 
-          <Typography variant="h6">Payment</Typography>
-          <div className="orderDetailsContainerBox">
-            <div>
-              {/* Apply the dynamic class for payment status */}
-              <p className={getPaymentStatusClass(paymentInfo?.status)}>
-                {paymentInfo?.status === "Paid" ? "Paid" : paymentInfo?.status === "COD" ? "Cash On Delivery" : "Not Paid"}
-              </p>
-            </div>
-            <div>
-              <p>Amount:</p>
-              <span>{totalPrice}</span>
-            </div>
-          </div>
+  <Typography variant="h6">Order Status</Typography>
+  <div className="info-box">
+    <div className="order-status">
+      <p className={orderStatus === "Delivered" ? "status-success" : "status-failed"}>
+        {orderStatus}
+      </p>
+    </div>
+  </div>
+</div>
 
-          <Typography variant="h6">Order Status</Typography>
-          <div className="orderDetailsContainerBox">
-            <div>
-              <p className={orderStatus === "Delivered" ? "greenColor" : "redColor"}>
-                {orderStatus}
-              </p>
-            </div>
-          </div>
-        </div>
 
        
       </div>

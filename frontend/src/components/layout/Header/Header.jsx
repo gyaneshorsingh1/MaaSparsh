@@ -11,10 +11,11 @@ import wishlist from "../../../images/wishlist.png";
 import cartcount from "../../../images/cartcount.png";
 import Profile from "../../../images/Profile.png";
 const Header = () => {
+  const { items: wishlistItems } = useSelector((state) => state.wishlist);
+
   const { cartItems } = useSelector((state) => state.cart);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCartClosing, setIsCartClosing] = useState(false);
-
   // Toggle Cart visibility
   const toggleCart = () => {
     if (isCartOpen) {
@@ -54,8 +55,9 @@ const Header = () => {
 
           {/* Icons */}
           <div className="icon-links">
-          <Link to="/" aria-label="wishlist">
+          <Link to="/wishlist" aria-label="wishlist" id="wishlist">
               <img className="icon wishlist" src={wishlist} alt="wishlist" />
+              <span className="wishlist-count">{wishlistItems.length}</span>
             </Link>
             <Link to="/login" aria-label="Profile">
               <img className="icon" src={Profile} alt="profile" />
@@ -68,7 +70,7 @@ const Header = () => {
               <img className="icon" src={carticon} alt="carticon" />
             </button>
             <span className="cart-count-sec">
-               <img className="count-icon" src={cartcount} alt="countcount" /> <span className="cart-product-count">{cartItems.length}</span>
+              <span className="cart-product-count">{cartItems.length}</span>
             </span>
           </div>
         </div>

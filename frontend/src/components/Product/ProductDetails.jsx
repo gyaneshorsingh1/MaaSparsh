@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import "./ProductDetails.css";
+import faqsData from "./faqsData.jsx";
+
 import { useSelector, useDispatch } from "react-redux";
 import {
   clearErrors,
@@ -57,6 +59,7 @@ import GreenGram from "../../images/green-gram.jpg";
 import SafronExtract from "../../images/saffron-extracted.jpg";
 
 import WhatsAppButton from "../layout/WhatsAppButton";
+import { addToWishlist } from "../../actions/wishlistActions.jsx";
 
 const productMapping = {
   1: "Baby Massage Oil",
@@ -118,6 +121,11 @@ const ProductDetails = () => {
     toast.success("Item Added To Cart");
   };
 
+  const addToWishlistHandler = () => {
+    dispatch(addToWishlist(product._id));
+    toast.success("Item Added To Wishlist");
+  }
+
   const submitReviewToggle = () => setOpen((prevOpen) => !prevOpen);
 
   const reviewSubmitHandler = () => {
@@ -147,6 +155,9 @@ const ProductDetails = () => {
       prevIndex === product.images.length - 1 ? 0 : prevIndex + 1
     );
   };
+
+  const isMobile = window.innerWidth <= 600;
+
 
   const ProductsData = [
     {
@@ -185,39 +196,9 @@ const ProductDetails = () => {
   const productIngredient = ProductsData.find((item) => item.name === product.name);
 
 
-  const faqsData = [
-    {
-      question: "What makes MaaSparsh Ayurvedic {productName} special?",
-      answer:
-        "MaaSparsh Ayurvedic {productName} is crafted with love and nature’s best herbs to nourish and protect your baby’s delicate skin. It’s designed to promote healthy growth, relaxation, and overall wellness.",
-    },
-    {
-      question: "Is this {productName} safe for newborns?",
-      answer:
-        "Absolutely! MaaSparsh {productName} is made from 100% natural ingredients, ensuring it’s safe and gentle for even the most sensitive newborn skin.",
-    },
-    {
-      question: "How does using MaaSparsh {productName} benefit my little one?",
-      answer:
-        "Regular use of MaaSparsh {productName} strengthens your baby’s muscles, improves circulation, supports digestion, and helps your baby relax, ensuring peaceful, restful sleep.",
-    },
-    {
-      question: "How often should I use MaaSparsh {productName} for my baby?",
-      answer:
-        "We recommend using MaaSparsh {productName} once or twice daily for the best results. This will keep their skin nourished and glowing.",
-    },
-    {
-      question:
-        "Is MaaSparsh Ayurvedic {productName} free from chemicals and artificial ingredients?",
-      answer:
-        "Absolutely! Our {productName} is free from harmful chemicals, parabens, and artificial fragrances, offering only the purest care for your baby’s skin.",
-    },
-  ];
+  
 
-  const faqs = faqsData.map((faq) => ({
-    question: faq.question.replace("{productName}", product.name || ""),
-    answer: faq.answer.replace("{productName}", product.name || ""),
-  }));
+  const faqs = faqsData[product.name] || [];
 
   const [openFAQ, setOpenFAQ] = useState(null); // State to track which FAQ is open
 
@@ -228,6 +209,12 @@ const ProductDetails = () => {
       setOpenFAQ(index); // Open the selected answer
     }
   };
+  const [expandedItem, setExpandedItem] = useState(null);
+
+  const handleToggle = (itemId) => {
+    setExpandedItem((prev) => (prev === itemId ? null : itemId));
+  };
+
 
   useEffect(() => {
     if (error) {
@@ -295,25 +282,28 @@ const ProductDetails = () => {
                 navButtonsAlwaysVisible={true} // Always show buttons
                 navButtonsProps={{
                   style: {
-                    backgroundColor: "#7A301A", // Change button background color
-                    color: "#7A301A", // Change icon color
-                    borderRadius: "50%", // Make the button circular
-                    fontSize: "30px",
+                    backgroundColor: "transparent",
+                    color: "#7A301A",
+                    borderRadius: "50%",
+                    width: isMobile ? "12px" : "30px",
+                    height: isMobile ? "12px" : "30px",
+                    fontSize: isMobile ? "10px" : "30px", // Adjust size for mobile
                   },
                 }}
                 navButtonsWrapperProps={{
                   style: {
-                    top: "calc(50% - 20px)", // Vertically center the buttons
-                    height: "30px", // Optional: Adjust button container size
+                    top: isMobile ? "calc(50% - 10px)" : "calc(50% - 20px)", // Adjust position for mobile
+                    height: isMobile ? "10px" : "30px",
                   },
                 }}
+                
                 PrevIcon={
-                  <button className="button1" onClick={handlePrevious}>
+                  <button id="button1" onClick={handlePrevious}>
                     {"<"}
                   </button>
                 } // Add functionality to Prev button
                 NextIcon={
-                  <button className="button1" onClick={handleNext}>
+                  <button id="button1" onClick={handleNext}>
                     {">"}
                   </button>
                 } // Add functionality to Next button
@@ -321,11 +311,12 @@ const ProductDetails = () => {
                 <img
                   className="CarouselImage"
                   src={
-                    product?.images?.[selectedImageIndex]?.url || "/logo.png"
+                    product?.images?.[selectedImageIndex]?.url || "Product Image Not Found"
                   }
                   alt={`Slide ${selectedImageIndex}`}
                 />
               </Carousel>
+
 
               {/* Thumbnails Section */}
               <div className="thumbnail-container">
@@ -381,9 +372,9 @@ const ProductDetails = () => {
                     Add to Cart
                   </button>
                   <button
-                    className="addcart-btn"
+                    className="addcart-btn wishlist-btn"
                     disabled={product?.Stock < 1}
-                    onClick={addToCartHandler}
+                    onClick={addToWishlistHandler}
                   >
                     Add to WishList
                   </button>
@@ -407,20 +398,34 @@ const ProductDetails = () => {
           </div>
 
           <div className="about-product-details">
-            <div className="about-product">
-              <h3>About the Product</h3>
-              {product.aboutProducts && product.aboutProducts.length > 0 ? (
-                <ul>
-                  {product.aboutProducts.map((item) => (
-                    <li key={item._id}>
-                      <strong>{item.title}:</strong> {item.description}
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p>No information available.</p>
-              )}
-            </div>
+          <div className="about-product">
+      <h3>About the Product</h3>
+      {product.aboutProducts && product.aboutProducts.length > 0 ? (
+         <ul>
+         {product.aboutProducts.map((item) => (
+           <li
+             key={item._id}
+             className={`about-product-item ${
+               expandedItem === item._id ? "expanded" : ""
+             }`}
+           >
+             <div className="item-header">
+               <strong>{item.title}</strong>
+               <button
+                 onClick={() => handleToggle(item._id)}
+                 className="toggle-btn"
+               >
+                 {expandedItem === item._id ? "-" : "+"}
+               </button>
+             </div>
+             <p className="item-description">{item.description}</p>
+           </li>
+         ))}
+       </ul>
+      ) : (
+        <p>No information available.</p>
+      )}
+    </div>
             <div className="product-in-details">
               <h3>Product Details</h3>
 
@@ -556,7 +561,7 @@ const ProductDetails = () => {
             <p className="noReviews">No Reviews Yet</p>
           )}
 
-          <h2 className="product-suggestions">Products You May Like More</h2>
+          <h2 className="product-suggestions">You May Like More</h2>
           <div className="productList">
             {" "}
             <ProductList />

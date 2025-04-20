@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import MetaData from "../layout/MetaData";
 import "./ConfirmOrder.css";
 import { Link } from "react-router-dom";
-import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 
@@ -55,27 +54,25 @@ const ConfirmOrder = () => {
               </div>
             </div>
           </div> */}
-          <div className="confirmCartItems">
-            <div className="confirmCartItemsContainer">
-              {cartItems &&
-                cartItems.map((item) => (
-                  <div key={item.product}>
-                    <span>
-                    <img src={item.image} alt="Product" /><span className="quantity-value">{item.quantity}</span>
-                    <Link to={`/product/${item.product}`}>
-                      {item.name} <br />
-                      <span>100ml</span>
-                    </Link>{" "}
+          <div className="cartItemsWrapper">
+  <div className="cartItemsContainer">
+    {cartItems &&
+      cartItems.map((item) => (
+        <div key={item.product}>
+          <span>
+            <img src={item.image} alt="Product" />
+            <span className="cartItemQuantity">{item.quantity}</span>
+            <Link to={`/product/${item.product}`}>
+              {item.name} <br />
+              <span>200ml</span>
+            </Link>
+          </span>
+          <span>₹{item.price * item.quantity}</span>
+        </div>
+      ))}
+  </div>
+</div>
 
-                    </span>
-                    <span>
-                      {/* {item.quantity} X ₹{item.price} ={" "} */}
-                      ₹{item.price * item.quantity}
-                    </span>
-                  </div>
-                ))}
-            </div>
-          </div>
         </div>
         {/*  */}
         <div>

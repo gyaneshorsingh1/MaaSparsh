@@ -5,8 +5,9 @@ const Loader = () => {
   return (
     <div className='loading'>
         <div>
-        </div>
+          <div></div>
           <img className="logo" src={logo}  alt="" />
+        </div>
     </div>
   )
 }

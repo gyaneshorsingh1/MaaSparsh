@@ -10,7 +10,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import "./Footer.css"; // Import the CSS file
-import logo from "../../../images/logo-without-text.png"
+import logo from "../../../images/logo.png"
 import Search from "../../Product/Search";
 import footerBanner from "../../../images/footerbanner.jpg";
 import Cicon from "../../../images/Cicon.png";
@@ -23,6 +23,7 @@ import instaicon from "../../../images/insta-icon.png";
 
 import amazon from "../../../images/amazon.png";
 import flipkart from "../../../images/flipkart.png";
+import ContactUs from "./ContactUs.jsx";
 
 const Footer = () => {
   return (
@@ -32,10 +33,10 @@ const Footer = () => {
       <div className="footer-links">
           <h3>Our Products</h3>
           <Link to="/products">All products</Link>
-          <Link to="/gifting">Giftings</Link>
-          <Link to="/our-exclusive">Our exclusives</Link>
+          <Link to="/products/bath-rituals">Bath Rituals</Link>
+          {/* <Link to="/our-exclusives">Our exclusives</Link>
           <Link to="/hair-care">Hair Care</Link>
-          <Link to="/body-care">Body Care</Link>
+          <Link to="/body-care">Body Care</Link> */}
           {/* <Link to="/demos">Demos</Link>
           <Link to="/blogs">Blogs</Link> */}
 
@@ -58,15 +59,15 @@ const Footer = () => {
           <Link to="/policies/terms-of-service">Terms & Conditions</Link>
           <Link to="/policies/contact-us">Contact Us</Link>
           <Link to="/policies/store">Stores</Link>
-         
         </div>
 
 
         <div className="social-media">
           <h3>Contact</h3>
           <p className="contact-p">
-            <b>info@maasparsh.in</b>
-            <p className="contact-p">+91-9999999999</p>
+            <p className="contact-p-address">LENNON LIFESCIENCE PRIVATE LIMITED</p>
+            <a href="mailto: care@maasparsh.com" className="email-a"><b>care@maasparsh.com</b></a>
+            <p className="contact-p-address">AF-104B1, GOLF LINK - 1, GREATER NOIDA, Noida Sector 62, Noida, Gautam Buddha Nagar - 201309, Uttar Pradesh</p>
             <div className="curtomer-services-c-r-tm-icons">
             <img src={Cicon} alt="masparsh-copyrights" />
             <img src={Ricon} alt="masparsh-right" />
@@ -88,7 +89,7 @@ const Footer = () => {
             <h3 className="footer-offer">YES, I WANT TO HEAR ABOUT SPECIAL OFFERS AND INSIDER PEAKS</h3>
           </div>
           <div className="footer-search">
-              <Search className="search-field" />
+              <ContactUs className="search-field" />
           </div>
           <h4 className="stay-in-touche">STAY IN TOUCH</h4>
           <div className="social-medias">
@@ -115,14 +116,14 @@ const Footer = () => {
               <FaYoutube className="social-icon youtube-icon" color="red"/>
             </a>
             <a
-              href="https://www.youtube.com"
+              href="https://www.flipkart.com"
               target="_blank"
               rel="noopener noreferrer"
             >
               <img className="flipkart youtube" src={flipkart} alt="" />
             </a>
             <a
-              href="https://www.youtube.com"
+              href="https://www.amazon.in/l/27943762031?ie=UTF8&marketplaceID=A21TJRUUN4KGV&product=B0DPZNQK5G&me=AYECXUWL53VFO"
               target="_blank"
               rel="noopener noreferrer"
             >

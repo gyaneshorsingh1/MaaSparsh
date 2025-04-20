@@ -15,7 +15,6 @@
 
   .productList{
     width: 100%;
-
   }
 
   .product-list-container .leaf{
@@ -24,4 +23,33 @@
     width: 5vw;
     top: -15vh;
     rotate: -90deg;
+  }
+
+  @media screen and (max-width:770px) {
+    .product-list-container {
+      padding: 15px;
+      display: grid;
+      align-items: center;
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+      height: auto;
+      gap: 10px;
+      row-gap: 10px;
+      margin-bottom: 5vh;
+      background: #ffbe981d;
+      position: relative;
+    }
+  
+    .productList{
+      width: 100%;
+  
+    }
+  
+    .product-list-container .leaf{
+      position: absolute;
+      right: 5vw;
+      width: 5vw;
+      top: -15vh;
+      rotate: -90deg;
+    }
   }

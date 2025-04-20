@@ -8,17 +8,18 @@ const CheckoutSteps = ({activeStep}) => {
 
     const steps = [
         {
-            label: <Typography>Shipping Details</Typography>,
+            label: <Typography variant='span' className='checkoutsteps-text'>Shipping Details</Typography>,
             icon: <LocalShippingIcon />,
         },
         {
-            label: <Typography>Payment</Typography>,
+            label: <Typography variant='span' className='checkoutsteps-text'>Payment</Typography>,
             icon: <AccountBalanceIcon />,
         },
     ];
 
     const stepStyles = {
         boxSizing: "border-box",
+        
     }
 
   return (
@@ -31,6 +32,7 @@ const CheckoutSteps = ({activeStep}) => {
                 color: activeStep >= index ? "#7A301B" : "rgba(0, 0, 0, 0.649)",
               }
             }}
+        
           >
             {item.label}
           </StepLabel>

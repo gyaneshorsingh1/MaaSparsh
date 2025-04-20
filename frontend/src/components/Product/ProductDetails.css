@@ -44,48 +44,17 @@
   position: relative;
 }
 
-.carousel-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #7A301A; /* Background color */
-  color: #fff; /* Icon color */
-  border: none; /* Remove border */
-  border-radius: 50%; /* Make button circular */
-  width: 30px; /* Button width */
-  height: 30px; /* Button height */
-  font-size: 18px; /* Icon font size */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer; /* Add a pointer cursor */
-  transition: background-color 0.3s ease; /* Smooth hover effect */
-  z-index: 2; /* Ensure buttons are above the carousel */
-}
 
 
-
-.carousel-button-prev {
-  left: 10px; /* Position the Prev button to the left */
-}
-
-.carousel-button-next {
-  right: 10px; /* Position the Next button to the right */
-}
-
-.button1{
-  background: #00000000;
-  width: 30px;
+#button1{
+  background: #cf62198c;
   height: 30px;
+  width: 30px;
   border-radius: 50%;
-  padding: 0;
-  margin: 0;
-  font-size: 25px;
   color: #f6f6f6c5;
+  font-size: 1.1vmax;
 }
-.button1:hover{
-  background:#00000000;
-}
+
 
 .thumbnail-container {
   width: 80vh;
@@ -93,8 +62,7 @@
   justify-content: center;
   align-self: end;
   display: flex;
-  justify-content: center;
-  gap: 10px; /* Space between thumbnails */
+  gap: 10px;
 }
 .thumbnail {
   width: 90px;
@@ -111,7 +79,7 @@
 }
 
 .thumbnail.active {
-  border-color: #007bff; /* Highlight the active thumbnail */
+  border-color: #7A301A; /* Highlight the active thumbnail */
 }
 
 .p-details-desc{
@@ -131,19 +99,16 @@
 
 }
 .detailsBlock-1 > h2 {
-  color: rgb(54, 54, 54);
+  color: #7A301A;
   font: 600 40px "quick sand", sans-serif;
   margin: 0;
   letter-spacing: 2px;
+  text-align: start;
 }
 
-.detailsBlock-1 > p {
-  color: rgba(54, 54, 54, 0.158);
-  font: 200 0.6vmax "League Spartan", sans-serif;
-}
 .MuiRating-icon {
-  font-size: large;
-  color: E5;
+  font-size: 1.7vmax;
+  color: #7A301A;
 }
 
 .detailsBlock-2 {
@@ -235,8 +200,6 @@
 .quantity-container button{
   font-family: "League Spartan", sans-serif;
   height: 40px; 
-
-  
 }
 
 .addcart-btn{
@@ -324,8 +287,10 @@
 }
 
 .reviewsHeading{
-  color: #000000be;
-  font: 600 1.4vmax "quick sand", sans-serif;
+  color: #7A301A;
+  font-size: 1.4vmax;
+  font-weight: 600;
+  font-family: "quick sand", sans-serif;
   text-align: start;
   width: 20vmax;
   margin-top: 5vh;
@@ -392,9 +357,81 @@
   align-items: start;
   flex-wrap: wrap;
   height: auto;
-  padding: 0 22vh;
+  padding: 0 15vh;
   margin: 0 0 10vh 0;
 }
+@media screen and (max-width: 1200px) {
+  .about-product-details{
+    justify-content: space-around;
+    padding: 0 5vw;
+    margin-bottom: 5vw;
+  }
+  .p-details-desc{
+    margin: 0;
+    padding: 0 20px;
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .ProductDetails{
+    gap: 5vw;
+  }
+  .carousel{
+    width: 40vw;
+    height: 40vw;
+  }
+  .CarouselImage{
+    width: 40vw;
+    height: 40vw;
+  }
+  .thumbnail-container{
+    width: 35vw;
+  }
+  .detailsBlock-1{
+    gap: 2px;
+  }
+  .detailsBlock-1 h2{
+    font-size: 35px;
+  }
+  .detailsBlock-3 h1{
+    margin: 5px 0;
+  }
+  .detailsBlock-3 h1 p{
+    font-size: 10px;
+  }
+  .detailsBlock-4 p{
+    margin-top: 15px;
+    font-size: 16px;
+  }
+  .detailsBlock-3-1 .quantity-container{
+    margin-top: 15px;
+    height: 40px;
+  }
+  .detailsBlock-3-1 .addcart-btn{
+    margin-top: 15px;
+    height: 40px;
+    font-size: 18px;
+  }
+  div.ingredients{
+    height: auto;
+    margin: 0;
+    padding: 0 5px;
+  }
+}
+
+@media screen and (max-width: 890px) {
+  .ProductDetails{
+    margin: 0;
+    padding: 25px 0;
+  }
+  .detailsBlock-1 h2{
+    font-size: 30px;
+  }
+}
+
+
+
 .about-product{
   width: 55%;
   height: auto;
@@ -407,19 +444,23 @@
 }
 .about-product-details ul{
   list-style-position: outside;
+  padding-left: 13px;  
 }
 
 .about-product-details li{
   line-height: 30px;
   letter-spacing: 1px;
   word-spacing: 3px;
-  font-size: 1.3vmax;
+  font-size: 16px;
   
 }
-
+.about-product-details li strong{
+  font-size: 17px;
+}
 .about-product-details h3{
   font-weight: 600;
   font-size: 30px;
+  color: #7A301A;
 }
 
 
@@ -427,7 +468,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
+  padding: 10px 0;
 }
 .tested-icons> img{
 
@@ -440,11 +481,11 @@
   display: flex;
   position: relative;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   height: 250px;
   width: 100%;
-  gap: 5vw;
+  
 }
 .ingredients div{
   background: #7a301b35;
@@ -455,128 +496,253 @@
 .ingredients> div> img{
   height: 180px;
   width: 180px;
-
   background: #7a301b35;
   border-radius: 15%;
   object-fit: cover;
+}
+@media screen and (max-width: 1100px) {
+  .ingredients> div{
+    width: 80px;
+    height: 80px;
+  }
+  .ingredients > div > img{
+    width: 100%;
+    height: 100%;
+  }
+}
 
+@media screen and (max-width: 1200px) {
+  .tested-icons>img{
+    height: 50px;
+    width: 50px;
+  }
 }
 
 
 @media screen and (max-width: 600px) {
 
+  .ProductDetails{
+    width: 100%;
+  }
   
   .ProductDetails > div {
     width: 100%;
+    max-width: 100vw;
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding: 2vmax;
+    padding: 1vmax;
     box-sizing: border-box;
-    border: 1px solid white;
+    border: 1px solid rgb(255, 255, 255);
   }
   .ProductDetails {
     flex-direction: column;
     height: unset;
     padding: 5px 0;
   }
-  .p-details-desc{
+  .carousel{
+    width: 90vw;
+    height: 90vw;
+    align-self: center;
+  }
+  .carousel .CarouselImage{
+    width: 90vw;
+    height: 90vw;
+  }
+
+  .thumbnail-container {
+    width: 100%;
+    align-self: center;
+  }
+  .thumbnail {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .thumbnail:hover {
+    transform: scale(1.01); /* Slightly enlarge on hover */
+  }
+
+  
+  #button1{
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    font-weight: 100;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  div .p-details-desc{
+    justify-content: start;
+    width: 100%;
+    padding: 15px;
+  }
+
+  .p-details-desc .detailsBlock-1 h2{
+    text-align: start;
+    font-size: 24px;
     margin: 0;
     padding: 0;
   }
+
+  .MuiRating-icon{
+    font-size: 24px;
+  }
   .ProductDetails > div:last-child {
-    align-items: center;
+    align-items: start;
     width: 100%;
     margin: auto;
-    
   }
   .detailsBlock-1{
     padding: 0;
     margin: 0;
-  }
-  .detailsBlock-1 > h2 {
-    font-size: 2.5vmax;
-    text-align: center;
-    margin-top: 5px;
-  }
-
-  .detailsBlock-1 > p {
-    text-align: center;
-    font-size: 1.2vmax;
+    row-gap: 10px;
   }
 
   .detailsBlock-2 {
-    justify-content: center;
+    justify-content: start;
+    row-gap: 10px;
   }
   .detailsBlock-2 > span {
     font-size: 1.5vmax;
   }
 
+
+  div .ingredients{
+    width: 100%;
+    height: fit-content;
+    justify-content: space-between;
+    gap: 0;
+    padding: 10px;
+  }
+
+  div .ingredients div{
+    width: 40px;
+    height: 40px;
+  }
+  div .ingredients img{
+    width: 100%;
+    height: 100%;
+  }
+
   .detailsBlock-3 > h1 {
-    font: 700 2.5vmax "Franklin Gothic Medium";
-    text-align: center;
-    margin-top: 3px;
+    font: 700 2.5vmax "quick sand", sans-serif;
+    text-align: start;
+    margin-top: 15px;
+  }
+  .detailsBlock-3 > h1 > p{
+    margin-top: 15px;
   }
 
   .detailsBlock-3-1 {
-
-    margin: 2vmax 0;
+    margin: 15px 0;
+    padding: 0;
   }
 
   .detailsBlock-3-1-1 {
-    padding: 1vmax 0;
+    padding: 0vmax 0;
     width: auto;
-    margin: 5vh 0;
+    margin: 5vh 0 0 0;
     gap: 5px;
     
   }
   .quantity-container{
     padding: 0;
-    height: 5vh;
+    height: 40px;
+    margin-top: 2px;
+   
   }
   .detailsBlock-3-1-1 > button {
-    
-    width: 5vmax;
+    width: 6vmax;
     height: 100%;
   }
 
   .detailsBlock-3-1-1 > input {
     padding: 1.5vmax;
     margin: 0;
-    width: 25vh;
-    font: 400 1.8vmax "Roboto";
+    width: 40vw;
+    height: 80px;
+    font: 400 20px "League Spartan", sans-serif;
   }
 
-  .detailsBlock-3-1 > button:last-child {
-    font: 500 1.7vmax "Roboto";
-    padding: 1.5vmax;
-    margin: 0;
-    width: 18vmax;
+  .detailsBlock-3-1 > button{
+    width: 100%;
     height: 100%;
-    margin-left: 8px;
-
   }
 
-  .detailsBlock-3 > p {
-    padding: 2.5vmax 0;
-    text-align: center;
-    font: 400 2vmax "Roboto";
+  .detailsBlock-3-1 .wishlist-btn{
+    display: none;
+  }
+
+  .detailsBlock-3>p{
+    font-size: 14px;
+    padding: 10px 0;
+    margin-top: 25px;
   }
 
   .detailsBlock-4 {
-    font: 500 2.5vmax sans-serif;
-    
+    max-width: 100%;
+  }
+  
+  .detailsBlock-4 > p {
+    font: 300 14px "League Spartan", sans-serif;
+    letter-spacing: 0.3px;
+    margin-top: 15px;
   }
 
-  .detailsBlock-4 > p {
-    font: 300 1.8vmax sans-serif;
+  .about-product-details{
+    flex-direction: column;
+    width: 100%;
+    padding: 0 15px;
+    margin-top: 0;
+  }
+  .about-product{
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  .about-product h3{
+    padding: 10px 0;
+    border-top: 0;
+    font-size: 24px;
+  }
+  .about-product ul li{
+    font-size: 11px;
+  }
+  .about-product ul strong{
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .product-in-details{
+    width: 100%;
+    padding: 0;
+  }
+  .product-in-details ul strong{
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .product-in-details ul li{
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .product-in-details h3{
+    font-size: 24px;
+  }
+
+  .about-product-details{
+    margin-bottom: 15px;
   }
 
   .submitReview {
-    font: 500 1.7vmax "Roboto";
+    font: 500 1.7vmax "League Spartan", sans-serif;
     padding: 1.5vmax;
     width: 20vmax;
-    margin: 3vmax 0;
+    margin: 2vmax 5vw; 
   }
 
 
@@ -586,16 +752,50 @@
     overflow: scroll;
   }
 
+  .reviewsHeading{
+    padding: 0;
+    margin: 2vw 5vw;
+    border-top: 0;
+    font-size: 20px;
+
+  }
+
   .reviews{
     width: 90%;
     margin: auto;
   }
   .reviewCard .reviewCard-img-name > p {
-    font: 600 3vw "Roboto";
+    font: 600 5vw "quick sand", sans-serif;
   }
-  .reviewCardComment {
-    font: 300 3vw;
+
+  .reviewCard .star-rating{
+    margin-top: 5px;
   }
+  .reviewCard .reviewCardComment{
+    font-size: 12px;
+    padding: 0;
+    margin-top: 5px;
+  }
+
+  .tested-icons{
+    width: 100%;
+    overflow: hidden;
+  }
+  .tested-icons img{
+    width: 40px;
+    height: 40px;
+  }
+
+  div .product-suggestions{
+    text-align: start;
+    margin-top: 10px;
+    padding: 30px 15px 0;
+    font-size: 24px;
+  }
+
+
+
+
 }
 
 
@@ -715,6 +915,9 @@
 
 /* Responsive styling */
 @media (max-width: 768px) {
+  .wishlist-btn{
+    display: none;
+  }
   .faq-container {
     padding: 15px;
   }
@@ -779,3 +982,61 @@
   top: 32vh;
   transform: rotate(-50deg);
 }
+
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.toggle-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+
+
+@media (max-width: 768px) {
+  /* Hide the description by default on mobile screens */
+  .item-description {
+    display: none;
+  }
+  .about-product{
+    padding-right: 40px;
+  }
+
+  /* Show description when the item is expanded */
+  .about-product-item.expanded .item-description {
+    display: block;
+  }
+
+  .toggle-btn {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    
+  }
+}
+
+@media (min-width: 769px) {
+  .toggle-btn {
+    display: none; /* Hide the toggle button on large screens */
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .about-product{
+    padding-right: 5px;
+  }
+}
+
+
+
+
+
+

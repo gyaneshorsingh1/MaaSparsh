@@ -16,7 +16,8 @@ import { Typography } from "@mui/material";
 import { toast } from "react-toastify";
 import MetaData from "../layout/MetaData";
 
-// import homeBanner from "../../images/homeBanner.png"
+import leaf from "../../images/leaf-1.png";
+import productsBanner from "../../images/products-banner.jpg";
 
 const categories = [
   "Products",
@@ -72,9 +73,9 @@ const Products = () => {
       ) : (
         <>
           <div className="product-list">
-          {/* <section className="ProductBanner">
-              <img src={homeBanner} alt="masparsha banner" />
-            </section> */}
+          <section className="ProductBanner">
+              <img src={productsBanner} alt="masparsha products banner" />
+            </section>
             <MetaData title="PRODUCTS --ECOMM_" />
             <div className="filterBox">
               {/* <Typography>Price
@@ -103,13 +104,20 @@ const Products = () => {
                             </fieldset> */}
             </div>
 
-            <h2 className="productsHeading">{dynamicTitle}</h2>
 
+          <div className="product-bg">
+
+          
+            <h2 className="product-container-titles">{dynamicTitle}</h2>
+            <p className="product-container-title-des">List of all the available products in our store. </p>
+            <img className="leaf1" src={leaf} alt="" />
             <div className="products">
               {products &&
                 products.map((product) => (
                   <ProductCard key={product._id} product={product} />
                 ))}
+            </div>
+
             </div>
 
             <div className="paginationBox">
