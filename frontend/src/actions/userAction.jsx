@@ -53,7 +53,7 @@ export const login = (email, password) => async(dispatch) =>{
             {email,password},
             config
         )
-        localStorage.setItem("token", data.token); // Store token in localStorage
+       
         dispatch({ type: LOGIN_SUCCESS, payload: data.user});
 
     }
@@ -75,7 +75,7 @@ export const register = (userData) => async(dispatch) =>{
             userData,
             config
         )
-        localStorage.setItem("token", data.token); // Store token in localStorage
+        
         dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user});
     }
     catch(error){
@@ -102,7 +102,6 @@ export const logout = () => async (dispatch) => {
     try {
 
       await axiosAPI.get(`/api/v1/logout`);
-        localStorage.removeItem("token"); // Remove token after logout
   
       dispatch({ type: LOGOUT_SUCCESS  });
     } catch (error) {

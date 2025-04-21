@@ -66,10 +66,14 @@ const Payment = () => {
     
   }
 
+  const key = import.meta.env.VITE_RAZORPAY_KEY;
 
+  console.log(key)
   const checkoutHandler = async () => {
     try {
-      const key = import.meta.env.RAZORPAY_KEY;
+      const key = import.meta.env.VITE_RAZORPAY_KEY;
+
+      console.log(key)
       // Process payment and get order details
       const { data } = await axiosAPI.post(
         "/api/v1/payment/process",

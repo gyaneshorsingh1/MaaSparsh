@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
 import { toast } from "react-toastify";
 
+import leaf1 from "../../images/leaf.png";
+
 const LoginSignUp = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -90,6 +92,10 @@ const LoginSignUp = () => {
       ) : (
         <>
           <div className="LoginSignUpContainer">
+            <img src={leaf1} alt="" className="leaf1-signup" />
+            <img src={leaf1} alt="" className="leaf2-signup" />
+            <img src={leaf1} alt="" className="leaf3-signup" />
+            <img src={leaf1} alt="" className="leaf4-signup" />
             <div className="LoginSignUpBox">
               <div>
                 <div className="login_signUp_toggle">
@@ -118,7 +124,7 @@ const LoginSignUp = () => {
                       onChange={(e) => setLoginPassword(e.target.value)}
                     />
                   </div>
-                  <Link to="/password/forgot">Forget Password</Link>
+                  {/* <Link to="/password/forgot">Forget Password</Link> */}
                   <input type="submit" value="Login" className="loginBtn" />
                 </form>
                 <form

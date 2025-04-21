@@ -3,7 +3,7 @@ const ErrorHandler = require("../utils/errorhandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const User = require("../models/userModel");
 const userModel = require("../models/userModel");
-const { sendToken } = require("../utils/jwtToken");
+const sendToken = require("../utils/jwtToken");
 const comparedPassword = require("../models/userModel");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
@@ -53,9 +53,12 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
 
 exports.logout = catchAsyncErrors(async (req, res, next) => {
   res.cookie("token", null, {
-    expires: new Date(Date.now()),
-    httpOnly: true,
-  });
+  expires: new Date(Date.now()),
+  httpOnly: true,
+  secure: true, // must be true in production with HTTPS
+  sameSite: "None", // required for cross-origin cookie usage
+});
+
 
   res.status(200).json({
     success: true,

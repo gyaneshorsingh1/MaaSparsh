@@ -92,6 +92,25 @@
   transition: transform 0.5s ease;
 }
 
+.logout-link {
+  background: none;
+  border: none;
+  color: #e87044;
+  cursor: pointer;
+  font: inherit;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  text-decoration: underline;
+}
+.logout-link:hover {
+  color: #d05f30;
+}
+
+
+
+
 @media screen and (max-width: 970px) {
   .accountContainer{
     position: relative;
