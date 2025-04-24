@@ -43,31 +43,36 @@ const Header = () => {
             <Search />
           </div>
           {/* <div className="search-icon-header">
-             <img src={searchicon} className="icon" alt="searchicon" />
+             <img loading="lazy"
+ src={searchicon} className="icon" alt="searchicon" />
           </div> */}
 
           {/* Logo */}
           <div className="logo">
             <Link to="/">
-              <img src={Logo} alt="logo" />
+              <img loading="lazy"
+ src={Logo} alt="logo" />
             </Link>
           </div>
 
           {/* Icons */}
           <div className="icon-links">
           <Link to="/wishlist" aria-label="wishlist" id="wishlist">
-              <img className="icon wishlist" src={wishlist} alt="wishlist" />
+              <img loading="lazy"
+ className="icon wishlist" src={wishlist} alt="wishlist" />
               <span className="wishlist-count">{wishlistItems.length}</span>
             </Link>
             <Link to="/login" aria-label="Profile">
-              <img className="icon" src={Profile} alt="profile" />
+              <img loading="lazy"
+ className="icon" src={Profile} alt="profile" />
             </Link>
             <button
               className="cart-icon"
               aria-label="Shopping Cart"
               onClick={toggleCart}
             >
-              <img className="icon" src={carticon} alt="carticon" />
+              <img loading="lazy"
+ className="icon" src={carticon} alt="carticon" />
             </button>
             <span className="cart-count-sec">
               <span className="cart-product-count">{cartItems.length}</span>

@@ -13,7 +13,8 @@ const WhatsAppButton = () => {
   return (
     <div className="whatsapp-button" onClick={handleClick} title="Chat with us on WhatsApp">
       <span>Chat with us</span>
-      <img 
+      <img loading="lazy"
+ 
         src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
         alt="WhatsApp Icon"
       />

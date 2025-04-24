@@ -7,7 +7,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 const CartItemCard = ({ item, deleteCartItems }) => {
   return (
     <div className="CartItemCard">
-      <img src={item.image} alt="ssa" />
+      <img loading="lazy"
+ src={item.image} alt="ssa" />
       <div>
         <Link to={`/product/${item.product}`}>{item.name}</Link>
         <span>{`Price: ₹${item.price}`}</span>

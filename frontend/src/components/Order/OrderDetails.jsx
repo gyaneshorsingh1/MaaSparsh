@@ -15,8 +15,7 @@ const OrderDetails = () => {
   const { id } = useParams();
 
   const { order, error, loading } = useSelector((state) => state.orderDetails);
-  const { user } = useSelector((state) => state.userDetails); // Access user details from Redux state
-  
+  console.log(order.name)
   const dispatch = useDispatch();
 
 
@@ -37,9 +36,9 @@ const OrderDetails = () => {
   useEffect(() => {
     if (order?.user && !userLoaded) {
       // If order has a user id but user details are not loaded yet
-      dispatch(getUserDetails(order.user));
       setUserLoaded(true);
     }
+    
   }, [dispatch, order?.user, userLoaded]);
 
   if (loading) return <Loader />;
@@ -72,7 +71,8 @@ const OrderDetails = () => {
           <div className="orderDetailsCartItemsContainer">
             {orderItems?.map((item) => (
               <div key={item.product} className="order-items-sec">
-                <img src={item.image} alt="Product" />
+                <img loading="lazy"
+ src={item.image} alt="Product" />
                 <Link className="productlink" to={`/product/${item.product}`}>{item.name}</Link>{" "}
                 <span>
                   {item.quantity} X ₹{item.price} ={" "}

@@ -174,7 +174,8 @@ const Shipping = () => {
     cartItems.map((item) => (
       <div key={item.product}>
         <span>
-          <img src={item.image} alt={item.name} />
+          <img loading="lazy"
+ src={item.image} alt={item.name} />
           <Link to={`/product/${item.product}`}>
             {item.name} <span className="itemQuantity">( {item.quantity} ) </span> <br />
             <span>200ml</span>

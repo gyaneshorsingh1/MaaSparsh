@@ -14,8 +14,6 @@ import babyhorse from "./aboutImages/baby-horse-icon.png";
 import babyear from "./aboutImages/babear-top.png";
 import magicstick from "./aboutImages/magic-stick-icon.png";
 
-
-
 import downaboutbanner from "./aboutImages/down-about-banner.png";
 
 import proof1 from "../../images/proof1.png";
@@ -24,8 +22,7 @@ import proof3 from "../../images/proof3.png";
 import proof4 from "../../images/proof4.png";
 import proof5 from "../../images/proof5.png";
 
-import formulationBanner from "./aboutImages/formulations-banner.jpg"
-
+import formulationBanner from "./aboutImages/formulations-banner.jpg";
 
 const About = () => {
   return (
@@ -33,6 +30,7 @@ const About = () => {
       <div className="about-container">
         <div className="about-banner">
           <img
+            loading="lazy"
             src={aboutBanner}
             className="about-banner-img"
             alt="about banner"
@@ -50,18 +48,17 @@ const About = () => {
             ensuring the purest touch for your baby's delicate skin.
           </p>
         </div>
-        
 
         <div className="about-4">
           <h2>Our Story</h2>
-          <img src={babyimage} alt="baby image" />
-          <img src={beericon} alt="" className="about-icon1" />
-          <img src={caricon} alt="" className="about-icon2" />
-          <img src={ballicon} alt="" className="about-icon3" />
-          <img src={lolipop} alt="" className="about-icon4" />
-          <img src={babyhorse} alt="" className="about-icon6" />
-          <img src={babyear} alt="" className="about-icon7" />
-          <img src={magicstick} alt="" className="about-icon8" />
+          <img loading="lazy" src={babyimage} alt="baby image" />
+          <img loading="lazy" src={beericon} alt="" className="about-icon1" />
+          <img loading="lazy" src={caricon} alt="" className="about-icon2" />
+          <img loading="lazy" src={ballicon} alt="" className="about-icon3" />
+          <img loading="lazy" src={lolipop} alt="" className="about-icon4" />
+          <img loading="lazy" src={babyhorse} alt="" className="about-icon6" />
+          <img loading="lazy" src={babyear} alt="" className="about-icon7" />
+          <img loading="lazy" src={magicstick} alt="" className="about-icon8" />
 
           <div className="about-4-p">
             <p>
@@ -85,24 +82,52 @@ const About = () => {
           </h2>
         </div>
 
-
-        <div className='our-mission-values'>
-                <h2>Our Mission & Our Values</h2>
-                <div className='our-mission-values-sec'>
-                  <div>
-                    <img src={hearthand} alt="heart-hand" className='heart-hand'/>
-                    <p>MaaSparsh ,brings holistic wellness by embracing nature’s purest essence, lovingly crafted to nourish your baby. Rooted in Ayurvedic traditions, we source the finest ingredients directly from nature’s bounty to provide stability and care. Every product is designed to nurture your little one with the gentle touch of authenticity. From the hills to your home, MaaSparsh delivers the essence of nature for your baby’s wellness and happiness.</p>
-                  </div>
-                  <div>
-                    <p>At MaaSparsh, we promise purity in every drop, delivering Ayurvedic care rooted in the wisdom of age-old traditions. Our products are thoughtfully crafted using nature’s finest ingredients, ensuring a perfect balance for your baby’s wellness. From nurturing delicate skin to strengthening hair and supporting overall growth, we prioritize your baby’s holistic care. Each formulation is a testament to our commitment to quality and authenticity, offering gentle yet effective solutions. With MaaSparsh, embrace the goodness of Ayurveda for your little one’s healthy and happy journey.</p>
-                    <img src={babyfoot} alt="baby foot" className='baby-foot' />
-                  </div>
-                
-                </div>
+        <div className="our-mission-values">
+          <h2>Our Mission & Our Values</h2>
+          <div className="our-mission-values-sec">
+            <div>
+              <img
+                loading="lazy"
+                src={hearthand}
+                alt="heart-hand"
+                className="heart-hand"
+              />
+              <p>
+                MaaSparsh ,brings holistic wellness by embracing nature’s purest
+                essence, lovingly crafted to nourish your baby. Rooted in
+                Ayurvedic traditions, we source the finest ingredients directly
+                from nature’s bounty to provide stability and care. Every
+                product is designed to nurture your little one with the gentle
+                touch of authenticity. From the hills to your home, MaaSparsh
+                delivers the essence of nature for your baby’s wellness and
+                happiness.
+              </p>
             </div>
+            <div>
+              <p>
+                At MaaSparsh, we promise purity in every drop, delivering
+                Ayurvedic care rooted in the wisdom of age-old traditions. Our
+                products are thoughtfully crafted using nature’s finest
+                ingredients, ensuring a perfect balance for your baby’s
+                wellness. From nurturing delicate skin to strengthening hair and
+                supporting overall growth, we prioritize your baby’s holistic
+                care. Each formulation is a testament to our commitment to
+                quality and authenticity, offering gentle yet effective
+                solutions. With MaaSparsh, embrace the goodness of Ayurveda for
+                your little one’s healthy and happy journey.
+              </p>
+              <img
+                loading="lazy"
+                src={babyfoot}
+                alt="baby foot"
+                className="baby-foot"
+              />
+            </div>
+          </div>
+        </div>
 
         <div className="about-6">
-          <img src={downaboutbanner} alt="" />
+          <img loading="lazy" src={downaboutbanner} alt="" />
         </div>
 
         <div className="about-7">
@@ -120,15 +145,20 @@ const About = () => {
 
           <div className="proofs">
             <div className="proof-icons">
-              <img src={proof1} alt="proof1" />
-              <img src={proof2} alt="proof2" />
-              <img src={proof3} alt="proof3" />
-              <img src={proof4} alt="proof4" />
-              <img src={proof5} alt="proof5" />
+              <img loading="lazy" src={proof1} alt="proof1" />
+              <img loading="lazy" src={proof2} alt="proof2" />
+              <img loading="lazy" src={proof3} alt="proof3" />
+              <img loading="lazy" src={proof4} alt="proof4" />
+              <img loading="lazy" src={proof5} alt="proof5" />
             </div>
           </div>
           <div>
-            <img className="formulation-banner" src={formulationBanner} alt="" />
+            <img
+              loading="lazy"
+              className="formulation-banner"
+              src={formulationBanner}
+              alt=""
+            />
           </div>
         </div>
       </div>

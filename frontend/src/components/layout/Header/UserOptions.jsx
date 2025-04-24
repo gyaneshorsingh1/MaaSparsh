@@ -80,7 +80,8 @@ const UserOptions = ({ user }) => {
         style={{ zIndex: "11" }}
         direction='down'
         className='speedDial'
-        icon={<img
+        icon={<img loading="lazy"
+
           className='speedDialIcon'
           src="/Profile.png" // Correct path to default image
           alt='Profile'

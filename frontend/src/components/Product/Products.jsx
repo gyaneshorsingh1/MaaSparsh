@@ -74,7 +74,8 @@ const Products = () => {
         <>
           <div className="product-list">
           <section className="ProductBanner">
-              <img src={productsBanner} alt="masparsha products banner" />
+              <img loading="lazy"
+ src={productsBanner} alt="masparsha products banner" />
             </section>
             <MetaData title="PRODUCTS --ECOMM_" />
             <div className="filterBox">
@@ -110,7 +111,8 @@ const Products = () => {
           
             <h2 className="product-container-titles">{dynamicTitle}</h2>
             <p className="product-container-title-des">List of all the available products in our store. </p>
-            <img className="leaf1" src={leaf} alt="" />
+            <img loading="lazy"
+ className="leaf1" src={leaf} alt="" />
             <div className="products">
               {products &&
                 products.map((product) => (

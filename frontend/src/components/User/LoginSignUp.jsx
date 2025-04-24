@@ -92,10 +92,14 @@ const LoginSignUp = () => {
       ) : (
         <>
           <div className="LoginSignUpContainer">
-            <img src={leaf1} alt="" className="leaf1-signup" />
-            <img src={leaf1} alt="" className="leaf2-signup" />
-            <img src={leaf1} alt="" className="leaf3-signup" />
-            <img src={leaf1} alt="" className="leaf4-signup" />
+            <img loading="lazy"
+ src={leaf1} alt="" className="leaf1-signup" />
+            <img loading="lazy"
+ src={leaf1} alt="" className="leaf2-signup" />
+            <img loading="lazy"
+ src={leaf1} alt="" className="leaf3-signup" />
+            <img loading="lazy"
+ src={leaf1} alt="" className="leaf4-signup" />
             <div className="LoginSignUpBox">
               <div>
                 <div className="login_signUp_toggle">

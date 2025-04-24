@@ -284,7 +284,8 @@ const NewProduct = () => {
 
             <div id="createProductFormImage">
               {imagesPreview.map((image, index) => (
-                <img key={index} src={image} alt="Avatar Preview" />
+                <img loading="lazy"
+ key={index} src={image} alt="Avatar Preview" />
               ))}
             </div>
 

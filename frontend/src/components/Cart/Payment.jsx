@@ -24,13 +24,14 @@ const Payment = () => {
   const shippingCharges = orderInfo.shippingCharges;
   const subtotal = orderInfo.subtotal;
   const userId = user._id;
-
+  const name = user.name;
   const [loading, setLoading] = useState(false);
 
   const generatedOrderId = `COD${Date.now()}`;
 
   const cashOnDeliveryHandler = async () =>{
       const CodOrder = {
+
         shippingInfo,
         orderItems: cartItems.map((item) => ({
           name: item.name,
@@ -41,6 +42,7 @@ const Payment = () => {
         })),
         orderId: generatedOrderId,
         user: userId,
+        name,
         paymentInfo: {
           id: "COD",
           status: "Pending",
@@ -66,14 +68,10 @@ const Payment = () => {
     
   }
 
-  const key = import.meta.env.VITE_RAZORPAY_KEY;
-
-  console.log(key)
   const checkoutHandler = async () => {
     try {
       const key = import.meta.env.VITE_RAZORPAY_KEY;
 
-      console.log(key)
       // Process payment and get order details
       const { data } = await axiosAPI.post(
         "/api/v1/payment/process",
@@ -84,6 +82,7 @@ const Payment = () => {
           shippingInfo,
           subtotal,
           userId,
+          name
         },
         { headers: { "Content-Type": "application/json" } }
       );
@@ -95,8 +94,8 @@ const Payment = () => {
         key: key,
         amount,
         currency: "INR",
-        name: "Masparsh",
-        description: "Payment Transaction",
+        name: "MaaSparsh",
+        description: "Payment Transaction for products",
         order_id: orderId,
         handler: async function (response) {
           if (
@@ -117,6 +116,7 @@ const Payment = () => {
                 product: item.product,
               })),
               user: userId,
+              name,
               paymentInfo: {
                 id: response.razorpay_payment_id,
                 status: "Paid",
@@ -146,7 +146,7 @@ const Payment = () => {
               // Navigate to payment success page and show success message
               
               navigate(`/payment/successful/${orderId}`);
-              alert.success("Payment successful and verified!");
+              toast.success("Payment successful and verified!");
             
           }
         },
@@ -193,7 +193,8 @@ const Payment = () => {
               {cartItems &&
                 cartItems.map((item) => (
                   <div key={item.product} className="cart-detailss">
-                    <img src={item.image} alt="Product" />
+                    <img loading="lazy"
+ src={item.image} alt="Product" />
                     <Link to={`/product/${item.product}`}>
                       {item.name}
                     </Link>{" "}

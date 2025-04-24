@@ -102,43 +102,50 @@ const Navbar = () => {
       <nav className="mobile-navbar">
   <div className="mobile-img-nav">
     <Link to="/products">
-      <img src={shopall} alt="shopall" />
+      <img loading="lazy"
+ src={shopall} alt="shopall" />
       <p>All</p>
     </Link>
   </div>
   <div className="mobile-img-nav">
     <Link to="/products/bath-rituals">
-      <img src={BathRituals} alt="bath rituals" />
+      <img loading="lazy"
+ src={BathRituals} alt="bath rituals" />
       <p>Bath Rituals</p>
     </Link>
   </div>
   {/* <div className="mobile-img-nav">
     <Link to="/gifting">
-      <img src={notFound} alt="gifting" />
+      <img loading="lazy"
+ src={notFound} alt="gifting" />
       <p>Gifting</p>
     </Link>
   </div>
   <div className="mobile-img-nav">
     <Link to="/our-exclusives">
-      <img src={notFound} alt="our exclusives" />
+      <img loading="lazy"
+ src={notFound} alt="our exclusives" />
       <p>Our Exclusives</p>
     </Link>
   </div>
   <div className="mobile-img-nav">
     <Link to="/body-care">
-      <img src={notFound} alt="body care" />
+      <img loading="lazy"
+ src={notFound} alt="body care" />
       <p>Body Care</p>
     </Link>
   </div>
   <div className="mobile-img-nav">
     <Link to="/hair-care">
-      <img src={notFound} alt="hair care" />
+      <img loading="lazy"
+ src={notFound} alt="hair care" />
       <p>Hair Care</p>
     </Link>
   </div> */}
   <div className="mobile-img-nav">
     <Link to="/about">
-      <img src={aboutBanner} alt="about us" />
+      <img loading="lazy"
+ src={aboutBanner} alt="about us" />
       <p>About Us</p>
     </Link>
   </div>

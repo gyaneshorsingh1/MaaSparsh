@@ -18,7 +18,6 @@ import proof2 from "../../images/proof2.png";
 import proof3 from "../../images/proof3.png";
 import proof4 from "../../images/proof4.png";
 import proof5 from "../../images/proof5.png";
-import slideArrow from "../../images/arrow.png";
 import feature1 from "../../images/feature1.png";
 import feature2 from "../../images/feature2.png";
 import feature3 from "../../images/feature3.png";
@@ -123,7 +122,8 @@ const Home = () => {
       }}
     >
       {cur === index && (
-        <img onClick={bannerLink}
+        <img loading="lazy"
+ onClick={bannerLink}
           src={slide}
           alt={`Slide ${index + 1}`}
           className="slideImage"
@@ -159,27 +159,32 @@ const Home = () => {
 
             <section className="proofContainer">
               <div className="proofData">
-                <img
+                <img loading="lazy"
+
                   className="proof-img"
                   src={proof1}
                   alt="maasparsh proof2"
                 />
-                <img
+                <img loading="lazy"
+
                   className="proof-img"
                   src={proof2}
                   alt="maasparsa proof1"
                 />
-                <img
+                <img loading="lazy"
+
                   className="proof-img"
                   src={proof3}
                   alt="maasparsh proof3"
                 />
-                <img
+                <img loading="lazy"
+
                   className="proof-img"
                   src={proof4}
                   alt="maasparsh proof4"
                 />
-                <img
+                <img loading="lazy"
+
                   className="proof-img"
                   src={proof5}
                   alt="maasparsh proof5"
@@ -217,7 +222,8 @@ const Home = () => {
             <section className="product-containers">
               <div>
                 <h2 className="product-container-titles quick sand-black">
-                  <img className="leaf1" src={leaf} alt="" />
+                  <img loading="lazy"
+ className="leaf1" src={leaf} alt="" />
                   Best Sellers
                 </h2>
                 <p className="product-container-title-des League-Spartan">
@@ -239,8 +245,10 @@ const Home = () => {
               </div>
               <div>
                 <h2 className="product-container-titles quick sand-black">
-                  <img className="leaf2" src={leaf} alt="" />
-                  <img className="leaf3" src={leaf2} alt="" />
+                  <img loading="lazy"
+ className="leaf2" src={leaf} alt="" />
+                  <img loading="lazy"
+ className="leaf3" src={leaf2} alt="" />
                   Gifting
                 </h2>
 
@@ -261,7 +269,8 @@ const Home = () => {
               <div>
                 <h2 className="product-container-titles quick sand-black">
                   Our Exclusives
-                  <img className="leaf4" src={leaf} alt="" />
+                  <img loading="lazy"
+ className="leaf4" src={leaf} alt="" />
                 </h2>
                 <p className="product-container-title-des League-Spartan">
                   Specially made for innocent minds
@@ -286,12 +295,17 @@ const Home = () => {
                 <p className="product-container-title-des League-Spartan">
                   A demo representation of our product usage
                 </p>
-                <img className="leaf5" src={leaf2} alt="" />
+                <img loading="lazy"
+ className="leaf5" src={leaf2} alt="" />
                 <div className="product-container">
-                  <img src={feature1} className="feature-img" alt="feature1" />
-                  <img src={feature2} className="feature-img" alt="feature2" />
-                  <img src={feature3} className="feature-img" alt="feature3" />
-                  <img src={feature4} className="feature-img" alt="feature4" />
+                  <img loading="lazy"
+ src={feature1} className="feature-img" alt="feature1" />
+                  <img loading="lazy"
+ src={feature2} className="feature-img" alt="feature2" />
+                  <img loading="lazy"
+ src={feature3} className="feature-img" alt="feature3" />
+                  <img loading="lazy"
+ src={feature4} className="feature-img" alt="feature4" />
                 </div>
               </div>
             </section>

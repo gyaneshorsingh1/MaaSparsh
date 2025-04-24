@@ -51,7 +51,8 @@ const MyOrders = () => {
                   <div className="orderImgContainer">
                     {order.orderItems.map((item) => (
                       <div key={item._id} className="orderItem">
-                        <img
+                        <img loading="lazy"
+
                           src={item.image}
                           alt={item.name}
                           className="orderItemImage"
@@ -84,7 +85,8 @@ const MyOrders = () => {
                 {/* <div className="orderItemsContainer">
                   {order.orderItems.map((item) => (
                     <div key={item._id} className="orderItem">
-                      <img
+                      <img loading="lazy"
+
                         src={item.image}
                         alt={item.name}
                         className="orderItemImage"

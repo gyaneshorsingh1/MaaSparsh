@@ -23,7 +23,8 @@ const ProductList = () => {
     <Loader />
   ) : (
     <div className="product-list-container">
-                 <img src={leaf} alt="" className="leaf" />
+                 <img loading="lazy"
+ src={leaf} alt="" className="leaf" />
                   {products &&
                     products.map((product) => (
                       <ProductCard product={product} />

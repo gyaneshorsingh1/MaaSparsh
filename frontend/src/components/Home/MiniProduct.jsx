@@ -11,7 +11,8 @@ const MiniProduct = ({ product }) => {
   return (
     <Link className="miniProductCard" to={`/product/${product._id}`}>
       <div>
-        <img src={imageUrl} alt={product.name} />
+        <img loading="lazy"
+ src={imageUrl} alt={product.name} />
         <p>{product.name}</p>
         <span>{`₹${product.price}`}</span>
       </div>

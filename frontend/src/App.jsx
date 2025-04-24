@@ -1,73 +1,62 @@
-import React, { useState } from "react";
+import React, { useEffect, lazy, Suspense } from "react";
 import "./App.css";
 import Header from "./components/layout/Header/Header.jsx";
 import Navbar from "./components/layout/Header/Navbar.jsx";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./ScrollToTop.jsx";
 import Footer from "./components/layout/Footer/Footer.jsx";
-import Home from "./components/Home/Home.jsx";
-import ProductDetails from "./components/Product/ProductDetails.jsx";
-import Products from "./components/Product/Products.jsx";
-import Search from "./components/Product/Search.jsx";
-import About from "./components/About/About.jsx";
-import NewProduct from "./components/Admin/NewProduct.jsx";
-import Cart from "./components/Cart/Cart.jsx";
-
-import Shipping from "./components/Cart/Shipping.jsx";
-import ConfirmOrder from "./components/Cart/ConfirmOrder.jsx";
-import Payment from "./components/Cart/Payment.jsx";
-import OrderSuccess from "./components/Cart/OrderSuccess.jsx";
-
-import Myorders from "./components/Order/Myorders.jsx";
-import OrderDetails from "./components/Order/OrderDetails.jsx";
-
-import LoginSignUp from "./components/User/LoginSignUp.jsx";
-import Profile from "./components/User/Profile.jsx";
-import UpdatePassword from "./components/User/UpdatePassword.jsx";
-import ForgotPassword from "./components/User/ForgotPassword.jsx";
-import RestPassword from "./components/User/RestPassword.jsx";
-
-import Dashboard from "./components/Admin/Dashboard.jsx";
-
 import ProtectedRoute from "./components/Route/ProtectedRoute.jsx";
-
-//policies
-import CashOnDelivery from "./components/policies/CashOnDelivery.jsx";
-import AllPolicies from "./components/policies/AllPolicies.jsx";
-import ShippingPolicy from "./components/policies/ShippingPolicy.jsx";
-import ReturnPolicy from "./components/policies/ReturnPolicy.jsx";
-import PrivacyPolicy from "./components/policies/PrivacyPolicy.jsx";
-import TermsOfService from "./components/policies/TermsOfService.jsx";
-import ContactUs from "./components/policies/ContactUs.jsx";
-import Cancellation from "./components/policies/CancellationPolicy.jsx";
-import TrackOrder from "./components/policies/TrackOrder.jsx";
-import PaymentOptions from "./components/policies/PaymentOptions.jsx";
-import OutOfStock from "./components/policies/OutOfStock.jsx";
-
 import store from "./store.jsx";
 import { loadUser } from "./actions/userAction.jsx";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
-import UserOptions from "./components/layout/Header/UserOptions.jsx";
-import ProductList from "./components/Admin/ProductList.jsx";
-import UpdateProduct from "./components/Admin/UpdateProduct.jsx";
-import OrderList from "./components/Admin/OrderList.jsx";
-import ProcessOrder from "./components/Admin/ProcessOrder.jsx";
-import UsersList from "./components/Admin/UsersList.jsx";
-import BathRituals from "./components/Product/BathRituals.jsx";
-import FeedingRituals from "./components/Product/FeedingRituals.jsx";
-import OrganicClothing from "./components/Product/OrganicClothing.jsx";
-import BabyNursing from "./components/Product/BabyNursing.jsx";
-
-import Gifting from "./components/Product/Gifting.jsx";
-
-
-
-import { ToastContainer } from "react-toastify"; 
+import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import ComingSoon from "./components/Product/ComingSoon.jsx";
 import WhatsAppButton from "./components/layout/WhatsAppButton.jsx";
 import DisplayRoutePath from "./DisplayRoutePath.jsx";
+import Loader from "./components/layout/Loader/Loader.jsx";
+
+// Lazy loaded components
+const Home = lazy(() => import("./components/Home/Home.jsx"));
+const ProductDetails = lazy(() => import("./components/Product/ProductDetails.jsx"));
+const Products = lazy(() => import("./components/Product/Products.jsx"));
+const Search = lazy(() => import("./components/Product/Search.jsx"));
+const About = lazy(() => import("./components/About/About.jsx"));
+const NewProduct = lazy(() => import("./components/Admin/NewProduct.jsx"));
+const Cart = lazy(() => import("./components/Cart/Cart.jsx"));
+const Shipping = lazy(() => import("./components/Cart/Shipping.jsx"));
+const Payment = lazy(() => import("./components/Cart/Payment.jsx"));
+const OrderSuccess = lazy(() => import("./components/Cart/OrderSuccess.jsx"));
+const Myorders = lazy(() => import("./components/Order/Myorders.jsx"));
+const OrderDetails = lazy(() => import("./components/Order/OrderDetails.jsx"));
+const LoginSignUp = lazy(() => import("./components/User/LoginSignUp.jsx"));
+const Profile = lazy(() => import("./components/User/Profile.jsx"));
+const UpdatePassword = lazy(() => import("./components/User/UpdatePassword.jsx"));
+const ForgotPassword = lazy(() => import("./components/User/ForgotPassword.jsx"));
+const RestPassword = lazy(() => import("./components/User/RestPassword.jsx"));
+const Dashboard = lazy(() => import("./components/Admin/Dashboard.jsx"));
+const CashOnDelivery = lazy(() => import("./components/policies/CashOnDelivery.jsx"));
+const AllPolicies = lazy(() => import("./components/policies/AllPolicies.jsx"));
+const ShippingPolicy = lazy(() => import("./components/policies/ShippingPolicy.jsx"));
+const ReturnPolicy = lazy(() => import("./components/policies/ReturnPolicy.jsx"));
+const PrivacyPolicy = lazy(() => import("./components/policies/PrivacyPolicy.jsx"));
+const TermsOfService = lazy(() => import("./components/policies/TermsOfService.jsx"));
+const ContactUs = lazy(() => import("./components/policies/ContactUs.jsx"));
+const Cancellation = lazy(() => import("./components/policies/CancellationPolicy.jsx"));
+const TrackOrder = lazy(() => import("./components/policies/TrackOrder.jsx"));
+const PaymentOptions = lazy(() => import("./components/policies/PaymentOptions.jsx"));
+const OutOfStock = lazy(() => import("./components/policies/OutOfStock.jsx"));
+const ProductList = lazy(() => import("./components/Admin/ProductList.jsx"));
+const UpdateProduct = lazy(() => import("./components/Admin/UpdateProduct.jsx"));
+const OrderList = lazy(() => import("./components/Admin/OrderList.jsx"));
+const ProcessOrder = lazy(() => import("./components/Admin/ProcessOrder.jsx"));
+const UsersList = lazy(() => import("./components/Admin/UsersList.jsx"));
+const BathRituals = lazy(() => import("./components/Product/BathRituals.jsx"));
+const FeedingRituals = lazy(() => import("./components/Product/FeedingRituals.jsx"));
+const OrganicClothing = lazy(() => import("./components/Product/OrganicClothing.jsx"));
+const BabyNursing = lazy(() => import("./components/Product/BabyNursing.jsx"));
+const Gifting = lazy(() => import("./components/Product/Gifting.jsx"));
+const ComingSoon = lazy(() => import("./components/Product/ComingSoon.jsx"));
+
 
 function App() {
 
@@ -91,6 +80,7 @@ function App() {
       <WhatsAppButton />
       <DisplayRoutePath />
       <ScrollToTop />
+      <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route exact path="/product/:id" element={<ProductDetails />} />
@@ -289,6 +279,7 @@ function App() {
         <Route exact path="/policies/out-of-stock" element={<OutOfStock />} />
         <Route exact path="/policies/contact-us" element={<ContactUs />} />
       </Routes>
+      </Suspense>
 
       {/* ToastContainer placed here to handle toasts globally */}
       <ToastContainer

@@ -66,5 +66,9 @@ input[type="number"]{
     color: red;
     font-weight: bold;
   }
+
+  button{
+    border: transparent;
+  }
   
 

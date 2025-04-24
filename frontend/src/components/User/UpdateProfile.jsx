@@ -109,7 +109,8 @@ const UpdateProfile = ({ history }) => {
                 </div>
 
                 <div id="updateProfileImage">
-                  <img src={avatarPreview} alt="Avatar Preview" />
+                  <img loading="lazy"
+ src={avatarPreview} alt="Avatar Preview" />
                   <input
                     type="file"
                     name="avatar"

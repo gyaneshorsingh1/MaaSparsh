@@ -184,6 +184,7 @@
   border-radius: 0;
   left: 0;
   background: #e87044b3;
+  border: transparent;
 /* Add divider */
 }
 
@@ -193,6 +194,7 @@
   padding: 0;
   background: #e87044;
   border-radius: 0;
+  border: transparent;
 /* Add divider */
 }
 

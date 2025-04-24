@@ -16,8 +16,10 @@ const ProductCard = ({ product }) => {
   return (
     <Link className="productCard" to={`/product/${product._id}`}>
       <div className="product-image-container">
-        <img src={firstImageUrl} alt={product.name} className="first-image" />
-        <img src={secondImageUrl} alt={product.name} className="second-image" />
+        <img loading="lazy"
+ src={firstImageUrl} alt={product.name} className="first-image" />
+        <img loading="lazy"
+ src={secondImageUrl} alt={product.name} className="second-image" />
       </div>
       <p>{product.name}</p>
       <div className="cart-btn-price">

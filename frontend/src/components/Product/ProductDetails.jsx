@@ -261,12 +261,15 @@ const ProductDetails = () => {
             {">"} {productNameRoute}
           </p>
           <div className="ProductDetails">
-            <img src={leaf} alt="" className="leaf3" />
-            <img src={leaf} alt="" className="leaf4" />
+            <img loading="lazy"
+ src={leaf} alt="" className="leaf3" />
+            <img loading="lazy"
+ src={leaf} alt="" className="leaf4" />
             <div>
               {/* <Carousel className="carousel">
                 {product?.images?.map((item, i) => (
-                  <img
+                  <img loading="lazy"
+
                     className="CarouselImage"
                     key={i}
                     src={item.url}
@@ -274,7 +277,8 @@ const ProductDetails = () => {
                   />
                   
                 ))}
-                <img className="CarouselImage" src="/logo.png" alt="" />
+                <img loading="lazy"
+ className="CarouselImage" src="/logo.png" alt="" />
               </Carousel> */}
 
               <Carousel
@@ -308,7 +312,8 @@ const ProductDetails = () => {
                   </button>
                 } // Add functionality to Next button
               >
-                <img
+                <img loading="lazy"
+
                   className="CarouselImage"
                   src={
                     product?.images?.[selectedImageIndex]?.url || "Product Image Not Found"
@@ -321,7 +326,8 @@ const ProductDetails = () => {
               {/* Thumbnails Section */}
               <div className="thumbnail-container">
                 {product?.images?.map((item, i) => (
-                  <img
+                  <img loading="lazy"
+
                     key={i}
                     className={`thumbnail ${
                       i === selectedImageIndex ? "active" : ""
@@ -387,11 +393,16 @@ const ProductDetails = () => {
                   </b>
                 </p>
                 <div className="tested-icons">
-                  <img src={proof1} alt="" />
-                  <img src={proof2} alt="" />
-                  <img src={proof3} alt="" />
-                  <img src={proof4} alt="" />
-                  <img src={proof5} alt="" />
+                  <img loading="lazy"
+ src={proof1} alt="" />
+                  <img loading="lazy"
+ src={proof2} alt="" />
+                  <img loading="lazy"
+ src={proof3} alt="" />
+                  <img loading="lazy"
+ src={proof4} alt="" />
+                  <img loading="lazy"
+ src={proof5} alt="" />
                 </div>
               </div>
             </div>
@@ -447,7 +458,8 @@ const ProductDetails = () => {
             <div className="ingredients">
               {productIngredient.ingredients.map((ingredient, index) => (
                 <div key={index}>
-                  <img src={ingredient.image} alt={ingredient.name} />
+                  <img loading="lazy"
+ src={ingredient.image} alt={ingredient.name} />
                 </div>
               ))}
             </div>
@@ -457,8 +469,10 @@ const ProductDetails = () => {
 
           <div className="faq-container">
             <h2>FAQs</h2>
-            <img src={leaf} alt="" className="leaf" />
-            <img src={leaf} alt="" className="leaf2" />
+            <img loading="lazy"
+ src={leaf} alt="" className="leaf" />
+            <img loading="lazy"
+ src={leaf} alt="" className="leaf2" />
 
             {faqs.length > 0 ? (
               <ul className="faq-list">
@@ -475,7 +489,8 @@ const ProductDetails = () => {
                       <strong>{faq.question}</strong>
                       <span className="faq-icons">
                         {openFAQ === index ? (
-                          <img
+                          <img loading="lazy"
+
                             src={arrowdown}
                             style={{
                               width: "17.5px",
@@ -486,7 +501,8 @@ const ProductDetails = () => {
                             alt="Arrow Down"
                           />
                         ) : (
-                          <img
+                          <img loading="lazy"
+
                             src={arrowup}
                             style={{ width: "10px", marginTop: "6px" }}
                             alt="Arrow Up"

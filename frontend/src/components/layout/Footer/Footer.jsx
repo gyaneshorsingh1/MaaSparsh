@@ -69,17 +69,24 @@ const Footer = () => {
             <a href="mailto: care@maasparsh.com" className="email-a"><b>care@maasparsh.com</b></a>
             <p className="contact-p-address">AF-104B1, GOLF LINK - 1, GREATER NOIDA, Noida Sector 62, Noida, Gautam Buddha Nagar - 201309, Uttar Pradesh</p>
             <div className="curtomer-services-c-r-tm-icons">
-            <img src={Cicon} alt="masparsh-copyrights" />
-            <img src={Ricon} alt="masparsh-right" />
-            <img src={TMicon} alt="masparsh-india" />
+            <img loading="lazy"
+ src={Cicon} alt="masparsh-copyrights" />
+            <img loading="lazy"
+ src={Ricon} alt="masparsh-right" />
+            <img loading="lazy"
+ src={TMicon} alt="masparsh-india" />
           </div>
           </p>
-          <p className="img-p"><img src={logo} alt="masparsha logo" /></p>
+          <p className="img-p"><img loading="lazy"
+ src={logo} alt="masparsha logo" /></p>
           <h4 className="contact-payment">SECURE PAYMENTS</h4>
           <div className="payicons">
-            <img className="pay-icon" src={gpay} alt="masparsh-gpay" />
-            <img className="pay-icon" src={phonepay} alt="masparsh-phonepay" />
-            <img className="pay-icon" src={paybox} alt="masparsh-gpay" />
+            <img loading="lazy"
+ className="pay-icon" src={gpay} alt="masparsh-gpay" />
+            <img loading="lazy"
+ className="pay-icon" src={phonepay} alt="masparsh-phonepay" />
+            <img loading="lazy"
+ className="pay-icon" src={paybox} alt="masparsh-gpay" />
           </div>
           
         </div>
@@ -99,7 +106,8 @@ const Footer = () => {
               rel="noopener noreferrer"
             >
               {/* <FaInstagram className="social-icon" color="rgb(204, 63, 120)" /> */}
-              <img className="insta-icon social-icon" src={instaicon} alt="masparsh insta img" />
+              <img loading="lazy"
+ className="insta-icon social-icon" src={instaicon} alt="masparsh insta img" />
             </a>
             <a
               href="https://www.facebook.com/permalink.php?story_fbid=122106684572572520&id=61567175622637&substory_index=413017935180151 "
@@ -120,24 +128,28 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img className="flipkart youtube" src={flipkart} alt="" />
+              <img loading="lazy"
+ className="flipkart youtube" src={flipkart} alt="" />
             </a>
             <a
               href="https://www.amazon.in/l/27943762031?ie=UTF8&marketplaceID=A21TJRUUN4KGV&product=B0DPZNQK5G&me=AYECXUWL53VFO"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={amazon} className=" amazon youtube" alt="" />
+              <img loading="lazy"
+ src={amazon} className=" amazon youtube" alt="" />
             </a>
 
           </div>
 
         </div>
       </div>
-      {/* <img src={leaf} alt="masparsh-leaf" className="footer-leaf" /> */}
+      {/* <img loading="lazy"
+ src={leaf} alt="masparsh-leaf" className="footer-leaf" /> */}
       
     </footer>
-    <img src={footerBanner} alt="footerbanner" className="footer-img"/>
+    <img loading="lazy"
+ src={footerBanner} alt="footerbanner" className="footer-img"/>
     </>
   );
 };

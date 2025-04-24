@@ -12,7 +12,8 @@ const ReviewCard = ({ review }) => {
     return (
     <div className="reviewCard">
       <div className="reviewCard-img-name">
-        <img src={profilePng} alt="User" />
+        <img loading="lazy"
+ src={profilePng} alt="User" />
         <p>{review.name}</p>
       </div>
         

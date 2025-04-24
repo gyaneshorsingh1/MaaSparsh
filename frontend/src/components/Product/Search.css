@@ -30,6 +30,7 @@
   border: none;
   color: rgb(92, 184, 165);
   cursor: pointer;
+  
 }
 
 .searchIcon:hover {
@@ -100,15 +101,18 @@
   }
   .searchIcon {
     position: absolute;
-    left: 0px; /* Position icon within the input field */
+    left: 10px; /* Position icon within the input field */
     background: none;
     border: none;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
   }
   .Fasearch{
     width: 18px;
     height: 18px;
+    
   }
   
   
@@ -140,7 +144,6 @@
   .searchIcon{
     position: absolute;
     right: 0;
-    top: 6px;
   }
   .Fasearch{
     width: 20px;

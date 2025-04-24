@@ -38,8 +38,10 @@ const Profile = () => {
     <>
       <MetaData title={`${user.name}'s Profile`} />
       <div className="profileContainer">
-        <img className="profile-leaf" src={leaf} alt="" />
-        <img className="profile-leaf-2" src={leaf} alt="" />
+        <img loading="lazy"
+ className="profile-leaf" src={leaf} alt="" />
+        <img loading="lazy"
+ className="profile-leaf-2" src={leaf} alt="" />
         <h1>Account</h1>
         <div className="accountContainer">
           <div>
