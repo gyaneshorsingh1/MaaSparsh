@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./ProductCard.css"
+import "./Home.css";
 
 const ProductCard = ({ product }) => {
   // Check if the product has images and if the first and second images are available

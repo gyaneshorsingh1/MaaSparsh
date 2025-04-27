@@ -8,9 +8,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { Typography } from "@mui/material"; // Updated import for Typography (Material UI v5)
 import { toast } from "react-toastify";
 
-import { clearErrors, createCodOrder, createOrder } from "../../actions/orderAction";
+import {
+  clearErrors,
+  createCodOrder,
+  createOrder,
+} from "../../actions/orderAction";
 import axiosAPI from "../../actions/axiosInstance";
 const Payment = () => {
+
+  const [orderId, setOrderId] = useState(null);
+
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -29,44 +36,40 @@ const Payment = () => {
 
   const generatedOrderId = `COD${Date.now()}`;
 
-  const cashOnDeliveryHandler = async () =>{
-      const CodOrder = {
+  const cashOnDeliveryHandler = async () => {
+    const CodOrder = {
+      shippingInfo,
+      orderItems: cartItems.map((item) => ({
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+        image: item.image,
+        product: item.product,
+      })),
+      orderId: generatedOrderId,
+      user: userId,
+      name,
+      paymentInfo: {
+        id: "COD",
+        status: "Pending",
+      },
+      itemsPrice: subtotal,
+      shippingPrice: shippingCharges,
+      totalPrice: amount,
+      orderStatus: "Processing",
+      paidAt: new Date(), // No payment date since it's COD
+    };
 
-        shippingInfo,
-        orderItems: cartItems.map((item) => ({
-          name: item.name,
-          price: item.price,
-          quantity: item.quantity,
-          image: item.image,
-          product: item.product,
-        })),
-        orderId: generatedOrderId,
-        user: userId,
-        name,
-        paymentInfo: {
-          id: "COD",
-          status: "Pending",
-        },
-        itemsPrice: subtotal,
-        shippingPrice: shippingCharges,
-        totalPrice: amount,
-        orderStatus: "Processing",
-        paidAt: new Date(), // No payment date since it's COD
-      };
-    
-      
-        const createdOrder = await dispatch(createCodOrder(CodOrder));
+    const createdOrder = await dispatch(createCodOrder(CodOrder));
 
-        setLoading(true); // Show loader
-      
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+    setLoading(true); // Show loader
 
-        navigate(`/payment/successful/${generatedOrderId}`);
-        
-      console.log("COD order is Created Sucessfully")
-      
-    
-  }
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    navigate(`/payment/successful/${generatedOrderId}`);
+
+    console.log("COD order is Created Sucessfully");
+  };
 
   const checkoutHandler = async () => {
     try {
@@ -82,12 +85,15 @@ const Payment = () => {
           shippingInfo,
           subtotal,
           userId,
-          name
+          name,
         },
         { headers: { "Content-Type": "application/json" } }
       );
 
       const { orderId, amount } = data;
+      const createdOrderId = data.orderId; // <- got from API
+      setOrderId(createdOrderId); // <-- save in state
+       
 
       // Razorpay options
       const options = {
@@ -97,58 +103,25 @@ const Payment = () => {
         name: "MaaSparsh",
         description: "Payment Transaction for products",
         order_id: orderId,
-        handler: async function (response) {
-          if (
-            response.razorpay_order_id &&
-            response.razorpay_payment_id &&
-            response.razorpay_signature
-          ) {
-            const order = {
-              orderId: response.razorpay_order_id,
-              paymentId: response.razorpay_payment_id,
-              signature: response.razorpay_signature,
-              shippingInfo,
-              orderItems: cartItems.map((item) => ({
-                name: item.name,
-                price: item.price,
-                quantity: item.quantity,
-                image: item.image,
-                product: item.product,
-              })),
-              user: userId,
-              name,
-              paymentInfo: {
-                id: response.razorpay_payment_id,
-                status: "Paid",
-              },
-              itemsPrice: subtotal,
-              shippingPrice: shippingCharges,
-              totalPrice: amount,
-              orderStatus: "Proccessing",
-              paidAt: new Date(),
-            };
-            const orderId = response.razorpay_order_id;
+        // callback_url: `${import.meta.env.VITE_BACKEND_URL}/api/v1/payment/verification`,
+        callback_url: "http://localhost:4000/api/v1/payment/verification",
 
-              // Send order data to backend to create a new order
-              const paymentVerify = await axiosAPI.post("/api/v1/payment/verification", {
-                orderId: response.razorpay_order_id,
-                paymentId: response.razorpay_payment_id,
-                signature: response.razorpay_signature,
-                shippingInfo,
-                orderItems: cartItems,
-                userId,
-                itemsPrice: subtotal,
-                shippingPrice: shippingCharges,
-                totalPrice: amount,
-              });
-              
-              await dispatch(createOrder(order));
-              // Navigate to payment success page and show success message
-              
-              navigate(`/payment/successful/${orderId}`);
-              toast.success("Payment successful and verified!");
-            
-          }
+        notes: {
+          shippingInfo,
+          orderItems: cartItems.map((item) => ({
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity,
+            image: item.image,
+            product: item.product,
+          })),
+          user: userId,
+          name,
+          itemsPrice: subtotal,
+          shippingPrice: shippingCharges,
+          totalPrice: amount,
+          orderStatus: "Processing",
+          paidAt: new Date(), // No payment date since it's COD
         },
 
         prefill: {
@@ -173,8 +146,38 @@ const Payment = () => {
       );
     }
   };
+  // useEffect(() => {
+  //   const interval = setInterval(async () => {
+  //     try {
+  //       const { data } = await axiosAPI.get(`/api/v1/order/status/${orderId}`);
+    
+  //       const status = data.orderStatus.toLowerCase(); // making it lowercase to avoid case issues
+    
+  //       if (status === "paid" || status === "captured") {
+  //         clearInterval(interval);
+  //         navigate(`/order/success/${orderId}`);
+  //       } else if (status === "failed" || status === "cancelled") {
+  //         clearInterval(interval);
+          
+  //       }
+  //       // optional: you can add more else if for pending, refunded etc
+  //       else {
+  //         // still processing, do nothing
+  //         console.log(`Current status: ${status}`);
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //       clearInterval(interval);
+  //       setStatus("Error fetching payment status.");
+  //     }
+  //   }, 3000); // every 3 seconds
+    
 
+  //   return () => clearInterval(interval); // cleanup on unmount
+  // }, [orderId, navigate]);
+  
   useEffect(() => {
+    
     if (error) {
       toast.error(error);
       dispatch(clearErrors());
@@ -193,8 +196,7 @@ const Payment = () => {
               {cartItems &&
                 cartItems.map((item) => (
                   <div key={item.product} className="cart-detailss">
-                    <img loading="lazy"
- src={item.image} alt="Product" />
+                    <img loading="lazy" src={item.image} alt="Product" />
                     <Link to={`/product/${item.product}`}>
                       {item.name}
                     </Link>{" "}

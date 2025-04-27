@@ -43,10 +43,10 @@ exports.processPayment = catchAsyncErrors(async (req, res, next) => {
 exports.paymentVerification = async (req, res, next) => { 
 
   // Destructure incoming data from the request body
-  const { orderId, paymentId, signature, name } = req.body;
+  const { razorpay_order_id, razorpay_payment_id, razorpay_signature, name } = req.body;
 
    // Verify the payment signature using Razorpay's utility method
-  const body = orderId + "|" + paymentId;
+  const body = razorpay_order_id + "|" + razorpay_payment_id;
 
     // Use the correct Razorpay secret key from environment variables
   const expectedSignature = crypto
@@ -54,21 +54,41 @@ exports.paymentVerification = async (req, res, next) => {
       .update(body.toString())
       .digest("hex");
 
-  const isAuthentic = expectedSignature === signature;
+  const isAuthentic = expectedSignature === razorpay_signature;
 
   if (isAuthentic) {
+    const paymentDetails = await instance.payments.fetch(razorpay_payment_id);
+
+    const notes = paymentDetails.notes;
+
       await Payment.create({
-        razorpay_order_id: orderId,
-        razorpay_payment_id: paymentId,
-        razorpay_signature: signature,
-        name,
+        razorpay_order_id,
+        razorpay_payment_id,
+        razorpay_signature,
+        name:notes.name,
+        
+    });
+
+    await Order.create({
+      shippingInfo: JSON.parse(notes.shippingInfo),
+      orderItems: JSON.parse(notes.orderItems),
+      user: notes.userId,
+      name: notes.name,
+      paymentInfo: {
+        id: razorpay_payment_id,
+        status: paymentDetails.status,
+      },
+      itemsPrice: notes.itemsPrice,
+      shippingPrice: notes.shippingPrice,
+      totalPrice: notes.totalPrice,
+      orderStatus: "Processing",
+      paidAt: new Date(),
+      razorpay_order_id: razorpay_order_id, // connect order to razorpay
     });
 
       // Respond with success message
-      return res.status(200).json({
-        success: true,
-        message: "Payment verified successfully.",
-      });
+    return res.redirect(`http://localhost:5173/order/success/${razorpay_order_id}`);
+
     } else {
       // Signature mismatch, return failure message
       return res.status(400).json({
@@ -93,23 +113,38 @@ exports.razorpayWebhook = async (req, res) => {
 
   const event = req.body.event;
   if (event === "payment.captured") {
-    const { order_id, id: paymentId } = req.body.payload.payment.entity;
+    const paymentEntity = req.body.payload.payment.entity;
+    const { order_id, id: paymentId, notes } = paymentEntity;
 
-    const payment = await Payment.findOne({ razorpay_order_id: order_id });
+    const paymentDetails = await instance.payments.fetch(paymentId);
 
-    if (!payment) {
+    // Check if payment already recorded
+    const existingPayment = await Payment.findOne({ razorpay_payment_id: paymentId });
+
+    if (!existingPayment) {
       await Payment.create({
         razorpay_order_id: order_id,
         razorpay_payment_id: paymentId,
         razorpay_signature: "Webhook", // No signature in webhook
-        name,
+        name: notes.name,
       });
 
-      await Order.findOneAndUpdate(
-        { razorpay_order_id: order_id },
-        { status: "Paid" },
-        { new: true }
-      );
+      await Order.create({
+        shippingInfo: JSON.parse(notes.shippingInfo),
+        orderItems: JSON.parse(notes.orderItems),
+        user: notes.userId,
+        name: notes.name,
+        paymentInfo: {
+          id: paymentId,
+          status: paymentDetails.status,
+        },
+        itemsPrice: notes.itemsPrice,
+        shippingPrice: notes.shippingPrice,
+        totalPrice: notes.totalPrice,
+        orderStatus: "Processing",
+        paidAt: new Date(),
+        razorpay_order_id: razorpay_order_id, // connect order to razorpay
+      });
     }
   }
 

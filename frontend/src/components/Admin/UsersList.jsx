@@ -1,12 +1,10 @@
 import React, { useEffect } from "react";
-import { DataGrid } from "@mui/x-data-grid";
 import "./productList.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Button } from "@mui/material";
 import MetaData from "../layout/MetaData";
-import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SideBar from "./Sidebar";
 import { getAllUsers, clearErrors, deleteUser } from "../../actions/userAction";
@@ -15,14 +13,10 @@ import { DELETE_USER_RESET } from "../../constants/userConstants";
 const UsersList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const { error, users } = useSelector((state) => state.allUsers);
   
-  const {
-    error: deleteError,
-    isDeleted,
-    message,
-  } = useSelector((state) => state.profile);
+  const { error, users } = useSelector((state) => state.allUsers);
+
+  const { error: deleteError, isDeleted, message } = useSelector((state) => state.profile);
 
   const deleteUserHandler = (id) => {
     dispatch(deleteUser(id));
@@ -48,62 +42,6 @@ const UsersList = () => {
     dispatch(getAllUsers());
   }, [dispatch, error, deleteError, navigate, isDeleted, message]);
 
-  const columns = [
-    { field: "id", headerName: "User ID", minWidth: 180, flex: 0.8 },
-    {
-      field: "email",
-      headerName: "Email",
-      minWidth: 200,
-      flex: 1,
-    },
-    {
-      field: "name",
-      headerName: "Name",
-      minWidth: 150,
-      flex: 0.5,
-    },
-    {
-      field: "role",
-      headerName: "Role",
-      minWidth: 150,
-      flex: 0.3,
-      renderCell: (params) => (
-        <span className={params.value === "admin" ? "greenColor" : "redColor"}>
-          {params.value}
-        </span>
-      ),
-    },
-    {
-      field: "actions",
-      headerName: "Actions",
-      minWidth: 150,
-      type: "number",
-      sortable: false,
-      renderCell: (params) => {
-        return (
-          <>
-            <Button onClick={() => deleteUserHandler(params.row.id)}>
-              <DeleteIcon />
-            </Button>
-          </>
-        );
-      },
-    },
-  ];
-
-
-  const rows = [];
-
-  users &&
-    users.forEach((item) => {
-      rows.push({
-        id: item._id,
-        role: item.role,
-        email: item.email,
-        name: item.name,
-      });
-    });
-
   return (
     <>
       <MetaData title="ALL USERS - Admin" />
@@ -111,14 +49,36 @@ const UsersList = () => {
         <SideBar />
         <div className="productListContainer">
           <h1 id="productListHeading">ALL USERS</h1>
-          <DataGrid
-            rows={rows || []}
-            columns={columns}
-            pageSize={10}
-            disableSelectionOnClick
-            className="productListTable"
-            autoHeight
-          />
+          <table className="usersTable">
+            <thead>
+              <tr>
+                <th>User ID</th>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users && users.map((user) => (
+                <tr key={user._id}>
+                  <td>{user._id}</td>
+                  <td>{user.email}</td>
+                  <td>{user.name}</td>
+                  <td>
+                    <span className={user.role === "admin" ? "greenColor" : "redColor"}>
+                      {user.role}
+                    </span>
+                  </td>
+                  <td>
+                    <Button onClick={() => deleteUserHandler(user._id)}>
+                      <DeleteIcon />
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </>

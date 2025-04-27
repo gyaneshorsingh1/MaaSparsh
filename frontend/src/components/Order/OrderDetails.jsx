@@ -51,7 +51,7 @@ const OrderDetails = () => {
   const getPaymentStatusClass = (status) => {
     console.log('Payment Status:', status); // Debugging log to check status value
 
-    if (status === "Paid") {
+    if (status === "Paid" || status === "captured") {
       return "greenColor";  // Green color for Paid
     }
     if (status === "COD") {
@@ -107,7 +107,7 @@ const OrderDetails = () => {
   <div className="info-box">
     <div className="payment-status">
       <p className={getPaymentStatusClass(paymentInfo?.status)}>
-        {paymentInfo?.status === "Paid"
+        {paymentInfo?.status === "Paid" || "captured"
           ? "Paid"
           : paymentInfo?.status === "COD"
           ? "Cash On Delivery"

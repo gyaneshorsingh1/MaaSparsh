@@ -84,6 +84,10 @@ const orderSchema = new mongoose.Schema({
         required: true,
         default: "Proccessing",
     },
+    razorpay_order_id:{
+        type:String,
+        required: true,
+    },
     deliveredAt: Date,
     createdAt:{
         type:Date,

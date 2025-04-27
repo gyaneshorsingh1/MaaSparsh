@@ -20,6 +20,24 @@ exports.newOrder = catchAsyncErrors(async (req,res,next)=>{
 })
 
 
+// In your order controller
+
+exports.getOrderStatus = async (req, res) => {
+    const { orderId } = req.params;
+    
+    const order = await Order.findById(orderId);
+  
+    if (!order) {
+      return res.status(404).json({ success: false, message: "Order not found" });
+    }
+  
+    res.status(200).json({ 
+      success: true, 
+      orderStatus: order.paymentInfo.status // or order.orderStatus
+    });
+  };
+  
+
 //new order with COD
 exports.newCodOrder = catchAsyncErrors(async (req, res, next)=>{
     const order = await Order.create(req.body);
