@@ -1,43 +1,137 @@
-.updateOrderForm {
-  margin: 5vmax 0;
-  padding: 3vmax;
-  background-color: white;
+
+.orderDetailsContainer{
+  
+  box-sizing: border-box;
+  background-color: rgb(221, 221, 221);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 150vh;
+  width: 90vw;
+
+}
+.confirmOrderPage{
+display: grid;
+grid-template-columns: 1fr 1fr;
+padding: 20px;
+padding-left: 40px;
+width: 100%;
+background: #f6f6f6;
+}
+
+.confirmCartItemsContainer>div{
+border: 2px solid rgba(217, 61, 41, 0.321);
+border-radius: 12px;
+overflow: hidden;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 2px;  
+margin: 10px 0;
+}
+.confirmCartItemsContainer>div>img{
+height: 100%;
+width: 80px;
+height: 80px;
+border-radius: 10px;
+}
+.confirmCartItemsContainer>div>a{
+font-size: 24px;
+text-align: start;
+text-decoration: none;
+width: 40%;
+}
+.confirmCartItemsContainer>div>span{
+width: 40%;
+font-size: 22px;
+}
+.confirmCartItemsContainer>div>span>b{
+width: 40%;
+font-size: 24px;
+font-weight: 600;
+}
+.confirmshippingArea>h6, .confirmCartItems>h6{
+ font-size: 24px; 
+ border-bottom: 2px solid tomato;
+ width: fit-content;
+ color: tomato;
+ font-family: "quick sand", sans-serif;
+}
+
+.confirmshippingArea>.orderDetailsContainerBox>div>p{
+font-size: 24px; 
+}
+.confirmshippingArea>.orderDetailsContainerBox>div>span{
+font-size: 20px; 
+}
+
+
+
+.updateOrderForm{
+padding: 5px;
+margin: 5vh 0;
+}
+
+.updateOrderForm>h1{
+margin: 0 0 10px 0;
+padding: 0;
+font-size: 24px;
+height: auto;
 }
 
 .updateOrderForm > div {
-  display: flex;
-  width: 100%;
-  align-items: center;
+display: grid;
+width: 100%;
+align-items: center;
+position: relative;
 }
 .updateOrderForm > div > select {
-  padding: 1vmax 4vmax;
-  margin: 2rem 0;
-  width: 100%;
-  box-sizing: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.267);
-  border-radius: 4px;
-  font: 300 0.9vmax cursive;
-  outline: none;
+padding: 1vmax 4vmax;
+margin-bottom: 20px;
+width: 100%;
+box-sizing: border-box;
+border: 1px solid rgba(0, 0, 0, 0.267);
+border-radius: 4px;
+font: 300 0.9vmax "quick sand", sans-serif;
+outline: none;
 }
 
 .updateOrderForm > div > svg {
-  position: absolute;
-  transform: translateX(1vmax);
-  font-size: 1.6vmax;
-  color: rgba(0, 0, 0, 0.623);
+position: absolute;
+transform: translateX(1vmax);
+top: 13px;
+font-size: 1.6vmax;
+color: rgba(0, 0, 0, 0.623);
+}
+
+.updateOrderForm> button{
+border: none;
+background-color: tomato;
+color: white;
+font: 300 1.8vmax "quick sand", sans-serif;
+width: 100%;
+padding: 12px;
+cursor: pointer;
+transition: all 0.5s;
+border-radius: 4px;
+outline: none;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
+
+
 }
 
 @media screen and (max-width: 600px) {
-  .updateOrderForm {
-    padding: 5vmax;
-  }
+.updateOrderForm {
+  padding: 5vmax;
+}
 
-  .updateOrderForm > div > select {
-    padding: 2.5vmax 5vmax;
-    font: 300 1.7vmax cursive;
-  }
+.updateOrderForm > div > select {
+  padding: 2.5vmax 5vmax;
+  font: 300 1.7vmax cursive;
+}
 
-  .updateOrderForm > div > svg {
-    font-size: 2.8vmax;
-  }
+.updateOrderForm > div > svg {
+  font-size: 2.8vmax;
+}
 }

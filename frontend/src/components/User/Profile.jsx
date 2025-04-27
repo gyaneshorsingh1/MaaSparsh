@@ -7,7 +7,7 @@ import "./Profile.css";
 import MyOrders from "../Order/Myorders";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import leaf from "../../images/leaf-2.png";
-import { logout } from '../../actions/userAction.jsx';
+import { logout } from "../../actions/userAction.jsx";
 import { toast } from "react-toastify";
 
 const Profile = () => {
@@ -38,10 +38,8 @@ const Profile = () => {
     <>
       <MetaData title={`${user.name}'s Profile`} />
       <div className="profileContainer">
-        <img loading="lazy"
- className="profile-leaf" src={leaf} alt="" />
-        <img loading="lazy"
- className="profile-leaf-2" src={leaf} alt="" />
+        <img loading="lazy" className="profile-leaf" src={leaf} alt="" />
+        <img loading="lazy" className="profile-leaf-2" src={leaf} alt="" />
         <h1>Account</h1>
         <div className="accountContainer">
           <div>
@@ -58,7 +56,10 @@ const Profile = () => {
           <div className="logout-account">
             <div>
               <button onClick={logoutUser} className="logout-link">
-                Log Out <span><FaArrowAltCircleRight color="#e87044" /></span>
+                Log Out{" "}
+                <span>
+                  <FaArrowAltCircleRight color="#e87044" />
+                </span>
               </button>
             </div>
           </div>

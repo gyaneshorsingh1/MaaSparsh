@@ -3,7 +3,11 @@ import MetaData from "../layout/MetaData";
 import { Link, useNavigate, useParams } from "react-router-dom"; // <-- Make sure Link is imported here
 import { Typography } from "@mui/material";
 import Sidebar from "./Sidebar";
-import { getOrderDetails, clearErrors, updateOrder } from "../../actions/orderAction";
+import {
+  getOrderDetails,
+  clearErrors,
+  updateOrder,
+} from "../../actions/orderAction";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader/Loader";
 import { toast } from "react-toastify";
@@ -12,6 +16,7 @@ import { Button } from "@mui/material";
 import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
 import { getUserDetails } from "../../actions/userAction";
 import "./processOrder.css";
+
 
 const ProcessOrder = () => {
   const { id } = useParams(); // Get the order ID from the URL
@@ -89,7 +94,8 @@ const ProcessOrder = () => {
                 <div className="orderDetailsContainerBox">
                   <div>
                     <p>Name:</p>
-                    <span>{user?.name || "Loading..."}</span> {/* Display user name once loaded */}
+                    <span>{user?.name || "Loading..."}</span>{" "}
+                    {/* Display user name once loaded */}
                   </div>
                   <div>
                     <p>Phone:</p>
@@ -114,7 +120,9 @@ const ProcessOrder = () => {
                           : "yellowColor" // Updated to show yellow for COD
                       }
                     >
-                      {order.paymentInfo && order.paymentInfo.status === "Paid" ? "PAID" : "COD"}
+                      {order.paymentInfo && order.paymentInfo.status === "Paid"
+                        ? "PAID"
+                        : "COD"}
                     </p>
                   </div>
                   <div>
@@ -144,11 +152,14 @@ const ProcessOrder = () => {
                   {order.orderItems &&
                     order.orderItems.map((item) => (
                       <div key={item.product}>
-                        <img loading="lazy"
- src={item.image} alt="Product" />
-                        <Link to={`/product/${item.product}`}>{item.name}</Link> {/* Link is now imported */}
+                        <img loading="lazy" src={item.image} alt="Product" />
+                        <Link to={`/product/${item.product}`}>
+                          {item.name}
+                        </Link>{" "}
+                        {/* Link is now imported */}
                         <span>
-                          {item.quantity} X ₹{item.price} = <b>₹{item.price * item.quantity}</b>
+                          {item.quantity} X ₹{item.price} ={" "}
+                          <b>₹{item.price * item.quantity}</b>
                         </span>
                       </div>
                     ))}
@@ -161,15 +172,22 @@ const ProcessOrder = () => {
                 display: order.orderStatus === "Delivered" ? "none" : "block",
               }}
             >
-              <form className="updateOrderForm" onSubmit={updateOrderSubmitHandler}>
+              <form
+                className="updateOrderForm"
+                onSubmit={updateOrderSubmitHandler}
+              >
                 <h1>Process Order</h1>
 
                 <div>
                   <AccountTreeIcon />
                   <select onChange={(e) => setStatus(e.target.value)}>
                     <option value="">Choose Status</option>
-                    {order.orderStatus === "Processing" && <option value="Shipped">Shipped</option>}
-                    {order.orderStatus === "Shipped" && <option value="Delivered">Delivered</option>}
+                    {order.orderStatus === "Processing" && (
+                      <option value="Shipped">Shipped</option>
+                    )}
+                    {order.orderStatus === "Shipped" && (
+                      <option value="Delivered">Delivered</option>
+                    )}
                   </select>
                 </div>
 

@@ -56,6 +56,7 @@ const OrganicClothing = lazy(() => import("./components/Product/OrganicClothing.
 const BabyNursing = lazy(() => import("./components/Product/BabyNursing.jsx"));
 const Gifting = lazy(() => import("./components/Product/Gifting.jsx"));
 const ComingSoon = lazy(() => import("./components/Product/ComingSoon.jsx"));
+const OurStore = lazy(() => import("./components/policies/OurStore.jsx"));
 
 
 function App() {
@@ -88,12 +89,8 @@ function App() {
         <Route path="/products/:keyword" element={<Products />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/search" element={<Search />} />
-        <Route
-          exact
-          path="/payment/successful/:id"
-          element={<OrderSuccess />}
-        />
-
+        
+        <Route exact path="/policies/store" element={<OurStore />} />
 
         <Route exact path="/cart" element={<Cart />} />
 
@@ -161,6 +158,23 @@ function App() {
           element={
             <ProtectedRoute>
               <Payment />
+            </ProtectedRoute>
+          }
+        />
+
+       <Route
+          path="/order/success/:id"
+          element={
+            <ProtectedRoute>
+              <OrderSuccess />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/api/v1/payment/verification/:id"
+          element={
+            <ProtectedRoute>
+              <OrderSuccess />
             </ProtectedRoute>
           }
         />

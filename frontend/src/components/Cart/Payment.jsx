@@ -104,7 +104,7 @@ const Payment = () => {
         description: "Payment Transaction for products",
         order_id: orderId,
         // callback_url: `${import.meta.env.VITE_BACKEND_URL}/api/v1/payment/verification`,
-        callback_url: "http://localhost:4000/api/v1/payment/verification",
+        callback_url: "/api/v1/payment/verification",
 
         notes: {
           shippingInfo,

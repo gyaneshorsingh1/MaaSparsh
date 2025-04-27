@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { thunk } from 'redux-thunk';
 import { newProductReducer, newReviewReducer, productDetailsReducer, productsReducer, productReducer } from './reducers/productReducer';
-import { allUsersReducer, forgotPasswordReducer, userDetailsReducer, userReducer } from './reducers/userReducer';
+import { allUsersReducer, forgotPasswordReducer, profileReducer, userDetailsReducer, userReducer } from './reducers/userReducer';
 import { cartReducer } from './reducers/cartReducer';
 import { allOrdersReducer, myOrdersReducer, newCodOrderReducer, newOrderReducer, orderDetailsReducer, orderReducer } from './reducers/orderReducer';
 import { wishlistReducer } from "./reducers/wishlistReducer"
@@ -23,6 +23,7 @@ const reducer = {
     order: orderReducer,
     allUsers: allUsersReducer,
     userDetails: userDetailsReducer,
+    profile: profileReducer,
 };
 
 // Initial state setup
