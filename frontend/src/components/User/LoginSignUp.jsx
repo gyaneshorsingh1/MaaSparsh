@@ -74,7 +74,7 @@ const LoginSignUp = () => {
       dispatch(googleLogin({ name, uid, email, idToken }));
   
     } catch (error) {
-      if (error.code === 'auth/popup-blocked') {
+      if (error) {
         console.error("Popup blocked, switching to redirect login...");
         try {
           await signInWithRedirect(auth, provider);
