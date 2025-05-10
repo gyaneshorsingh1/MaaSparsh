@@ -73,9 +73,9 @@
 
 @media screen and (max-width: 768px) {
 
-    .PaymentCartItems {
+  .PaymentCartItems {
         width: 80%;
-      }
+  }
   .PaymentItemsContainer{
     width: 100%;
   }
@@ -100,5 +100,40 @@
   }
   .PaymentOrderSummary{
     width: 80%;
+    margin-top: 18px;
+  }
+  .PaymentOrderSummary>div{
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  .PaymentOrderSummary>div>div{
+    margin-top: 8px;
+  }
+  .PaymentOrderSummary>div>div>p{
+    font-size: 16px;
+  }
+  .PaymentOrderSummary>div>div>span{
+    font-size: 16px;
+  }
+
+  
+
+  .TotalPaymentSummary>p{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 26px;
+  }
+  .TotalPaymentSummary>p>b{
+    font-weight: 600;
+    font-size: 26px;
+  }
+  .TotalPaymentSummary>span{
+    font-size: 26px;
+  }
+
+  .PaymentOrderSummary > button{
+    font-size: 14px;
   }
 }

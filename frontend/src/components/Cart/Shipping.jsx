@@ -156,8 +156,6 @@ const Shipping = () => {
               />
             </div>
 
-            
-
             <input
               type="submit"
               value="Continue"
@@ -170,21 +168,24 @@ const Shipping = () => {
         <div className="products-and-amount">
           <h2>Order Summary</h2>
           <div className="cartItemContainer">
-  {cartItems &&
-    cartItems.map((item) => (
-      <div key={item.product}>
-        <span>
-          <img loading="lazy"
- src={item.image} alt={item.name} />
-          <Link to={`/product/${item.product}`}>
-            {item.name} <span className="itemQuantity">( {item.quantity} ) </span> <br />
-            <span>200ml</span>
-          </Link>
-        </span>
-        <span className="subtotalSection">₹{item.price * item.quantity}</span>
-      </div>
-    ))}
-</div>
+            {cartItems &&
+              cartItems.map((item) => (
+                <div key={item.product}>
+                  <span>
+                    <img loading="lazy" src={item.image} alt={item.name} />
+                    <Link to={`/product/${item.product}`}>
+                      {item.name}{" "}
+                      <span className="itemQuantity">( {item.quantity} ) </span>{" "}
+                      <br />
+                      <span>200ml</span>
+                    </Link>
+                  </span>
+                  <span className="subtotalSection">
+                    ₹{item.price * item.quantity}
+                  </span>
+                </div>
+              ))}
+          </div>
 
           <div className="orderSummary">
             <div className="sub-total-order">
@@ -195,11 +196,16 @@ const Shipping = () => {
               <p>Shipping Charges:</p>
               <span>₹0(Free Delivery)</span>
             </div>
-            <div className="orderSummaryTotal">
+            <div className="orderSummaryTotal sub-total-order">
               <p className="total-price">
-                Total: <span>₹{totalPrice}</span>
+                Total: 
               </p>
-              <p className="taxes-included-info">
+              <p><span>₹{totalPrice}</span></p>
+              
+            </div>
+            <div className="taxesinfo">
+              <p></p>
+               <p>
                 (MRP Inclusive of all Taxes)
               </p>
             </div>

@@ -8,6 +8,44 @@ const comparedPassword = require("../models/userModel");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
 
+const admin = require('../utils/firebase');
+
+
+exports.googleLoginUser = catchAsyncErrors(async (req, res, next) => {
+  const { idToken } = req.body;
+
+  if (!idToken) {
+    return next(new ErrorHandler('Please provide the ID token', 400));
+  }
+
+  let decodedToken;
+  try {
+    console.log("Verifying token...");
+    decodedToken = await admin.auth().verifyIdToken(idToken);
+    console.log("Token verified.");
+
+    const { email, name, uid } = decodedToken;
+
+    let user = await User.findOne({ email });
+
+    if (!user) {
+      user = new User({
+        name: name || 'Unnamed User',
+        email,
+        password: uid, // Can also use a hashed dummy password
+      });
+
+      await user.save();
+    }
+
+    sendToken(user, 200, res);
+  } catch (error) {
+    console.error("Token verification failed:", error);
+    return next(new ErrorHandler('Invalid or expired token', 401));
+  }
+});
+
+
 
 
 

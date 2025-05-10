@@ -63,6 +63,49 @@ export const login = (email, password) => async(dispatch) =>{
 };
 
 
+//google login
+import { auth, provider } from "../Firebase"; // adjust if needed
+import { signInWithPopup } from "firebase/auth";
+
+export const googleLogin = () => async (dispatch) => {
+  try {
+    dispatch({ type: LOGIN_REQUEST });
+
+    // Sign in with popup
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+
+    const idToken = await user.getIdToken();
+    const name = user.displayName;
+    const email = user.email;
+    const uid = user.uid;
+
+    console.log("Sending to backend:", { name, email, uid, idToken });
+
+    const config = {
+      headers: { "Content-Type": "application/json" },
+    };
+
+    const { data } = await axiosAPI.post(
+      `/api/v1/google/login`,
+      { name, email, uid, idToken },
+      config
+    );
+
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: data.user,
+    });
+  } catch (error) {
+    dispatch({
+      type: LOGIN_FAIL,
+      payload: error.response?.data?.message || error.message,
+    });
+  }
+};
+
+
+
 //register
 export const register = (userData) => async(dispatch) =>{
     try{

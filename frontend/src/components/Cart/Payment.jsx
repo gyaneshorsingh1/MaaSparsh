@@ -104,7 +104,7 @@ const Payment = () => {
         description: "Payment Transaction for products",
         order_id: orderId,
         // callback_url: `${import.meta.env.VITE_BACKEND_URL}/api/v1/payment/verification`,
-        callback_url: "/api/v1/payment/verification",
+        callback_url: `${import.meta.env.VITE_BACKEND_API_URL}/api/v1/payment/verification`,
 
         notes: {
           shippingInfo,
@@ -219,7 +219,7 @@ const Payment = () => {
               </div>
               <div>
                 <p>Shipping Charges:</p>
-                <span>₹{shippingCharges}</span>
+                <span>{shippingCharges === 0 ? "Free" : `₹${shippingCharges}`}</span>
               </div>
             </div>
             <div className="TotalPaymentSummary">
@@ -229,7 +229,7 @@ const Payment = () => {
               <span>₹{amount}</span>
             </div>
             <button onClick={checkoutHandler}>Pay Now</button>
-            <button onClick={cashOnDeliveryHandler}>Cash on delivery</button>
+            {/* <button onClick={cashOnDeliveryHandler}>Cash on delivery</button> */}
           </div>
         </div>
       </div>

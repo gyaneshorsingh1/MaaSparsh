@@ -22,12 +22,16 @@
     color: #7A301B;
     font-family: "quick sand", sans-serif;
     font-weight: 600;
+    font-size: 23px;
   }
 
   .contact-details{
     padding: 0 2vmax;
     margin-bottom: 5vh;
     font-weight: 400;
+  }
+  .contact-details>p{
+    font-size: 16px;
   }
   .item-quantity{
     padding-left: 10px;
@@ -72,7 +76,8 @@
     border: 1px solid rgba(0, 0, 0, 0.267);
     background-color: #ffbe9836;
     border-radius: 4px;
-    font: 300 0.9vmax cursive;
+    font-weight: 300;
+    font-size: 1vmax;
     font-family: "League Spartan", sans-serif;
     outline: none;
   }
@@ -116,7 +121,8 @@
     display: block;
   }
   .brought-together h2{
-    margin-top: 2vh;
+    margin-top: 5vh;
+    font-size: 1.7vmax;
   }
 
 
@@ -135,6 +141,9 @@
     .shipping-title{
       font-size: 20px;
     }
+    .contact-details>p{
+      font-size: 14px;
+    }
   
     .contact-details{
       margin-bottom: 10px;
@@ -152,7 +161,7 @@
     .shippingForm > div > input,
     .shippingForm > div > select {
       padding: 3.5vw 10vw;
-      font-size: 10px;
+      font-size: 14px;
       letter-spacing: 0.5px;
       font-family: "League Spartan", sans-serif;
     }
