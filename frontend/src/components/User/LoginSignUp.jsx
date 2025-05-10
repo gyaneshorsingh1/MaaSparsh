@@ -59,28 +59,23 @@ const LoginSignUp = () => {
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
+  
       const name = user.displayName;
       const uid = user.uid;
-      const email= user.email;
-      
-
-      // Optional: Get Firebase ID token (for backend)
+      const email = user.email;
       const idToken = await user.getIdToken();
-
+  
       console.log("Firebase ID Token:", idToken);
-
-      dispatch(googleLogin(name,uid,email, idToken));
-
       console.log("Name:", name);
       console.log("Email:", email);
       console.log("UID:", uid);
-
-      
-      // Redirect or update UI here
+  
+      // Call redux action to send to backend
+      dispatch(googleLogin({ name, uid, email, idToken }));
+  
     } catch (error) {
       if (error.code === 'auth/popup-blocked') {
         console.error("Popup blocked, switching to redirect login...");
-        // Switch to redirect method if popup is blocked
         try {
           await signInWithRedirect(auth, provider);
         } catch (redirectError) {
@@ -91,6 +86,7 @@ const LoginSignUp = () => {
       }
     }
   };
+  
   
   // const handlePassLogin = async () => {
   //   // let provider;
