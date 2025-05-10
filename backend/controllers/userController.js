@@ -8,7 +8,7 @@ const comparedPassword = require("../models/userModel");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
 
-const admin = require('../utils/firebase');
+const admin = require("../utils/firebase")
 
 
 exports.googleLoginUser = catchAsyncErrors(async (req, res, next) => {

@@ -8,6 +8,9 @@ const instance = new Razorpay({
   key_id: process.env.RAZORPAY_API_KEY,
   key_secret: process.env.RAZORPAY_API_SECRET,
 });
+
+const frontendUrl = process.env.FRONTEND_URL;
+
 // Payment Processing - Create Order
 exports.processPayment = catchAsyncErrors(async (req, res, next) => {
   const { amount, cartItems, shippingInfo, userId, name, subtotal, shippingCharges, } = req.body;
@@ -87,7 +90,7 @@ exports.paymentVerification = async (req, res, next) => {
     });
 
       // Respond with success message
-    return res.redirect(`http://localhost:5173/order/success/${razorpay_order_id}`);
+    return res.redirect(`${frontendUrl}/order/success/${razorpay_order_id}`);
 
     } else {
       // Signature mismatch, return failure message

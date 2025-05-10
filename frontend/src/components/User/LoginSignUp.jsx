@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 
 
 import { auth, provider } from "../../Firebase.jsx";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup, signInWithRedirect, getRedirectResult } from "firebase/auth";
 
 
 
@@ -78,8 +78,17 @@ const LoginSignUp = () => {
       
       // Redirect or update UI here
     } catch (error) {
-      console.error("Error during Google login", error);
-      console.error(error.message);
+      if (error.code === 'auth/popup-blocked') {
+        console.error("Popup blocked, switching to redirect login...");
+        // Switch to redirect method if popup is blocked
+        try {
+          await signInWithRedirect(auth, provider);
+        } catch (redirectError) {
+          console.error("Error during redirect login", redirectError);
+        }
+      } else {
+        console.error("Error during Google login", error);
+      }
     }
   };
   

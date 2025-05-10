@@ -87,7 +87,12 @@ const Payment = () => {
           userId,
           name,
         },
-        { headers: { "Content-Type": "application/json" } }
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true, // Ensures cookies are sent with the request
+        }
       );
 
       const { orderId, amount } = data;
